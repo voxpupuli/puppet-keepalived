@@ -1,0 +1,24 @@
+vrrp_instance <%= scope.lookupvar('name') %> {
+  interface                 <%= scope.lookupvar('interface') %>
+  state                     <%= scope.lookupvar('state') %>
+  virtual_router_id         <%= scope.lookupvar('virtual_router_id') %>
+  priority                  <%= scope.lookupvar('priority') %>
+  lvs_sync_daemon_interface <%= scope.lookupvar('interface') %>
+
+  authentication {
+    auth_type <%= scope.lookupvar('auth_type') %>
+    auth_pass <%= scope.lookupvar('auth_pass') %>
+  }
+  <% if @track_script %>
+  track_script {
+    <% track_script.each do |track| %><%= track %>
+    <% end %>
+  }
+  <% else %>
+  <% end %>
+  virtual_ipaddress {
+    <% virtual_ipaddress.each do |ip| %><%= ip %> dev <%= scope.lookupvar('interface') %>
+    <% end %>
+  }
+}
+
