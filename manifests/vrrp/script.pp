@@ -13,7 +13,7 @@ define keepalived::vrrp::script (
     }
 
     concat::fragment { "keepalived.conf_vrrp_script_${name}":
-      target  => "${keepalived::config_dir}/keepalived.conf.new",
+      target  => "${keepalived::config_dir}/keepalived.conf",
       content => template('keepalived/vrrp_script.erb'),
       order   => 50,
     }
