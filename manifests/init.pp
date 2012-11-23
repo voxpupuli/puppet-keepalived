@@ -1,0 +1,30 @@
+# = Class keepalived
+#
+class keepalived (
+  $config_dir        = $::keepalived::params::config_dir,
+  $config_dir_mode   = $::keepalived::params::config_dir_mode,
+  $config_file_mode  = $::keepalived::params::config_file_mode,
+  $config_group      = $::keepalived::params::config_group,
+  $config_user       = $::keepalived::params::config_user,
+  $daemon_group      = $::keepalived::params::daemon_group,
+  $daemon_user       = $::keepalived::params::daemon_user,
+  $log_dir           = $::keepalived::params::log_dir,
+  $pid_file          = $::keepalived::params::pid_file,
+  $pkg_ensure        = $::keepalived::params::pkg_ensure,
+  $pkg_list          = $::keepalived::params::pkg_list,
+  $service_enable    = $::keepalived::params::service_enable,
+  $service_ensure    = $::keepalived::params::service_ensure,
+  $service_hasstatus = $::keepalived::params::service_hasstatus,
+  $service_name      = $::keepalived::params::service_name,
+) inherits keepalived::params {
+
+  include keepalived::install
+  include keepalived::config
+  include keepalived::service
+
+  Class['keepalived::install'] ->
+  Class['keepalived::config'] ->
+  Class['keepalived::service']
+
+}
+
