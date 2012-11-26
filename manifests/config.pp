@@ -28,8 +28,8 @@ class keepalived::config {
 
   concat::fragment { 'keepalived.conf_footer':
     target  => "${::keepalived::config_dir}/keepalived.conf",
-    content => "\n\n",
-    order   => 9999,
+    content => "\n",
+    order   => 999,
   }
 
 }
