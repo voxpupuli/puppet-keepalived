@@ -7,16 +7,15 @@ define keepalived::vrrp::script (
   $weight   = '2'
 ) {
 
-  if $ensure == present {
-    if ! $script {
-      fail 'No script provided.'
-    }
+  if ! $script {
+    fail 'No script provided.'
+  }
 
-    concat::fragment { "keepalived.conf_vrrp_script_${name}":
-      target  => "${keepalived::config_dir}/keepalived.conf",
-      content => template('keepalived/vrrp_script.erb'),
-      order   => 02,
-    }
+  concat::fragment { "keepalived.conf_vrrp_script_${name}":
+    ensure  => $ensure,
+    target  => "${keepalived::config_dir}/keepalived.conf",
+    content => template('keepalived/vrrp_script.erb'),
+    order   => 02,
   }
 
 }

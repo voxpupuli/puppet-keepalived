@@ -12,12 +12,11 @@ define keepalived::vrrp::instance (
   $track_script = undef,
 ) {
 
-  if $ensure == present {
-    concat::fragment { "keepalived.conf_vrrp_instance_${name}":
-      target  => "${keepalived::config_dir}/keepalived.conf",
-      content => template('keepalived/vrrp_instance.erb'),
-      order   => 100,
-    }
+  concat::fragment { "keepalived.conf_vrrp_instance_${name}":
+    ensure  => $ensure,
+    target  => "${keepalived::config_dir}/keepalived.conf",
+    content => template('keepalived/vrrp_instance.erb'),
+    order   => 100,
   }
 
 }
