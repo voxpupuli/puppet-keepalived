@@ -8,7 +8,7 @@ define keepalived::vrrp::instance (
   $virtual_ipaddress,
   $virtual_router_id,
   $ensure       = present,
-  $auth_type    = 'PASS',
+  $auth_type    = 'AH',
   $track_script = undef,
 ) {
 
