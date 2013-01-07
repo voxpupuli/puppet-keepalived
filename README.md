@@ -18,9 +18,8 @@ a. Master node is unavailable
 
     node /node01/ {
       include keepalived
-      
-        keepalived::vrrp::instance { 'VI_50':
 
+      keepalived::vrrp::instance { 'VI_50':
         interface         => 'eth1',
         state             => 'MASTER',
         virtual_router_id => '50',
@@ -28,12 +27,12 @@ a. Master node is unavailable
         auth_type         => 'PASS',
         auth_pass         => 'secret',
         virtual_ipaddress => '10.0.0.1/29',
-      }    
+      }
     }
-    
+
     node /node02/ {
       include keepalived
-      
+
       keepalived::vrrp::instance { 'VI_50':
         interface         => 'eth1',
         state             => 'BACKUP',
@@ -42,9 +41,9 @@ a. Master node is unavailable
         auth_type         => 'PASS',
         auth_pass         => 'secret',
         virtual_ipaddress => '10.0.0.1/29',
-      }    
+      }
     }
-    
+
 ### Detect application level failure
 
 This configuration will fail-over when:
@@ -54,11 +53,11 @@ b. Master node is unavailable
 
     node /node01/ {
       include keepalived
-      
+
       keepalived::vrrp::script { 'check_nginx':
         script => '/usr/bin/killall -0 nginx',
       }
-      
+
       keepalived::vrrp::instance { 'VI_50':
         interface         => 'eth1',
         state             => 'MASTER',
@@ -68,16 +67,16 @@ b. Master node is unavailable
         auth_pass         => 'secret',
         virtual_ipaddress => '10.0.0.1/29',
         track_script      => 'check_nginx',
-      }    
+      }
     }
 
     node /node02/ {
       include keepalived
-      
+
       keepalived::vrrp::script { 'check_nginx':
         script => '/usr/bin/killall -0 nginx',
       }
-      
+
       keepalived::vrrp::instance { 'VI_50':
         interface         => 'eth1',
         state             => 'BACKUP',
@@ -87,6 +86,6 @@ b. Master node is unavailable
         auth_pass         => 'secret',
         virtual_ipaddress => '10.0.0.1/29',
         track_script      => 'check_nginx',
-      }    
+      }
     }
 
