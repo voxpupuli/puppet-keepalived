@@ -5,10 +5,12 @@ vrrp_instance <%= name %> {
   priority                  <%= priority %>
   lvs_sync_daemon_interface <%= interface %>
 
+  <% if @auth_type %>
   authentication {
     auth_type <%= auth_type %>
     auth_pass <%= auth_pass %>
   }
+  <% end %>
   <% if @track_script %>
   track_script {
     <% track_script.each do |track| %><%= track %>
