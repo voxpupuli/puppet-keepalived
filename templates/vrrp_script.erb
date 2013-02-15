@@ -1,6 +1,6 @@
-vrrp_script <%= scope.lookupvar('name') %> {
-  script   "<%= scope.lookupvar('script') %>"
-  interval <%= scope.lookupvar('interval') %>
-  weight   <%= scope.lookupvar('interval') %>
+vrrp_script <%= name %> {
+  script   "<%= script %>"
+  interval <%= interval %>
+  weight   <%= weight %>
 }
 

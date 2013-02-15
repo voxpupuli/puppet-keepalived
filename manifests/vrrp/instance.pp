@@ -7,9 +7,11 @@ define keepalived::vrrp::instance (
   $state,
   $virtual_ipaddress,
   $virtual_router_id,
-  $ensure       = present,
-  $auth_type    = 'AH',
-  $track_script = undef,
+  $ensure        = present,
+  $auth_type     = undef,
+  $auth_pass     = undef,
+  $track_script  = undef,
+  $lvs_interface = undef,
 ) {
 
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
