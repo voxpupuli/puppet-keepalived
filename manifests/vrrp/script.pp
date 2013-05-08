@@ -1,4 +1,4 @@
-# Define: keepalived::vrrp::script
+# = Define: keepalived::vrrp::script
 #
 define keepalived::vrrp::script (
   $ensure = present,
@@ -6,7 +6,6 @@ define keepalived::vrrp::script (
   $script   = undef,
   $weight   = '2'
 ) {
-
   if ! $script {
     fail 'No script provided.'
   }
@@ -17,6 +16,5 @@ define keepalived::vrrp::script (
     content => template('keepalived/vrrp_script.erb'),
     order   => 02,
   }
-
 }
 

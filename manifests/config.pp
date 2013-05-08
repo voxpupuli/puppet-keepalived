@@ -9,9 +9,8 @@ class keepalived::config {
     group   => $::keepalived::config_group,
   }
 
-  file {
-    $::keepalived::config_dir:
-      ensure => directory;
+  file { $::keepalived::config_dir:
+    ensure => directory;
   }
 
   concat { "${::keepalived::config_dir}/keepalived.conf":
@@ -31,6 +30,5 @@ class keepalived::config {
     content => "\n",
     order   => 999,
   }
-
 }
 
