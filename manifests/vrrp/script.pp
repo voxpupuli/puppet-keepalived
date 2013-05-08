@@ -1,7 +1,20 @@
 # = Define: keepalived::vrrp::script
 #
+# === Parameters:
+#
+# $ensure     Default: present
+#
+# $interval   Set the interval to run the vrrp script.
+#             Default: '2'
+#
+# $script     Which command or script to execute.
+#             Default: undef
+#
+# $weight     The weight the script should add to the instance.
+#             Default: '2'
+#
 define keepalived::vrrp::script (
-  $ensure = present,
+  $ensure   = present,
   $interval = '2',
   $script   = undef,
   $weight   = '2'
