@@ -18,14 +18,9 @@ class keepalived (
   $service_hasstatus  = $::keepalived::params::service_hasstatus,
   $service_name       = $::keepalived::params::service_name,
 ) inherits keepalived::params {
-
-  include keepalived::install
-  include keepalived::config
-  include keepalived::service
-
-  Class['keepalived::install'] ->
-  Class['keepalived::config'] ->
-  Class['keepalived::service']
-
+  class { 'keepalived::install': } ->
+  class { 'keepalived::config': } ->
+  class { 'keepalived::service': } ->
+  Class [ 'keepalived' ]
 }
 

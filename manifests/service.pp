@@ -6,7 +6,7 @@ class keepalived::service {
     enable     => $::keepalived::service_enable,
     hasrestart => $::keepalived::service_hasrestart,
     hasstatus  => $::keepalived::service_hasstatus,
-    require    => Class['::keepalived::config'];
+    require    => Class['::keepalived::config'],
   }
 }
 
