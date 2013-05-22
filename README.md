@@ -7,6 +7,7 @@
 ## Tested on...
 
 * Debian 6 (Squeeze)
+* RHEL 6
 
 ## Example usage
 
