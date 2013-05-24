@@ -1,4 +1,4 @@
-# = Class keepalived::install
+# == Class keepalived::install
 #
 class keepalived::install {
   package { $::keepalived::pkg_list:

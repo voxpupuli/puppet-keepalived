@@ -1,4 +1,4 @@
-# = Class keepalived
+# == Class keepalived
 #
 class keepalived::service {
   service { $::keepalived::service_name:
