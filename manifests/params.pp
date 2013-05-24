@@ -1,4 +1,4 @@
-# = Class keepalived::params
+# == Class keepalived::params
 #
 class keepalived::params {
   case $::osfamily {

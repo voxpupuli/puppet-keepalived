@@ -1,4 +1,4 @@
-# = Class keepalived::config
+# == Class keepalived::config
 #
 class keepalived::config {
   File {

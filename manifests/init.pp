@@ -1,4 +1,4 @@
-# = Class keepalived
+# == Class keepalived
 #
 class keepalived (
   $config_dir         = $::keepalived::params::config_dir,
