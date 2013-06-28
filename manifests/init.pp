@@ -8,7 +8,6 @@ class keepalived (
   $config_user        = $::keepalived::params::config_user,
   $daemon_group       = $::keepalived::params::daemon_group,
   $daemon_user        = $::keepalived::params::daemon_user,
-  $log_dir            = $::keepalived::params::log_dir,
   $pkg_ensure         = $::keepalived::params::pkg_ensure,
   $pkg_list           = $::keepalived::params::pkg_list,
   $service_enable     = $::keepalived::params::service_enable,
