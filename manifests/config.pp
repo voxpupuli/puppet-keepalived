@@ -5,18 +5,21 @@ class keepalived::config {
     ensure  => present,
     require => Class['::keepalived::install'],
     notify  => Service[$::keepalived::service_name],
-    owner   => $::keepalived::config_user,
+    owner   => $::keepalived::config_owner,
     group   => $::keepalived::config_group,
   }
 
   file { $::keepalived::config_dir:
-    ensure => directory;
+    ensure => directory,
+    group  => $::keepalived::config_group,
+    mode   => $::keepalived::config_dir_mode,
+    owner  => $::keepalived::config_owner,
   }
 
   concat { "${::keepalived::config_dir}/keepalived.conf":
-    owner => $::keepalived::config_user,
+    owner => $::keepalived::config_owner,
     group => $::keepalived::config_group,
-    mode  => $::keepalived::config_mode,
+    mode  => $::keepalived::config_file_mode,
   }
 
   concat::fragment { 'keepalived.conf_header':

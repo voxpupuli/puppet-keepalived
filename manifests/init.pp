@@ -5,7 +5,7 @@ class keepalived (
   $config_dir_mode    = $::keepalived::params::config_dir_mode,
   $config_file_mode   = $::keepalived::params::config_file_mode,
   $config_group       = $::keepalived::params::config_group,
-  $config_user        = $::keepalived::params::config_user,
+  $config_owner       = $::keepalived::params::config_owner,
   $daemon_group       = $::keepalived::params::daemon_group,
   $daemon_user        = $::keepalived::params::daemon_user,
   $pkg_ensure         = $::keepalived::params::pkg_ensure,
