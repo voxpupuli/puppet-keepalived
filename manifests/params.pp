@@ -4,10 +4,10 @@ class keepalived::params {
   case $::osfamily {
     'redhat': {
       $config_dir         = '/etc/keepalived'
-      $config_group       = 'root'
       $config_dir_mode    = '0755'
-      $config_mode        = '0644'
-      $config_user        = 'root'
+      $config_file_mode   = '0644'
+      $config_group       = 'root'
+      $config_owner       = 'root'
       $daemon_group       = 'root'
       $daemon_user        = 'root'
       $pkg_ensure         = present
@@ -24,7 +24,7 @@ class keepalived::params {
       $config_dir_mode    = '0755'
       $config_file_mode   = '0644'
       $config_group       = 'root'
-      $config_user        = 'root'
+      $config_owner       = 'root'
       $daemon_group       = 'root'
       $daemon_user        = 'root'
       $pkg_ensure         = present
