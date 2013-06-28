@@ -1,2 +1,5 @@
 *.swp
 .DS_Store
+Gemfile.lock
+pkg
+spec/fixtures
