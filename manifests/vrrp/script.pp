@@ -14,7 +14,6 @@
 #             Default: '2'
 #
 define keepalived::vrrp::script (
-  $ensure   = present,
   $interval = '2',
   $script   = undef,
   $weight   = '2'
