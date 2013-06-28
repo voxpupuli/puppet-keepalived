@@ -11,7 +11,6 @@ class keepalived::params {
       $daemon_group       = 'root'
       $daemon_user        = 'root'
       $log_dir            = ''
-      $pid_file           = '/var/run/keepalived.pid'
       $pkg_ensure         = present
       $pkg_list           = [ 'keepalived' ]
       $service_enable     = true
@@ -30,7 +29,6 @@ class keepalived::params {
       $daemon_group       = 'root'
       $daemon_user        = 'root'
       $log_dir            = ''
-      $pid_file           = '/var/run/keepalived.pid'
       $pkg_ensure         = present
       $pkg_list           = [ 'keepalived' ]
       $service_enable     = true
