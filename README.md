@@ -1,5 +1,9 @@
 # Puppet Keepalived
 
+## Build status
+
+[![Build Status](https://travis-ci.org/arioch/puppet-keepalived.png?branch=master)](https://travis-ci.org/arioch/puppet-keepalived)
+
 ## Requirements
 
 * [concat module](https://github.com/ripienaar/puppet-concat)
