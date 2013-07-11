@@ -26,7 +26,7 @@ describe 'keepalived::vrrp::script', :type => :define do
     it {
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
-        'content' => /interval.*_VALUE_/
+          'content' => /interval.*_VALUE_/
       )
     }
   end
@@ -43,7 +43,7 @@ describe 'keepalived::vrrp::script', :type => :define do
     it {
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
-        'content' => /script.*_VALUE_/
+          'content' => /script.*_VALUE_/
       )
     }
   end
@@ -61,7 +61,7 @@ describe 'keepalived::vrrp::script', :type => :define do
     it {
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
-        'content' => /weight.*_VALUE_/
+          'content' => /weight.*_VALUE_/
       )
     }
   end
