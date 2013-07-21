@@ -228,4 +228,26 @@ describe 'keepalived::vrrp::instance', :type => :define do
       )
     }
   end
+
+  describe 'with parameter virtual_ipaddress_int' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => ['192.168.1.1'],
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_/
+      )
+    }
+    end
 end
