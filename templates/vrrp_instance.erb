@@ -6,8 +6,8 @@ vrrp_instance <%= @name %> {
   <%- if @lvs_interface -%>
   lvs_sync_daemon_interface <%= @lvs_interface %>
   <%- end -%>
-
   <%- if @auth_type -%>
+
   authentication {
     auth_type <%= @auth_type %>
     auth_pass <%= @auth_pass %>
