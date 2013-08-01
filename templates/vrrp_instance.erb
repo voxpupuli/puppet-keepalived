@@ -3,33 +3,36 @@ vrrp_instance <%= @name %> {
   state                     <%= @state %>
   virtual_router_id         <%= @virtual_router_id %>
   priority                  <%= @priority %>
-  <% if @lvs_interface %>
+  <%- if @lvs_interface -%>
   lvs_sync_daemon_interface <%= @lvs_interface %>
-  <% end %>
+  <%- end -%>
+  <%- if @auth_type -%>
 
-  <% if @auth_type %>
   authentication {
     auth_type <%= @auth_type %>
     auth_pass <%= @auth_pass %>
   }
-  <% end %>
-  <% if @track_script %>
+  <%- end -%>
+  <%- if @track_script -%>
+
   track_script {
     <% @track_script.each do |track| %><%= track %>
-    <% end %>
+    <%- end -%>
   }
-  <% else %>
-  <% end %>
-  <% if @virtual_ipaddress_int %>
+  <%- else -%>
+  <%- end -%>
+  <%- if @virtual_ipaddress_int -%>
+
   virtual_ipaddress {
     <% @virtual_ipaddress.each do |ip| %><%= ip %> dev <%= @virtual_ipaddress_int %>
   }
-  <% end %>
-  <% else %>
+  <%- end -%>
+  <%- else -%>
+
   virtual_ipaddress {
     <% @virtual_ipaddress.each do |ip| %><%= ip %> dev <%= @interface %>
-    <% end %>
+    <%- end -%>
   }
-  <% end %>
+  <%- end -%>
 }
 
