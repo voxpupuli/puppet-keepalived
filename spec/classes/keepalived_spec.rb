@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe 'keepalived', :type => :class do
   let (:facts) { debian_facts }
+  let (:pre_condition) { '$concat_basedir = "/tmp"' }
 
   describe 'without parameters' do
     it { should create_class('keepalived') }
