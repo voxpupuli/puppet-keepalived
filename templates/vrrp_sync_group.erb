@@ -1,0 +1,46 @@
+vrrp_sync_group <%= @name %> {
+  group {
+  <%- @group_array.each do |vrrp_instance| -%>
+    <%= vrrp_instance %>
+  <%- end -%>
+  }
+
+  # notify scripts and alerts are optional
+  #
+  # filenames of scripts to run on transitions
+  # can be unquoted (if just filename)
+  # or quoted (if has parameters)
+  <%- if @notify_script_master -%>
+  # to MASTER transition
+  notify_master <%= @notify_script_master %>
+  <%- end -%>
+  <%- if @notify_script_backup -%>
+  # to BACKUP transition
+  notify_backup <%= @notify_script_backup %>
+  <%- end -%>
+  <%- if @notify_script_fault -%>
+  # FAULT transition
+  notify_fault <%= @notify_script_fault %>
+  <%- end -%>
+
+  <%- if @notify_script -%>
+  # for ANY state transition.
+  # "notify" script is called AFTER the
+  # notify_* script(s) and is executed
+  # with 3 arguments provided by keepalived
+  # (ie don't include parameters in the notify line).
+  # arguments
+  # $1 = "GROUP"|"INSTANCE"
+  # $2 = name of group or instance
+  # $3 = target state of transition
+  #     ("MASTER"|"BACKUP"|"FAULT")
+  notify <%= @notify_script %>
+  <%- end -%>
+
+  # Send email notifcation during state transition,
+  # using addresses in global_defs above.
+  <%- if @smtp_alert -%>
+  smtp_alert
+  <%- end -%>
+}
+
