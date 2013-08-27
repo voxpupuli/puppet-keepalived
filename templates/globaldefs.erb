@@ -1,0 +1,24 @@
+global_defs
+{
+  <%- if @notification_email_array -%>
+  notification_email
+  {
+    <%- @notification_email_array.each do |email| -%>
+    <%= email %>
+    <%- end -%>
+  }
+  <%- end -%>
+  <%- if @notification_email_from -%>
+  notification_email_from <%= @notification_email_from %>
+  <%- end -%>
+  <%- if @smtp_server -%>
+  smtp_server <%= @smtp_server %>
+  <%- end -%>
+  <%- if @smtp_connect_timeout -%>
+  smtp_connect_timeout <%= @smtp_connect_timeout %>
+  <%- end -%>
+  <%- if @router_id -%>
+  router_id <%= @router_id %>
+  <%- end -%>
+}
+
