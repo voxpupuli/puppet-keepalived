@@ -12,6 +12,7 @@
 
 * Debian 6 (Squeeze)
 * RHEL 6
+* Ubuntu 12.04
 
 ## Example usage
 

@@ -24,15 +24,22 @@ vrrp_instance <%= @name %> {
   <%- if @virtual_ipaddress_int -%>
 
   virtual_ipaddress {
-    <% @virtual_ipaddress.each do |ip| %><%= ip %> dev <%= @virtual_ipaddress_int %>
+<% @virtual_ipaddress.each do |ip| %>  <%= ip %> dev <%= @virtual_ipaddress_int %>
   }
   <%- end -%>
   <%- else -%>
 
   virtual_ipaddress {
-    <% @virtual_ipaddress.each do |ip| %><%= ip %> dev <%= @interface %>
+<% @virtual_ipaddress.each do |ip| %>   <%= ip %> dev <%= @interface %>
     <%- end -%>
   }
   <%- end -%>
+
+  <%- if @virtual_ipaddress_excluded -%>
+  virtual_ipaddress_excluded {
+<% @virtual_ipaddress_excluded.each do |ip| %>    <%= ip %> dev <%= @interface %>
+    <%- end -%>
+  }
+    <%- end -%>
 }
 
