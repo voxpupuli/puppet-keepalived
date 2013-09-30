@@ -19,20 +19,23 @@ vrrp_instance <%= @name %> {
     <% @track_script.each do |track| %><%= track %>
     <%- end -%>
   }
-  <%- else -%>
   <%- end -%>
-  <%- if @virtual_ipaddress_int -%>
 
   virtual_ipaddress {
-    <% @virtual_ipaddress.each do |ip| %><%= ip %> dev <%= @virtual_ipaddress_int %>
-  }
-  <%- end -%>
+  <%- if @virtual_ipaddress.class == Hash -%>
+    <%- vips = [ @virtual_ipaddress ] -%>
   <%- else -%>
-
-  virtual_ipaddress {
-    <% @virtual_ipaddress.each do |ip| %><%= ip %> dev <%= @interface %>
-    <%- end -%>
-  }
+    <%- vips = @virtual_ipaddress -%>
   <%- end -%>
+  <%- vips.each do |ip| -%>
+    <%- if ip.class == Hash -%>
+      <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
+      <%- attrs = ip.select { |k,v| ['label', 'brd', 'scope'].include? k } -%>
+    <%= ip['ip'] %> dev <%= device %> <%= attrs.join ' ' %>
+    <%- else -%>
+    <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+    <%- end -%> 
+  <%- end -%> 
+  }
 }
 

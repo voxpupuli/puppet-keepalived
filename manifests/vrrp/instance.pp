@@ -13,6 +13,12 @@
 #
 # $virtual_ipaddress::     Set floating IP address.
 #
+#                          May be specified as either:
+#                          a) ip address (or array of IP addresses) e.g. `'10.0.0.1'`
+#                          b) a hash (or array of hashes) containing extra properties
+#                             e.g. `{ 'ip' => '10.0.0.1', 'label' => 'webvip' }`
+#                             Supported properties: dev, brd, label, scope.
+#                          
 # $virtual_router_id::     Set virtual router id.
 #
 # $ensure::                Default: present.
