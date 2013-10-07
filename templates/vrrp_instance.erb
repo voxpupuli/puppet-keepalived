@@ -30,8 +30,8 @@ vrrp_instance <%= @name %> {
   <%- vips.each do |ip| -%>
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
-      <%- attrs = ip.select { |k,v| ['label', 'brd', 'scope'].include? k } -%>
-    <%= ip['ip'] %> dev <%= device %> <%= attrs.join ' ' %>
+      <%- attrs = Hash[ ip.select { |k,v| ['label', 'brd', 'scope'].include? k } ] -%>
+    <%= ip['ip'] %> dev <%= device %> <%= attrs.entries.join ' ' %>
     <%- else -%>
     <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
     <%- end -%> 
