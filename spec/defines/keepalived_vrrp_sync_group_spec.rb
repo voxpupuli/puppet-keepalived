@@ -24,7 +24,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     it {
       should \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /group {\n\s.*_VALUE_/
+          'content' => /group \{\n\s.*_VALUE_/
       )
     }
   end
@@ -41,7 +41,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     it {
       should \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /group {\n\s.*_VALUE1_\n\s.*_VALUE2_/
+          'content' => /group \{\n\s.*_VALUE1_\n\s.*_VALUE2_/
       )
     }
   end
