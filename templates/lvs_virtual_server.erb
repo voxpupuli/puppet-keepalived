@@ -1,0 +1,51 @@
+group <%= name %> {
+
+  virtual_server <%= @ip_address %> <%= port %>
+
+  <%- if @delay_loop -%>
+  delay_loop <%= @delay_loop -%>
+  <%- end -%>
+  lb_algo <%= @lb_algo %>
+  <%- if @lb_kind -%>
+  lb_kind <%= @lb_kind %>
+  <%- end -%>
+  <%- if @persistence_timeout %>
+  persistence_timeout <%= persistence_timeout -%>
+  <%- end -%>
+  <%- if @ha_suspend -%>
+  ha_suspend
+  <%- end -%>
+  <%- if @virtualhost -%>
+  virtualhost <%= @virtualhost -%>
+  <%- end -%>
+  <%- if @alpha -%>
+  alpha
+  <%- end -%>
+  <%- if @omega -%>
+  omega
+  <%- end -%>
+  <%- if @quorum -%>
+  quorum <%= quorum %>
+  <%- end -%>
+  <%- if @hysteresis -%>
+  hysteresis <%= hysteresis %>
+  <%- end -%>
+  protocol TCP
+  <%- if @sorry_server -%>
+  sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
+  <%- end -%>
+
+  <%- if @real_servers -%>
+    <%- @real_servers.each do |rs| -%>
+  real_server <%= rs['ip_address'] %> <%= rs['port'] %> {
+      <%- if @tcp_check -%>
+    TCP_CHECK {
+      connect_port <%= rs['port'] %>
+      connect_timeout <%= tcp_check['connect_timeout'] %>
+    }
+      <%- end -%>
+  }
+    <%- end -%>
+
+  <%- end -%>
+}
