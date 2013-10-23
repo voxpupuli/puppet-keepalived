@@ -51,8 +51,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
     it { 
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
-        'content' => /delay_loop 60\s+lb_algo lc\s+lb_kind NAT\s+persistence_timeout 5\s+ha_suspend/,
-        'content' => /virtualhost example.com\s+alpha\s+omega\s+quorum 5\s+hysteresis 9/,
+        'content' => /delay_loop 60\n\s+lb_algo lc\n\s+lb_kind NAT\n\s+persistence_timeout 5\n\s+ha_suspend\n/,
+        'content' => /virtualhost example.com\ns+alpha\n\s+omega\n\s+quorum 5\n\s+hysteresis 9\n/,
         'content' => /\s+sorry_server 10.1.1.3 999\s+/
       })
     }
