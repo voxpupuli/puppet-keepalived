@@ -61,10 +61,10 @@
 #
 # [*real_servers*]
 #   The real servers to balance to.
-#   A hash (single real server) or an array of hashes.
+#   An array of hashes.
 #   Hash keys:
 #     [*ip_address*]
-#     [*port*]
+#     [*port*]       (if ommitted the port defaults to the VIP port)
 # 
 define keepalived::lvs::virtual_server (
   $ip_address,

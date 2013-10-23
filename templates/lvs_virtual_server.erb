@@ -37,10 +37,11 @@ group <%= name %> {
 
   <%- if @real_servers -%>
     <%- @real_servers.each do |rs| -%>
-  real_server <%= rs['ip_address'] %> <%= rs['port'] %> {
+      <%- rs_port = rs['port'] || @port -%>
+  real_server <%= rs['ip_address'] %> <%= rs_port %> {
       <%- if @tcp_check -%>
     TCP_CHECK {
-      connect_port <%= rs['port'] %>
+      connect_port <%= rs_port %>
       connect_timeout <%= tcp_check['connect_timeout'] %>
     }
       <%- end -%>
