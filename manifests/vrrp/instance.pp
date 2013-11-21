@@ -9,7 +9,7 @@
 # $state::                 Set instance state.
 #                          Valid options: MASTER, BACKUP.
 #
-# $virtual_ipaddress_int:: Set interface for VIP to be assigned to, defaults to $interfac
+# $virtual_ipaddress_int:: Set interface for VIP to be assigned to, defaults to $interface
 #
 # $virtual_ipaddress::     Set floating IP address.
 #
@@ -18,7 +18,19 @@
 #                          b) a hash (or array of hashes) containing extra properties
 #                             e.g. `{ 'ip' => '10.0.0.1', 'label' => 'webvip' }`
 #                             Supported properties: dev, brd, label, scope.
-#                          
+#
+# $virtual_ipaddress_excluded:: For cases with large numbers (eg 200) of IPs
+#                               on the same interface. To decrease the number
+#                               of packets sent in adverts, you can exclude
+#                               most IPs from adverts.
+#                               Default: undef.
+#
+#                               May be specified as either:
+#                               a) ip address (or array of IP addresses) e.g. `'10.0.0.1'`
+#                               b) a hash (or array of hashes) containing extra properties
+#                               e.g. `{ 'ip' => '10.0.0.1', 'scope' => 'local' }`
+#                               Supported properties: dev, brd, label, scope.
+#
 # $virtual_router_id::     Set virtual router id.
 #
 # $ensure::                Default: present.
@@ -41,12 +53,13 @@ define keepalived::vrrp::instance (
   $state,
   $virtual_ipaddress,
   $virtual_router_id,
-  $ensure                = present,
-  $auth_type             = undef,
-  $auth_pass             = undef,
-  $track_script          = undef,
-  $lvs_interface         = undef,
-  $virtual_ipaddress_int = undef,
+  $ensure                     = present,
+  $auth_type                  = undef,
+  $auth_pass                  = undef,
+  $track_script               = undef,
+  $lvs_interface              = undef,
+  $virtual_ipaddress_int      = undef,
+  $virtual_ipaddress_excluded = undef,
 ) {
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
     ensure  => $ensure,

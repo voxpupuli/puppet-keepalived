@@ -392,4 +392,175 @@ describe 'keepalived::vrrp::instance', :type => :define do
       )
     }
   end
+
+  describe 'with parameter virtual_ipaddress_excluded' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_ipaddress_excluded => ['192.168.1.1']
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_/
+      )
+    }
+    end
+
+  describe 'with virtual_ipaddress_excluded as hash' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_ipaddress_excluded => {'ip' => '192.168.1.1'},
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /^\s+192.168.1.1 dev _VALUE_/
+      )
+    }
+  end
+
+  describe 'with virtual_ipaddress_excluded as array of hashes' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_ipaddress_excluded => [ {'ip' => '192.168.1.1'},
+                                         {'ip' => '192.168.1.2'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.2 dev _VALUE_/
+      )
+    }
+  end
+
+  # device in hash overrides anything
+  describe 'with virtual_ipaddress_excluded as hash containing device' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_ipaddress_excluded => [ {'ip' => '192.168.1.1',
+                                          'dev' => '_DEV_'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _DEV_/
+      )
+    }
+  end
+
+  describe 'with virtual_ipaddress_excluded as hash containing label' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_ipaddress_excluded => [ {'ip' => '192.168.1.1',
+                                          'label' => '_LABEL_' } ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_ label _LABEL_/
+      )
+    }
+  end
+
+  describe 'with virtual_ipaddress_excluded as hash containing brd' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_ipaddress_excluded => [ {'ip' => '192.168.1.1',
+                                         'brd' => '_BRD_'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_ brd _BRD_/
+      )
+    }
+  end
+
+  describe 'with virtual_ipaddress_excluded as hash containing scope' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_ipaddress_excluded => [ {'ip' => '192.168.1.1',
+                                          'scope' => '_SCOPE_'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_ scope _SCOPE_/
+      )
+    }
+  end
 end
