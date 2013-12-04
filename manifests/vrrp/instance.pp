@@ -47,6 +47,8 @@
 # $lvs_interface::         Define lvs_sync_daemon_interface.
 #                          Default: undef.
 #
+# $notify::                Script to run during ANY state transit
+#                          Default: undef.
 define keepalived::vrrp::instance (
   $interface,
   $priority,
@@ -60,6 +62,7 @@ define keepalived::vrrp::instance (
   $lvs_interface              = undef,
   $virtual_ipaddress_int      = undef,
   $virtual_ipaddress_excluded = undef,
+  $notify                     = undef,
 ) {
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
     ensure  => $ensure,
