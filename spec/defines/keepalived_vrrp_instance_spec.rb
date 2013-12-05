@@ -96,11 +96,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
-  describe 'with parameter notify' do
+  describe 'with parameter notify_script' do
     let (:title) { '_NAME_' }
     let (:params) {
       {
-        :notify => '_VALUE_',
+        :notify_script => '_VALUE_',
         :virtual_ipaddress => [],
         :interface => '',
         :priority => '',
