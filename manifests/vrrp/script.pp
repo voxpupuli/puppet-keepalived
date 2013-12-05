@@ -13,10 +13,18 @@
 # $weight::   The weight the script should add to the instance.
 #             Default: '2'
 #
+# $fall::     required number of failures for KO switch.
+#             Default: undef
+#
+# $rise::     required number of successes for OK switch.
+#             Default: undef
+#
 define keepalived::vrrp::script (
   $interval = '2',
   $script   = undef,
-  $weight   = '2'
+  $weight   = '2',
+  $fall     = undef,
+  $rise     = undef,
 ) {
   if ! $script {
     fail 'No script provided.'

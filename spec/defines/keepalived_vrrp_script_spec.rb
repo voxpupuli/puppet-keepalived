@@ -65,5 +65,41 @@ describe 'keepalived::vrrp::script', :type => :define do
       )
     }
   end
+
+  describe 'with parameter fall' do
+    let (:title) { '_TITLE_' }
+    let (:params) {
+      {
+        :fall   => '_VALUE_',
+        :script => '_SCRIPT_'
+      }
+    }
+
+    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
+          'content' => /fall.*_VALUE_/
+      )
+    }
+  end
+
+  describe 'with parameter rise' do
+    let (:title) { '_TITLE_' }
+    let (:params) {
+      {
+        :rise   => '_VALUE_',
+        :script => '_SCRIPT_'
+      }
+    }
+
+    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
+          'content' => /rise.*_VALUE_/
+      )
+    }
+  end
 end
 
