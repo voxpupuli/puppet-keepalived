@@ -6,9 +6,9 @@ describe 'keepalived', :type => :class do
 
   describe 'without parameters' do
     it { should create_class('keepalived') }
-    it { should include_class('keepalived::install') }
-    it { should include_class('keepalived::config') }
-    it { should include_class('keepalived::service') }
+    it { should contain_class('keepalived::install') }
+    it { should contain_class('keepalived::config') }
+    it { should contain_class('keepalived::service') }
 
     it { should contain_package('keepalived').with(
         'ensure' => 'present'

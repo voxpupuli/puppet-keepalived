@@ -15,6 +15,6 @@ gem 'facter', facterversion
 gem 'rake'
 gem 'rspec'
 gem 'puppet-lint', '>=0.3.2'
-gem 'rspec-puppet', '>=0.1.6'
+gem 'rspec-puppet', '>=1.0.1'
 gem 'puppetlabs_spec_helper', '>=0.4.1'
 
