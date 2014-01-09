@@ -1,9 +1,9 @@
-# == Define: keepalived::vrrp::virtual_server 
+# == Define: keepalived::vrrp::virtual_server
 #
 # Configure a Linux Virtual Server with keepalived
 #
 # Work in progress, supports:
-#   - single IP/port virtual servers 
+#   - single IP/port virtual servers
 #   - TCP_CHECK healthchecks
 #
 # === Parameters
@@ -30,21 +30,21 @@
 # [*ha_suspend*]
 #   Boolean.
 #   Default: false => not set in config.
-# 
+#
 # [*alpha*]
 #   Boolean.
 #   Default: false => not set in config.
-# 
+#
 # [*omega*]
 #   Boolean.
 #   Default: false => not set in config.
-# 
+#
 # [*quorum*]
-#   Integer. 
+#   Integer.
 #   Defaults to unset => does not appear in config.
 #
 # [*hysteresis*]
-#   Integer. 
+#   Integer.
 #   Defaults to unset => does not appear in config.
 #
 # [*tcp_check*]
@@ -65,7 +65,7 @@
 #   Hash keys:
 #     [*ip_address*]
 #     [*port*]       (if ommitted the port defaults to the VIP port)
-# 
+#
 define keepalived::lvs::virtual_server (
   $ip_address,
   $port,
@@ -85,13 +85,13 @@ define keepalived::lvs::virtual_server (
 ) {
 
   if ( ! is_ip_address($ip_address) ) {
-    fail("Invalid IP address")
+    fail('Invalid IP address')
   }
 
   validate_re($port, '^[0-9]{1,5}$', "Invalid port: ${port}")
   validate_re($lb_algo, '^(rr|wrr|lc|wlc|lblc|sh|dh)$', "Invalid lb_algo: ${lb_algo}")
   if $delay_loop { validate_re($delay_loop, '^[0-9]+$', "Invalid delay_loop: ${delay_loop}") }
-  validate_re($lb_kind, '^(NAT|DR|TUN)$', "Invalid lb_kind: ${lb_kind}") 
+  validate_re($lb_kind, '^(NAT|DR|TUN)$', "Invalid lb_kind: ${lb_kind}")
   validate_bool($ha_suspend)
   validate_bool($alpha)
   validate_bool($omega)
@@ -106,7 +106,6 @@ define keepalived::lvs::virtual_server (
   }
 
   concat::fragment { "keepalived.conf_lvs_virtual_server_${name}":
-    ensure  => $ensure,
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/lvs_virtual_server.erb'),
     order   => 250,
