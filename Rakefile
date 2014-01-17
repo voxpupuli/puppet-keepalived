@@ -1,6 +1,7 @@
 require 'rake'
 require 'rspec/core/rake_task'
 require 'puppetlabs_spec_helper/rake_tasks'
+require 'puppet-syntax/tasks/puppet-syntax'
 
 RSpec::Core::RakeTask.new(:spec_verbose) do |t|
   t.pattern = 'spec/*/*_spec.rb'
@@ -14,4 +15,4 @@ task :test do
 end
 
 
-task :default => [:spec, :lint]
+task :default => [:spec, :lint, :syntax]
