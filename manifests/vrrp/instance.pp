@@ -49,6 +49,10 @@
 #
 # $notify_script::         Script to run during ANY state transit
 #                          Default: undef.
+#
+# $smtp_alert::            Send status alerts via SMTP. Requires user provided
+#                          in SMTP settings in keepalived::global_defs class.
+#                          Default: false.
 define keepalived::vrrp::instance (
   $interface,
   $priority,
@@ -63,6 +67,7 @@ define keepalived::vrrp::instance (
   $virtual_ipaddress_int      = undef,
   $virtual_ipaddress_excluded = undef,
   $notify_script              = undef,
+  $smtp_alert                 = false,
 ) {
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
     ensure  => $ensure,
