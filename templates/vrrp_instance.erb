@@ -28,6 +28,14 @@ vrrp_instance <%= @name %> {
   }
   <%- end -%>
 
+  <%- if @track_interface -%>
+  track_interface {
+  <%- [@track_interface].flatten.each do |interface| -%>
+    <%= interface %> 
+  <%- end -%>
+  }
+  <%- end -%>
+
   virtual_ipaddress {
   <%- if @virtual_ipaddress.class == Hash -%>
     <%- vips = [ @virtual_ipaddress ] -%>

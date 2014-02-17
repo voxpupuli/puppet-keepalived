@@ -44,6 +44,13 @@
 # $track_script::          Define which script to run to track service states.
 #                          Default: undef.
 #
+# $track_interface::       Define which interface(s) to monitor. Go to FAULT state if one of
+#                          these interfaces goes down.
+#                          May be specified as either:
+#                            a) interface name
+#                            b) array of interfaces names
+#                          Default: undef.
+#
 # $lvs_interface::         Define lvs_sync_daemon_interface.
 #                          Default: undef.
 #
@@ -63,6 +70,7 @@ define keepalived::vrrp::instance (
   $auth_type                  = undef,
   $auth_pass                  = undef,
   $track_script               = undef,
+  $track_interface            = undef,
   $lvs_interface              = undef,
   $virtual_ipaddress_int      = undef,
   $virtual_ipaddress_excluded = undef,
