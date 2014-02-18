@@ -100,11 +100,12 @@ describe 'keepalived::vrrp::instance', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) {
       {
-        :track_interface => [ '_VALUE_' ],
         :interface => '',
         :priority => '',
         :state => '',
-        :virtual_router_id => ''
+        :track_interface => [ '_VALUE_' ],
+        :virtual_ipaddress => [ '_VALUE_' ],
+        :virtual_router_id => '',
       }
     }
 
