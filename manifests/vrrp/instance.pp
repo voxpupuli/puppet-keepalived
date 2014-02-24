@@ -63,6 +63,17 @@
 # $nopreempt::             allows the lower priority # machine to maintain the master role, 
 #                          even when # a higher priority machine comes back online. # 
 #                          NOTE: For this to work, the initial state of this # entry must be BACKUP
+# $notify_script_master::  Define the notify master script.
+#                          Default: undef.
+#
+# $notify_script_backup::  Define the notify backup script.
+#                          Default: undef.
+#
+# $notify_script_fault::   Define the notify fault script.
+#                          Default: undef.
+#
+# $notify_script::         Define the notify script.
+#                          Default: undef.
 
 define keepalived::vrrp::instance (
   $interface,
@@ -81,6 +92,11 @@ define keepalived::vrrp::instance (
   $notify_script              = undef,
   $smtp_alert                 = false,
   $nopreempt                  = false,
+  $notify_script_master       = undef,
+  $notify_script_backup       = undef,
+  $notify_script_fault        = undef,
+  $notify_script              = undef,
+
 ) {
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
     ensure  => $ensure,
