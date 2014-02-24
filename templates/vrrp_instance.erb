@@ -9,6 +9,11 @@ vrrp_instance <%= @name %> {
   <%- if @smtp_alert -%>
   smtp_alert
   <%- end -%>
+
+  <%- if @nopreempt -%>
+  nopreempt
+  <%- end -%>
+
   <%- if @auth_type -%>
 
   authentication {
