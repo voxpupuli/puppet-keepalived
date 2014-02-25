@@ -14,8 +14,21 @@ class keepalived (
   $service_ensure     = $::keepalived::params::service_ensure,
   $service_hasrestart = $::keepalived::params::service_hasrestart,
   $service_hasstatus  = $::keepalived::params::service_hasstatus,
+  $service_manage     = $::keepalived::params::service_manage,
   $service_name       = $::keepalived::params::service_name,
 ) inherits keepalived::params {
+
+  validate_absolute_path($config_dir)
+  validate_re($config_dir_mode, '^[0-9]+$')
+  validate_re($config_file_mode, '^[0-9]+$')
+  validate_string($pkg_ensure)
+  validate_bool($service_enable)
+  validate_re($service_ensure, ['^running$','^stopped$'])
+  validate_bool($service_hasrestart)
+  validate_bool($service_hasstatus)
+  validate_bool($service_manage)
+  validate_string($service_name)
+
   class { 'keepalived::install': } ->
   class { 'keepalived::config': } ->
   class { 'keepalived::service': } ->

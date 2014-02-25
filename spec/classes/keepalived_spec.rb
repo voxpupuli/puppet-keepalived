@@ -33,28 +33,28 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: config_dir' do
-    let (:params) { { :config_dir => '_VALUE_' } }
+    let (:params) { { :config_dir => '/foo/bar' } }
 
-    it { should contain_file('_VALUE_').with(
+    it { should contain_file('/foo/bar').with(
         'ensure' => 'directory'
       )
     }
   end
 
   describe 'with parameter: config_dir_mode' do
-    let (:params) { { :config_dir_mode => '_VALUE_' } }
+    let (:params) { { :config_dir_mode => '0755' } }
 
     it { should contain_file('/etc/keepalived').with(
-        'mode' => '_VALUE_'
+        'mode' => '0755'
       )
     }
   end
 
   describe 'with parameter: config_file_mode' do
-    let (:params) { { :config_file_mode => '_VALUE_' } }
+    let (:params) { { :config_file_mode => '0644' } }
 
     it { should contain_file('/etc/keepalived/keepalived.conf').with(
-        'mode' => '_VALUE_'
+        'mode' => '0644'
       )
     }
   end
@@ -102,10 +102,10 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_ensure' do
-    let (:params) { { :service_ensure => '_VALUE_' } }
+    let (:params) { { :service_ensure => 'running' } }
 
     it { should contain_service('keepalived').with(
-        'ensure' => '_VALUE_'
+        'ensure' => 'running'
       )
     }
   end
@@ -120,6 +120,15 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_hasstatus' do
+    let (:params) { { :service_hasstatus => true } }
+
+    it { should contain_service('keepalived').with(
+        'hasstatus' => true
+      )
+    }
+  end
+
+  describe 'with parameter: service_manage' do
     let (:params) { { :service_hasstatus => true } }
 
     it { should contain_service('keepalived').with(
