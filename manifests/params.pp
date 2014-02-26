@@ -1,6 +1,12 @@
 # == Class keepalived::params
 #
 class keepalived::params {
+
+  $pkg_ensure         = 'present'
+  $service_enable     = true
+  $service_ensure     = 'running'
+  $service_manage     = true
+
   case $::osfamily {
     'redhat': {
       $config_dir         = '/etc/keepalived'
@@ -10,10 +16,7 @@ class keepalived::params {
       $config_owner       = 'root'
       $daemon_group       = 'root'
       $daemon_user        = 'root'
-      $pkg_ensure         = present
       $pkg_list           = [ 'keepalived' ]
-      $service_enable     = true
-      $service_ensure     = running
       $service_hasstatus  = true
       $service_hasrestart = true
       $service_name       = 'keepalived'
@@ -27,10 +30,7 @@ class keepalived::params {
       $config_owner       = 'root'
       $daemon_group       = 'root'
       $daemon_user        = 'root'
-      $pkg_ensure         = present
       $pkg_list           = [ 'keepalived' ]
-      $service_enable     = true
-      $service_ensure     = running
       $service_hasrestart = false
       $service_hasstatus  = false
       $service_name       = 'keepalived'
