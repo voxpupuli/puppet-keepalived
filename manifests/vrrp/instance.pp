@@ -60,8 +60,8 @@
 # $smtp_alert::            Send status alerts via SMTP. Requires user provided
 #                          in SMTP settings in keepalived::global_defs class.
 #                          Default: false.
-# $nopreempt::             allows the lower priority # machine to maintain the master role, 
-#                          even when # a higher priority machine comes back online. # 
+# $nopreempt::             allows the lower priority # machine to maintain the master role,
+#                          even when # a higher priority machine comes back online. #
 #                          NOTE: For this to work, the initial state of this # entry must be BACKUP
 # $notify_script_master::  Define the notify master script.
 #                          Default: undef.
