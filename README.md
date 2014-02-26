@@ -104,7 +104,7 @@ node /node02/ {
 
 ```puppet
 class { '::keepalived':
-  manage_service => false,
+  service_manage => false,
 }
 ```
 
