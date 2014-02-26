@@ -4,9 +4,14 @@ class keepalived::config {
   File {
     ensure  => present,
     require => Class['::keepalived::install'],
-    notify  => Service[$::keepalived::service_name],
     owner   => $::keepalived::config_owner,
     group   => $::keepalived::config_group,
+  }
+
+  if $::keepalived::service_manage == true {
+    File {
+      notify  => Service[$::keepalived::service_name],
+    }
   }
 
   file { $::keepalived::config_dir:
