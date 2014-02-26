@@ -184,6 +184,94 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with parameter notify_script_master' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :notify_script_master => '_VALUE_',
+        :virtual_ipaddress => [],
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /notify_master.*_VALUE_/
+      )
+    }
+  end
+
+  describe 'with parameter notify_script_backup' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :notify_script_backup => '_VALUE_',
+        :virtual_ipaddress => [],
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /notify_backup.*_VALUE_/
+      )
+    }
+  end
+
+  describe 'with parameter notify_script_fault' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :notify_script_fault => '_VALUE_',
+        :virtual_ipaddress => [],
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /notify_fault.*_VALUE_/
+      )
+    }
+  end
+
+  describe 'with parameter notify_script' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :notify_script => '_VALUE_',
+        :virtual_ipaddress => [],
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /notify.*_VALUE_/
+      )
+    }
+  end
+
   describe 'with parameter virtual_router_id' do
     let (:title) { '_NAME_' }
     let (:params) {
