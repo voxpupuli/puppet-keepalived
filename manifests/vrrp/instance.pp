@@ -60,9 +60,17 @@
 # $smtp_alert::            Send status alerts via SMTP. Requires user provided
 #                          in SMTP settings in keepalived::global_defs class.
 #                          Default: false.
-# $nopreempt::             allows the lower priority # machine to maintain the master role,
-#                          even when # a higher priority machine comes back online. #
-#                          NOTE: For this to work, the initial state of this # entry must be BACKUP
+#
+# $nopreempt::             Allows the lower priority machine to maintain the master role,
+#                          when a higher priority machine comes back online.
+#                          NOTE: For this to work, the initial state of this entry must be BACKUP
+#
+# $advert_int::            The interval between VRRP packets
+#                          Default: 1 second.
+#
+# $garp_master_delay::     The delay for gratuitous ARP after transition to MASTER
+#                          Default: 5 seconds.
+# 
 # $notify_script_master::  Define the notify master script.
 #                          Default: undef.
 #
@@ -92,6 +100,8 @@ define keepalived::vrrp::instance (
   $notify_script              = undef,
   $smtp_alert                 = false,
   $nopreempt                  = false,
+  $advert_int                 = 1,
+  $garp_master_delay          = 5,
   $notify_script_master       = undef,
   $notify_script_backup       = undef,
   $notify_script_fault        = undef,

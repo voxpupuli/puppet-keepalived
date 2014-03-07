@@ -405,6 +405,52 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with parameter advert_int' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :advert_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /advert_int/,
+        'content' => /_VALUE_/
+      )
+    }
+  end
+
+ describe 'with parameter garp_master_delay' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :garp_master_delay => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /garp_master_delay/,
+        'content' => /_VALUE_/
+      )
+    }
+  end
+
   describe 'with parameter virtual_ipaddress_int' do
     let (:title) { '_NAME_' }
     let (:params) {

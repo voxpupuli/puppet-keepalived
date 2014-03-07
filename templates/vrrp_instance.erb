@@ -3,13 +3,14 @@ vrrp_instance <%= @name %> {
   state                     <%= @state %>
   virtual_router_id         <%= @virtual_router_id %>
   priority                  <%= @priority %>
+  advert_int                <%= @advert_int %>
+  garp_master_delay         <%= @garp_master_delay %>
   <%- if @lvs_interface -%>
   lvs_sync_daemon_interface <%= @lvs_interface %>
   <%- end -%>
   <%- if @smtp_alert -%>
   smtp_alert
   <%- end -%>
-
   <%- if @nopreempt -%>
   nopreempt
   <%- end -%>
