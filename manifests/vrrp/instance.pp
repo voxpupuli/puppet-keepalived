@@ -70,7 +70,7 @@
 #
 # $garp_master_delay::     The delay for gratuitous ARP after transition to MASTER
 #                          Default: 5 seconds.
-# 
+#
 # $notify_script_master::  Define the notify master script.
 #                          Default: undef.
 #
