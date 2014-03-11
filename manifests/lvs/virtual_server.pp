@@ -1,4 +1,4 @@
-# == Define: keepalived::vrrp::virtual_server
+# == Define: keepalived::lvs::virtual_server
 #
 # Configure a Linux Virtual Server with keepalived
 #
@@ -66,6 +66,12 @@
 #     [*ip_address*]
 #     [*port*]       (if ommitted the port defaults to the VIP port)
 #
+# [*collect_exported*]
+#   Boolean. Automatically collect exported @@keepalived::lvs::real_servers
+#   with a virtual_server equal to the name/title of this resource. This allows
+#   you to easily export a real_server resource on each node in the pool.
+#   Defaults to true => collect exported real_servers
+#
 define keepalived::lvs::virtual_server (
   $ip_address,
   $port,
@@ -81,7 +87,8 @@ define keepalived::lvs::virtual_server (
   $hysteresis=undef,
   $tcp_check=undef,
   $sorry_server=undef,
-  $real_servers=undef
+  $real_servers=undef,
+  $collect_exported=true,
 ) {
 
   if ( ! is_ip_address($ip_address) ) {
@@ -108,7 +115,16 @@ define keepalived::lvs::virtual_server (
   concat::fragment { "keepalived.conf_lvs_virtual_server_${name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/lvs_virtual_server.erb'),
-    order   => 250,
+    order   => "250-${name}-000",
   }
 
+  concat::fragment { "keepalived.conf_lvs_virtual_server_${name}-footer":
+    target  => "${keepalived::config_dir}/keepalived.conf",
+    content => "}\n",
+    order   => "251-${name}",
+  }
+
+  if $collect_exported {
+    Keepalived::Lvs::Virtual_server <<| virtual_server == $name |>>
+  }
 }
