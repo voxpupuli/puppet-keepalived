@@ -121,7 +121,7 @@ define keepalived::lvs::virtual_server (
   concat::fragment { "keepalived.conf_lvs_virtual_server_${name}-footer":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => "}\n",
-    order   => "251-${name}",
+    order   => "250-${name}",
   }
 
   if $collect_exported {
