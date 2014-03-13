@@ -1,5 +1,5 @@
 name          'arioch-keepalived'
-version       '0.0.9'
+version       '0.0.10'
 author        'Tom De Vylder'
 license       'Apache License, Version 2.0'
 summary       'Keepalived module'
