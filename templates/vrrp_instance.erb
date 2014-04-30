@@ -55,10 +55,6 @@ vrrp_instance <%= @name %> {
     auth_pass <%= @auth_pass %>
   }
   <%- end -%>
-  <%- if @notify_script -%>
-
-  notify                    <%= @notify_script %>
-  <%- end -%>
   <%- if @track_script -%>
 
   track_script {
