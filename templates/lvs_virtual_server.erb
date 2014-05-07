@@ -30,7 +30,7 @@ group <%= name %> {
   <%- if @hysteresis -%>
   hysteresis <%= hysteresis %>
   <%- end -%>
-  protocol TCP
+  protocol <%= @protocol %>
   <%- if @sorry_server -%>
   sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
   <%- end -%>

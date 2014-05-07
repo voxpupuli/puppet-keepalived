@@ -40,6 +40,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :port                => '8080',
         :lb_algo             => 'lc',
         :lb_kind             => 'NAT',
+        :protocol            => 'UDP',
         :delay_loop          => 60,
         :persistence_timeout => 5,
         :ha_suspend          => true,
@@ -52,13 +53,12 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
                                   'port'       => '999'}
       }
     }
-    it { 
-      should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
-        'content' => /delay_loop 60\n\s+lb_algo lc\n\s+lb_kind NAT\n\s+persistence_timeout 5\n\s+ha_suspend\n/,
-        'content' => /virtualhost example.com\ns+alpha\n\s+omega\n\s+quorum 5\n\s+hysteresis 9\n/,
-        'content' => /\s+sorry_server 10.1.1.3 999\s+/
-      })
-    }
+    it { should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with_content(
+        /\s+delay_loop 60\s+lb_algo lc\s+lb_kind NAT\s+persistence_timeout 5\s+ha_suspend\s+virtualhost example.com/
+    )}
+    it { should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with_content(
+        /\s+alpha\s+omega\s+quorum 5\s+hysteresis 9\s+protocol UDP\s+sorry_server 10.1.1.3 999\s+/
+    )}
   end
 
   context 'with invalid IP address' do
@@ -125,6 +125,24 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       expect { 
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_') 
       }.to raise_error(Puppet::Error, /Invalid lb_algo/) 
+    end
+  end
+
+  context 'with invalid protocol' do
+    let(:title) { '_TITLE_' }
+    let(:params) {
+      {
+        :ip_address          => '10.1.1.1',
+        :port                => '80',
+        :lb_algo             => 'rr',
+        :protocol            => 'ICMP',
+      }
+    }
+
+    it do 
+      expect { 
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_') 
+      }.to raise_error(Puppet::Error, /Invalid protocol/) 
     end
   end
 

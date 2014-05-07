@@ -23,6 +23,9 @@
 # [*delay_loop*]
 #   Default: not set.
 #
+# [*protocol*]
+#   Default: TCP
+#
 # [*lb_kind*]
 #   Must be one of NAT, TUN, DR.
 #   Default: NAT
@@ -77,6 +80,7 @@ define keepalived::lvs::virtual_server (
   $port,
   $lb_algo,
   $delay_loop=undef,
+  $protocol='TCP',
   $lb_kind='NAT',
   $ha_suspend=false,
   $persistence_timeout=undef,
@@ -99,6 +103,7 @@ define keepalived::lvs::virtual_server (
   validate_re($lb_algo, '^(rr|wrr|lc|wlc|lblc|sh|dh)$', "Invalid lb_algo: ${lb_algo}")
   if $delay_loop { validate_re($delay_loop, '^[0-9]+$', "Invalid delay_loop: ${delay_loop}") }
   validate_re($lb_kind, '^(NAT|DR|TUN)$', "Invalid lb_kind: ${lb_kind}")
+  validate_re($protocol, '^(TCP|UDP)$', "Invalid protocol: ${protocol}")
   validate_bool($ha_suspend)
   validate_bool($alpha)
   validate_bool($omega)
