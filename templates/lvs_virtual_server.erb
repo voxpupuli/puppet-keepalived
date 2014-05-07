@@ -3,7 +3,7 @@ group <%= name %> {
   virtual_server <%= @ip_address %> <%= port %>
 
   <%- if @delay_loop -%>
-  delay_loop <%= @delay_loop -%>
+  delay_loop <%= @delay_loop %>
   <%- end -%>
   lb_algo <%= @lb_algo %>
   <%- if @lb_kind -%>
@@ -16,7 +16,7 @@ group <%= name %> {
   ha_suspend
   <%- end -%>
   <%- if @virtualhost -%>
-  virtualhost <%= @virtualhost -%>
+  virtualhost <%= @virtualhost %>
   <%- end -%>
   <%- if @alpha -%>
   alpha
