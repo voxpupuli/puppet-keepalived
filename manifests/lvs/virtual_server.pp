@@ -130,6 +130,6 @@ define keepalived::lvs::virtual_server (
   }
 
   if $collect_exported {
-    Keepalived::Lvs::Virtual_server <<| virtual_server == $name |>>
+    Keepalived::Lvs::Real_server <<| virtual_server == $name |>>
   }
 }
