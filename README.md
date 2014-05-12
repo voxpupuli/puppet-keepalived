@@ -32,7 +32,7 @@ node /node01/ {
     priority          => '101',
     auth_type         => 'PASS',
     auth_pass         => 'secret',
-    virtual_ipaddress => '10.0.0.1/29',
+    virtual_ipaddress => [ '10.0.0.1/29' ],
     track_interface   => ['eth1','tun0'], # optional, monitor these interfaces.
   }
 }
@@ -47,7 +47,7 @@ node /node02/ {
     priority          => '100',
     auth_type         => 'PASS',
     auth_pass         => 'secret',
-    virtual_ipaddress => '10.0.0.1/29',
+    virtual_ipaddress => [ '10.0.0.1/29' ],
     track_interface   => ['eth1','tun0'], # optional, monitor these interfaces.
   }
 }
