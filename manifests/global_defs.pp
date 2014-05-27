@@ -28,14 +28,6 @@ class keepalived::global_defs(
   $router_id               = undef,
   $ensure                  = present,
 ){
-  if $notification_email {
-    if is_array($notification_email) {
-      $notification_email_array = $notification_email
-    }
-    else {
-      $notification_email_array = [$notification_email]
-    }
-  }
   concat::fragment { 'keepalived.conf_globaldefs':
     ensure  => $ensure,
     target  => "${keepalived::config_dir}/keepalived.conf",

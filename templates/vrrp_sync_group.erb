@@ -1,6 +1,6 @@
 vrrp_sync_group <%= @name %> {
   group {
-  <%- @group_array.each do |vrrp_instance| -%>
+  <%- Array(@group).each do |vrrp_instance| -%>
     <%= vrrp_instance %>
   <%- end -%>
   }

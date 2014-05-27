@@ -36,7 +36,7 @@ group <%= name %> {
   <%- end -%>
 
   <%- if @real_servers -%>
-    <%- @real_servers.each do |rs| -%>
+    <%- Array(@real_servers).each do |rs| -%>
       <%- rs_port = rs['port'] || @port -%>
   real_server <%= rs['ip_address'] %> <%= rs_port %> {
       <%- if @tcp_check -%>

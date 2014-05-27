@@ -1,7 +1,7 @@
 global_defs {
-  <%- if @notification_email_array -%>
+  <%- if @notification_email -%>
   notification_email {
-    <%- @notification_email_array.each do |email| -%>
+    <%- Array(@notification_email).each do |email| -%>
     <%= email %>
     <%- end -%>
   }

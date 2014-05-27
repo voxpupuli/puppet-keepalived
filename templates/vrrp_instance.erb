@@ -58,15 +58,15 @@ vrrp_instance <%= @name %> {
   <%- if @track_script -%>
 
   track_script {
-    <% @track_script.each do |track| %><%= track %>
+    <% Array(@track_script).each do |track| %><%= track %>
     <%- end -%>
   }
   <%- end -%>
 
   <%- if @track_interface -%>
   track_interface {
-  <%- [@track_interface].flatten.each do |interface| -%>
-    <%= interface %> 
+  <%- Array(@track_interface).each do |interface| -%>
+    <%= interface %>
   <%- end -%>
   }
   <%- end -%>
@@ -77,7 +77,7 @@ vrrp_instance <%= @name %> {
   <%- else -%>
     <%- vips = @virtual_ipaddress -%>
   <%- end -%>
-  <%- vips.each do |ip| -%>
+  <%- Array(vips).each do |ip| -%>
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
       <%- attrs = Hash[ ip.select { |k,v| ['label', 'brd', 'scope'].include? k } ] -%>
