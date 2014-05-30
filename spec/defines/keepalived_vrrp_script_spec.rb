@@ -66,6 +66,24 @@ describe 'keepalived::vrrp::script', :type => :define do
     }
   end
 
+  describe 'with parameter no_weight' do
+    let (:title) { '_TITLE_' }
+    let (:params) {
+      {
+        :no_weight => true,
+        :script => '_SCRIPT_'
+      }
+    }
+
+    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it {
+      should_not \
+        contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
+          'content' => /weight.*_VALUE_/
+      )
+    }
+  end
+
   describe 'with parameter fall' do
     let (:title) { '_TITLE_' }
     let (:params) {
