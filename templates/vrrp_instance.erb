@@ -15,6 +15,9 @@ vrrp_instance <%= @name %> {
   nopreempt
   <%- end -%>
 
+  <%- if @garp_master_refresh -%>
+  garp_master_refresh         <%= @garp_master_refresh %>
+  <%- end -%>
 
   # notify scripts and alerts are optional
   #

@@ -71,6 +71,9 @@
 # $garp_master_delay::     The delay for gratuitous ARP after transition to MASTER
 #                          Default: 5 seconds.
 #
+# $garp_master_refresh::   Repeat gratuitous ARP after transition to MASTER this often.
+#                          Default: undef.
+#
 # $notify_script_master::  Define the notify master script.
 #                          Default: undef.
 #
@@ -102,6 +105,7 @@ define keepalived::vrrp::instance (
   $nopreempt                  = false,
   $advert_int                 = 1,
   $garp_master_delay          = 5,
+  $garp_master_refresh        = undef,
   $notify_script_master       = undef,
   $notify_script_backup       = undef,
   $notify_script_fault        = undef,
