@@ -110,4 +110,18 @@ vrrp_instance <%= @name %> {
   <%- end -%>
   }
   <%- end -%>
+
+  <%- if @virtual_routes -%>
+  virtual_routes {
+  <%- if @virtual_routes.class == Hash -%>
+    <%- vroutes = [ @virtual_routes ] -%>
+  <%- else -%>
+    <%- vroutes = @virtual_routes -%>
+  <%- end -%>
+  <%- vroutes.each do |route| -%>
+    <%- attrs = Hash[ route.select { |k,v| ['src', 'to', 'via', 'dev', 'scope'].include? k } ] -%>
+    <%= route['route'] %>  <%= attrs.sort_by{ |k,v| k }.entries.join ' ' %>
+  <%- end -%>
+  }
+  <%- end -%>
 }

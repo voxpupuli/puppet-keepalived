@@ -808,4 +808,149 @@ describe 'keepalived::vrrp::instance', :type => :define do
       )
     }
   end
+
+  describe 'with parameter virtual_routes not in a hash' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_routes => ['192.168.1.0/24']
+      }
+    }
+
+    it do
+      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error)
+    end
+
+  end
+
+  describe 'with virtual_routes as hash' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_routes => {'to' => '10.0.1.0/24', 'via' => '192.168.0.1'},
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /^\s+to 10.0.1.0\/24 via 192.168.0.1/
+      )
+    }
+  end
+
+  describe 'with virtual_routes as array of hashes' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_routes => [ {'to' => '10.0.1.0/24', 'via' => '192.168.0.1'},
+                             {'to' => '10.0.2.0/24', 'via' => '192.168.0.2'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /^\s+to 10.0.1.0\/24 via 192.168.0.1/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /^\s+to 10.0.2.0\/24 via 192.168.0.2/
+      )
+    }
+  end
+
+  # device in hash overrides anything
+  describe 'with virtual_routes as hash containing device parameter' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_routes => [ {'to'  => '10.0.1.0/24',
+                              'via' => '192.168.0.1',
+                              'dev' => '_DEV_'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /dev _DEV_ to 10.0.1.0\/24 via 192.168.0.1/
+      )
+    }
+  end
+
+  describe 'with virtual_routes as hash containing src parameter' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_routes => [ {'to'  => '10.0.1.0/24',
+                              'via' => '192.168.0.1',
+                              'src' => '_SOURCE_'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /src _SOURCE_ to 10.0.1.0\/24 via 192.168.0.1/
+      )
+    }
+  end
+
+  describe 'with virtual_routes as hash containing scope parameter' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :virtual_ipaddress_int => '_VALUE_',
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :virtual_routes => [ {'to'    => '10.0.1.0/24',
+                              'via'   => '192.168.0.1',
+                              'scope' => '_SCOPE_'} ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /scope _SCOPE_ to 10.0.1.0\/24 via 192.168.0.1/
+      )
+    }
+  end
+
 end

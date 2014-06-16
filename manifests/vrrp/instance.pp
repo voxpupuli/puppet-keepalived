@@ -19,6 +19,12 @@
 #                             e.g. `{ 'ip' => '10.0.0.1', 'label' => 'webvip' }`
 #                             Supported properties: dev, brd, label, scope.
 #
+# $virtual_ipaddress::     Set floating routes.
+#
+#                          May be specified as a hash (or array of hashes) containing extra properties
+#                             e.g. `{ 'src' => '10.0.0.1', 'to' => '192.168.30.0/24', 'via' => '10.0.0.254' }`
+#                             Supported properties: src, to, via, dev, scope
+#
 # $virtual_ipaddress_excluded:: For cases with large numbers (eg 200) of IPs
 #                               on the same interface. To decrease the number
 #                               of packets sent in adverts, you can exclude
@@ -100,6 +106,7 @@ define keepalived::vrrp::instance (
   $lvs_interface              = undef,
   $virtual_ipaddress_int      = undef,
   $virtual_ipaddress_excluded = undef,
+  $virtual_routes             = undef,
   $notify_script              = undef,
   $smtp_alert                 = false,
   $nopreempt                  = false,
