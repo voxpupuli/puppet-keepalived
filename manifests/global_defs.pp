@@ -27,10 +27,10 @@ class keepalived::global_defs(
   $smtp_connect_timeout    = undef,
   $router_id               = undef,
   $ensure                  = present,
-){
+) inherits keepalived::params {
   concat::fragment { 'keepalived.conf_globaldefs':
     ensure  => $ensure,
-    target  => "${keepalived::config_dir}/keepalived.conf",
+    target  => "${::keepalived::params::config_dir}/keepalived.conf",
     content => template('keepalived/globaldefs.erb'),
     order   => 010,
   }
