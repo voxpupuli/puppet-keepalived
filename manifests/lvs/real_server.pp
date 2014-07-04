@@ -43,7 +43,7 @@ define keepalived::lvs::real_server (
   validate_re($port, '^[0-9]{1,5}$', "Invalid port: ${port}")
 
   concat::fragment { "keepalived.conf_lvs_real_server_${name}":
-    target  => "${keepalived::config_dir}/keepalived.conf",
+    target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/lvs_real_server.erb'),
     order   => "250-${virtual_server}-${name}",
   }
