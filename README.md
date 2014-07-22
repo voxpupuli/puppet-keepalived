@@ -56,6 +56,7 @@ node /node02/ {
 
 ### Add floating routes
 
+```puppet
 node /node01/ {
   include keepalived
 
@@ -71,8 +72,7 @@ node /node01/ {
                            { to  => '168.168.3.0/24', via => '10.0.0.3' } ]
   }
 }
-
-
+```
 
 ### Detect application level failure
 
