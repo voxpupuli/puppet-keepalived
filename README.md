@@ -134,14 +134,13 @@ class { 'keepalived::global_defs':
 }
 ```
 
-###I'd like to opt out of having the service controlled; we use another tool for that.
+### Opt out of having the service managed by the module
 
 ```puppet
 class { '::keepalived':
   service_manage => false,
 }
 ```
-
 
 ## Unit testing
 
