@@ -121,6 +121,19 @@ node /node02/ {
 }
 ```
 
+### Global definitions
+
+```puppet
+class { 'keepalived::global_defs':
+  ensure                  => present,
+  notification_email      => 'no@spam.tld',
+  notification_email_from => 'no@spam.tld',
+  smtp_server             => 'localhost',
+  smtp_connect_timeout    => '60',
+  router_id               => 'your_router_instance_id,
+}
+```
+
 ###I'd like to opt out of having the service controlled; we use another tool for that.
 
 ```puppet
