@@ -130,7 +130,7 @@ class { 'keepalived::global_defs':
   notification_email_from => 'no@spam.tld',
   smtp_server             => 'localhost',
   smtp_connect_timeout    => '60',
-  router_id               => 'your_router_instance_id,
+  router_id               => 'your_router_instance_id',
 }
 ```
 
