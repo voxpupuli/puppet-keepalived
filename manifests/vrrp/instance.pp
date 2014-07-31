@@ -19,7 +19,7 @@
 #                             e.g. `{ 'ip' => '10.0.0.1', 'label' => 'webvip' }`
 #                             Supported properties: dev, brd, label, scope.
 #
-# $virtual_ipaddress::     Set floating routes.
+# $virtual_routes::        Set floating routes.
 #
 #                          May be specified as a hash (or array of hashes) containing extra properties
 #                             e.g. `{ 'src' => '10.0.0.1', 'to' => '192.168.30.0/24', 'via' => '10.0.0.254' }`
