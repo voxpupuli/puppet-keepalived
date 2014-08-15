@@ -71,6 +71,10 @@
 #                          when a higher priority machine comes back online.
 #                          NOTE: For this to work, the initial state of this entry must be BACKUP
 #
+# $preempt_delay::         Seconds after startup until preemption
+#                          Range: 0 to 1,000
+#                          NOTE: For this to work, the initial state of this entry must be BACKUP
+#
 # $advert_int::            The interval between VRRP packets
 #                          Default: 1 second.
 #
@@ -110,6 +114,7 @@ define keepalived::vrrp::instance (
   $notify_script              = undef,
   $smtp_alert                 = false,
   $nopreempt                  = false,
+  $preempt_delay              = undef,
   $advert_int                 = 1,
   $garp_master_delay          = 5,
   $garp_master_refresh        = undef,

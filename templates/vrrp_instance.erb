@@ -14,6 +14,9 @@ vrrp_instance <%= @name %> {
   <%- if @nopreempt -%>
   nopreempt
   <%- end -%>
+  <%- if @preempt_delay -%>
+  preempt_delay             <%= @preempt_delay %>
+  <%- end -%>
 
   <%- if @garp_master_refresh -%>
   garp_master_refresh         <%= @garp_master_refresh %>
