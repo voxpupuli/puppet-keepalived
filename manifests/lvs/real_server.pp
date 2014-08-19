@@ -4,7 +4,8 @@
 #
 # === Parameters
 #
-# Refer to keepalived's documentation to understand the behaviour of these parameters
+# Refer to keepalived's documentation to understand the behaviour
+# of these parameters
 #
 # [*virtual_server*]
 #   The name of the virtual server this real server will be added to
@@ -35,7 +36,6 @@ define keepalived::lvs::real_server (
   $port,
   $options = {},
 ) {
-
   if ( ! is_ip_address($ip_address) ) {
     fail('Invalid IP address')
   }
@@ -47,5 +47,4 @@ define keepalived::lvs::real_server (
     content => template('keepalived/lvs_real_server.erb'),
     order   => "250-${virtual_server}-${name}",
   }
-
 }
