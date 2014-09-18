@@ -250,6 +250,28 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with parameter notify_script_stop' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :notify_script_stop => '_VALUE_',
+        :virtual_ipaddress => [],
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /notify_stop.*_VALUE_/
+      )
+    }
+  end
+
   describe 'with parameter notify_script' do
     let (:title) { '_NAME_' }
     let (:params) {

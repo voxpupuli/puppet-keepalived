@@ -39,18 +39,23 @@ vrrp_instance <%= @name %> {
   # FAULT transition
   notify_fault <%= @notify_script_fault %>
   <%- end -%>
+  <%- if @notify_script_stop -%>
+  # STOP transition
+  notify_stop <%= @notify_script_stop %>
+  <%- end -%>
+
 
   <%- if @notify_script -%>
   # for ANY state transition.
   # "notify" script is called AFTER the
   # notify_* script(s) and is executed
-  # with 3 arguments provided by keepalived
+  # with 4 arguments provided by keepalived
   # (ie don't include parameters in the notify line).
   # arguments
   # $1 = "GROUP"|"INSTANCE"
   # $2 = name of group or instance
   # $3 = target state of transition
-  #     ("MASTER"|"BACKUP"|"FAULT")
+  #     ("MASTER"|"BACKUP"|"FAULT"|"STOP")
   notify <%= @notify_script %>
   <%- end -%>
 
