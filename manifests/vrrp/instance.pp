@@ -107,6 +107,9 @@
 # $notify_script_fault::   Define the notify fault script.
 #                          Default: undef.
 #
+# $notify_script_stop::    Define the notify stop script.
+#                          Default: undef.
+#
 # $notify_script::         Define the notify script.
 #                          Default: undef.
 
@@ -135,6 +138,7 @@ define keepalived::vrrp::instance (
   $notify_script_master       = undef,
   $notify_script_backup       = undef,
   $notify_script_fault        = undef,
+  $notify_script_stop         = undef,
   $notify_script              = undef,
 
 ) {
