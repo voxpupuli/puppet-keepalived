@@ -131,14 +131,14 @@ define keepalived::lvs::virtual_server (
   }
 
   if $sorry_server {
-    if ( ! is_ip_address($sorry_server['::ip_address']) ) {
-      fail("Invalid sorry server IP address: ${sorry_server['::ip_address']}")
+    if ( ! is_ip_address($sorry_server['ip_address']) ) {
+      fail("Invalid sorry server IP address: ${sorry_server['ip_address']}")
     }
 
     validate_re(
-      $sorry_server['::port'],
+      $sorry_server['port'],
       '^[0-9]{1,5}$',
-      "Invalid sorry serverport: ${sorry_server['::port']}"
+      "Invalid sorry serverport: ${sorry_server['port']}"
     )
   }
 
