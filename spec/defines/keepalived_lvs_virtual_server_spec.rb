@@ -71,8 +71,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it do 
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid IP/) 
+    it do
+      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid IP/)
     end
   end
 
@@ -86,10 +86,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it do 
-      expect { 
-        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_') 
-      }.to raise_error(Puppet::Error, /Invalid port/) 
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /Invalid port/)
     end
   end
 
@@ -104,10 +104,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it do 
-      expect { 
-        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_') 
-      }.to raise_error(Puppet::Error, /Invalid delay_loop/) 
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /Invalid delay_loop/)
     end
   end
 
@@ -121,10 +121,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it do 
-      expect { 
-        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_') 
-      }.to raise_error(Puppet::Error, /Invalid lb_algo/) 
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /Invalid lb_algo/)
     end
   end
 
@@ -139,10 +139,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it do 
-      expect { 
-        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_') 
-      }.to raise_error(Puppet::Error, /Invalid protocol/) 
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /Invalid protocol/)
     end
   end
 
@@ -157,10 +157,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it do 
-      expect { 
-        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_') 
-      }.to raise_error(Puppet::Error, /Invalid lb_kind/) 
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /Invalid lb_kind/)
     end
   end
 
@@ -175,7 +175,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it { 
+    it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
         'content' => /real_server 10.1.1.2 8081 \{\s+\}/
       })
@@ -194,7 +194,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it { 
+    it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
         'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
       })
@@ -213,7 +213,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it { 
+    it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
         'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
       })
@@ -231,7 +231,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it { 
+    it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
         'content' => /real_server 10.1.1.2 8080 \{\s+TCP_CHECK \{\s+connect_port 8080\s+connect_timeout 5\s+\}\s+\}/
       })
@@ -251,7 +251,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       }
     }
 
-    it { 
+    it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
         'content' => /real_server 10.1.1.2 8081\s+\{\s+\}\s+real_server 10.1.1.3 8082\s+/
       })
