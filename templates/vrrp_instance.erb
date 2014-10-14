@@ -69,8 +69,9 @@ vrrp_instance <%= @name %> {
   <%- if @track_script -%>
 
   track_script {
-    <% Array(@track_script).each do |track| %><%= track %>
-    <%- end -%>
+  <%- Array(@track_script).each do |track| -%>
+    <%= track %>
+  <%- end -%>
   }
   <%- end -%>
 
