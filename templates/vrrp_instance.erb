@@ -133,4 +133,17 @@ vrrp_instance <%= @name %> {
   <%- end -%>
   }
   <%- end -%>
+
+  <%- if @unicast_source_ip -%>
+  unicast_src_ip <%= @unicast_source_ip %>
+  <%- end -%>
+
+  <%- if @unicast_peers -%>
+  unicast_peer {
+  <%- @unicast_peers.each do |peer| -%>
+    <%= peer %>
+  <%- end -%>
+  }
+  <%- end -%>
+
 }

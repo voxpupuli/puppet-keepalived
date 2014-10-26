@@ -975,4 +975,52 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with parameter unicast_source_ip' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :unicast_source_ip => '_VALUE_',
+        :virtual_ipaddress => [],
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_router_id => ''
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /unicast_src_ip.*_VALUE_/
+      )
+    }
+  end
+
+  describe 'with unicast_peers as array containing unicast peer ip addresses' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :unicast_peers => [ '10.0.1.0', '10.0.2.0' ],
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /10.0.1.0/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /10.0.2.0/
+      )
+    }
+  end
+
 end
