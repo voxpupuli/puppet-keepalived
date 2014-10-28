@@ -1,6 +1,6 @@
 {
   "name": "arioch-keepalived",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Tom De Vylder",
   "summary": "Keepalived module",
   "license": "Apache License, Version 2.0",
@@ -62,6 +62,12 @@
       ]
     }
   ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": "3.x"
+    }
+  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -70,12 +76,6 @@
     {
       "name": "puppetlabs/concat",
       "version_requirement": ">= 1.0.2"
-    }
-  ],
-  "requirements": [
-    {
-      "name": "pe",
-      "version_requirement": "3.x"
     }
   ]
 }
