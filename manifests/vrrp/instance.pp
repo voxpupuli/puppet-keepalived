@@ -154,6 +154,7 @@ define keepalived::vrrp::instance (
   $notify_script              = undef,
   $unicast_source_ip          = undef,
   $unicast_peers              = undef,
+  $dont_track_primary         = false,
 
 ) {
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
