@@ -22,6 +22,10 @@ vrrp_instance <%= @name %> {
   garp_master_refresh         <%= @garp_master_refresh %>
   <%- end -%>
 
+  <%- if @dont_track_primary -%>
+  dont_track_primary
+  <%- end -%>
+
   # notify scripts and alerts are optional
   #
   # filenames of scripts to run on transitions
