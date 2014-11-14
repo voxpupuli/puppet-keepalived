@@ -138,7 +138,8 @@ class { 'keepalived::global_defs':
 
 ```puppet
 class { '::keepalived':
-  service_restart => 'service keepalived reload',
+  service_restart => 'service keepalived reload',     # When using SysV Init
+  # service_restart => 'systemctl reload keepalived', # When using SystemD
 }
 ```
 
