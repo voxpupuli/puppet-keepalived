@@ -124,6 +124,15 @@
 #
 #                          May be specified as an array with ip addresses
 #                          Default: undef.
+#
+# $dont_track_primary      Tells keepalived to ignore VRRP interface faults.
+#                          Can be useful on setup where two routers are
+#                          connected directly to each other on the interface
+#                          used for VRRP. Without this feature the link down
+#                          caused by one router crashing would also inspire
+#                          the other router to lose (or not gain) MASTER state,
+#                          since it was also tracking link status.
+#                          Default: false.
 
 define keepalived::vrrp::instance (
   $interface,
