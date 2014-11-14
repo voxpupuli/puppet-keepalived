@@ -16,8 +16,8 @@ class keepalived (
   $service_hasstatus  = $::keepalived::params::service_hasstatus,
   $service_manage     = $::keepalived::params::service_manage,
   $service_name       = $::keepalived::params::service_name,
+  $service_restart    = $::keepalived::params::service_restart,
 ) inherits keepalived::params {
-
   validate_absolute_path($config_dir)
   validate_re($config_dir_mode, '^[0-9]+$')
   validate_re($config_file_mode, '^[0-9]+$')

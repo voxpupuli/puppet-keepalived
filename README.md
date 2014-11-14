@@ -134,6 +134,14 @@ class { 'keepalived::global_defs':
 }
 ```
 
+### Soft-restart the Keepalived daemon
+
+```puppet
+class { '::keepalived':
+  service_restart => 'service keepalived reload',
+}
+```
+
 ### Opt out of having the service managed by the module
 
 ```puppet

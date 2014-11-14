@@ -145,5 +145,14 @@ describe 'keepalived', :type => :class do
       )
     }
   end
+
+  describe 'with parameter: service_restart' do
+    let (:params) { { :service_restart => '_VALUE_' } }
+
+    it { should contain_service('keepalived').with(
+        'restart' => '_VALUE_'
+      )
+    }
+  end
 end
 

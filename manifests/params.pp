@@ -2,10 +2,11 @@
 #
 class keepalived::params {
 
-  $pkg_ensure         = 'present'
-  $service_enable     = true
-  $service_ensure     = 'running'
-  $service_manage     = true
+  $pkg_ensure      = 'present'
+  $service_enable  = true
+  $service_ensure  = 'running'
+  $service_manage  = true
+  $service_restart = undef
 
   case $::osfamily {
     'redhat': {
