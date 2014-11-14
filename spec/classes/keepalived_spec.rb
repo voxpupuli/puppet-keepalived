@@ -27,7 +27,8 @@ describe 'keepalived', :type => :class do
         'ensure'     => 'running',
         'enable'     => 'true',
         'hasrestart' => 'false',
-        'hasstatus'  => 'false'
+        'hasstatus'  => 'false',
+        'restart'    => '/usr/sbin/service keepalived reload'
       )
     }
   end
@@ -124,6 +125,15 @@ describe 'keepalived', :type => :class do
 
     it { should contain_service('keepalived').with(
         'hasstatus' => true
+      )
+    }
+  end
+
+  describe 'with parameter: service_restart' do
+    let (:params) { { :service_restart => '/something/else' } }
+
+    it { should contain_service('keepalived').with(
+        'restart' => '/something/else'
       )
     }
   end

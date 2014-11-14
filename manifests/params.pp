@@ -19,6 +19,7 @@ class keepalived::params {
       $pkg_list           = [ 'keepalived' ]
       $service_hasstatus  = true
       $service_hasrestart = true
+      $service_restart    = "/sbin/service keepalived reload"
       $service_name       = 'keepalived'
     }
 
@@ -33,6 +34,7 @@ class keepalived::params {
       $pkg_list           = [ 'keepalived' ]
       $service_hasrestart = false
       $service_hasstatus  = false
+      $service_restart    = "/usr/sbin/service keepalived reload"
       $service_name       = 'keepalived'
     }
 
@@ -47,6 +49,7 @@ class keepalived::params {
       $pkg_list           = [ 'keepalived' ]
       $service_hasrestart = false
       $service_hasstatus  = false
+      $service_restart    = "/etc/init.d/keepalived reload"
       $service_name       = 'keepalived'
     }
 
