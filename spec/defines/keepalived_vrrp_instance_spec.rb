@@ -1022,5 +1022,27 @@ describe 'keepalived::vrrp::instance', :type => :define do
       )
     }
   end
+  
+  describe 'with dont_track_primary' do
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :interface => '',
+        :priority => '',
+        :state => '',
+        :virtual_ipaddress => [],
+        :virtual_router_id => '',
+        :dont_track_primary => true,
+      }
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /dont_track_primary/
+      )
+    }
+  end
 
 end
