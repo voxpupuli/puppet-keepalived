@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Puppet-keepalived by arioch</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Puppet-keepalived</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/arioch/puppet-keepalived">View the Project on GitHub <small>arioch/puppet-keepalived</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/arioch/puppet-keepalived/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/arioch/puppet-keepalived/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/arioch/puppet-keepalived">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="puppet-keepalived" class="anchor" href="#puppet-keepalived" aria-hidden="true"><span class="octicon octicon-link"></span></a>Puppet Keepalived</h1>
+
+<h2>
+<a id="build-status" class="anchor" href="#build-status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build status</h2>
+
+<p><a href="https://travis-ci.org/arioch/puppet-keepalived"><img src="https://travis-ci.org/arioch/puppet-keepalived.png?branch=master" alt="Build Status"></a></p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li><a href="https://github.com/ripienaar/puppet-concat">concat module</a></li>
+</ul>
+
+<h2>
+<a id="tested-on" class="anchor" href="#tested-on" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tested on...</h2>
+
+<ul>
+<li>Debian 7 (Wheezy)</li>
+<li>Debian 6 (Squeeze)</li>
+<li>RHEL 6</li>
+</ul>
+
+<h2>
+<a id="example-usage" class="anchor" href="#example-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example usage</h2>
+
+<h3>
+<a id="basic-ip-based-vrrp-failover" class="anchor" href="#basic-ip-based-vrrp-failover" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic IP-based VRRP failover</h3>
+
+<p>This configuration will fail-over when:</p>
+
+<p>a. Master node is unavailable</p>
+
+<div class="highlight highlight-puppet"><pre>node /node01/ {
+  <span class="pl-k">include</span> keepalived
+
+  keepalived::vrrp::instance { <span class="pl-s1"><span class="pl-pds">'</span>VI_50<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">interface</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">state</span>             =&gt; <span class="pl-s1"><span class="pl-pds">'</span>MASTER<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_router_id</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>50<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">priority</span>          =&gt; <span class="pl-s1"><span class="pl-pds">'</span>101<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_ipaddress</span> =&gt; [ <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span> ],
+    <span class="pl-c1">track_interface</span>   =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>tun0<span class="pl-pds">'</span></span>], <span class="pl-c"><span class="pl-pdc">#</span> optional, monitor these interfaces.</span>
+  }
+}
+
+node /node02/ {
+  <span class="pl-k">include</span> keepalived
+
+  keepalived::vrrp::instance { <span class="pl-s1"><span class="pl-pds">'</span>VI_50<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">interface</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">state</span>             =&gt; <span class="pl-s1"><span class="pl-pds">'</span>BACKUP<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_router_id</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>50<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">priority</span>          =&gt; <span class="pl-s1"><span class="pl-pds">'</span>100<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_ipaddress</span> =&gt; [ <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span> ],
+    <span class="pl-c1">track_interface</span>   =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>tun0<span class="pl-pds">'</span></span>], <span class="pl-c"><span class="pl-pdc">#</span> optional, monitor these interfaces.</span>
+  }
+}</pre></div>
+
+<h3>
+<a id="add-floating-routes" class="anchor" href="#add-floating-routes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add floating routes</h3>
+
+<div class="highlight highlight-puppet"><pre>node /node01/ {
+  <span class="pl-k">include</span> keepalived
+
+  keepalived::vrrp::instance { <span class="pl-s1"><span class="pl-pds">'</span>VI_50<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">interface</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">state</span>             =&gt; <span class="pl-s1"><span class="pl-pds">'</span>MASTER<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_router_id</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>50<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">priority</span>          =&gt; <span class="pl-s1"><span class="pl-pds">'</span>101<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_ipaddress</span> =&gt; [ <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span> ],
+    <span class="pl-c1">virtual_routes</span>    =&gt; [ { <span class="pl-c1">to</span>  =&gt; <span class="pl-s1"><span class="pl-pds">'</span>168.168.2.0/24<span class="pl-pds">'</span></span>, <span class="pl-c1">via</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.2<span class="pl-pds">'</span></span> },
+                           { <span class="pl-c1">to</span>  =&gt; <span class="pl-s1"><span class="pl-pds">'</span>168.168.3.0/24<span class="pl-pds">'</span></span>, <span class="pl-c1">via</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.3<span class="pl-pds">'</span></span> } ]
+  }
+}</pre></div>
+
+<h3>
+<a id="detect-application-level-failure" class="anchor" href="#detect-application-level-failure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detect application level failure</h3>
+
+<p>This configuration will fail-over when:</p>
+
+<p>a. NGinX daemon is not running<br>
+b. Master node is unavailable</p>
+
+<div class="highlight highlight-puppet"><pre>node /node01/ {
+  <span class="pl-k">include</span> ::keepalived
+
+  keepalived::vrrp::script { <span class="pl-s1"><span class="pl-pds">'</span>check_nginx<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">script</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>/usr/bin/killall -0 nginx<span class="pl-pds">'</span></span>,
+  }
+
+  keepalived::vrrp::instance { <span class="pl-s1"><span class="pl-pds">'</span>VI_50<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">interface</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">state</span>             =&gt; <span class="pl-s1"><span class="pl-pds">'</span>MASTER<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_router_id</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>50<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">priority</span>          =&gt; <span class="pl-s1"><span class="pl-pds">'</span>101<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_ipaddress</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">track_script</span>      =&gt; <span class="pl-s1"><span class="pl-pds">'</span>check_nginx<span class="pl-pds">'</span></span>,
+  }
+}
+
+node /node02/ {
+  <span class="pl-k">include</span> ::keepalived
+
+  keepalived::vrrp::script { <span class="pl-s1"><span class="pl-pds">'</span>check_nginx<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">script</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>/usr/bin/killall -0 nginx<span class="pl-pds">'</span></span>,
+  }
+
+  keepalived::vrrp::instance { <span class="pl-s1"><span class="pl-pds">'</span>VI_50<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">interface</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">state</span>             =&gt; <span class="pl-s1"><span class="pl-pds">'</span>BACKUP<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_router_id</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>50<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">priority</span>          =&gt; <span class="pl-s1"><span class="pl-pds">'</span>100<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_ipaddress</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">track_script</span>      =&gt; <span class="pl-s1"><span class="pl-pds">'</span>check_nginx<span class="pl-pds">'</span></span>,
+  }
+}</pre></div>
+
+<h3>
+<a id="global-definitions" class="anchor" href="#global-definitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Global definitions</h3>
+
+<div class="highlight highlight-puppet"><pre><span class="pl-s">class</span> { <span class="pl-ens">'keepalived::global_defs'</span>:
+  <span class="pl-c1">ensure</span>                  =&gt; present,
+  <span class="pl-c1">notification_email</span>      =&gt; <span class="pl-s1"><span class="pl-pds">'</span>no@spam.tld<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">notification_email_from</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>no@spam.tld<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">smtp_server</span>             =&gt; <span class="pl-s1"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">smtp_connect_timeout</span>    =&gt; <span class="pl-s1"><span class="pl-pds">'</span>60<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">router_id</span>               =&gt; <span class="pl-s1"><span class="pl-pds">'</span>your_router_instance_id<span class="pl-pds">'</span></span>,
+}</pre></div>
+
+<h3>
+<a id="soft-restart-the-keepalived-daemon" class="anchor" href="#soft-restart-the-keepalived-daemon" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft-restart the Keepalived daemon</h3>
+
+<div class="highlight highlight-puppet"><pre><span class="pl-s">class</span> { <span class="pl-ens">'::keepalived'</span>:
+  <span class="pl-c1">service_restart</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>service keepalived reload<span class="pl-pds">'</span></span>,     <span class="pl-c"><span class="pl-pdc">#</span> When using SysV Init</span>
+  <span class="pl-c"><span class="pl-pdc">#</span> service_restart =&gt; 'systemctl reload keepalived', # When using SystemD</span>
+}</pre></div>
+
+<h3>
+<a id="opt-out-of-having-the-service-managed-by-the-module" class="anchor" href="#opt-out-of-having-the-service-managed-by-the-module" aria-hidden="true"><span class="octicon octicon-link"></span></a>Opt out of having the service managed by the module</h3>
+
+<div class="highlight highlight-puppet"><pre><span class="pl-s">class</span> { <span class="pl-ens">'::keepalived'</span>:
+  <span class="pl-c1">service_manage</span> =&gt; false,
+}</pre></div>
+
+<h3>
+<a id="unicast-instead-of-multicast" class="anchor" href="#unicast-instead-of-multicast" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unicast instead of Multicast</h3>
+
+<p><strong>caution: unicast support has only been added to Keepalived since version 1.2.8</strong></p>
+
+<p>By default Keepalived will use multicast packets to determine failover conditions.
+However, in many cloud environments it is not possible to use multicast because of
+network restrictions. Keepalived can be configured to use unicast in such environments:</p>
+
+<div class="highlight highlight-puppet"><pre>  keepalived::vrrp::instance { <span class="pl-s1"><span class="pl-pds">'</span>VI_50<span class="pl-pds">'</span></span>:
+    <span class="pl-c1">interface</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">state</span>             =&gt; <span class="pl-s1"><span class="pl-pds">'</span>BACKUP<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_router_id</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>50<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">priority</span>          =&gt; <span class="pl-s1"><span class="pl-pds">'</span>100<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">virtual_ipaddress</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">track_script</span>      =&gt; <span class="pl-s1"><span class="pl-pds">'</span>check_nginx<span class="pl-pds">'</span></span>,
+    <span class="pl-c1">unicast_source_ip</span> =&gt; <span class="pl-v"><span class="pl-pdv">$</span>::ipaddress_eth1</span>,
+    <span class="pl-c1">unicast_peers</span>     =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.2<span class="pl-pds">'</span></span>]
+  }</pre></div>
+
+<p>The 'unicast_source_ip' parameter is optional as Keepalived will bind to the specified interface by default.
+The 'unicast_peers' parameter contains an array of ip addresses that correspond to the failover nodes.</p>
+
+<h2>
+<a id="unit-testing" class="anchor" href="#unit-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unit testing</h2>
+
+<p>Plain RSpec:</p>
+
+<pre><code>$ rake spec
+</code></pre>
+
+<p>Using bundle:</p>
+
+<pre><code>$ bundle exec rake spec
+</code></pre>
+
+<p>Test against a specific Puppet or Facter version:</p>
+
+<pre><code>$ PUPPET_VERSION=3.2.1  bundle update &amp;&amp; bundle exec rake spec
+$ PUPPET_VERSION=2.7.19 bundle update &amp;&amp; bundle exec rake spec
+$ FACTER_VERSION=1.6.8  bundle update &amp;&amp; bundle exec rake spec
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/arioch">arioch</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
