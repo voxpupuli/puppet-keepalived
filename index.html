@@ -73,7 +73,7 @@
     <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
     <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
     <span class="pl-c1">virtual_ipaddress</span> =&gt; [ <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span> ],
-    <span class="pl-c1">track_interface</span>   =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>tun0<span class="pl-pds">'</span></span>], <span class="pl-c"><span class="pl-pdc">#</span> optional, monitor these interfaces.</span>
+    <span class="pl-c1">track_interface</span>   =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>tun0<span class="pl-pds">'</span></span>], <span class="pl-c"># optional, monitor these interfaces.</span>
   }
 }
 
@@ -88,7 +88,7 @@ node /node02/ {
     <span class="pl-c1">auth_type</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>PASS<span class="pl-pds">'</span></span>,
     <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
     <span class="pl-c1">virtual_ipaddress</span> =&gt; [ <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span> ],
-    <span class="pl-c1">track_interface</span>   =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>tun0<span class="pl-pds">'</span></span>], <span class="pl-c"><span class="pl-pdc">#</span> optional, monitor these interfaces.</span>
+    <span class="pl-c1">track_interface</span>   =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>eth1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>tun0<span class="pl-pds">'</span></span>], <span class="pl-c"># optional, monitor these interfaces.</span>
   }
 }</pre></div>
 
@@ -160,7 +160,7 @@ node /node02/ {
 <h3>
 <a id="global-definitions" class="anchor" href="#global-definitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Global definitions</h3>
 
-<div class="highlight highlight-puppet"><pre><span class="pl-s">class</span> { <span class="pl-ens">'keepalived::global_defs'</span>:
+<div class="highlight highlight-puppet"><pre><span class="pl-st">class</span> { <span class="pl-en">'keepalived::global_defs'</span>:
   <span class="pl-c1">ensure</span>                  =&gt; present,
   <span class="pl-c1">notification_email</span>      =&gt; <span class="pl-s1"><span class="pl-pds">'</span>no@spam.tld<span class="pl-pds">'</span></span>,
   <span class="pl-c1">notification_email_from</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>no@spam.tld<span class="pl-pds">'</span></span>,
@@ -172,15 +172,15 @@ node /node02/ {
 <h3>
 <a id="soft-restart-the-keepalived-daemon" class="anchor" href="#soft-restart-the-keepalived-daemon" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft-restart the Keepalived daemon</h3>
 
-<div class="highlight highlight-puppet"><pre><span class="pl-s">class</span> { <span class="pl-ens">'::keepalived'</span>:
-  <span class="pl-c1">service_restart</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>service keepalived reload<span class="pl-pds">'</span></span>,     <span class="pl-c"><span class="pl-pdc">#</span> When using SysV Init</span>
-  <span class="pl-c"><span class="pl-pdc">#</span> service_restart =&gt; 'systemctl reload keepalived', # When using SystemD</span>
+<div class="highlight highlight-puppet"><pre><span class="pl-st">class</span> { <span class="pl-en">'::keepalived'</span>:
+  <span class="pl-c1">service_restart</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>service keepalived reload<span class="pl-pds">'</span></span>,     <span class="pl-c"># When using SysV Init</span>
+  <span class="pl-c"># service_restart =&gt; 'systemctl reload keepalived', # When using SystemD</span>
 }</pre></div>
 
 <h3>
 <a id="opt-out-of-having-the-service-managed-by-the-module" class="anchor" href="#opt-out-of-having-the-service-managed-by-the-module" aria-hidden="true"><span class="octicon octicon-link"></span></a>Opt out of having the service managed by the module</h3>
 
-<div class="highlight highlight-puppet"><pre><span class="pl-s">class</span> { <span class="pl-ens">'::keepalived'</span>:
+<div class="highlight highlight-puppet"><pre><span class="pl-st">class</span> { <span class="pl-en">'::keepalived'</span>:
   <span class="pl-c1">service_manage</span> =&gt; false,
 }</pre></div>
 
@@ -202,7 +202,7 @@ network restrictions. Keepalived can be configured to use unicast in such enviro
     <span class="pl-c1">auth_pass</span>         =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secret<span class="pl-pds">'</span></span>,
     <span class="pl-c1">virtual_ipaddress</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1/29<span class="pl-pds">'</span></span>,
     <span class="pl-c1">track_script</span>      =&gt; <span class="pl-s1"><span class="pl-pds">'</span>check_nginx<span class="pl-pds">'</span></span>,
-    <span class="pl-c1">unicast_source_ip</span> =&gt; <span class="pl-v"><span class="pl-pdv">$</span>::ipaddress_eth1</span>,
+    <span class="pl-c1">unicast_source_ip</span> =&gt; <span class="pl-vo">$::ipaddress_eth1</span>,
     <span class="pl-c1">unicast_peers</span>     =&gt; [<span class="pl-s1"><span class="pl-pds">'</span>10.0.0.1<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>10.0.0.2<span class="pl-pds">'</span></span>]
   }</pre></div>
 
