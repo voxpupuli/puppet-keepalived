@@ -32,6 +32,6 @@ class keepalived::global_defs(
     ensure  => $ensure,
     target  => "${::keepalived::params::config_dir}/keepalived.conf",
     content => template('keepalived/globaldefs.erb'),
-    order   => 010,
+    order   => '010',
   }
 }

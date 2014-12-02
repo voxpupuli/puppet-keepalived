@@ -170,7 +170,7 @@ define keepalived::vrrp::instance (
     ensure  => $ensure,
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),
-    order   => 100,
+    order   => '100',
   }
 }
 
