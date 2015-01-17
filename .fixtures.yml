@@ -1,12 +1,10 @@
 fixtures:
   repositories:
-    concat: 
+    concat:
       repo: 'git://github.com/puppetlabs/puppetlabs-concat.git'
       ref:  '1.0.0'
-    stdlib: 
+    stdlib:
       repo: 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
-      ref:  '3.2.0'
-
+      ref:  '4.1.0'
   symlinks:
     keepalived: "#{source_dir}"
-
