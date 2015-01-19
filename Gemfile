@@ -23,3 +23,9 @@ group :development do
   gem 'guard'
   gem 'guard-rake'
 end
+
+group :system_tests do
+  gem 'beaker-rspec',  :require => false
+  gem 'serverspec',    :require => false
+  gem 'vagrant-wrapper', :require => false
+end
