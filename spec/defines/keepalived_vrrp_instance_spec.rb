@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe 'keepalived::vrrp::instance', :type => :define do
+  let (:title) { '_NAME_' }
   let (:facts) { debian_facts }
   let (:pre_condition) { '$concat_basedir = "/tmp"' }
   let (:mandatory_params) {
@@ -14,15 +15,12 @@ describe 'keepalived::vrrp::instance', :type => :define do
   }
 
   describe 'without parameters' do
-    let (:title) { '_VALUE_' }
-
     it do
       expect { should create_class('keepalived') }.to raise_error(Puppet::Error)
     end
   end
 
   describe 'with parameter interface' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :interface => '_VALUE_',
@@ -39,7 +37,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter priority' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :priority => '_VALUE_',
@@ -56,7 +53,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter state' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :state => '_VALUE_',
@@ -73,7 +69,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_ipaddress' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress => [ '_VALUE_' ],
@@ -90,7 +85,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter track_interface' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :track_interface => [ '_VALUE_' ],
@@ -108,7 +102,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter notify_script' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :notify_script => '_VALUE_',
@@ -125,7 +118,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter smtp_alert' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :smtp_alert => true,
@@ -142,7 +134,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter nopreempt' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :nopreempt => true,
@@ -159,7 +150,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter notify_script_master' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :notify_script_master => '_VALUE_',
@@ -176,7 +166,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter notify_script_backup' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :notify_script_backup => '_VALUE_',
@@ -193,7 +182,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter notify_script_fault' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :notify_script_fault => '_VALUE_',
@@ -210,7 +198,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter notify_script_stop' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :notify_script_stop => '_VALUE_',
@@ -227,7 +214,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter notify_script' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :notify_script => '_VALUE_',
@@ -244,7 +230,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_router_id' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_router_id => '_VALUE_',
@@ -261,7 +246,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter: ensure' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :ensure => '_VALUE_',
@@ -278,7 +262,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter auth_type' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :auth_type => '_VALUE_',
@@ -295,7 +278,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter auth_pass' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :auth_type => '_AUTH_TYPE_',
@@ -313,7 +295,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter track_script' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :track_script => [ '_VALUE_' ],
@@ -331,7 +312,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter lvs_interface' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :lvs_interface => '_VALUE_',
@@ -348,7 +328,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter advert_int' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :advert_int => '_VALUE_',
@@ -366,7 +345,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
  describe 'with parameter garp_master_delay' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :garp_master_delay => '_VALUE_',
@@ -384,7 +362,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
  describe 'with parameter garp_master_refresh' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :garp_master_refresh => '_VALUE_',
@@ -402,7 +379,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_ipaddress_int' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -420,7 +396,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
     end
 
   describe 'with virtual_ipaddress as hash' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -438,7 +413,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress as array of hashes' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -462,7 +436,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
 
   # device in hash overrides anything
   describe 'with virtual_ipaddress as hash containing device' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -481,7 +454,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress as hash containing label' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -500,7 +472,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress as hash containing brd' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -519,7 +490,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress as hash containing scope' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -538,7 +508,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_ipaddress_excluded' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -556,7 +525,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
     end
 
   describe 'with virtual_ipaddress_excluded as hash' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -574,7 +542,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress_excluded as array of hashes' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -598,7 +565,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
 
   # device in hash overrides anything
   describe 'with virtual_ipaddress_excluded as hash containing device' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -617,7 +583,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress_excluded as hash containing label' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -636,7 +601,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress_excluded as hash containing brd' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -655,7 +619,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_ipaddress_excluded as hash containing scope' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -674,7 +637,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_routes not in a hash' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -689,7 +651,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_routes as hash' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -707,7 +668,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_routes as array of hashes' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_routes => [ {'to' => '10.0.1.0/24', 'via' => '192.168.0.1'},
@@ -730,7 +690,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
 
   # device in hash overrides anything
   describe 'with virtual_routes as hash containing device parameter' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_routes => [ {'to'  => '10.0.1.0/24',
@@ -749,7 +708,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_routes as hash containing src parameter' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_routes => [ {'to'  => '10.0.1.0/24',
@@ -768,7 +726,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with virtual_routes as hash containing scope parameter' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
@@ -788,7 +745,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter unicast_source_ip' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :unicast_source_ip => '_VALUE_',
@@ -805,7 +761,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with unicast_peers as array containing unicast peer ip addresses' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :unicast_peers => [ '10.0.1.0', '10.0.2.0' ],
@@ -826,7 +781,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
   
   describe 'with dont_track_primary' do
-    let (:title) { '_NAME_' }
     let (:params) {
       mandatory_params.merge({
         :dont_track_primary => true,
