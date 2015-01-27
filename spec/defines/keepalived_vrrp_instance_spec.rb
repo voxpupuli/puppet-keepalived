@@ -7,7 +7,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
   let (:mandatory_params) {
     {
       :interface         => '',
-      :priority          => '',
+      :priority          => 10,
       :state             => '',
       :virtual_ipaddress => [],
       :virtual_router_id => ''
@@ -37,19 +37,38 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter priority' do
-    let (:params) {
-      mandatory_params.merge({
-        :priority => '_VALUE_',
-      })
-    }
+    [1, 100, 254].each do |valid_priority|
+      context "with valid #{valid_priority}" do
+        let (:params) {
+          mandatory_params.merge({
+            :priority => valid_priority,
+          })
+        }
 
-    it { should create_keepalived__vrrp__instance('_NAME_') }
-    it {
-      should \
-        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-          'content' => /priority.*_VALUE_/
-      )
-    }
+        it { should create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          should \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => /\spriority\s+#{valid_priority}$/
+          )
+        }
+      end
+    end
+
+    ['__VALUE__', -1, 0, 255, 500].each do |invalid_priority|
+      context "with invalid #{invalid_priority}" do
+        let (:params) {
+          mandatory_params.merge({
+            :priority => invalid_priority,
+          })
+        }
+
+        it {
+          expect { should create_keepalived__vrrp__instance('_NAME_') }.to \
+            raise_error(Puppet::Error, /priority must be an integer 1 >= and <= 254/)
+        }
+      end
+    end
   end
 
   describe 'with parameter state' do

@@ -166,6 +166,10 @@ define keepalived::vrrp::instance (
   $dont_track_primary         = false,
 
 ) {
+  if (!is_integer($priority) or $priority < 1 or $priority > 254) {
+    fail('priority must be an integer 1 >= and <= 254')
+  }
+
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
     ensure  => $ensure,
     target  => "${::keepalived::config_dir}/keepalived.conf",
