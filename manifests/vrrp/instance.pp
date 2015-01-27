@@ -169,6 +169,9 @@ define keepalived::vrrp::instance (
   if (!is_integer($priority) or $priority < 1 or $priority > 254) {
     fail('priority must be an integer 1 >= and <= 254')
   }
+  if (!is_integer($virtual_router_id) or $virtual_router_id < 1 or $virtual_router_id > 255) {
+    fail('virtual_router_id must be an integer >= 1 and <= 255')
+  }
 
   concat::fragment { "keepalived.conf_vrrp_instance_${name}":
     ensure  => $ensure,

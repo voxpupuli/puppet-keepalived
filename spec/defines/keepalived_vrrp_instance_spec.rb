@@ -10,7 +10,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       :priority          => 10,
       :state             => '',
       :virtual_ipaddress => [],
-      :virtual_router_id => ''
+      :virtual_router_id => 10,
     }
   }
 
@@ -249,19 +249,38 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_router_id' do
-    let (:params) {
-      mandatory_params.merge({
-        :virtual_router_id => '_VALUE_',
-      })
-    }
+    [1, 100, 255].each do |valid_router_id|
+      context "with valid #{valid_router_id}" do
+        let (:params) {
+          mandatory_params.merge({
+            :virtual_router_id => valid_router_id,
+          })
+        }
 
-    it { should create_keepalived__vrrp__instance('_NAME_') }
-    it {
-      should \
-        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-        'content' => /virtual_router_id.*_VALUE_/
-      )
-    }
+        it { should create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          should \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => /\svirtual_router_id\s+#{valid_router_id}$/
+          )
+        }
+      end
+    end
+
+    ['__VALUE__', -1, 0, 256, 500].each do |invalid_router_id|
+      context "with invalid #{invalid_router_id}" do
+        let (:params) {
+          mandatory_params.merge({
+            :virtual_router_id => invalid_router_id,
+          })
+        }
+
+        it {
+          expect { should create_keepalived__vrrp__instance('_NAME_') }.to \
+            raise_error(Puppet::Error, /virtual_router_id must be an integer >= 1 and <= 255/)
+        }
+      end
+    end
   end
 
   describe 'with parameter: ensure' do
