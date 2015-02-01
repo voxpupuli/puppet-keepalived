@@ -14,7 +14,7 @@
 if Facter::Util::Resolution.which('keepalived')
   Facter.add(:keepalived_version) do
     setcode do
-      Facter::Util::Resolution.exec('keepalived --version 2>&1').lines.first.match(/Keepalived v(\d\.\d\.\d) .+/)[1]
+      Facter::Util::Resolution.exec('keepalived --version 2>&1').lines.first.match(/Keepalived v(\d+\.\d+\.\d+) .+/)[1]
     end
   end
 end
