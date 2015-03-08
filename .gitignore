@@ -5,3 +5,4 @@ pkg
 spec/fixtures
 .vagrant/
 /.project
+.bundle
