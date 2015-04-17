@@ -33,19 +33,19 @@ vrrp_instance <%= @name %> {
   # or quoted (if has parameters)
   <%- if @notify_script_master -%>
   # to MASTER transition
-  notify_master <%= @notify_script_master %>
+  notify_master "<%= @notify_script_master %>"
   <%- end -%>
   <%- if @notify_script_backup -%>
   # to BACKUP transition
-  notify_backup <%= @notify_script_backup %>
+  notify_backup "<%= @notify_script_backup %>"
   <%- end -%>
   <%- if @notify_script_fault -%>
   # FAULT transition
-  notify_fault <%= @notify_script_fault %>
+  notify_fault "<%= @notify_script_fault %>"
   <%- end -%>
   <%- if @notify_script_stop -%>
   # STOP transition
-  notify_stop <%= @notify_script_stop %>
+  notify_stop "<%= @notify_script_stop %>"
   <%- end -%>
 
 
