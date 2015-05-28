@@ -27,6 +27,8 @@ define keepalived::vrrp::script (
   $rise      = undef,
   $no_weight = false,
 ) {
+  $_name = regsubst($name, '[:\/\n]', '')
+
   if ! $script {
     fail 'No script provided.'
   }
@@ -41,7 +43,7 @@ define keepalived::vrrp::script (
     }
   }
 
-  concat::fragment { "keepalived.conf_vrrp_script_${name}":
+  concat::fragment { "keepalived.conf_vrrp_script_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_script.erb'),
     order   => '002',

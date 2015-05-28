@@ -36,15 +36,17 @@ define keepalived::lvs::real_server (
   $port,
   $options = {},
 ) {
+  $_name = regsubst($name, '[:\/\n]', '')
+
   if ( ! is_ip_address($ip_address) ) {
     fail('Invalid IP address')
   }
 
   validate_re($port, '^[0-9]{1,5}$', "Invalid port: ${port}")
 
-  concat::fragment { "keepalived.conf_lvs_real_server_${name}":
+  concat::fragment { "keepalived.conf_lvs_real_server_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/lvs_real_server.erb'),
-    order   => "250-${virtual_server}-${name}",
+    order   => "250-${virtual_server}-${_name}",
   }
 }
