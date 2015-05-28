@@ -1,4 +1,4 @@
-vrrp_script <%= @name %> {
+vrrp_script <%= @_name %> {
   script    "<%= @script %>"
   interval  <%= @interval %>
   <%- unless @no_weight -%>

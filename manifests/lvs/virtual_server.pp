@@ -95,6 +95,7 @@ define keepalived::lvs::virtual_server (
   $tcp_check           = undef,
   $virtualhost         = undef,
 ) {
+  $_name = regsubst($name, '[:\/\n]', '')
 
   if ( ! is_ip_address($ip_address) ) {
     fail('Invalid IP address')
@@ -142,19 +143,19 @@ define keepalived::lvs::virtual_server (
     )
   }
 
-  concat::fragment { "keepalived.conf_lvs_virtual_server_${name}":
+  concat::fragment { "keepalived.conf_lvs_virtual_server_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/lvs_virtual_server.erb'),
-    order   => "250-${name}-000",
+    order   => "250-${_name}-000",
   }
 
-  concat::fragment { "keepalived.conf_lvs_virtual_server_${name}-footer":
+  concat::fragment { "keepalived.conf_lvs_virtual_server_${_name}-footer":
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => "}\n",
-    order   => "250-${name}",
+    order   => "250-${_name}",
   }
 
   if $collect_exported {
-    Keepalived::Lvs::Real_server <<| virtual_server == $name |>>
+    Keepalived::Lvs::Real_server <<| virtual_server == $_name |>>
   }
 }

@@ -166,6 +166,8 @@ define keepalived::vrrp::instance (
   $dont_track_primary         = false,
 
 ) {
+  $_name = regsubst($name, '[:\/\n]', '')
+
   if (!is_integer($priority) or $priority < 1 or $priority > 254) {
     fail('priority must be an integer 1 >= and <= 254')
   }
@@ -173,7 +175,7 @@ define keepalived::vrrp::instance (
     fail('virtual_router_id must be an integer >= 1 and <= 255')
   }
 
-  concat::fragment { "keepalived.conf_vrrp_instance_${name}":
+  concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     ensure  => $ensure,
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),

@@ -32,7 +32,9 @@ define keepalived::vrrp::sync_group (
   $smtp_alert           = undef,
   $nopreempt            = undef,
 ) {
-  concat::fragment { "keepalived.conf_vrrp_sync_group_${name}":
+  $_name = regsubst($name, '[:\/\n]', '')
+
+  concat::fragment { "keepalived.conf_vrrp_sync_group_${_name}":
     ensure  => $ensure,
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_sync_group.erb'),

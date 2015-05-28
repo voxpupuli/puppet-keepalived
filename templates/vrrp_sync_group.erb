@@ -1,4 +1,4 @@
-vrrp_sync_group <%= @name %> {
+vrrp_sync_group <%= @_name %> {
   group {
   <%- Array(@group).each do |vrrp_instance| -%>
     <%= vrrp_instance %>
