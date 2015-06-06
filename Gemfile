@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 puppetversion = ENV.key?('PUPPET_VERSION') ? "~> #{ENV['PUPPET_VERSION']}" : ['>= 3.2.1']
 gem 'puppet', puppetversion
 
+# Support ruby 1.8.7
+# https://github.com/rspec/rspec-core/issues/1864
+if RUBY_VERSION < "1.9"
+  gem 'rspec', '< 3.2.0'
+end
+
 if puppetversion =~ /^3/
   ## rspec-hiera-puppet is puppet 3 only
   gem 'rspec-hiera-puppet', '>=1.0.0'
