@@ -41,14 +41,14 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :lb_algo             => 'lc',
         :lb_kind             => 'NAT',
         :protocol            => 'UDP',
-        :delay_loop          => 60,
+        :delay_loop          => '60',
         :persistence_timeout => 5,
         :ha_suspend          => true,
         :virtualhost         => 'example.com',
         :alpha               => true,
         :omega               => true,
-        :quorum              => 5,
-        :hysteresis          => 9,
+        :quorum              => '5',
+        :hysteresis          => '9',
         :sorry_server        => { 'ip_address' => '10.1.1.3',
                                   'port'       => '999'}
       }

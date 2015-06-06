@@ -1,6 +1,6 @@
-group <%= name %> {
+group <%= @name %> {
 
-  virtual_server <%= @ip_address %> <%= port %>
+  virtual_server <%= @ip_address %> <%= @port %>
 
   <%- if @delay_loop -%>
   delay_loop <%= @delay_loop %>
@@ -10,7 +10,7 @@ group <%= name %> {
   lb_kind <%= @lb_kind %>
   <%- end -%>
   <%- if @persistence_timeout %>
-  persistence_timeout <%= persistence_timeout %>
+  persistence_timeout <%= @persistence_timeout %>
   <%- end -%>
   <%- if @ha_suspend -%>
   ha_suspend
@@ -25,10 +25,10 @@ group <%= name %> {
   omega
   <%- end -%>
   <%- if @quorum -%>
-  quorum <%= quorum %>
+  quorum <%= @quorum %>
   <%- end -%>
   <%- if @hysteresis -%>
-  hysteresis <%= hysteresis %>
+  hysteresis <%= @hysteresis %>
   <%- end -%>
   protocol <%= @protocol %>
   <%- if @sorry_server -%>
@@ -42,7 +42,7 @@ group <%= name %> {
       <%- if @tcp_check -%>
     TCP_CHECK {
       connect_port <%= rs_port %>
-      connect_timeout <%= tcp_check['connect_timeout'] %>
+      connect_timeout <%= @tcp_check['connect_timeout'] %>
     }
       <%- end -%>
   }
