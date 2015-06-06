@@ -31,7 +31,7 @@ before_install:
   - 'gem install bundler'
 
 script:
-  - bundle install
+  - bundle install --without="development system_tests"
   - bundle update
   - bundle exec rake
 env:
