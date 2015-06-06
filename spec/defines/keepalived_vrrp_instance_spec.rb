@@ -674,20 +674,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
-  describe 'with parameter virtual_routes not in a hash' do
-    let (:params) {
-      mandatory_params.merge({
-        :virtual_ipaddress_int => '_VALUE_',
-        :virtual_routes => ['192.168.1.0/24']
-      })
-    }
-
-    it do
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error)
-    end
-
-  end
-
   describe 'with virtual_routes as hash' do
     let (:params) {
       mandatory_params.merge({
