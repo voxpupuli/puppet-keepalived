@@ -2,7 +2,7 @@ vrrp_script <%= @name %> {
   script    "<%= @script %>"
   interval  <%= @interval %>
   <%- unless @no_weight -%>
-  weight    <%= @weight %>
+  weight    <%= @weight_real %>
   <%- end -%>
   <%- if @fall -%>
   fall      <%= @fall %>

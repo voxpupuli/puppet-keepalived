@@ -36,6 +36,8 @@ define keepalived::vrrp::script (
   } else {
     if $no_weight {
       fail('Cannot enable no_weight and specify a weight!')
+    } else {
+      $weight_real = $weight
     }
   }
 
