@@ -1,39 +1,39 @@
 group <%= @_name %> {
 
-  virtual_server <%= @ip_address %> <%= @port %>
+  virtual_server <%= @ip_address %> <%= @port %> {
 
-  <%- if @delay_loop -%>
-  delay_loop <%= @delay_loop %>
-  <%- end -%>
-  lb_algo <%= @lb_algo %>
-  <%- if @lb_kind -%>
-  lb_kind <%= @lb_kind %>
-  <%- end -%>
-  <%- if @persistence_timeout %>
-  persistence_timeout <%= @persistence_timeout %>
-  <%- end -%>
-  <%- if @ha_suspend -%>
-  ha_suspend
-  <%- end -%>
-  <%- if @virtualhost -%>
-  virtualhost <%= @virtualhost %>
-  <%- end -%>
-  <%- if @alpha -%>
-  alpha
-  <%- end -%>
-  <%- if @omega -%>
-  omega
-  <%- end -%>
-  <%- if @quorum -%>
-  quorum <%= @quorum %>
-  <%- end -%>
-  <%- if @hysteresis -%>
-  hysteresis <%= @hysteresis %>
-  <%- end -%>
-  protocol <%= @protocol %>
-  <%- if @sorry_server -%>
-  sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
-  <%- end -%>
+    <%- if @delay_loop -%>
+    delay_loop <%= @delay_loop %>
+    <%- end -%>
+    lb_algo <%= @lb_algo %>
+    <%- if @lb_kind -%>
+    lb_kind <%= @lb_kind %>
+    <%- end -%>
+    <%- if @persistence_timeout %>
+    persistence_timeout <%= @persistence_timeout %>
+    <%- end -%>
+    <%- if @ha_suspend -%>
+    ha_suspend
+    <%- end -%>
+    <%- if @virtualhost -%>
+    virtualhost <%= @virtualhost %>
+    <%- end -%>
+    <%- if @alpha -%>
+    alpha
+    <%- end -%>
+    <%- if @omega -%>
+    omega
+    <%- end -%>
+    <%- if @quorum -%>
+    quorum <%= @quorum %>
+    <%- end -%>
+    <%- if @hysteresis -%>
+    hysteresis <%= @hysteresis %>
+    <%- end -%>
+    protocol <%= @protocol %>
+    <%- if @sorry_server -%>
+    sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
+    <%- end -%>
 
   <%- if @real_servers -%>
     <%- Array(@real_servers).each do |rs| -%>
