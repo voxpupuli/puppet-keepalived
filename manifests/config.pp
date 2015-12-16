@@ -38,5 +38,7 @@ class keepalived::config {
     content => "\n",
     order   => '999',
   }
+
+  create_resources(keepalived::vrrp::instance, $::keepalived::vrrp_instance)
 }
 
