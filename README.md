@@ -54,6 +54,24 @@ node /node02/ {
 }
 ```
 
+or hiera:
+
+```yaml
+---
+keepalived::vrrp_instance:
+  VI_50:
+    interface: 'eth1'
+    state: 'MASTER'
+    virtual_router_id: '50'
+    priority: '101'
+    auth_type: 'PASS'
+    auth_pass: 'secret'
+    virtual_ipaddress: '10.0.0.1/29'
+    track_interface:
+      - 'eth1'
+      - 'tun0'
+```
+
 ### Add floating routes
 
 ```puppet
@@ -72,6 +90,26 @@ node /node01/ {
                            { to  => '168.168.3.0/24', via => '10.0.0.3' } ]
   }
 }
+```
+
+hiera:
+
+```yaml
+---
+keepalived::vrrp_instance:
+  VI_50:
+    interface: 'eth1'
+    state: 'MASTER'
+    virtual_router_id: '50'
+    priority: '101'
+    auth_type: 'PASS'
+    auth_pass: 'secret'
+    virtual_ipaddress: '10.0.0.1/29'
+    virtual_routes:
+      - to: '168.168.2.0/24'
+        via: '10.0.0.2'
+      - to: 168.168.3.0/24'
+        via: '10.0.0.3'
 ```
 
 ### Detect application level failure
