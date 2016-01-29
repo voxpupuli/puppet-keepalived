@@ -26,11 +26,15 @@ define keepalived::lvs::real_server::misc_check (
   $virtual_server,
   $real_server,
   $misc_path,
-  $misc_timeout = 0,
+  $misc_timeout = undef,
   $misc_dynamic = false,
 ) {
   $_real_server = regsubst($real_server, '[:\/\n]', '')
   $_name = regsubst($name, '[:\/\n]', '')
+
+  if $misc_timeout {
+    validate_re($misc_timeout, '^\d+$')
+  }
 
   concat::fragment { "keepalived.conf_lvs_real_server_misc_check_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
