@@ -32,7 +32,6 @@ class keepalived (
 
   class { 'keepalived::install': } ->
   class { 'keepalived::config': } ->
-  class { 'keepalived::service': } ->
-  Class[ 'keepalived' ]
+  class { 'keepalived::service': }
 }
 
