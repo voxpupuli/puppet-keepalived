@@ -9,7 +9,7 @@ class keepalived::config {
   }
 
   if $::keepalived::service_manage == true {
-    File {
+    Concat {
       notify  => Service[$::keepalived::service_name],
     }
   }
