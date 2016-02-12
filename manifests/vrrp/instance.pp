@@ -138,6 +138,21 @@
 #                          the other router to lose (or not gain) MASTER state,
 #                          since it was also tracking link status.
 #                          Default: false.
+#
+# $use_vmac                Tells keepalived to create a macvlan interface for
+#                          virtual MAC support.
+#                          Default: false.
+#
+# $vmac_interface          When `use_vmac` is enabled, create the macvlan
+#                          interface with the given name. Keepalived defaults
+#                          to a naming scheme of `vrrp.${virtual_router_id}`.
+#                          Default: undef.
+#
+# $vmac_xmit_base          When `use_vmac` is enabled, causes keepalived to
+#                          transmit and receive VRRP messages on the physical
+#                          interface while ARP transmit/receive from the VMAC
+#                          interface.
+#                          Default: undef.
 
 define keepalived::vrrp::instance (
   $interface,
@@ -169,6 +184,9 @@ define keepalived::vrrp::instance (
   $unicast_source_ip          = undef,
   $unicast_peers              = undef,
   $dont_track_primary         = false,
+  $use_vmac                   = false,
+  $vmac_interface             = undef,
+  $vmac_xmit_base             = undef,
 
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
