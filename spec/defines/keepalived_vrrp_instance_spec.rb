@@ -784,6 +784,22 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with parameter multicast_source_ip' do
+    let (:params) {
+      mandatory_params.merge({
+        :multicast_source_ip => '_VALUE_',
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /mcast_src_ip.*_VALUE_/
+      )
+    }
+  end
+
   describe 'with unicast_peers as array containing unicast peer ip addresses' do
     let (:params) {
       mandatory_params.merge({
