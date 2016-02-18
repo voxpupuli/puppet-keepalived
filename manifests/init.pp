@@ -18,6 +18,8 @@ class keepalived (
   $service_name       = $::keepalived::params::service_name,
   $service_restart    = $::keepalived::params::service_restart,
   $vrrp_instance      = {},
+  $vrrp_script        = {},
+  $vrrp_sync_group    = {},
 ) inherits keepalived::params {
   validate_absolute_path($config_dir)
   validate_re($config_dir_mode, '^[0-9]+$')
@@ -29,6 +31,9 @@ class keepalived (
   validate_bool($service_hasstatus)
   validate_bool($service_manage)
   validate_string($service_name)
+  validate_hash($vrrp_instance)
+  validate_hash($vrrp_script)
+  validate_hash($vrrp_sync_group)
 
   class { 'keepalived::install': } ->
   class { 'keepalived::config': } ->
