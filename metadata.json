@@ -1,6 +1,6 @@
 {
   "name": "arioch-keepalived",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "author": "Tom De Vylder",
   "summary": "Keepalived module",
   "license": "Apache License, Version 2.0",
