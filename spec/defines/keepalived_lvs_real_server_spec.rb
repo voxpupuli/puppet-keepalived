@@ -17,7 +17,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with( {
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(/ {10}/, '    ')
           real_server 127.3.4.5 8080 {
           }
         CONTENT
@@ -77,7 +77,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(/ {10}/, '    ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
@@ -112,7 +112,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(/ {10}/, '    ')
           real_server 127.3.4.5 789 {
             SMTP_CHECK {
               host {
@@ -139,7 +139,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(/ {10}/, '    ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'

@@ -25,7 +25,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
-        'content' => /^group _TITLE_ \{\s+virtual_server 10.1.1.1 8080\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+/
+        'content' => /^group _TITLE_ \{\n\n\s\s+virtual_server 10.1.1.1 8080\s{\n\n\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+/
       })
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_-footer').with( {
         'content' => /^\}/
