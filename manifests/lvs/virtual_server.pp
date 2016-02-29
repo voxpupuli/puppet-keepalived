@@ -136,18 +136,18 @@ define keepalived::lvs::virtual_server (
   $collect_exported    = true,
   $delay_loop          = undef,
   $ha_suspend          = false,
+  $http_get            = undef,
   $hysteresis          = undef,
   $lb_kind             = 'NAT',
+  $misc_check          = undef,
   $omega               = false,
   $persistence_timeout = undef,
   $protocol            = 'TCP',
   $quorum              = undef,
   $real_servers        = undef,
   $sorry_server        = undef,
-  $tcp_check           = undef,
-  $misc_check          = undef,
-  $http_get            = undef,
   $ssl_get             = undef,
+  $tcp_check           = undef,
   $virtualhost         = undef,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
@@ -206,7 +206,7 @@ define keepalived::lvs::virtual_server (
 
   concat::fragment { "keepalived.conf_lvs_virtual_server_${_name}-footer":
     target  => "${::keepalived::config_dir}/keepalived.conf",
-    content => "}\n",
+    content => "}\n\n",
     order   => "250-${_name}-zzz",
   }
 
