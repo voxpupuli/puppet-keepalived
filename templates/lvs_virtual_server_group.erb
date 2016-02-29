@@ -1,0 +1,153 @@
+virtual_server_group <%= @_name %> {
+  <%- @lvs["virtual_servers"].each do |vs| -%>
+    <%- if vs['port'] %><%- vs['port'].include?(@port) || next -%><%- end -%>
+    <%= vs["ip_address"] %> <%= @port %>
+    <%- $ip_address = vs["ip_address"] -%>
+  <%- end -%>
+}
+virtual_server group <%= @_name %> {
+  <%- if @delay_loop -%>
+  delay_loop <%= @delay_loop %>
+  <%- end -%>
+  lb_algo <%= @lb_algo %>
+  <%- if @lb_kind -%>
+  lb_kind <%= @lb_kind %>
+  <%- end -%>
+  <%- if @persistence_timeout %>
+  persistence_timeout <%= @persistence_timeout %>
+  <%- end -%>
+  <%- if @ha_suspend -%>
+  ha_suspend
+  <%- end -%>
+  <%- if @virtualhost -%>
+  virtualhost <%= @virtualhost %>
+  <%- end -%>
+  <%- if @alpha -%>
+  alpha
+  <%- end -%>
+  <%- if @omega -%>
+  omega
+  <%- end -%>
+  <%- if @quorum -%>
+  quorum <%= @quorum %>
+  <%- end -%>
+  <%- if @hysteresis -%>
+  hysteresis <%= @hysteresis %>
+  <%- end -%>
+  protocol <%= @protocol %>
+  <%- if @sorry_server -%>
+  sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
+  <%- end -%>
+
+  <%- if @lvs -%>
+    <%- @lvs["real_servers"].each do |rs| -%>
+      <%- rs_port = rs['port'] || @lvs["port"] || @port -%>
+  real_server <%= rs['ip_address'] %> <%= rs_port %> {
+      <%- if rs['weight'] -%>
+    weight <%= rs['weight'] %>
+      <%- end -%>
+      <%- if rs['inhibit_on_failure'] -%>
+    inhibit_on_failure
+      <%- end -%>
+      <%- if @tcp_check -%>
+    TCP_CHECK {
+      connect_port <%= rs_port %>
+      connect_timeout <%= @tcp_check['connect_timeout'] %>
+        <%- if @tcp_check['connect_ip'] -%>
+      connect_ip <%= @tcp_check['connect_ip'] %>
+        <%- end -%>
+        <%- if @tcp_check['bindto'] -%>
+      bindto <%= @tcp_check['bindto'] %>
+        <%- end -%>
+        <%- if @tcp_check['bind_port'] -%>
+      bind_port <%= @tcp_check['bind_port'] %>
+        <%- end -%>
+        <%- if @tcp_check['fwmark'] -%>
+      fwmark <%= @tcp_check['fwmark'] %>
+        <%- end -%>
+        <%- if @tcp_check['warmup'] -%>
+      warmup <%= @tcp_check['warmup'] %>
+        <%- end -%>
+    }
+      <%- end -%>
+      <%- if @misc_check -%>
+    MISC_CHECK {
+      misc_path "<%= @misc_check['misc_path'] %> <%= @ip_address %> <%= @port %> <%= rs['ip_address'] %> <%= rs_port %>"
+      connect_timeout <%= @misc_check['connect_timeout'] %>
+        <%- if @misc_check['warmup'] -%>
+      warmup <%= @misc_check['warmup'] %>
+        <%- end -%>
+        <%- if @misc_check['misc_dynamic'] -%>
+      misc_dynamic <%= @misc_check['misc_dynamic'] %>
+        <%- end -%>
+    }
+      <%- end -%>
+      <%- if @http_get -%>
+    HTTP_GET {
+      url {
+        path <%= @http_get['path'] %>
+        digest <%= @http_get['digest'] %>
+      }
+      connect_timeout <%= @http_get['connect_timeout'] %>
+        <%- if @http_get['nb_get_retry'] -%>
+      nb_get_retry <%= @http_get['nb_get_retry'] %>
+        <%- end -%>
+        <%- if @http_get['delay_before_retry'] -%>
+      delay_before_retry <%= @http_get['delay_before_retry'] %>
+        <%- end -%>
+        <%- if @http_get['connect_ip'] -%>
+      connect_ip <%= @http_get['connect_ip'] %>
+        <%- end -%>
+        <%- if @http_get['connect_port'] -%>
+      connect_port <%= @http_get['connect_port'] %>
+        <%- end -%>
+        <%- if @http_get['bindto'] -%>
+      bindto <%= @http_get['bindto'] %>
+        <%- end -%>
+        <%- if @http_get['bind_port'] -%>
+      bind_port <%= @http_get['bind_port'] %>
+        <%- end -%>
+        <%- if @http_get['fwmark'] -%>
+      fwmark <%= @http_get['fwmark'] %>
+        <%- end -%>
+        <%- if @http_get['warmup'] -%>
+      warmup <%= @http_get['warmup'] %>
+        <%- end -%>
+    }
+      <%- end -%>
+      <%- if @ssl_get -%>
+    SSL_GET {
+      url {
+        path <%= @ssl_get['path'] %>
+        digest <%= @ssl_get['digest'] %>
+      }
+      connect_timeout <%= @ssl_get['connect_timeout'] %>
+        <%- if @ssl_get['nb_get_retry'] -%>
+      nb_get_retry <%= @ssl_get['nb_get_retry'] %>
+        <%- end -%>
+        <%- if @ssl_get['delay_before_retry'] -%>
+      delay_before_retry <%= @ssl_get['delay_before_retry'] %>
+        <%- end -%>
+        <%- if @ssl_get['connect_ip'] -%>
+      connect_ip <%= @ssl_get['connect_ip'] %>
+        <%- end -%>
+        <%- if @ssl_get['connect_port'] -%>
+      connect_port <%= @ssl_get['connect_port'] %>
+        <%- end -%>
+        <%- if @ssl_get['bindto'] -%>
+      bindto <%= @ssl_get['bindto'] %>
+        <%- end -%>
+        <%- if @ssl_get['bind_port'] -%>
+      bind_port <%= @ssl_get['bind_port'] %>
+        <%- end -%>
+        <%- if @ssl_get['fwmark'] -%>
+      fwmark <%= @ssl_get['fwmark'] %>
+        <%- end -%>
+        <%- if @ssl_get['warmup'] -%>
+      warmup <%= @ssl_get['warmup'] %>
+        <%- end -%>
+    }
+      <%- end -%>
+  }
+    <%- end -%>
+  <%- end -%>
