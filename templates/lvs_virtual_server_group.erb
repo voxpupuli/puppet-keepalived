@@ -72,7 +72,7 @@ virtual_server group <%= @_name %> {
       <%- end -%>
       <%- if @misc_check -%>
     MISC_CHECK {
-      misc_path "<%= @misc_check['misc_path'] %> <%= @ip_address %> <%= @port %> <%= rs['ip_address'] %> <%= rs_port %>"
+      misc_path "<%= @misc_check['misc_path'] %> <%= $ip_address %> <%= @port %> <%= rs['ip_address'] %> <%= rs_port %>"
       connect_timeout <%= @misc_check['connect_timeout'] %>
         <%- if @misc_check['warmup'] -%>
       warmup <%= @misc_check['warmup'] %>
