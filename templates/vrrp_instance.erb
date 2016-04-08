@@ -87,6 +87,7 @@ vrrp_instance <%= @_name %> {
   }
   <%- end -%>
 
+  <%- if @virtual_ipaddress -%>
   virtual_ipaddress {
   <%- if @virtual_ipaddress.class == Hash -%>
     <%- vips = [ @virtual_ipaddress ] -%>
@@ -103,6 +104,7 @@ vrrp_instance <%= @_name %> {
     <%- end -%>
   <%- end -%>
   }
+  <%- end -%>
 
   <%- if @virtual_ipaddress_excluded -%>
   virtual_ipaddress_excluded {
