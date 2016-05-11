@@ -119,5 +119,24 @@ describe 'keepalived::vrrp::script', :type => :define do
       )
     }
   end
+
+  describe 'with parameter timeout' do
+    let (:title) { '_TITLE_' }
+    let (:params) {
+      {
+        :timeout => '_VALUE_',
+        :script  => '_SCRIPT_'
+      }
+    }
+
+    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
+          'content' => /timeout.*_VALUE_/
+      )
+    }
+  end
+
 end
 
