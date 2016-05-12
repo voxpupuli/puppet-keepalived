@@ -5,6 +5,15 @@ vrrp_instance <%= @_name %> {
   priority                  <%= @priority %>
   advert_int                <%= @advert_int %>
   garp_master_delay         <%= @garp_master_delay %>
+
+  <%- if @use_vmac -%>
+  use_vmac <%= @vmac_interface %>
+
+  <%- if @vmac_xmit_base -%>
+  vmac_xmit_base
+  <%- end -%>
+  <%- end -%>
+
   <%- if @lvs_interface -%>
   lvs_sync_daemon_interface <%= @lvs_interface %>
   <%- end -%>
