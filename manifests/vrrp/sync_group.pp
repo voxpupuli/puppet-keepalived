@@ -35,7 +35,6 @@ define keepalived::vrrp::sync_group (
   $_name = regsubst($name, '[:\/\n]', '')
 
   concat::fragment { "keepalived.conf_vrrp_sync_group_${_name}":
-    ensure  => $ensure,
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_sync_group.erb'),
     order   => '050',
