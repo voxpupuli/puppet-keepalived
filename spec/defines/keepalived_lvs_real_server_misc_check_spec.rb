@@ -1,13 +1,6 @@
 
 require 'spec_helper'
 
-# explicitely enable both syntaxes to avoid deprecation warnung
-RSpec.configure do |config|
-  config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]
-  end
-end
-
 describe 'keepalived::lvs::real_server::misc_check', :type => 'define' do
   let(:title) { 'test' }
   let(:facts) { debian_facts }
