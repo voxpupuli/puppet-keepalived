@@ -33,6 +33,24 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
   end
 
+  context 'with bare minimum alternative: fwmark and lb_algo' do
+    let(:params) {
+      {
+        :fwmark       => '123',
+        :lb_algo      => 'lc',
+      }
+    }
+
+    it {
+      should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
+        'content' => /^group _TITLE_ \{\s+virtual_server fwmark 123\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+/
+      })
+      should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_-footer').with( {
+        'content' => /^\}/
+      })
+    }
+  end
+
   context 'with optional parameters' do
     let(:params) {
       {
@@ -73,6 +91,20 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it do
       expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid IP/)
+    end
+  end
+
+  context 'with invalid firewall mark' do
+    let(:title) { '_TITLE_' }
+    let(:params) {
+      {
+        :fwmark              => 'rubbish',
+        :lb_algo             => 'lc',
+      }
+    }
+
+    it do
+      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid fwmark/)
     end
   end
 

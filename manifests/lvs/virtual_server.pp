@@ -17,6 +17,10 @@
 # [*port*]
 #   Virtual sever IP port.
 #
+# [*fwmark*]
+#   Virtual Server firewall mark. (overrides ip_address and port)
+#   Default: not set
+#
 # [*lb_algo*]
 #   Must be one of rr, wrr, lc, wlc, lblc, sh, dh
 #   Default: not set.
@@ -77,9 +81,10 @@
 #   Defaults to true => collect exported real_servers
 #
 define keepalived::lvs::virtual_server (
-  $ip_address,
-  $port,
   $lb_algo,
+  $ip_address          = undef,
+  $port                = undef,
+  $fwmark              = undef,
   $alpha               = false,
   $collect_exported    = true,
   $delay_loop          = undef,
@@ -97,11 +102,17 @@ define keepalived::lvs::virtual_server (
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
-  if ( ! is_ip_address($ip_address) ) {
-    fail('Invalid IP address')
+  if ( ! $fwmark ) {
+    if ( ! is_ip_address($ip_address) ) {
+      fail('Invalid IP address')
+    }
+
+    validate_re($port, '^[0-9]{1,5}$', "Invalid port: ${port}")
+  }
+  else {
+    validate_re($fwmark, '^[0-9]+$', "Invalid fwmark: ${fwmark}")
   }
 
-  validate_re($port, '^[0-9]{1,5}$', "Invalid port: ${port}")
   validate_re(
     $lb_algo, '^(rr|wrr|lc|wlc|lblc|sh|dh)$',
     "Invalid lb_algo: ${lb_algo}"
