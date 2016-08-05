@@ -47,6 +47,8 @@
 #
 # $virtual_router_id::     Set virtual router id.
 #
+# $use_vmac::              Create a macvlan interface named vrrp.{virtual_router_id}
+#
 # $ensure::                Default: present.
 #
 # $auth_type::             Set authentication method.
@@ -144,6 +146,7 @@ define keepalived::vrrp::instance (
   $priority,
   $state,
   $virtual_router_id,
+  $use_vmac                   = undef,
   $virtual_ipaddress          = undef,
   $ensure                     = present,
   $auth_type                  = undef,
