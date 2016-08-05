@@ -2,6 +2,10 @@ vrrp_instance <%= @_name %> {
   interface                 <%= @interface %>
   state                     <%= @state %>
   virtual_router_id         <%= @virtual_router_id %>
+  <%- if @use_vmac -%>
+  use_vmac
+  vmac_xmit_base
+  <%- end -%>
   priority                  <%= @priority %>
   advert_int                <%= @advert_int %>
   garp_master_delay         <%= @garp_master_delay %>
