@@ -298,6 +298,23 @@ describe 'keepalived::vrrp::instance', :type => :define do
       )
     }
   end
+  
+  describe 'with parameter use_vmac' do
+    let (:params) {
+      mandatory_params.merge({
+        :use_vmac => '_VALUE_',
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /use_vmac/,
+        'content' => /vmac_xmit_base/
+      )
+    }
+  end
 
   describe 'with parameter auth_type' do
     let (:params) {
