@@ -26,6 +26,13 @@ vrrp_instance <%= @_name %> {
   dont_track_primary
   <%- end -%>
 
+  <%- if @use_vmac -%>
+  use_vmac
+  <%- if @vmac_xmit_base -%>
+  vmac_xmit_base
+  <%- end -%>
+  <%- end -%>
+
   # notify scripts and alerts are optional
   #
   # filenames of scripts to run on transitions

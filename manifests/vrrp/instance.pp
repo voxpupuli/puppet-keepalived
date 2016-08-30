@@ -136,6 +136,12 @@
 #                          the other router to lose (or not gain) MASTER state,
 #                          since it was also tracking link status.
 #                          Default: false.
+#
+# $use_vmac                Use virtual MAC address for virtual IP addresses.
+#
+# $vmac_xmit_base          When using virtual MAC addresses transmit and receive
+#                          VRRP messaged on the underlying interface whilst ARP
+#                          will happen from the the VMAC interface.
 
 define keepalived::vrrp::instance (
   $interface,
@@ -166,6 +172,8 @@ define keepalived::vrrp::instance (
   $unicast_source_ip          = undef,
   $unicast_peers              = undef,
   $dont_track_primary         = false,
+  $use_vmac                   = false,
+  $vmac_xmit_base             = true,
 
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
