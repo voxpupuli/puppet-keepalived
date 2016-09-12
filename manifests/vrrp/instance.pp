@@ -179,7 +179,7 @@ define keepalived::vrrp::instance (
   if (!is_integer($virtual_router_id) or ($virtual_router_id + 0) < 1 or ($virtual_router_id + 0) > 255) {
     fail('virtual_router_id must be an integer >= 1 and <= 255')
   }
-  
+
   if ($ensure == 'present') {
     concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
       target  => "${::keepalived::config_dir}/keepalived.conf",
