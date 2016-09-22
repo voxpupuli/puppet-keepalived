@@ -183,7 +183,6 @@ keepalived::vrrp_instance:
 
 ```puppet
 class { 'keepalived::global_defs':
-  ensure                  => present,
   notification_email      => 'no@spam.tld',
   notification_email_from => 'no@spam.tld',
   smtp_server             => 'localhost',
