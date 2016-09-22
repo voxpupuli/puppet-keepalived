@@ -283,22 +283,6 @@ describe 'keepalived::vrrp::instance', :type => :define do
     end
   end
 
-  describe 'with parameter: ensure' do
-    let (:params) {
-      mandatory_params.merge({
-        :ensure => '_VALUE_',
-      })
-    }
-
-    it { should create_keepalived__vrrp__instance('_NAME_') }
-    it {
-      should \
-        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-        'ensure' => /_VALUE_/
-      )
-    }
-  end
-
   describe 'with parameter auth_type' do
     let (:params) {
       mandatory_params.merge({

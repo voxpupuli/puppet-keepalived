@@ -47,8 +47,6 @@
 #
 # $virtual_router_id::     Set virtual router id.
 #
-# $ensure::                Default: present.
-#
 # $auth_type::             Set authentication method.
 #                          Default: undef.
 #
@@ -145,7 +143,6 @@ define keepalived::vrrp::instance (
   $state,
   $virtual_router_id,
   $virtual_ipaddress          = undef,
-  $ensure                     = present,
   $auth_type                  = undef,
   $auth_pass                  = undef,
   $track_script               = undef,
@@ -181,7 +178,6 @@ define keepalived::vrrp::instance (
   }
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
-    ensure  => $ensure,
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),
     order   => '100',

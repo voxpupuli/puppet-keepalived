@@ -4,8 +4,6 @@
 #
 # $group::                 Define vrrp instances to group (Array)
 #
-# $ensure::                Default: present.
-#
 # $notify_script_master::  Define the notify master script.
 #                          Default: undef.
 #
@@ -24,7 +22,6 @@
 #
 define keepalived::vrrp::sync_group (
   $group,
-  $ensure               = present,
   $notify_script_master = undef,
   $notify_script_backup = undef,
   $notify_script_fault  = undef,
@@ -35,7 +32,6 @@ define keepalived::vrrp::sync_group (
   $_name = regsubst($name, '[:\/\n]', '')
 
   concat::fragment { "keepalived.conf_vrrp_sync_group_${_name}":
-    ensure  => $ensure,
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_sync_group.erb'),
     order   => '050',

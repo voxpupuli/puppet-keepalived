@@ -17,19 +17,14 @@
 # $router_id::                Define the router ID.
 #                             Default: undef.
 #
-# $ensure::                   Default: present.
-#
-#
 class keepalived::global_defs(
   $notification_email      = undef,
   $notification_email_from = undef,
   $smtp_server             = undef,
   $smtp_connect_timeout    = undef,
   $router_id               = undef,
-  $ensure                  = present,
 ) inherits keepalived::params {
   concat::fragment { 'keepalived.conf_globaldefs':
-    ensure  => $ensure,
     target  => "${::keepalived::params::config_dir}/keepalived.conf",
     content => template('keepalived/globaldefs.erb'),
     order   => '010',
