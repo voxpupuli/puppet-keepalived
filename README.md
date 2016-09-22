@@ -159,6 +159,26 @@ node /node02/ {
 }
 ```
 
+or hiera:
+
+```yaml
+---
+keepalived::vrrp_script:
+  check_nginx:
+    script: '/usr/bin/killall -0 nginx'
+
+keepalived::vrrp_instance:
+  VI_50:
+    interface: 'eth1'
+    state: 'MASTER'
+    virtual_router_id: '50'
+    priority: '101'
+    auth_type: 'PASS'
+    auth_pass: 'secret'
+    virtual_ipaddress: '10.0.0.1/29'
+    track_script: check_nginx
+```
+
 ### Global definitions
 
 ```puppet

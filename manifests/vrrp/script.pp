@@ -19,12 +19,16 @@
 # $rise::     required number of successes for OK switch.
 #             Default: undef
 #
+# $timeout::  max time to wait for the vrrp script to return.
+#             Default: undef
+#
 define keepalived::vrrp::script (
   $interval  = '2',
   $script    = undef,
   $weight    = undef,
   $fall      = undef,
   $rise      = undef,
+  $timeout   = undef,
   $no_weight = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')

@@ -10,5 +10,8 @@ vrrp_script <%= @_name %> {
   <%- if @rise -%>
   rise      <%= @rise %>
   <%- end -%>
+  <%- if @timeout -%>
+  timeout      <%= @timeout %>
+  <%- end -%>
 }
 
