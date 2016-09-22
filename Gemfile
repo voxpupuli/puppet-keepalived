@@ -3,11 +3,12 @@ source 'https://rubygems.org'
 puppetversion = ENV.key?('PUPPET_VERSION') ? "~> #{ENV['PUPPET_VERSION']}" : ['>= 3.2.1']
 gem 'puppet', puppetversion
 
-# Support ruby 1.8.7
+# Support ruby < 2.0.0
 # https://github.com/rspec/rspec-core/issues/1864
-if RUBY_VERSION < "1.9"
-  gem 'rspec', '< 3.2.0'
-end
+gem 'rspec',     '~> 2.0'   if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
+gem 'rake',      '~> 10.0'  if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
+gem 'json',      '<= 1.8'   if RUBY_VERSION < '2.0.0'
+gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
 
 if puppetversion =~ /^3/
   ## rspec-hiera-puppet is puppet 3 only
@@ -18,7 +19,6 @@ facterversion = ENV.key?('FACTER_VERSION') ? "~> #{ENV['FACTER_VERSION']}" : ['>
 
 gem 'facter', facterversion
 
-gem 'rake'
 gem 'puppet-lint', '>=0.3.2'
 gem 'puppetlabs_spec_helper', '>=0.8.0'
 gem 'puppet-syntax'
