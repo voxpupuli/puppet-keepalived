@@ -803,7 +803,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       )
     }
   end
-  
+
   describe 'with dont_track_primary' do
     let (:params) {
       mandatory_params.merge({
@@ -820,4 +820,36 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with use_vmac' do
+    let (:params) {
+      mandatory_params.merge({
+        :use_vmac => true,
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /use_vmac/
+      )
+    }
+  end
+
+  describe 'with vmac_xmit_base' do
+    let (:params) {
+      mandatory_params.merge({
+        :use_vmac => true,
+        :vmac_xmit_base => true,
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /vmac_xmit_base/
+      )
+    }
+  end
 end
