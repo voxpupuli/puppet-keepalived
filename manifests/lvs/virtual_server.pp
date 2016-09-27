@@ -4,7 +4,7 @@
 #
 # Work in progress, supports:
 #   - single IP/port virtual servers
-#   - TCP_CHECK healthchecks
+#   - {TCP,MISC}_CHECK/{HTTP,SSL}_GET healthchecks
 #
 # === Parameters
 #
@@ -59,7 +59,57 @@
 #   The TCP_CHECK to configure for real_servers.
 #   Should be a hash containing these keys:
 #     [*connect_timeout*]
+#   And may contain these keys:
+#     [*connect_ip*]
+#     [*bindto*]
+#     [*bind_port*]
+#     [*fwmark*]
+#     [*warmup*]
 #   Default: unset => no TCP_CHECK configured.
+#
+# [*misc_check*]
+#   The MISC_CHECK to configure for real_servers.
+#   Should be a hash containing these keys:
+#     [*misc_path*]
+#     [*connect_timeout*]
+#   And may contain these keys:
+#     [*warmup*]
+#     [*misc_dynamic*]
+#   Default: unset => no MISC_CHECK configured.
+#
+# [*http_get*]
+#   The HTTP_GET to configure for real_servers.
+#   Should be a hash containing these keys:
+#     [*path*]
+#     [*digest*]
+#     [*connect_timeout*]
+#   And may contain these keys:
+#     [*nb_get_retry*]
+#     [*delay_before_retry*]
+#     [*connect_ip*]
+#     [*connect_port*]
+#     [*bindto*]
+#     [*bind_port*]
+#     [*fwmark*]
+#     [*warmup*]
+#   Default: unset => no HTTP_GET configured.
+#
+# [*ssl_get*]
+#   The SSL_GET to configure for real_servers.
+#   Should be a hash containing these keys:
+#     [*path*]
+#     [*digest*]
+#     [*connect_timeout*]
+#   And may contain these keys:
+#     [*nb_get_retry*]
+#     [*delay_before_retry*]
+#     [*connect_ip*]
+#     [*connect_port*]
+#     [*bindto*]
+#     [*bind_port*]
+#     [*fwmark*]
+#     [*warmup*]
+#   Default: unset => no SSL_GET configured.
 #
 # [*sorry_server*]
 #   The sorry_server to define
@@ -73,6 +123,8 @@
 #   Hash keys:
 #     [*ip_address*]
 #     [*port*]       (if ommitted the port defaults to the VIP port)
+#     [*weight*]
+#     [*inhibit_on_failure*]
 #
 # [*collect_exported*]
 #   Boolean. Automatically collect exported @@keepalived::lvs::real_servers
@@ -89,14 +141,17 @@ define keepalived::lvs::virtual_server (
   $collect_exported    = true,
   $delay_loop          = undef,
   $ha_suspend          = false,
+  $http_get            = undef,
   $hysteresis          = undef,
   $lb_kind             = 'NAT',
+  $misc_check          = undef,
   $omega               = false,
   $persistence_timeout = undef,
   $protocol            = 'TCP',
   $quorum              = undef,
   $real_servers        = undef,
   $sorry_server        = undef,
+  $ssl_get             = undef,
   $tcp_check           = undef,
   $virtualhost         = undef,
 ) {
@@ -114,7 +169,7 @@ define keepalived::lvs::virtual_server (
   }
 
   validate_re(
-    $lb_algo, '^(rr|wrr|lc|wlc|lblc|sh|dh)$',
+    $lb_algo, '^(rr|wrr|lc|wlc|lblc|sh|dh|sed)$',
     "Invalid lb_algo: ${lb_algo}"
   )
 
@@ -162,7 +217,7 @@ define keepalived::lvs::virtual_server (
 
   concat::fragment { "keepalived.conf_lvs_virtual_server_${_name}-footer":
     target  => "${::keepalived::config_dir}/keepalived.conf",
-    content => "}\n",
+    content => "}\n\n",
     order   => "250-${_name}-zzz",
   }
 
