@@ -142,6 +142,13 @@
 # $vmac_xmit_base          When using virtual MAC addresses transmit and receive
 #                          VRRP messaged on the underlying interface whilst ARP
 #                          will happen from the the VMAC interface.
+#
+# $collect_exported        Boolean. Automatically collect exported
+#                          @@keepalived::vrrp::script with a vrrp_instance equal
+#                          to the name/title of this resource. This allows you to
+#                          easily export a script resource on each node in the
+#                          pool. Defaults to false, set to true to collect
+#                          exported scripts.
 
 define keepalived::vrrp::instance (
   $interface,
@@ -174,7 +181,7 @@ define keepalived::vrrp::instance (
   $dont_track_primary         = false,
   $use_vmac                   = false,
   $vmac_xmit_base             = true,
-
+  $collect_exported           = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
@@ -185,10 +192,22 @@ define keepalived::vrrp::instance (
     fail('virtual_router_id must be an integer >= 1 and <= 255')
   }
 
+  validate_bool($collect_exported)
+
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),
-    order   => '100',
+    order   => "100-${_name}-000",
+  }
+
+  concat::fragment { "keepalived.conf_vrrp_instance_${_name}-footer":
+    target  => "${::keepalived::config_dir}/keepalived.conf",
+    content => template('keepalived/vrrp_instance-footer.erb'),
+    order   => "100-${_name}-zzz",
+  }
+
+  if $collect_exported {
+    Keepalived::Vrrp::Script <<| vrrp_instance == $_name |>>
   }
 }
 
