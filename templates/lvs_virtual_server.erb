@@ -1,10 +1,8 @@
-group <%= @_name %> {
-
-  <%- if @fwmark -%>
-  virtual_server fwmark <%= @fwmark %>
-  <%- else -%>
-  virtual_server <%= @ip_address %> <%= @port %>
-  <%- end -%>
+<%- if @fwmark -%>
+virtual_server fwmark <%= @fwmark %> {
+<%- else -%>
+virtual_server <%= @ip_address %> <%= @port %> {
+<%- end -%>
 
   <%- if @delay_loop -%>
   delay_loop <%= @delay_loop %>
