@@ -14,6 +14,14 @@ class keepalived::config {
     }
   }
 
+  file { "/etc/${::keepalived::sysconf_dir}/keepalived":
+    ensure  => file,
+    owner   => 0,
+    group   => 0,
+    mode    => '0644',
+    content => template("keepalived/keepalived.${::keepalived::sysconf_dir}.erb"),
+  }
+
   file { $::keepalived::config_dir:
     ensure => directory,
     group  => $::keepalived::config_group,

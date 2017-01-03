@@ -1,6 +1,8 @@
 # == Class keepalived
 #
 class keepalived (
+  $sysconf_dir        = $::keepalived::params::sysconf_dir,
+  $sysconf_options    = $::keepalived::params::sysconf_options,
   $config_dir         = $::keepalived::params::config_dir,
   $config_dir_mode    = $::keepalived::params::config_dir_mode,
   $config_file_mode   = $::keepalived::params::config_file_mode,
@@ -21,6 +23,8 @@ class keepalived (
   $vrrp_script        = {},
   $vrrp_sync_group    = {},
 ) inherits keepalived::params {
+  validate_string($sysconf_dir)
+  validate_string($sysconf_options)
   validate_absolute_path($config_dir)
   validate_re($config_dir_mode, '^[0-9]+$')
   validate_re($config_file_mode, '^[0-9]+$')
