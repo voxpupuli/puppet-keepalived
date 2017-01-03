@@ -10,6 +10,8 @@ class keepalived::params {
 
   case $::osfamily {
     'redhat': {
+      $sysconf_dir        = 'sysconfig'
+      $sysconf_options    = '-D'
       $config_dir         = '/etc/keepalived'
       $config_dir_mode    = '0755'
       $config_file_mode   = '0644'
@@ -24,6 +26,8 @@ class keepalived::params {
     }
 
     'debian': {
+      $sysconf_dir        = 'default'
+      $sysconf_options    = ''
       $config_dir         = '/etc/keepalived'
       $config_dir_mode    = '0755'
       $config_file_mode   = '0644'
@@ -38,6 +42,8 @@ class keepalived::params {
     }
 
     'gentoo': {
+      $sysconf_dir        = 'conf.d'
+      $sysconf_options    = '-D'
       $config_dir         = '/etc/keepalived'
       $config_dir_mode    = '0755'
       $config_file_mode   = '0644'
