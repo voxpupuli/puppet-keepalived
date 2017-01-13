@@ -49,6 +49,31 @@ group <%= @_name %> {
       connect_timeout <%= @tcp_check['connect_timeout'] %>
     }
       <%- end -%>
+      <%- if @http_get -%>
+    <% if @http_get['use_ssl'] %>SSL_GET<% else %>HTTP_GET<% end %> {
+      connect_port <%= rs_port %>
+      connect_timeout <%= @http_get['connect_timeout'] %>
+      <%- for @url in @http_get['urls'] -%>
+      url {
+        path <%= @url['path'] %>
+        digest <%= @url['digest'] %>
+        <%- if @url['status_code'] -%>
+        status_code <%= @url['status_code'] %>
+        <%- end -%>
+      }
+      <%- end -%>
+    }
+      <%- end -%>
+      <%- if @misc_check -%>
+    MISC_CHECK {
+      misc_timeout <%= @misc_check['timeout'] %>
+      misc_path <%= @misc_check['path'] %>
+      <%- if @misc_check['dynamic'] -%>
+      misc_dynamic
+      <%- end -%>
+      user <%= @misc_check['user'] %>
+    }
+      <%- end -%>
   }
     <%- end -%>
 

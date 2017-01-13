@@ -4,7 +4,7 @@
 #
 # Work in progress, supports:
 #   - single IP/port virtual servers
-#   - TCP_CHECK healthchecks
+#   - TCP_CHECK/HTTP_GET/SSL_GET/MISC_CHECK healthchecks
 #
 # === Parameters
 #
@@ -61,6 +61,26 @@
 #     [*connect_timeout*]
 #   Default: unset => no TCP_CHECK configured.
 #
+# [*http_get*]
+#   The HTTP_GET to configure for real_servers.
+#   Should be a hash containing these keys:
+#     [*use_ssl*]
+#     [*connect_timeout*]
+#     [*urls*] (hash)
+#       [*path*]
+#       [*digest*]
+#       [*status_code*] (optional; assumes any 2xx)
+#   Default: unset => no HTTP_GET configured.
+#
+# [*misc_check*]
+#   The MISC_CHECK to configure for real_servers.
+#   Should be a hash containing these keys:
+#     [*path*]
+#     [*timeout*]
+#     [*dynamic*]
+#     [*user*]
+#   Default: unset => no MISC_CHECK configured.
+#
 # [*sorry_server*]
 #   The sorry_server to define
 #   A hash with these keys:
@@ -98,6 +118,8 @@ define keepalived::lvs::virtual_server (
   $real_servers        = undef,
   $sorry_server        = undef,
   $tcp_check           = undef,
+  $http_get            = undef,
+  $misc_check          = undef,
   $virtualhost         = undef,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
@@ -152,6 +174,20 @@ define keepalived::lvs::virtual_server (
       '^[0-9]{1,5}$',
       "Invalid sorry serverport: ${sorry_server['port']}"
     )
+  }
+
+  if $tcp_check != undef {
+    validate_hash($tcp_check)
+  }
+  if $misc_check != undef {
+    validate_hash($misc_check)
+  }
+  if $http_get != undef {
+    validate_hash($http_get)
+  }
+
+  if count([$tcp_check, $misc_check, $http_get]) > 1 {
+    fail('Only one check type per virtual server supported')
   }
 
   concat::fragment { "keepalived.conf_lvs_virtual_server_${_name}":
