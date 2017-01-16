@@ -233,13 +233,18 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
   end
 
-  context 'with a real_server with a TCP_CHECK' do
+  context 'with a real_server with a MISC_CHECK' do
     let(:params) {
       {
         :ip_address   => '10.1.1.1',
         :port         => '8080',
         :lb_algo      => 'lc',
-        :tcp_check    => { 'connect_timeout' => 5 },
+        :misc_check   => {
+          'timeout' => 5,
+          'path'    => '/some/path',
+          'dynamic' => false,
+          'user'    => 'someuser',
+        },
         :real_servers => [ { 'ip_address' => '10.1.1.2',
                              'port'       => '8081'}]
       }
@@ -247,9 +252,136 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
-        'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
+        'content' => /real_server 10.1.1.2 8081 \{\s+MISC_CHECK \{\s+misc_timeout 5\s+misc_path \/some\/path\s+user someuser\s+\}\s+\}/
       })
     }
+  end
+
+  context 'with a real_server with an HTTP_GET with status_code' do
+    let(:params) {
+      {
+        :ip_address   => '10.1.1.1',
+        :port         => '8080',
+        :lb_algo      => 'lc',
+        :http_get     => {
+          'use_ssl'         => false,
+          'connect_timeout' => 42,
+          'urls' => [
+            {
+              'path'        => '/some/path',
+              'digest'      => 'somedigest',
+              'status_code' => 404,
+            }
+          ]
+        },
+        :real_servers => [ { 'ip_address' => '10.1.1.2',
+                             'port'       => '8081'}]
+      }
+    }
+
+    it {
+      should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
+        'content' => /real_server 10.1.1.2 8081 \{\s+HTTP_GET \{\s+connect_port 8081\s+connect_timeout 42\s+url \{\s+path \/some\/path\s+digest somedigest\s+status_code 404\s+\}\s+\}\s+\}/
+      })
+    }
+  end
+
+  context 'with a real_server with an SSL_GET' do
+    let(:params) {
+      {
+        :ip_address   => '10.1.1.1',
+        :port         => '8080',
+        :lb_algo      => 'lc',
+        :http_get     => {
+          'use_ssl'         => true,
+          'connect_timeout' => 42,
+          'urls' => [
+            {
+              'path'        => '/some/path',
+              'digest'      => 'somedigest',
+            }
+          ]
+        },
+        :real_servers => [ { 'ip_address' => '10.1.1.2',
+                             'port'       => '8081'}]
+      }
+    }
+
+    it {
+      should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
+        'content' => /real_server 10.1.1.2 8081 \{\s+SSL_GET \{\s+connect_port 8081\s+connect_timeout 42\s+url \{\s+path \/some\/path\s+digest somedigest\s+\}\s+\}\s+\}/
+      })
+    }
+  end
+
+  context 'with invalid TCP_CHECK' do
+    let(:params) {
+      {
+        :ip_address => '10.1.1.1',
+        :port       => '8080',
+        :lb_algo    => 'lc',
+        :tcp_check  => 'not-a-hash!'
+      }
+    }
+
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /is not a Hash/)
+    end
+  end
+
+  context 'with invalid HTTP_GET' do
+    let(:params) {
+      {
+        :ip_address => '10.1.1.1',
+        :port       => '8080',
+        :lb_algo    => 'lc',
+        :http_get   => 'not-a-hash!'
+      }
+    }
+
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /is not a Hash/)
+    end
+  end
+
+  context 'with invalid MISC_CHECK' do
+    let(:params) {
+      {
+        :ip_address => '10.1.1.1',
+        :port       => '8080',
+        :lb_algo    => 'lc',
+        :misc_check => 'not-a-hash!'
+      }
+    }
+
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /is not a Hash/)
+    end
+  end
+
+  context 'with multiple CHECKS' do
+    let(:params) {
+      {
+        :ip_address => '10.1.1.1',
+        :port       => '8080',
+        :lb_algo    => 'lc',
+        :tcp_check  => {},
+        :misc_check => {},
+        :http_get   => {},
+      }
+    }
+
+    it do
+      expect {
+        should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
+      }.to raise_error(Puppet::Error, /Only one check type per virtual server supported/)
+    end
   end
 
   context 'with a real_server without a port should default to VIP port' do
