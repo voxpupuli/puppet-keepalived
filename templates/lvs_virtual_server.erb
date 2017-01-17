@@ -39,16 +39,20 @@ group <%= @_name %> {
   sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
   <%- end -%>
 
+  <%- scope.function_template(['keepalived/_format_options.erb']) -%>
   <%- if @real_servers -%>
     <%- Array(@real_servers).each do |rs| -%>
       <%- rs_port = rs['port'] || @port -%>
-  real_server <%= rs['ip_address'] %> <%= rs_port %> {
-      <%- if @tcp_check -%>
-    TCP_CHECK {
-      connect_port <%= rs_port %>
-      connect_timeout <%= @tcp_check['connect_timeout'] %>
-    }
-      <%- end -%>
+      <%-
+      options = @real_server_options
+      if @tcp_check and not options.has_key?('TCP_CHECK')
+        options['TCP_CHECK'] = {
+          'connect_port' => rs_port,
+          'connect_timeout' => @tcp_check['connect_timeout']
+        }
+      end
+      -%>
+  real_server <%= rs['ip_address'] %> <%= rs_port %> {<%= format_options(options) %>
   }
     <%- end -%>
 

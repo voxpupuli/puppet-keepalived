@@ -1,0 +1,25 @@
+<%-
+  def format_options(options, indent_level=2)
+    buffer = ''
+    indent = '  ' * indent_level
+
+    sorted_options = options.sort_by do |key, value|
+      value.is_a?(Hash) ? 'zzz' : key
+    end
+
+    sorted_options.each_with_index do |(key, value), index|
+      if value.is_a?(Hash)
+        buffer << "\n" unless index == 0
+        buffer << "\n#{indent}#{key} {"
+        buffer << format_options(value, indent_level+1)
+        buffer << "\n#{indent}}"
+      elsif value === true
+        buffer << "\n#{indent}#{key}"
+      else
+        buffer << "\n#{indent}#{key} #{value}"
+      end
+    end
+
+    buffer
+  end
+-%>

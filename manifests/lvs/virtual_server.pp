@@ -61,6 +61,23 @@
 #     [*connect_timeout*]
 #   Default: unset => no TCP_CHECK configured.
 #
+# [*real_server_options*]
+#   One or more options to apply to all real_server blocks inside this
+#   virtual_server.
+#
+#   Example:
+#     real_server_options => {
+#       inhibit_on_failure => true,
+#       SMTP_CHECK => {
+#         connect_timeout => 10
+#         host => {
+#           connect_ip => '127.0.0.1'
+#         }
+#       }
+#     }
+#
+#   Default: unset => no default options
+#
 # [*sorry_server*]
 #   The sorry_server to define
 #   A hash with these keys:
@@ -98,6 +115,7 @@ define keepalived::lvs::virtual_server (
   $real_servers        = undef,
   $sorry_server        = undef,
   $tcp_check           = undef,
+  $real_server_options = {},
   $virtualhost         = undef,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
@@ -154,6 +172,15 @@ define keepalived::lvs::virtual_server (
     )
   }
 
+  if $tcp_check != undef {
+    warning('the $tcp_check argument is deprecated in favor of
+            $real_server_options')
+  }
+
+  if $real_server_options != undef {
+    validate_hash($real_server_options)
+  }
+
   concat::fragment { "keepalived.conf_lvs_virtual_server_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/lvs_virtual_server.erb'),
@@ -167,6 +194,9 @@ define keepalived::lvs::virtual_server (
   }
 
   if $collect_exported {
+    Keepalived::Lvs::Real_server {
+      options => $real_server_options,
+    }
     Keepalived::Lvs::Real_server <<| virtual_server == $_name |>>
   }
 }
