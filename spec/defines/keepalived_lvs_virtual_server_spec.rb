@@ -233,25 +233,6 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
   end
 
-  context 'with a real_server with a TCP_CHECK' do
-    let(:params) {
-      {
-        :ip_address   => '10.1.1.1',
-        :port         => '8080',
-        :lb_algo      => 'lc',
-        :tcp_check    => { 'connect_timeout' => 5 },
-        :real_servers => [ { 'ip_address' => '10.1.1.2',
-                             'port'       => '8081'}]
-      }
-    }
-
-    it {
-      should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with( {
-        'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
-      })
-    }
-  end
-
   context 'with a real_server without a port should default to VIP port' do
     let(:params) {
       {
