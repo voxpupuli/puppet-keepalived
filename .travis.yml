@@ -1,41 +1,34 @@
 language: ruby
 
 rvm:
-  - 1.8.7
-  - 1.9.3
   - 2.0.0
   - 2.1.0
   - 2.2.2
+  - 2.3.1
+  - 2.4.0
 
 matrix:
   exclude:
-    # No support for Ruby 2.0 before Puppet 3.2
-    - rvm: 2.0.0
-      env: PUPPET_VERSION=2.7.25
-    - rvm: 2.1.0
-      env: PUPPET_VERSION=2.7.25
     - rvm: 2.2.2
-      env: PUPPET_VERSION=2.7.25
-    # https://tickets.puppetlabs.com/browse/PUP-3796
+      env: PUPPET_VERSION=3.8
     - rvm: 2.2.2
-      env: PUPPET_VERSION=3.8.1
-    - rvm: 2.2.2
-      env: PUPPET_VERSION=3.8.1 FUTURE_PARSER=yes
-    # no 1.8.7 support for puppet 4.0
-    - rvm: 1.8.7
-      env: PUPPET_VERSION=4.0.0
-    - rvm: 1.8.7
-      env: PUPPET_VERSION=4.1.0
+      env: PUPPET_VERSION=3.8 FUTURE_PARSER=yes
+    - rvm: 2.3.1
+      env: PUPPET_VERSION=3.8
+    - rvm: 2.3.1
+      env: PUPPET_VERSION=3.8 FUTURE_PARSER=yes
+    - rvm: 2.4.0
+      env: PUPPET_VERSION=3.8
+    - rvm: 2.4.0
+      env: PUPPET_VERSION=3.8 FUTURE_PARSER=yes
 
 install: bundle install --without="development system_tests"
 script:
   - bundle exec rake
 env:
-  - PUPPET_VERSION=2.7.25
-  - PUPPET_VERSION=3.8.1
-  - PUPPET_VERSION=3.8.1 FUTURE_PARSER=yes
-  - PUPPET_VERSION=4.0.0
-  - PUPPET_VERSION=4.1.0
+  - PUPPET_VERSION=3.8
+  - PUPPET_VERSION=3.8 FUTURE_PARSER=yes
+  - PUPPET_VERSION=4.0
 
 branches:
   only:
