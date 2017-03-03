@@ -141,7 +141,7 @@ vrrp_instance <%= @_name %> {
     <%- vroutes = @virtual_routes -%>
   <%- end -%>
   <%- vroutes.each do |route| -%>
-    <%- attrs = Hash[ route.select { |k,v| ['src', 'to', 'via', 'dev', 'scope'].include? k } ] -%>
+    <%- attrs = Hash[ route.select { |k,v| ['src', 'to', 'via', 'dev', 'scope', 'metric'].include? k } ] -%>
     <%= route['route'] %>  <%= attrs.sort_by{ |k,v| k }.entries.join ' ' %>
   <%- end -%>
   }
