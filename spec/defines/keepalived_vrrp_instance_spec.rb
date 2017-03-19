@@ -836,6 +836,22 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with use_vmac => "vrrp250"' do
+    let (:params) {
+      mandatory_params.merge({
+        :use_vmac => 'vrrp250',
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /\suse_vmac\s+vrrp250$/
+      )
+    }
+  end
+
   describe 'with vmac_xmit_base' do
     let (:params) {
       mandatory_params.merge({

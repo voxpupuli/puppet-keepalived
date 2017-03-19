@@ -27,7 +27,7 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
 
   <%- if @use_vmac -%>
-  use_vmac
+  use_vmac <%= @use_vmac.is_a?(String) ? @use_vmac : '' %>
   <%- if @vmac_xmit_base -%>
   vmac_xmit_base
   <%- end -%>
