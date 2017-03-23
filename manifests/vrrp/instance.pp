@@ -67,9 +67,6 @@
 # $lvs_interface::         Define lvs_sync_daemon_interface.
 #                          Default: undef.
 #
-# $notify_script::         Script to run during ANY state transit
-#                          Default: undef.
-#
 # $smtp_alert::            Send status alerts via SMTP. Requires user provided
 #                          in SMTP settings in keepalived::global_defs class.
 #                          Default: false.
