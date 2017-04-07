@@ -456,6 +456,32 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with virtual_ipaddress as array of hashes and array of ips' do
+    let (:params) {
+      mandatory_params.merge({
+        :virtual_ipaddress_int => '_VALUE_',
+        :virtual_ipaddress => [ { 'ip' => '192.168.1.1'},
+                                { 'ip' => [ '192.168.1.2', '192.168.1.3' ]} ],
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.2 dev _VALUE_/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.3 dev _VALUE_/
+      )
+    }
+  end
+
   # device in hash overrides anything
   describe 'with virtual_ipaddress as hash containing device' do
     let (:params) {
@@ -471,6 +497,27 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
         'content' => /192.168.1.1 dev _DEV_/
+      )
+    }
+  end
+  describe 'with virtual_ipaddress as hash containing device and array of ips' do
+    let (:params) {
+      mandatory_params.merge({
+        :virtual_ipaddress_int => '_VALUE_',
+        :virtual_ipaddress => [ { 'ip' => ['192.168.1.1','192.168.1.2'],
+                                  'dev' => '_DEV_' } ],
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _DEV_/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.2 dev _DEV_/
       )
     }
   end
@@ -563,6 +610,27 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with virtual_ipaddress_excluded as hash with array of ips' do
+    let (:params) {
+      mandatory_params.merge({
+        :virtual_ipaddress_int => '_VALUE_',
+        :virtual_ipaddress_excluded => {'ip' => [ '192.168.1.1', '192.168.1.2' ]},
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /^\s+192.168.1.1 dev _VALUE_/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /^\s+192.168.1.2 dev _VALUE_/
+      )
+    }
+  end
+
   describe 'with virtual_ipaddress_excluded as array of hashes' do
     let (:params) {
       mandatory_params.merge({
@@ -600,6 +668,27 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
         'content' => /192.168.1.1 dev _DEV_/
+      )
+    }
+  end
+  describe 'with virtual_ipaddress_excluded as hash containing device and array of ips' do
+    let (:params) {
+      mandatory_params.merge({
+        :virtual_ipaddress_int => '_VALUE_',
+        :virtual_ipaddress_excluded => [ {'ip' => ['192.168.1.1','192.168.1.2'],
+                                          'dev' => '_DEV_'} ],
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _DEV_/
+      )
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.2 dev _DEV_/
       )
     }
   end
