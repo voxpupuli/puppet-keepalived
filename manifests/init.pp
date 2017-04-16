@@ -16,6 +16,7 @@ class keepalived (
   $service_ensure     = $::keepalived::params::service_ensure,
   $service_hasrestart = $::keepalived::params::service_hasrestart,
   $service_hasstatus  = $::keepalived::params::service_hasstatus,
+  $service_restart    = $::keepalived::params::service_restart,
   $service_manage     = $::keepalived::params::service_manage,
   $service_name       = $::keepalived::params::service_name,
   $service_restart    = $::keepalived::params::service_restart,
@@ -33,6 +34,7 @@ class keepalived (
   validate_re($service_ensure, ['^running$','^stopped$'])
   validate_bool($service_hasrestart)
   validate_bool($service_hasstatus)
+  validate_string($service_restart)
   validate_bool($service_manage)
   validate_string($service_name)
   validate_hash($vrrp_instance)
