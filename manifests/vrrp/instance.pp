@@ -122,7 +122,7 @@
 #                          Default: undef.
 #
 # $unicast_peers::         Do not send VRRP adverts over VRRP multicast group.
-#                          Instead send adverts to the list of ip addresses using 
+#                          Instead send adverts to the list of ip addresses using
 #                          a unicast design fashion.
 #
 #                          May be specified as an array with ip addresses
@@ -178,10 +178,16 @@ define keepalived::vrrp::instance (
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
-  if (!is_integer($priority) or ($priority + 0) < 1 or ($priority + 0) > 254) {
+  if (!is_integer($priority)){
     fail('priority must be an integer 1 >= and <= 254')
   }
-  if (!is_integer($virtual_router_id) or ($virtual_router_id + 0) < 1 or ($virtual_router_id + 0) > 255) {
+  if ($priority < 1 or $priority > 254) {
+    fail('priority must be an integer 1 >= and <= 254')
+  }
+  if (!is_integer($virtual_router_id)) {
+    fail('virtual_router_id must be an integer >= 1 and <= 255')
+  }
+  if ($virtual_router_id < 1 or $virtual_router_id > 255) {
     fail('virtual_router_id must be an integer >= 1 and <= 255')
   }
 
@@ -191,4 +197,3 @@ define keepalived::vrrp::instance (
     order   => '100',
   }
 }
-
