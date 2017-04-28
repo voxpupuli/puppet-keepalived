@@ -123,7 +123,7 @@
 #                          Default: undef.
 #
 # $unicast_peers::         Do not send VRRP adverts over VRRP multicast group.
-#                          Instead send adverts to the list of ip addresses using 
+#                          Instead send adverts to the list of ip addresses using
 #                          a unicast design fashion.
 #
 #                          May be specified as an array with ip addresses
