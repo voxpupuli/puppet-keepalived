@@ -28,9 +28,9 @@
 #                             containing extra properties
 #                             e.g. `{ 'src' => '10.0.0.1',
 #                                     'to' => '192.168.30.0/24',
-#                                     'via' => '10.0.0.254' }`
-#                             Supported properties: src, to, via, dev, scope,
-#                                                   table.
+#                                     'via' => '10.0.0.254',
+#                                     'metric' => '15' }`
+#                             Supported properties: src, to, via, dev, scope, table, metric
 #
 # $virtual_ipaddress_excluded:: For cases with large numbers (eg 200) of IPs
 #                               on the same interface. To decrease the number
