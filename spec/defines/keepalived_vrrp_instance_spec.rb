@@ -841,6 +841,25 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
+  describe 'with virtual_routes as hash containing table parameter' do
+    let (:params) {
+      mandatory_params.merge({
+        :virtual_ipaddress_int => '_VALUE_',
+        :virtual_routes => [ {'to'    => '10.0.1.0/24',
+                              'via'   => '192.168.0.1',
+                              'table' => '_TABLE_'} ],
+      })
+    }
+
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /table _TABLE_ to 10.0.1.0\/24 via 192.168.0.1/
+      )
+    }
+  end
+
   describe 'with parameter unicast_source_ip' do
     let (:params) {
       mandatory_params.merge({
