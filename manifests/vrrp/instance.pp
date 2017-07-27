@@ -127,7 +127,7 @@
 #                          use this IP as src_addr for multicast vrrp packets.
 #                          Default: undef.
 #
-# $notify_script_master_rx_lower_pri	Define the notify_master_rx_lower_pri script.
+# $notify_script_master_rx_lower_pri:: Define the notify_master_rx_lower_pri script.
 #                          This is executed if a master receives an advert with
 #                          priority lower than the master's advert.
 #                          Default: undef.
@@ -143,6 +143,12 @@
 #
 #                          May be specified as an array with ip addresses
 #                          Default: undef.
+#
+# $collect_unicast_peers:: Enable automatic VRRP unicast configuration with
+#                          exported resources and disable VRRP multicast.
+#                          Optionally, override default peer settings with
+#                          $unicast_source_ip and $unicast_peers params.
+#                          Default: false
 #
 # $dont_track_primary::    Tells keepalived to ignore VRRP interface faults.
 #                          Can be useful on setup where two routers are
@@ -195,17 +201,72 @@ define keepalived::vrrp::instance (
   $multicast_source_ip                                              = undef,
   $unicast_source_ip                                                = undef,
   $unicast_peers                                                    = undef,
+  $collect_unicast_peers                                            = false,
   $dont_track_primary                                               = false,
   $use_vmac                                                         = false,
   $vmac_xmit_base                                                   = true,
   Boolean $native_ipv6                                              = false,
-
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
+
+  if (!is_integer($priority) or ($priority + 0) < 1 or ($priority + 0) > 254) {
+    fail('priority must be an integer 1 >= and <= 254')
+  }
+
+  if (!is_integer($virtual_router_id) or ($virtual_router_id + 0) < 1 or ($virtual_router_id + 0) > 255) {
+    fail('virtual_router_id must be an integer >= 1 and <= 255')
+  }
+
+  if $unicast_source_ip != undef and ! $collect_unicast_peers {
+    validate_ip_address($unicast_source_ip)
+  }
+
+  if $unicast_peers != undef {
+    if ! is_string($unicast_peers) {
+      validate_array($unicast_peers)
+    }
+  }
+
+  validate_bool($collect_unicast_peers)
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),
-    order   => '100',
+    order   => "100-${_name}-000",
+  }
+
+  if $unicast_peers != undef or $collect_unicast_peers {
+    concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_header":
+      target  => "${keepalived::config_dir}/keepalived.conf",
+      content => "  unicast_peer {\n",
+      order   => "100-${_name}-000",
+    }
+
+    if $collect_unicast_peers {
+      if $unicast_source_ip != undef {
+        $unicast_src = $unicast_source_ip
+      } else {
+        $unicast_src = inline_template("<%= scope.lookupvar('::ipaddress_${interface}') -%>")
+      }
+
+      @@keepalived::vrrp::unicast_peer { $unicast_src: instance => $name }
+      Keepalived::Vrrp::Unicast_peer <<| instance == $name |>>
+    }
+
+    if $unicast_peers != undef {
+      keepalived::vrrp::unicast_peer { $unicast_peers: instance => $name }
+    }
+
+    concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_footer":
+      target  => "${keepalived::config_dir}/keepalived.conf",
+      content => "  }\n\n",
+      order   => "100-${_name}-020",
+    }
+  }
+
+  concat::fragment { "keepalived.conf_vrrp_instance_${_name}_footer":
+    target  => "${keepalived::config_dir}/keepalived.conf",
+    content => "}\n\n",
+    order   => "100-${_name}-zzz",
   }
 }
