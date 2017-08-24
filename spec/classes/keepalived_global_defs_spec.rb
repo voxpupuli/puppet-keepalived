@@ -99,4 +99,34 @@ describe 'keepalived::global_defs', :type => :class do
     }
   end
 
+  describe 'with parameter script_user' do
+    let (:params) {
+      {
+        :script_user => '_VALUE_'
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /script_user _VALUE_$/
+      )
+    }
+  end
+
+  describe 'with parameter enable_script_security' do
+    let (:params) {
+      {
+        :enable_script_security => true
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /enable_script_security$/
+      )
+    }
+  end
+
 end

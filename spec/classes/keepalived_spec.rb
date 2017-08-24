@@ -15,8 +15,7 @@ describe 'keepalived', :type => :class do
       )
     }
 
-    it { should contain_file('/etc/keepalived/keepalived.conf').with(
-        'ensure' => 'present',
+    it { should contain_concat('/etc/keepalived/keepalived.conf').with(
         'group'  => 'root',
         'mode'   => '0644',
         'owner'  => 'root'
@@ -53,7 +52,7 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: config_file_mode' do
     let (:params) { { :config_file_mode => '0644' } }
 
-    it { should contain_file('/etc/keepalived/keepalived.conf').with(
+    it { should contain_concat('/etc/keepalived/keepalived.conf').with(
         'mode' => '0644'
       )
     }

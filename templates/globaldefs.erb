@@ -18,5 +18,11 @@ global_defs {
   <%- if @router_id -%>
   router_id <%= @router_id %>
   <%- end -%>
+  <%- if @script_user -%>
+  script_user <%= @script_user %>
+  <%- end -%>
+  <%- if @enable_script_security -%>
+  enable_script_security
+  <%- end -%>
 }
 
