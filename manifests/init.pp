@@ -39,8 +39,8 @@ class keepalived (
   validate_hash($vrrp_script)
   validate_hash($vrrp_sync_group)
 
-  class { 'keepalived::install': } ->
-  class { 'keepalived::config': } ->
-  class { 'keepalived::service': }
+  class { 'keepalived::install': }
+  -> class { 'keepalived::config': }
+  -> class { 'keepalived::service': }
 }
 
