@@ -84,6 +84,10 @@
 #     [*ip_address*]
 #     [*port*]
 #
+# [*sorry_server_inhibit*]
+#   Boolean.
+#   Default: false => not set in config.
+#
 # [*real_servers*]
 #   The real servers to balance to.
 #   An array of hashes.
@@ -99,24 +103,25 @@
 #
 define keepalived::lvs::virtual_server (
   $lb_algo,
-  $ip_address          = undef,
-  $port                = undef,
-  $fwmark              = undef,
-  $alpha               = false,
-  $collect_exported    = true,
-  $delay_loop          = undef,
-  $ha_suspend          = false,
-  $hysteresis          = undef,
-  $lb_kind             = 'NAT',
-  $omega               = false,
-  $persistence_timeout = undef,
-  $protocol            = 'TCP',
-  $quorum              = undef,
-  $real_servers        = undef,
-  $sorry_server        = undef,
-  $tcp_check           = undef,
-  $real_server_options = {},
-  $virtualhost         = undef,
+  $ip_address           = undef,
+  $port                 = undef,
+  $fwmark               = undef,
+  $alpha                = false,
+  $collect_exported     = true,
+  $delay_loop           = undef,
+  $ha_suspend           = false,
+  $hysteresis           = undef,
+  $lb_kind              = 'NAT',
+  $omega                = false,
+  $persistence_timeout  = undef,
+  $protocol             = 'TCP',
+  $quorum               = undef,
+  $real_servers         = undef,
+  $sorry_server         = undef,
+  $sorry_server_inhibit = false,
+  $tcp_check            = undef,
+  $real_server_options  = {},
+  $virtualhost          = undef,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
@@ -149,6 +154,7 @@ define keepalived::lvs::virtual_server (
   validate_bool($ha_suspend)
   validate_bool($alpha)
   validate_bool($omega)
+  validate_bool($sorry_server_inhibit)
 
   if $quorum { validate_re($quorum, '^[0-9]+$', "Invalid quorum: ${quorum}") }
 
