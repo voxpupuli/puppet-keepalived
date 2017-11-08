@@ -37,9 +37,9 @@ group <%= @_name %> {
   protocol <%= @protocol %>
   <%- if @sorry_server -%>
   sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
-  <%- end -%>
-  <%- if @sorry_server_inhibit -%>
-  sorry_server_inhibit
+    <%- if @sorry_server_inhibit -%>
+    sorry_server_inhibit
+    <%- end -%>
   <%- end -%>
 
   <%- scope.function_template(['keepalived/_format_options.erb']) -%>
