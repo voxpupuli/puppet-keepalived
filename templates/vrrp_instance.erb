@@ -105,9 +105,17 @@ vrrp_instance <%= @_name %> {
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
       <%- attrs = Hash[ ip.select { |k,v| ['label', 'brd', 'scope'].include? k } ] -%>
-    <%= ip['ip'] %> dev <%= device %> <%= attrs.sort_by{ |k,v| k }.entries.join ' ' %>
+      <%- if @use_vmac -%>
+        <%= ip['ip'] %>
+      <%- else -%>
+        <%= ip['ip'] %> dev <%= device %> <%= attrs.sort_by{ |k,v| k }.entries.join ' ' %>
+      <%- end -%>
     <%- else -%>
-    <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+      <%- if @use_vmac -%>
+        <%= ip %>
+      <%- else -%>
+        <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+      <%- end -%>
     <%- end -%>
   <%- end -%>
   }
@@ -124,10 +132,17 @@ vrrp_instance <%= @_name %> {
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
       <%- attrs = Hash[ ip.select { |k,v| ['label', 'brd', 'scope'].include? k } ] -%>
-      <%= ip['ip'] %> dev <%= device %> <%= attrs.sort_by{ |k,v| k }.entries.join ' ' %>
-
+      <%- if @use_vmac -%>
+        <%= ip['ip'] %>
+      <%- else -%>
+	<%= ip['ip'] %> dev <%= device %> <%= attrs.sort_by{ |k,v| k }.entries.join ' ' %>
+      <%- end -%>
     <%- else -%>
-      <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+      <%- if @use_vmac -%>
+        <%= ip %>
+      <%- else -%>
+        <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+      <%- end -%>
     <%- end -%>
   <%- end -%>
   }
