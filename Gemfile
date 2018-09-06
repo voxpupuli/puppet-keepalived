@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-puppetversion = ENV.key?('PUPPET_VERSION') ? "~> #{ENV['PUPPET_VERSION']}" : ['>= 3.2.1']
+puppetversion = ENV.key?('PUPPET_VERSION') ? "~> #{ENV['PUPPET_VERSION']}" : ['>= 5.5.6']
 gem 'puppet', puppetversion
 
 # Support ruby < 2.0.0
@@ -19,8 +19,8 @@ facterversion = ENV.key?('FACTER_VERSION') ? "~> #{ENV['FACTER_VERSION']}" : ['>
 
 gem 'facter', facterversion
 
-gem 'puppet-lint', '>=0.3.2'
-gem 'puppetlabs_spec_helper', '>=0.8.0'
+gem 'puppet-lint'
+gem 'puppetlabs_spec_helper'
 gem 'puppet-syntax'
 
 group :development do
@@ -29,7 +29,7 @@ group :development do
 end
 
 group :system_tests do
-  gem 'beaker-rspec',  :require => false
-  gem 'serverspec',    :require => false
+  gem 'beaker-rspec',    :require => false
+  gem 'serverspec',      :require => false
   gem 'vagrant-wrapper', :require => false
 end
