@@ -1,34 +1,15 @@
 language: ruby
 
 rvm:
-  - 2.0.0
-  - 2.1.0
-  - 2.2.2
   - 2.3.1
   - 2.4.0
-
-matrix:
-  exclude:
-    - rvm: 2.2.2
-      env: PUPPET_VERSION=3.8
-    - rvm: 2.2.2
-      env: PUPPET_VERSION=3.8 FUTURE_PARSER=yes
-    - rvm: 2.3.1
-      env: PUPPET_VERSION=3.8
-    - rvm: 2.3.1
-      env: PUPPET_VERSION=3.8 FUTURE_PARSER=yes
-    - rvm: 2.4.0
-      env: PUPPET_VERSION=3.8
-    - rvm: 2.4.0
-      env: PUPPET_VERSION=3.8 FUTURE_PARSER=yes
 
 install: bundle install --without="development system_tests"
 script:
   - bundle exec rake
 env:
-  - PUPPET_VERSION=3.8
-  - PUPPET_VERSION=3.8 FUTURE_PARSER=yes
-  - PUPPET_VERSION=4.0
+  - PUPPET_VERSION=4.10
+  - PUPPET_VERSION=5.5
 
 branches:
   only:
