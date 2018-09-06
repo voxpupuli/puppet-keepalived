@@ -1,0 +1,9 @@
+    MISC_CHECK {
+      misc_path "<%= @misc_path %>"
+<% if @misc_timeout -%>
+      misc_timeout <%= @misc_timeout %>
+<% end -%>
+<% if @misc_dynamic -%>
+      misc_dynamic
+<% end -%>
+    }

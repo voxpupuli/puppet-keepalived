@@ -277,6 +277,18 @@ keepalived::lvs::real_server { 'example2.example.com':
 }
 ```
 
+You can additionally define checks of type `MISC_CHECK` using their
+own resource. This has the advantage that you can define multiple
+checks with type `MISC_CHECK`.
+
+```puppet
+keepalived::lvs::real_server::misc_check { '1.2.3.8_check':
+  virtual_server => 'www.example.com',
+  real_server    => 'example1.example.com',
+  misc_path      => '/usr/bin/check-that --world-is-ok',
+  misc_timeout   => '5',
+}
+```
 
 ### Creating firewall mark based virtual server instances with two real servers
 

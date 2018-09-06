@@ -1,3 +1,2 @@
   <%- scope.function_template(['keepalived/_format_options.erb']) -%>
   real_server <%= @ip_address %> <%= @port %> {<%= format_options(@options) %>
-  }
