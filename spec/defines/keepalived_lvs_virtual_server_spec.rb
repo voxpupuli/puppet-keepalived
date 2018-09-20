@@ -10,7 +10,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let (:title) { '_TITLE_' }
 
     it do
-      expect { should create_class('keepalived') }.to raise_error(Puppet::Error)
+      expect { should create_class('keepalived') }.to raise_error(Puppet::PreformattedError)
     end
   end
 
@@ -90,7 +90,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
 
     it do
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid IP/)
+      expect { should contain_concat__fragment() }.to raise_error(Puppet::PreformattedError, /rameter 'ip_address' expect/)
     end
   end
 
@@ -104,7 +104,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
 
     it do
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid fwmark/)
+      expect { should contain_concat__fragment() }.to raise_error(Puppet::PreformattedError)
     end
   end
 
@@ -121,7 +121,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     it do
       expect {
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid port/)
+      }.to raise_error(Puppet::PreformattedError, /rameter 'port' expects a value of /)
     end
   end
 
@@ -139,7 +139,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     it do
       expect {
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid delay_loop/)
+      }.to raise_error(Puppet::PreformattedError)
     end
   end
 
@@ -156,7 +156,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     it do
       expect {
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid lb_algo/)
+      }.to raise_error(Puppet::PreformattedError, /rameter 'lb_algo' expects a match for /)
     end
   end
 
@@ -174,7 +174,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     it do
       expect {
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid protocol/)
+      }.to raise_error(Puppet::PreformattedError, /rameter 'protocol' expects a match for /)
     end
   end
 
@@ -192,7 +192,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     it do
       expect {
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid lb_kind/)
+      }.to raise_error(Puppet::PreformattedError, /rameter 'lb_kind' expects a match for/)
     end
   end
 

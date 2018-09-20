@@ -36,7 +36,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     }
 
     it do
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid IP/)
+      expect { should contain_concat__fragment() }.to raise_error(Puppet::PreformattedError, /'ip_address' expects/)
     end
   end
 
@@ -53,7 +53,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     it do
       expect {
         should contain_concat__fragment('keepalived.conf_lvs_real_server_test') 
-      }.to raise_error(Puppet::Error, /Invalid port/) 
+      }.to raise_error(Puppet::PreformattedError, /'port' expects/)
     end
   end
 
