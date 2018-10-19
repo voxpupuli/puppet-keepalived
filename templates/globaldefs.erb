@@ -24,5 +24,27 @@ global_defs {
   <%- if @enable_script_security -%>
   enable_script_security
   <%- end -%>
+  <%- if @enable_snmp_keepalived -%>
+  enable_snmp_keepalived
+  <%- end -%>
+  <%- if @enable_snmp_checker -%>
+  enable_snmp_checker
+  <%- end -%>
+  <%- if @enable_snmp_rfc -%>
+  enable_snmp_rfc
+  <%- end -%>
+  <%- if @enable_snmp_rfcv2 -%>
+  enable_snmp_rfcv2
+  <%- end -%>
+  <%- if @enable_snmp_rfcv3 -%>
+  enable_snmp_rfcv3
+  <%- end -%>
+  <%- if @enable_traps -%>
+  enable_traps
+  <%- end -%>
+  <%- if @snmp_socket -%>
+  snmp_socket <%= @snmp_socket -%>
+  <%- end -%>
+
 }
 
