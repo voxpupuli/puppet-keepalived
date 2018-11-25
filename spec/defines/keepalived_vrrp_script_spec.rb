@@ -138,5 +138,42 @@ describe 'keepalived::vrrp::script', :type => :define do
     }
   end
 
+  describe 'with parameter user' do
+    let (:title) { '_TITLE_' }
+    let (:params) {
+      {
+        :user => '_VALUE_',
+        :script  => '_SCRIPT_'
+      }
+    }
+
+    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
+          'content' => /user.*_VALUE_/
+      )
+    }
+  end
+
+  describe 'with parameter group' do
+    let (:title) { '_TITLE_' }
+    let (:params) {
+      {
+        :user => '_USER_VALUE_',
+        :group => '_GROUP_VALUE_',
+        :script  => '_SCRIPT_'
+      }
+    }
+
+    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
+          'content' => /user.*_USER_VALUE_ _GROUP_VALUE_/
+      )
+    }
+  end
+
 end
 

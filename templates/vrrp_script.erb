@@ -11,7 +11,10 @@ vrrp_script <%= @_name %> {
   rise      <%= @rise %>
   <%- end -%>
   <%- if @timeout -%>
-  timeout      <%= @timeout %>
+  timeout   <%= @timeout %>
+  <%- end -%>
+  <%- if @user -%>
+  user      <%= @user %><% if @group %> <%= @group %><% end %>
   <%- end -%>
 }
 
