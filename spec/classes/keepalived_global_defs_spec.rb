@@ -129,4 +129,108 @@ describe 'keepalived::global_defs', :type => :class do
     }
   end
 
+  describe 'with parameter enable_snmp_keepalived' do
+    let (:params) {
+      {
+        :enable_snmp_keepalived => true
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /enable_snmp_keepalived$/
+      )
+    }
+  end
+
+  describe 'with parameter enable_snmp_checker' do
+    let (:params) {
+      {
+        :enable_snmp_checker => true
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /enable_snmp_checker$/
+      )
+    }
+  end
+
+  describe 'with parameter enable_snmp_rfc' do
+    let (:params) {
+      {
+        :enable_snmp_rfc => true
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /enable_snmp_rfc$/
+      )
+    }
+  end
+
+  describe 'with parameter enable_snmp_rfcv2' do
+    let (:params) {
+      {
+        :enable_snmp_rfcv2 => true
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /enable_snmp_rfcv2$/
+      )
+    }
+  end
+
+  describe 'with parameter enable_snmp_rfcv3' do
+    let (:params) {
+      {
+        :enable_snmp_rfcv3 => true
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /enable_snmp_rfcv3$/
+      )
+    }
+  end
+
+  describe 'with parameter enable_traps' do
+    let (:params) {
+      {
+        :enable_traps => true
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /enable_traps$/
+      )
+    }
+  end
+
+  describe 'with parameter snmp_socket' do
+    let (:params) {
+      {
+        :snmp_socket => '/path'
+      }
+    }
+
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_globaldefs').with(
+        'content' => /snmp_socket \/path$/
+      )
+    }
+  end
 end
