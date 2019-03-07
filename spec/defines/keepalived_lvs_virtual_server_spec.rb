@@ -66,6 +66,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :alpha               => true,
         :omega               => true,
         :quorum              => '5',
+        :quorum_up           => '/bin/true',
+        :quorum_down         => '/bin/true',
         :hysteresis          => '9',
         :sorry_server        => { 'ip_address' => '10.1.1.3',
                                   'port'       => '999'}
@@ -75,7 +77,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         /\s+delay_loop 60\s+lb_algo lc\s+lb_kind NAT\s+persistence_timeout 5\s+ha_suspend\s+virtualhost example.com/
     )}
     it { should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with_content(
-        /\s+alpha\s+omega\s+quorum 5\s+hysteresis 9\s+protocol UDP\s+sorry_server 10.1.1.3 999\s+/
+        /\s+alpha\s+omega\s+quorum 5\s+quorum_up "\/bin\/true"\s+quorum_down "\/bin\/true"/
+    )}
+    it { should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with_content(
+        /\s+hysteresis 9\s+protocol UDP\s+sorry_server 10.1.1.3 999\s+/
     )}
   end
 
