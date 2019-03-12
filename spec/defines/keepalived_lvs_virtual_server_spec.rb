@@ -284,7 +284,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       })
     }
   end
-  
+
   context 'with a real_server without a port should default to VIP port' do
     let(:params) {
       {

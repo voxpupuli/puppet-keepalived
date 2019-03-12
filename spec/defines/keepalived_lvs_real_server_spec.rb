@@ -52,8 +52,8 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
     it do
       expect {
-        should contain_concat__fragment('keepalived.conf_lvs_real_server_test') 
-      }.to raise_error(Puppet::Error, /Invalid port/) 
+        should contain_concat__fragment('keepalived.conf_lvs_real_server_test')
+      }.to raise_error(Puppet::Error, /Invalid port/)
     end
   end
 
