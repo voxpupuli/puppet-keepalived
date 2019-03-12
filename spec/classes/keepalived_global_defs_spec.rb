@@ -228,7 +228,7 @@ describe 'keepalived::global_defs', type: :class do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
-          'content' => /snmp_socket \/path$/
+          'content' => %r{snmp_socket /path$}
         )
     }
   end
