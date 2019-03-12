@@ -93,7 +93,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
 
     it do
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid IP/)
+      expect { should contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid IP/)
     end
   end
 
@@ -107,7 +107,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     }
 
     it do
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid fwmark/)
+      expect { should contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid fwmark/)
     end
   end
 

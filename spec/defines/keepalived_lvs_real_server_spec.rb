@@ -36,7 +36,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     }
 
     it do
-      expect { should contain_concat__fragment() }.to raise_error(Puppet::Error, /Invalid IP/)
+      expect { should contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid IP/)
     end
   end
 
