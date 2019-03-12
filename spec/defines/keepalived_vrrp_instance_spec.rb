@@ -366,39 +366,39 @@ describe 'keepalived::vrrp::instance', :type => :define do
     }
   end
 
- describe 'with parameter garp_master_delay' do
-    let (:params) {
-      mandatory_params.merge({
-        :garp_master_delay => '_VALUE_',
-      })
-    }
+  describe 'with parameter garp_master_delay' do
+     let (:params) {
+       mandatory_params.merge({
+         :garp_master_delay => '_VALUE_',
+       })
+     }
 
-    it { should create_keepalived__vrrp__instance('_NAME_') }
-    it {
-      should \
-        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-        'content' => /garp_master_delay/,
-        'content' => /_VALUE_/
-      )
-    }
-  end
+     it { should create_keepalived__vrrp__instance('_NAME_') }
+     it {
+       should \
+         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+         'content' => /garp_master_delay/,
+         'content' => /_VALUE_/
+       )
+     }
+   end
 
- describe 'with parameter garp_master_refresh' do
-    let (:params) {
-      mandatory_params.merge({
-        :garp_master_refresh => '_VALUE_',
-      })
-    }
+  describe 'with parameter garp_master_refresh' do
+     let (:params) {
+       mandatory_params.merge({
+         :garp_master_refresh => '_VALUE_',
+       })
+     }
 
-    it { should create_keepalived__vrrp__instance('_NAME_') }
-    it {
-      should \
-        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-        'content' => /garp_master_refresh/,
-        'content' => /_VALUE_/
-      )
-    }
-  end
+     it { should create_keepalived__vrrp__instance('_NAME_') }
+     it {
+       should \
+         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+         'content' => /garp_master_refresh/,
+         'content' => /_VALUE_/
+       )
+     }
+   end
 
   describe 'with parameter virtual_ipaddress_int' do
     let (:params) {
