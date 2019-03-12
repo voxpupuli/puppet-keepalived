@@ -504,7 +504,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
-        :virtual_ipaddress => [ { 'ip' => ['192.168.1.1','192.168.1.2'],
+        :virtual_ipaddress => [ { 'ip' => ['192.168.1.1', '192.168.1.2'],
                                   'dev' => '_DEV_' } ],
       })
     }
@@ -675,7 +675,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
     let (:params) {
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
-        :virtual_ipaddress_excluded => [ {'ip' => ['192.168.1.1','192.168.1.2'],
+        :virtual_ipaddress_excluded => [ {'ip' => ['192.168.1.1', '192.168.1.2'],
                                           'dev' => '_DEV_'} ],
       })
     }
