@@ -10,19 +10,22 @@ describe 'keepalived', :type => :class do
     it { should contain_class('keepalived::config') }
     it { should contain_class('keepalived::service') }
 
-    it { should contain_package('keepalived').with(
+    it {
+      should contain_package('keepalived').with(
         'ensure' => 'present'
       )
     }
 
-    it { should contain_concat('/etc/keepalived/keepalived.conf').with(
+    it {
+      should contain_concat('/etc/keepalived/keepalived.conf').with(
         'group'  => 'root',
         'mode'   => '0644',
         'owner'  => 'root'
       )
     }
 
-    it { should contain_service('keepalived').with(
+    it {
+      should contain_service('keepalived').with(
         'ensure'     => 'running',
         'enable'     => 'true',
         'hasrestart' => 'false',
@@ -34,7 +37,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: config_dir' do
     let (:params) { { :config_dir => '/foo/bar' } }
 
-    it { should contain_file('/foo/bar').with(
+    it {
+      should contain_file('/foo/bar').with(
         'ensure' => 'directory'
       )
     }
@@ -43,7 +47,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: config_dir_mode' do
     let (:params) { { :config_dir_mode => '0755' } }
 
-    it { should contain_file('/etc/keepalived').with(
+    it {
+      should contain_file('/etc/keepalived').with(
         'mode' => '0755'
       )
     }
@@ -52,7 +57,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: config_file_mode' do
     let (:params) { { :config_file_mode => '0644' } }
 
-    it { should contain_concat('/etc/keepalived/keepalived.conf').with(
+    it {
+      should contain_concat('/etc/keepalived/keepalived.conf').with(
         'mode' => '0644'
       )
     }
@@ -61,7 +67,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: config_group' do
     let (:params) { { :config_group => '_VALUE_' } }
 
-    it { should contain_file('/etc/keepalived').with(
+    it {
+      should contain_file('/etc/keepalived').with(
         'group' => '_VALUE_'
       )
     }
@@ -70,7 +77,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: config_owner' do
     let (:params) { { :config_owner => '_VALUE_' } }
 
-    it { should contain_file('/etc/keepalived').with(
+    it {
+      should contain_file('/etc/keepalived').with(
         'owner' => '_VALUE_'
       )
     }
@@ -79,7 +87,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: pkg_ensure' do
     let (:params) { { :pkg_ensure => '_VALUE_' } }
 
-    it { should contain_package('keepalived').with(
+    it {
+      should contain_package('keepalived').with(
         'ensure' => '_VALUE_'
       )
     }
@@ -94,7 +103,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: service_enable' do
     let (:params) { { :service_enable => true } }
 
-    it { should contain_service('keepalived').with(
+    it {
+      should contain_service('keepalived').with(
         'enable' => true
       )
     }
@@ -103,7 +113,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: service_ensure' do
     let (:params) { { :service_ensure => 'running' } }
 
-    it { should contain_service('keepalived').with(
+    it {
+      should contain_service('keepalived').with(
         'ensure' => 'running'
       )
     }
@@ -112,7 +123,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: service_hasrestart' do
     let (:params) { { :service_hasrestart => true } }
 
-    it { should contain_service('keepalived').with(
+    it {
+      should contain_service('keepalived').with(
         'hasrestart' => true
       )
     }
@@ -121,7 +133,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: service_hasstatus' do
     let (:params) { { :service_hasstatus => true } }
 
-    it { should contain_service('keepalived').with(
+    it {
+      should contain_service('keepalived').with(
         'hasstatus' => true
       )
     }
@@ -130,7 +143,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: service_manage' do
     let (:params) { { :service_hasstatus => true } }
 
-    it { should contain_service('keepalived').with(
+    it {
+      should contain_service('keepalived').with(
         'hasstatus' => true
       )
     }
@@ -139,7 +153,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: service_name' do
     let (:params) { { :service_name => '_VALUE_' } }
 
-    it { should contain_service('_VALUE_').with(
+    it {
+      should contain_service('_VALUE_').with(
         'name' => '_VALUE_'
       )
     }
@@ -148,7 +163,8 @@ describe 'keepalived', :type => :class do
   describe 'with parameter: service_restart' do
     let (:params) { { :service_restart => '_VALUE_' } }
 
-    it { should contain_service('keepalived').with(
+    it {
+      should contain_service('keepalived').with(
         'restart' => '_VALUE_'
       )
     }
