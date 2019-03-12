@@ -174,6 +174,5 @@ describe 'keepalived::vrrp::script', :type => :define do
       )
     }
   end
-
 end
 

@@ -6,7 +6,6 @@ describe 'keepalived::global_defs', :type => :class do
 
   describe 'without parameters' do
     it { should create_class('keepalived::global_defs') }
-
   end
 
   describe 'with parameter notification_email' do

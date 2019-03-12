@@ -135,5 +135,4 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       )
     }
   end
-
 end

@@ -149,5 +149,4 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
       })
     }
   end
-
 end

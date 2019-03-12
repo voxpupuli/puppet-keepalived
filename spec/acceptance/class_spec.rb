@@ -1,7 +1,6 @@
 require 'spec_helper_acceptance'
 
 describe 'keepalived class' do
-
   context 'default parameters' do
     it 'should work with no errors' do
       pp = <<-EOS
