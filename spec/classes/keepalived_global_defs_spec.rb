@@ -26,7 +26,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter notification_email' do
     let (:params) {
       {
-        :notification_email => ['_VALUE1_', '_VALUE2_']
+        :notification_email => %w[_VALUE1_ _VALUE2_]
       }
     }
 

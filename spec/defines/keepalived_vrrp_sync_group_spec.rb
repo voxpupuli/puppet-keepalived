@@ -33,7 +33,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) {
       {
-        :group => ['_VALUE1_', '_VALUE2_'],
+        :group => %w[_VALUE1_ _VALUE2_],
       }
     }
 
