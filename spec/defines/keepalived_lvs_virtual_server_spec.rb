@@ -15,13 +15,13 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'with bare minimum: ip address, lb_algo and port' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address   => '10.1.1.1',
         :port         => '8080',
         :lb_algo      => 'lc'
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
@@ -34,12 +34,12 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'with bare minimum alternative: fwmark and lb_algo' do
-    let(:params) {
+    let(:params) do
       {
         :fwmark       => '123',
         :lb_algo      => 'lc'
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
@@ -52,7 +52,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'with optional parameters' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => '8080',
@@ -70,7 +70,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :sorry_server        => { 'ip_address' => '10.1.1.3',
                                   'port'       => '999' }
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with_content(
@@ -86,13 +86,13 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
   context 'with invalid IP address' do
     let(:title) { '_TITLE_' }
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => 'rubbish',
         :port                => '8080',
         :lb_algo             => 'lc'
       }
-    }
+    end
 
     it do
       expect { should contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid IP/)
@@ -101,12 +101,12 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
   context 'with invalid firewall mark' do
     let(:title) { '_TITLE_' }
-    let(:params) {
+    let(:params) do
       {
         :fwmark              => 'rubbish',
         :lb_algo             => 'lc'
       }
-    }
+    end
 
     it do
       expect { should contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid fwmark/)
@@ -115,94 +115,94 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
   context 'with invalid port' do
     let(:title) { '_TITLE_' }
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => 'something',
         :lb_algo             => 'lc'
       }
-    }
+    end
 
     it do
-      expect {
+      expect do
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid port/)
+      end.to raise_error(Puppet::Error, /Invalid port/)
     end
   end
 
   context 'with invalid delay_loop' do
     let(:title) { '_TITLE_' }
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => '80',
         :lb_algo             => 'rr',
         :delay_loop          => 'NaN'
       }
-    }
+    end
 
     it do
-      expect {
+      expect do
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid delay_loop/)
+      end.to raise_error(Puppet::Error, /Invalid delay_loop/)
     end
   end
 
   context 'with invalid lb_algo' do
     let(:title) { '_TITLE_' }
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => '80',
         :lb_algo             => 'rubbish'
       }
-    }
+    end
 
     it do
-      expect {
+      expect do
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid lb_algo/)
+      end.to raise_error(Puppet::Error, /Invalid lb_algo/)
     end
   end
 
   context 'with invalid protocol' do
     let(:title) { '_TITLE_' }
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => '80',
         :lb_algo             => 'rr',
         :protocol            => 'ICMP'
       }
-    }
+    end
 
     it do
-      expect {
+      expect do
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid protocol/)
+      end.to raise_error(Puppet::Error, /Invalid protocol/)
     end
   end
 
   context 'with invalid lb_kind' do
     let(:title) { '_TITLE_' }
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => '80',
         :lb_algo             => 'rr',
         :lb_kind             => 'BAT'
       }
-    }
+    end
 
     it do
-      expect {
+      expect do
         should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_')
-      }.to raise_error(Puppet::Error, /Invalid lb_kind/)
+      end.to raise_error(Puppet::Error, /Invalid lb_kind/)
     end
   end
 
   context 'with a single real_server' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address   => '10.1.1.1',
         :port         => '8080',
@@ -210,7 +210,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :real_servers => [{ 'ip_address' => '10.1.1.2',
                             'port'       => '8081' }]
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
@@ -220,7 +220,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'with a real_server with a TCP_CHECK' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address   => '10.1.1.1',
         :port         => '8080',
@@ -229,7 +229,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :real_servers => [{ 'ip_address' => '10.1.1.2',
                             'port'       => '8081' }]
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
@@ -239,7 +239,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'with a real_server with a TCP_CHECK and non-overwritting real_server_options' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => '8080',
@@ -253,7 +253,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
           }
         }
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
@@ -263,7 +263,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'with a real_server with a TCP_CHECK and overwritting real_server_options' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address          => '10.1.1.1',
         :port                => '8080',
@@ -278,7 +278,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
           }
         }
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
@@ -288,7 +288,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'with a real_server without a port should default to VIP port' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address   => '10.1.1.1',
         :port         => '8080',
@@ -296,7 +296,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :tcp_check    => { 'connect_timeout' => 5 },
         :real_servers => [{ 'ip_address' => '10.1.1.2' }]
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
@@ -306,7 +306,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   end
 
   context 'two real_servers' do
-    let(:params) {
+    let(:params) do
       {
         :ip_address   => '10.1.1.1',
         :port         => '8080',
@@ -316,7 +316,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
                           { 'ip_address' => '10.1.1.3',
                             'port'       => '8082' }]
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({

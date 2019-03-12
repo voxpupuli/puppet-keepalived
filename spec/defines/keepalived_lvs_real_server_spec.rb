@@ -7,13 +7,13 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   let(:pre_condition) { '$concat_basedir = "/tmp"' }
 
   context 'with bare minimum: virtual_server, ip_address, and port' do
-    let(:params) {
+    let(:params) do
       {
         :virtual_server => 'virtual_server',
         :ip_address     => '127.3.4.5',
         :port           => '8080'
       }
-    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
@@ -27,13 +27,13 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
   context 'with an invalid IP address' do
     let(:title) { 'test' }
-    let(:params) {
+    let(:params) do
       {
         :virtual_server => 'virtual_server',
         :ip_address     => 'rubbish',
         :port           => '8080'
       }
-    }
+    end
 
     it do
       expect { should contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid IP/)
@@ -42,23 +42,23 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
   context 'with an invalid port' do
     let(:title) { 'test' }
-    let(:params) {
+    let(:params) do
       {
         :virtual_server => 'virtual_server',
         :ip_address     => '10.1.1.1',
         :port           => 'something'
       }
-    }
+    end
 
     it do
-      expect {
+      expect do
         should contain_concat__fragment('keepalived.conf_lvs_real_server_test')
-      }.to raise_error(Puppet::Error, /Invalid port/)
+      end.to raise_error(Puppet::Error, /Invalid port/)
     end
   end
 
   context 'with single-line and block options' do
-    let(:params) {
+    let(:params) do
       {
       :virtual_server => 'virtual_server',
       :ip_address     => '127.3.4.5',
@@ -74,7 +74,8 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
           }
         }
       }
-    }}
+    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
@@ -98,7 +99,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   end
 
   context 'with only block options' do
-    let(:params) {
+    let(:params) do
       {
       :virtual_server => 'virtual_server',
       :ip_address     => '127.3.4.5',
@@ -110,7 +111,8 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
           }
         }
       }
-    }}
+    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
@@ -128,7 +130,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   end
 
   context 'with only single-line options' do
-    let(:params) {
+    let(:params) do
       {
       :virtual_server => 'virtual_server',
       :ip_address     => '127.3.4.5',
@@ -138,7 +140,8 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
         'notify_up' => "'notify-send \"good to go!\"'",
         'inhibit_on_failure' => true
       }
-    }}
+    }
+    end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({

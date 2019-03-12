@@ -14,11 +14,11 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
 
   describe 'with parameter group' do
     let (:title) { '_NAME_' }
-    let (:params) {
+    let (:params) do
       {
         :group => '_VALUE_'
       }
-    }
+    end
 
     it { should create_keepalived__vrrp__sync_group('_NAME_') }
     it {
@@ -31,11 +31,11 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
 
   describe 'with parameter group' do
     let (:title) { '_NAME_' }
-    let (:params) {
+    let (:params) do
       {
         :group => %w[_VALUE1_ _VALUE2_]
       }
-    }
+    end
 
     it { should create_keepalived__vrrp__sync_group('_NAME_') }
     it {
@@ -48,12 +48,12 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
 
   describe 'with parameter notify_script_master' do
     let (:title) { '_NAME_' }
-    let (:params) {
+    let (:params) do
       {
         :group => '_GROUP_',
         :notify_script_master => '_SCRIPT_'
       }
-    }
+    end
 
     it { should create_keepalived__vrrp__sync_group('_NAME_') }
     it {
@@ -66,12 +66,12 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
 
   describe 'with parameter notify_script_backup' do
     let (:title) { '_NAME_' }
-    let (:params) {
+    let (:params) do
       {
         :group => '_GROUP_',
         :notify_script_backup => '_SCRIPT_'
       }
-    }
+    end
 
     it { should create_keepalived__vrrp__sync_group('_NAME_') }
     it {
@@ -84,12 +84,12 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
 
   describe 'with parameter notify_script_fault' do
     let (:title) { '_NAME_' }
-    let (:params) {
+    let (:params) do
       {
         :group => '_GROUP_',
         :notify_script_fault => '_SCRIPT_'
       }
-    }
+    end
 
     it { should create_keepalived__vrrp__sync_group('_NAME_') }
     it {
@@ -102,12 +102,12 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
 
   describe 'with parameter notify_script' do
     let (:title) { '_NAME_' }
-    let (:params) {
+    let (:params) do
       {
         :group => '_GROUP_',
         :notify_script => '_SCRIPT_'
       }
-    }
+    end
 
     it { should create_keepalived__vrrp__sync_group('_NAME_') }
     it {
@@ -120,12 +120,12 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
 
   describe 'with parameter smtp_alert' do
     let (:title) { '_NAME_' }
-    let (:params) {
+    let (:params) do
       {
         :group => '_GROUP_',
         :smtp_alert => true
       }
-    }
+    end
 
     it { should create_keepalived__vrrp__sync_group('_NAME_') }
     it {
