@@ -8,7 +8,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_VALUE_' }
 
     it do
-      expect { should create_class('keepalived') }.to raise_error(Puppet::Error)
+      expect { is_expected.to create_class('keepalived') }.to raise_error(Puppet::Error)
     end
   end
 
@@ -20,9 +20,9 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__sync_group('_NAME_') }
+    it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
           'content' => /group \{\n\s.*_VALUE_/
         )
@@ -37,9 +37,9 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__sync_group('_NAME_') }
+    it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
           'content' => /group \{\n\s.*_VALUE1_\n\s.*_VALUE2_/
         )
@@ -55,9 +55,9 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__sync_group('_NAME_') }
+    it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
           'content' => /notify_master\s.*_SCRIPT_/
         )
@@ -73,9 +73,9 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__sync_group('_NAME_') }
+    it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
           'content' => /notify_backup\s.*_SCRIPT_/
         )
@@ -91,9 +91,9 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__sync_group('_NAME_') }
+    it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
           'content' => /notify_fault\s.*_SCRIPT_/
         )
@@ -109,9 +109,9 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__sync_group('_NAME_') }
+    it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
           'content' => /notify\s.*_SCRIPT_/
         )
@@ -127,9 +127,9 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__sync_group('_NAME_') }
+    it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
           'content' => /smtp_alert/
         )

@@ -23,16 +23,16 @@ describe 'keepalived class' do
     end
 
     describe package('keepalived') do
-      it { should be_installed }
+      it { is_expected.to be_installed }
     end
 
     describe file('/etc/keepalived/keepalived.conf') do
-      it { should be_file }
+      it { is_expected.to be_file }
     end
 
     describe service('keepalived') do
-      it { should be_running }
-      it { should be_enabled }
+      it { is_expected.to be_running }
+      it { is_expected.to be_enabled }
     end
   end
 end

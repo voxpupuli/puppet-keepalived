@@ -5,7 +5,7 @@ describe 'keepalived::global_defs', :type => :class do
   let (:pre_condition) { '$concat_basedir = "/tmp"' }
 
   describe 'without parameters' do
-    it { should create_class('keepalived::global_defs') }
+    it { is_expected.to create_class('keepalived::global_defs') }
   end
 
   describe 'with parameter notification_email' do
@@ -16,7 +16,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /notification_email\s*\{\n\s*_VALUE_/
         )
@@ -31,7 +31,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /notification_email\s*\{\n\s*_VALUE1_\n\s*_VALUE2_/
         )
@@ -46,7 +46,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /notification_email_from\s*_VALUE_/
         )
@@ -61,7 +61,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /smtp_server\s*127.0.0.1/
         )
@@ -76,7 +76,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /smtp_connect_timeout\s*30/
         )
@@ -91,7 +91,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /router_id\s*_VALUE_/
         )
@@ -106,7 +106,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /script_user _VALUE_$/
         )
@@ -121,7 +121,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /enable_script_security$/
         )
@@ -136,7 +136,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /enable_snmp_keepalived$/
         )
@@ -151,7 +151,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /enable_snmp_checker$/
         )
@@ -166,7 +166,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /enable_snmp_rfc$/
         )
@@ -181,7 +181,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /enable_snmp_rfcv2$/
         )
@@ -196,7 +196,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /enable_snmp_rfcv3$/
         )
@@ -211,7 +211,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /enable_traps$/
         )
@@ -226,7 +226,7 @@ describe 'keepalived::global_defs', :type => :class do
     end
 
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_globaldefs').with(
           'content' => /snmp_socket \/path$/
         )

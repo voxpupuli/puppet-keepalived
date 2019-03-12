@@ -16,12 +16,12 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     end
 
     it {
-      should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+      is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
+                                                                                             'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 8080 {
           }
         CONTENT
-                                                                                   })
+                                                                                           })
     }
   end
 
@@ -36,7 +36,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     end
 
     it do
-      expect { should contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid IP/)
+      expect { is_expected.to contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid IP/)
     end
   end
 
@@ -52,7 +52,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
     it do
       expect do
-        should contain_concat__fragment('keepalived.conf_lvs_real_server_test')
+        is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test')
       end.to raise_error(Puppet::Error, /Invalid port/)
     end
   end
@@ -78,8 +78,8 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     end
 
     it {
-      should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+      is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
+                                                                                             'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
@@ -94,7 +94,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
             }
           }
         CONTENT
-                                                                                   })
+                                                                                           })
     }
   end
 
@@ -115,8 +115,8 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     end
 
     it {
-      should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+      is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
+                                                                                             'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 789 {
             SMTP_CHECK {
               host {
@@ -125,7 +125,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
             }
           }
         CONTENT
-                                                                                   })
+                                                                                           })
     }
   end
 
@@ -144,15 +144,15 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     end
 
     it {
-      should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+      is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
+                                                                                             'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
             weight 1
           }
         CONTENT
-                                                                                   })
+                                                                                           })
     }
   end
 end

@@ -9,7 +9,7 @@ describe 'keepalived::vrrp::script', :type => :define do
     let (:title) { '_TITLE_' }
 
     it do
-      expect { should create_class('keepalived') }.to raise_error(Puppet::Error)
+      expect { is_expected.to create_class('keepalived') }.to raise_error(Puppet::Error)
     end
   end
 
@@ -22,9 +22,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /interval.*_VALUE_/
         )
@@ -39,9 +39,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /script.*_VALUE_/
         )
@@ -57,9 +57,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /weight.*_VALUE_/
         )
@@ -75,9 +75,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should_not \
+      is_expected.not_to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /weight.*_VALUE_/
         )
@@ -93,9 +93,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /fall.*_VALUE_/
         )
@@ -111,9 +111,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /rise.*_VALUE_/
         )
@@ -129,9 +129,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /timeout.*_VALUE_/
         )
@@ -147,9 +147,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /user.*_VALUE_/
         )
@@ -166,9 +166,9 @@ describe 'keepalived::vrrp::script', :type => :define do
       }
     end
 
-    it { should create_keepalived__vrrp__script('_TITLE_') }
+    it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
     it {
-      should \
+      is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /user.*_USER_VALUE_ _GROUP_VALUE_/
         )
