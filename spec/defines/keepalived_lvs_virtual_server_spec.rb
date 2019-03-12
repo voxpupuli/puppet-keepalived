@@ -25,11 +25,11 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /^virtual_server 10.1.1.1 8080 \{\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+/
-      })
+                                                                                           'content' => /^virtual_server 10.1.1.1 8080 \{\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+/
+                                                                                         })
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_-footer').with({
-        'content' => /^\}/
-      })
+                                                                                                  'content' => /^\}/
+                                                                                                })
     }
   end
 
@@ -43,11 +43,11 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /^virtual_server fwmark 123 \{\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+/
-      })
+                                                                                           'content' => /^virtual_server fwmark 123 \{\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+/
+                                                                                         })
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_-footer').with({
-        'content' => /^\}/
-      })
+                                                                                                  'content' => /^\}/
+                                                                                                })
     }
   end
 
@@ -214,8 +214,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /real_server 10.1.1.2 8081 \{\s+\}/
-      })
+                                                                                           'content' => /real_server 10.1.1.2 8081 \{\s+\}/
+                                                                                         })
     }
   end
 
@@ -233,8 +233,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
-      })
+                                                                                           'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
+                                                                                         })
     }
   end
 
@@ -257,8 +257,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /real_server 10.1.1.2 8081 \{\s+MISC_CHECK \{\s+misc_path somepath\s+\}\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
-      })
+                                                                                           'content' => /real_server 10.1.1.2 8081 \{\s+MISC_CHECK \{\s+misc_path somepath\s+\}\s+TCP_CHECK \{\s+connect_port 8081\s+connect_timeout 5\s+\}\s+\}/
+                                                                                         })
     }
   end
 
@@ -282,8 +282,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 42\s+connect_timeout 10\s+\}\s+\}/
-      })
+                                                                                           'content' => /real_server 10.1.1.2 8081 \{\s+TCP_CHECK \{\s+connect_port 42\s+connect_timeout 10\s+\}\s+\}/
+                                                                                         })
     }
   end
 
@@ -300,8 +300,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /real_server 10.1.1.2 8080 \{\s+TCP_CHECK \{\s+connect_port 8080\s+connect_timeout 5\s+\}\s+\}/
-      })
+                                                                                           'content' => /real_server 10.1.1.2 8080 \{\s+TCP_CHECK \{\s+connect_port 8080\s+connect_timeout 5\s+\}\s+\}/
+                                                                                         })
     }
   end
 
@@ -320,8 +320,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with({
-        'content' => /real_server 10.1.1.2 8081\s+\{\s+\}\s+real_server 10.1.1.3 8082\s+/
-      })
+                                                                                           'content' => /real_server 10.1.1.2 8081\s+\{\s+\}\s+real_server 10.1.1.3 8082\s+/
+                                                                                         })
     }
   end
 end

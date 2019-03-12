@@ -17,11 +17,11 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 8080 {
           }
         CONTENT
-      })
+                                                                                   })
     }
   end
 
@@ -60,26 +60,26 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   context 'with single-line and block options' do
     let(:params) do
       {
-      :virtual_server => 'virtual_server',
-      :ip_address     => '127.3.4.5',
-      :port           => '789',
-      :options        => {
-        'weight' => 1,
-        'notify_up' => "'notify-send \"good to go!\"'",
-        'inhibit_on_failure' => true,
-        'SMTP_CHECK' => {
-          'connect_timeout' => 10,
-          'host' => {
-            'connect_ip' => '127.0.0.1'
+        :virtual_server => 'virtual_server',
+        :ip_address     => '127.3.4.5',
+        :port           => '789',
+        :options        => {
+          'weight' => 1,
+          'notify_up' => "'notify-send \"good to go!\"'",
+          'inhibit_on_failure' => true,
+          'SMTP_CHECK' => {
+            'connect_timeout' => 10,
+            'host' => {
+              'connect_ip' => '127.0.0.1'
+            }
           }
         }
       }
-    }
     end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
@@ -94,29 +94,29 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
             }
           }
         CONTENT
-      })
+                                                                                   })
     }
   end
 
   context 'with only block options' do
     let(:params) do
       {
-      :virtual_server => 'virtual_server',
-      :ip_address     => '127.3.4.5',
-      :port           => '789',
-      :options        => {
-        'SMTP_CHECK' => {
-          'host' => {
-            'connect_ip' => '127.0.0.1'
+        :virtual_server => 'virtual_server',
+        :ip_address     => '127.3.4.5',
+        :port           => '789',
+        :options        => {
+          'SMTP_CHECK' => {
+            'host' => {
+              'connect_ip' => '127.0.0.1'
+            }
           }
         }
       }
-    }
     end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 789 {
             SMTP_CHECK {
               host {
@@ -125,34 +125,34 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
             }
           }
         CONTENT
-      })
+                                                                                   })
     }
   end
 
   context 'with only single-line options' do
     let(:params) do
       {
-      :virtual_server => 'virtual_server',
-      :ip_address     => '127.3.4.5',
-      :port           => '789',
-      :options        => {
-        'weight' => 1,
-        'notify_up' => "'notify-send \"good to go!\"'",
-        'inhibit_on_failure' => true
+        :virtual_server => 'virtual_server',
+        :ip_address     => '127.3.4.5',
+        :port           => '789',
+        :options        => {
+          'weight' => 1,
+          'notify_up' => "'notify-send \"good to go!\"'",
+          'inhibit_on_failure' => true
+        }
       }
-    }
     end
 
     it {
       should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+                                                                                     'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
             weight 1
           }
         CONTENT
-      })
+                                                                                   })
     }
   end
 end
