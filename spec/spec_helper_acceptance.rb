@@ -6,7 +6,7 @@ unless ENV['RS_PROVISION'] == 'no'
   # systems fail on windows and osx, and install via gem on other *nixes
   foss_opts = { :default_action => 'gem_install' }
 
-  default.is_pe? ? install_pe : install_puppet( foss_opts )
+  default.is_pe? ? install_pe : install_puppet(foss_opts)
 
   hosts.each do |host|
     on host, "mkdir -p #{host['distmoduledir']}"

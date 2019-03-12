@@ -16,7 +16,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     }
 
     it {
-      should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with( {
+      should contain_concat__fragment('keepalived.conf_lvs_real_server_test').with({
         'content' => <<-CONTENT.gsub(/ {10}/, '  ')
           real_server 127.3.4.5 8080 {
           }
