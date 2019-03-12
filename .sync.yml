@@ -1,0 +1,31 @@
+---
+spec/acceptance/nodesets/centos-65-x64.yml
+  delete: true
+spec/acceptance/nodesets/ubuntu-server-12042-x64.yml
+  delete: true
+spec/acceptance/nodesets/archlinux-2-x64.yml
+  delete: true
+spec/acceptance/nodesets/ubuntu-server-10044-x64.yml
+  delete: true
+spec/acceptance/nodesets/centos-59-x64.yml
+  delete: true
+spec/acceptance/nodesets/debian-73-x64.yml
+  delete: true
+spec/acceptance/nodesets/default.yml
+  delete: true
+spec/acceptance/nodesets/ec2
+  delete: true
+spec/acceptance/nodesets/ec2/windows-2016-base-x64.yml
+  delete: true
+spec/acceptance/nodesets/ec2/amazonlinux-2016091.yml
+  delete: true
+spec/acceptance/nodesets/ec2/sles-12sp2-x64.yml
+  delete: true
+spec/acceptance/nodesets/ec2/ubuntu-1604-x64.yml
+  delete: true
+spec/acceptance/nodesets/ec2/image_templates.yaml
+  delete: true
+spec/acceptance/nodesets/ec2/rhel-73-x64.yml
+  delete: true
+spec/acceptance/nodesets/debian-70rc1-x64.yml
+  delete: true
