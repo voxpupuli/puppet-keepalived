@@ -367,55 +367,55 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter garp_master_delay' do
-     let (:params) {
-       mandatory_params.merge({
-         :garp_master_delay => '_VALUE_',
-       })
-     }
+    let (:params) {
+      mandatory_params.merge({
+        :garp_master_delay => '_VALUE_',
+      })
+    }
 
-     it { should create_keepalived__vrrp__instance('_NAME_') }
-     it {
-       should \
-         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-         'content' => /garp_master_delay/,
-         'content' => /_VALUE_/
-       )
-     }
-   end
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /garp_master_delay/,
+        'content' => /_VALUE_/
+      )
+    }
+  end
 
   describe 'with parameter garp_master_refresh' do
-     let (:params) {
-       mandatory_params.merge({
-         :garp_master_refresh => '_VALUE_',
-       })
-     }
+    let (:params) {
+      mandatory_params.merge({
+        :garp_master_refresh => '_VALUE_',
+      })
+    }
 
-     it { should create_keepalived__vrrp__instance('_NAME_') }
-     it {
-       should \
-         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-         'content' => /garp_master_refresh/,
-         'content' => /_VALUE_/
-       )
-     }
-   end
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /garp_master_refresh/,
+        'content' => /_VALUE_/
+      )
+    }
+  end
 
   describe 'with parameter virtual_ipaddress_int' do
-      let (:params) {
-        mandatory_params.merge({
-          :virtual_ipaddress_int => '_VALUE_',
-          :virtual_ipaddress => ['192.168.1.1'],
-        })
-      }
+    let (:params) {
+      mandatory_params.merge({
+        :virtual_ipaddress_int => '_VALUE_',
+        :virtual_ipaddress => ['192.168.1.1'],
+      })
+    }
 
-      it { should create_keepalived__vrrp__instance('_NAME_') }
-      it {
-        should \
-          contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-          'content' => /192.168.1.1 dev _VALUE_/
-        )
-      }
-    end
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_/
+      )
+    }
+  end
 
   describe 'with virtual_ipaddress as hash' do
     let (:params) {
@@ -577,21 +577,21 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_ipaddress_excluded' do
-      let (:params) {
-        mandatory_params.merge({
-          :virtual_ipaddress_int => '_VALUE_',
-          :virtual_ipaddress_excluded => ['192.168.1.1']
-        })
-      }
+    let (:params) {
+      mandatory_params.merge({
+        :virtual_ipaddress_int => '_VALUE_',
+        :virtual_ipaddress_excluded => ['192.168.1.1']
+      })
+    }
 
-      it { should create_keepalived__vrrp__instance('_NAME_') }
-      it {
-        should \
-          contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-          'content' => /192.168.1.1 dev _VALUE_/
-        )
-      }
-    end
+    it { should create_keepalived__vrrp__instance('_NAME_') }
+    it {
+      should \
+        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+        'content' => /192.168.1.1 dev _VALUE_/
+      )
+    }
+  end
 
   describe 'with virtual_ipaddress_excluded as hash' do
     let (:params) {
