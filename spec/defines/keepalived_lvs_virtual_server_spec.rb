@@ -207,8 +207,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :ip_address   => '10.1.1.1',
         :port         => '8080',
         :lb_algo      => 'lc',
-        :real_servers => [ { 'ip_address' => '10.1.1.2',
-                             'port'       => '8081'}]
+        :real_servers => [{ 'ip_address' => '10.1.1.2',
+                            'port'       => '8081'}]
       }
     }
 
@@ -226,8 +226,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :port         => '8080',
         :lb_algo      => 'lc',
         :tcp_check    => { 'connect_timeout' => 5 },
-        :real_servers => [ { 'ip_address' => '10.1.1.2',
-                             'port'       => '8081'}]
+        :real_servers => [{ 'ip_address' => '10.1.1.2',
+                            'port'       => '8081'}]
       }
     }
 
@@ -245,8 +245,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :port                => '8080',
         :lb_algo             => 'lc',
         :tcp_check           => { 'connect_timeout' => 5 },
-        :real_servers        => [ { 'ip_address' => '10.1.1.2',
-                                    'port'       => '8081'}],
+        :real_servers        => [{ 'ip_address' => '10.1.1.2',
+                                   'port'       => '8081'}],
         :real_server_options => {
           'MISC_CHECK' => {
             'misc_path' => 'somepath'
@@ -269,8 +269,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :port                => '8080',
         :lb_algo             => 'lc',
         :tcp_check           => { 'connect_timeout' => 5 },
-        :real_servers        => [ { 'ip_address' => '10.1.1.2',
-                                    'port'       => '8081'}],
+        :real_servers        => [{ 'ip_address' => '10.1.1.2',
+                                   'port'       => '8081'}],
         :real_server_options => {
           'TCP_CHECK' => {
             'connect_port'    => 42,
@@ -294,7 +294,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :port         => '8080',
         :lb_algo      => 'lc',
         :tcp_check    => { 'connect_timeout' => 5 },
-        :real_servers => [ { 'ip_address' => '10.1.1.2'} ]
+        :real_servers => [{ 'ip_address' => '10.1.1.2'}]
       }
     }
 
@@ -311,10 +311,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :ip_address   => '10.1.1.1',
         :port         => '8080',
         :lb_algo      => 'lc',
-        :real_servers => [ { 'ip_address' => '10.1.1.2',
-                             'port'       => '8081'},
-                           { 'ip_address' => '10.1.1.3',
-                             'port'       => '8082'}]
+        :real_servers => [{ 'ip_address' => '10.1.1.2',
+                            'port'       => '8081'},
+                          { 'ip_address' => '10.1.1.3',
+                            'port'       => '8082'}]
       }
     }
 
