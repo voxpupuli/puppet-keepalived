@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'keepalived', :type => :class do
+describe 'keepalived', type: :class do
   let (:facts) { debian_facts }
   let (:pre_condition) { '$concat_basedir = "/tmp"' }
 
@@ -35,7 +35,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: config_dir' do
-    let (:params) { { :config_dir => '/foo/bar' } }
+    let (:params) { { config_dir: '/foo/bar' } }
 
     it {
       is_expected.to contain_file('/foo/bar').with(
@@ -45,7 +45,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: config_dir_mode' do
-    let (:params) { { :config_dir_mode => '0755' } }
+    let (:params) { { config_dir_mode: '0755' } }
 
     it {
       is_expected.to contain_file('/etc/keepalived').with(
@@ -55,7 +55,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: config_file_mode' do
-    let (:params) { { :config_file_mode => '0644' } }
+    let (:params) { { config_file_mode: '0644' } }
 
     it {
       is_expected.to contain_concat('/etc/keepalived/keepalived.conf').with(
@@ -65,7 +65,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: config_group' do
-    let (:params) { { :config_group => '_VALUE_' } }
+    let (:params) { { config_group: '_VALUE_' } }
 
     it {
       is_expected.to contain_file('/etc/keepalived').with(
@@ -75,7 +75,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: config_owner' do
-    let (:params) { { :config_owner => '_VALUE_' } }
+    let (:params) { { config_owner: '_VALUE_' } }
 
     it {
       is_expected.to contain_file('/etc/keepalived').with(
@@ -85,7 +85,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: pkg_ensure' do
-    let (:params) { { :pkg_ensure => '_VALUE_' } }
+    let (:params) { { pkg_ensure: '_VALUE_' } }
 
     it {
       is_expected.to contain_package('keepalived').with(
@@ -95,13 +95,13 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: pkg_list' do
-    let (:params) { { :pkg_list => '_VALUE_' } }
+    let (:params) { { pkg_list: '_VALUE_' } }
 
     it { is_expected.to contain_package('_VALUE_') }
   end
 
   describe 'with parameter: service_enable' do
-    let (:params) { { :service_enable => true } }
+    let (:params) { { service_enable: true } }
 
     it {
       is_expected.to contain_service('keepalived').with(
@@ -111,7 +111,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_ensure' do
-    let (:params) { { :service_ensure => 'running' } }
+    let (:params) { { service_ensure: 'running' } }
 
     it {
       is_expected.to contain_service('keepalived').with(
@@ -121,7 +121,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_hasrestart' do
-    let (:params) { { :service_hasrestart => true } }
+    let (:params) { { service_hasrestart: true } }
 
     it {
       is_expected.to contain_service('keepalived').with(
@@ -131,7 +131,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_hasstatus' do
-    let (:params) { { :service_hasstatus => true } }
+    let (:params) { { service_hasstatus: true } }
 
     it {
       is_expected.to contain_service('keepalived').with(
@@ -141,7 +141,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_manage' do
-    let (:params) { { :service_hasstatus => true } }
+    let (:params) { { service_hasstatus: true } }
 
     it {
       is_expected.to contain_service('keepalived').with(
@@ -151,7 +151,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_name' do
-    let (:params) { { :service_name => '_VALUE_' } }
+    let (:params) { { service_name: '_VALUE_' } }
 
     it {
       is_expected.to contain_service('_VALUE_').with(
@@ -161,7 +161,7 @@ describe 'keepalived', :type => :class do
   end
 
   describe 'with parameter: service_restart' do
-    let (:params) { { :service_restart => '_VALUE_' } }
+    let (:params) { { service_restart: '_VALUE_' } }
 
     it {
       is_expected.to contain_service('keepalived').with(

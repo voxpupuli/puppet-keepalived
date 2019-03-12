@@ -4,7 +4,7 @@ require 'beaker-rspec'
 unless ENV['RS_PROVISION'] == 'no'
   # This will install the latest available package on el and deb based
   # systems fail on windows and osx, and install via gem on other *nixes
-  foss_opts = { :default_action => 'gem_install' }
+  foss_opts = { default_action: 'gem_install' }
 
   default.is_pe? ? install_pe : install_puppet(foss_opts)
 
@@ -26,10 +26,10 @@ RSpec.configure do |c|
   c.before :suite do
     # Install module and dependencies
     hosts.each do |host|
-      copy_module_to(host, :source => proj_root, :module_name => 'keepalived')
+      copy_module_to(host, source: proj_root, module_name: 'keepalived')
       shell("/bin/touch #{default['puppetpath']}/hiera.yaml")
-      on host, puppet('module install puppetlabs-stdlib --version >= 4.1.0'), { :acceptable_exit_codes => [0] }
-      on host, puppet('module install puppetlabs-concat --version >= 1.0.2'), { :acceptable_exit_codes => [0] }
+      on host, puppet('module install puppetlabs-stdlib --version >= 4.1.0'), { acceptable_exit_codes: [0] }
+      on host, puppet('module install puppetlabs-concat --version >= 1.0.2'), { acceptable_exit_codes: [0] }
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'keepalived::global_defs', :type => :class do
+describe 'keepalived::global_defs', type: :class do
   let (:facts) { debian_facts }
   let (:pre_condition) { '$concat_basedir = "/tmp"' }
 
@@ -11,7 +11,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter notification_email' do
     let (:params) do
       {
-        :notification_email => '_VALUE_'
+        notification_email: '_VALUE_'
       }
     end
 
@@ -26,7 +26,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter notification_email' do
     let (:params) do
       {
-        :notification_email => %w[_VALUE1_ _VALUE2_]
+        notification_email: %w[_VALUE1_ _VALUE2_]
       }
     end
 
@@ -41,7 +41,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter notification_email_from' do
     let (:params) do
       {
-        :notification_email_from => '_VALUE_'
+        notification_email_from: '_VALUE_'
       }
     end
 
@@ -56,7 +56,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter smtp_server' do
     let (:params) do
       {
-        :smtp_server => '127.0.0.1'
+        smtp_server: '127.0.0.1'
       }
     end
 
@@ -71,7 +71,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter smtp_connect_timeout' do
     let (:params) do
       {
-        :smtp_connect_timeout => '30'
+        smtp_connect_timeout: '30'
       }
     end
 
@@ -86,7 +86,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter router_id' do
     let (:params) do
       {
-        :router_id => '_VALUE_'
+        router_id: '_VALUE_'
       }
     end
 
@@ -101,7 +101,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter script_user' do
     let (:params) do
       {
-        :script_user => '_VALUE_'
+        script_user: '_VALUE_'
       }
     end
 
@@ -116,7 +116,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter enable_script_security' do
     let (:params) do
       {
-        :enable_script_security => true
+        enable_script_security: true
       }
     end
 
@@ -131,7 +131,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter enable_snmp_keepalived' do
     let (:params) do
       {
-        :enable_snmp_keepalived => true
+        enable_snmp_keepalived: true
       }
     end
 
@@ -146,7 +146,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter enable_snmp_checker' do
     let (:params) do
       {
-        :enable_snmp_checker => true
+        enable_snmp_checker: true
       }
     end
 
@@ -161,7 +161,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter enable_snmp_rfc' do
     let (:params) do
       {
-        :enable_snmp_rfc => true
+        enable_snmp_rfc: true
       }
     end
 
@@ -176,7 +176,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter enable_snmp_rfcv2' do
     let (:params) do
       {
-        :enable_snmp_rfcv2 => true
+        enable_snmp_rfcv2: true
       }
     end
 
@@ -191,7 +191,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter enable_snmp_rfcv3' do
     let (:params) do
       {
-        :enable_snmp_rfcv3 => true
+        enable_snmp_rfcv3: true
       }
     end
 
@@ -206,7 +206,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter enable_traps' do
     let (:params) do
       {
-        :enable_traps => true
+        enable_traps: true
       }
     end
 
@@ -221,7 +221,7 @@ describe 'keepalived::global_defs', :type => :class do
   describe 'with parameter snmp_socket' do
     let (:params) do
       {
-        :snmp_socket => '/path'
+        snmp_socket: '/path'
       }
     end
 

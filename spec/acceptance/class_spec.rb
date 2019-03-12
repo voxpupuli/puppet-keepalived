@@ -18,8 +18,8 @@ describe 'keepalived class' do
       EOS
 
       # Run it twice and test for idempotency
-      apply_manifest(pp, :catch_failures => true)
-      apply_manifest(pp, :catch_changes  => true)
+      apply_manifest(pp, catch_failures: true)
+      apply_manifest(pp, catch_changes: true)
     end
 
     describe package('keepalived') do

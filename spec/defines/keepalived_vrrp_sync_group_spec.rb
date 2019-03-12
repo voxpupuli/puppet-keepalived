@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'keepalived::vrrp::sync_group', :type => :define do
+describe 'keepalived::vrrp::sync_group', type: :define do
   let (:facts) { debian_facts }
   let (:pre_condition) { '$concat_basedir = "/tmp"' }
 
@@ -16,7 +16,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) do
       {
-        :group => '_VALUE_'
+        group: '_VALUE_'
       }
     end
 
@@ -33,7 +33,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) do
       {
-        :group => %w[_VALUE1_ _VALUE2_]
+        group: %w[_VALUE1_ _VALUE2_]
       }
     end
 
@@ -50,8 +50,8 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) do
       {
-        :group => '_GROUP_',
-        :notify_script_master => '_SCRIPT_'
+        group: '_GROUP_',
+        notify_script_master: '_SCRIPT_'
       }
     end
 
@@ -68,8 +68,8 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) do
       {
-        :group => '_GROUP_',
-        :notify_script_backup => '_SCRIPT_'
+        group: '_GROUP_',
+        notify_script_backup: '_SCRIPT_'
       }
     end
 
@@ -86,8 +86,8 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) do
       {
-        :group => '_GROUP_',
-        :notify_script_fault => '_SCRIPT_'
+        group: '_GROUP_',
+        notify_script_fault: '_SCRIPT_'
       }
     end
 
@@ -104,8 +104,8 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) do
       {
-        :group => '_GROUP_',
-        :notify_script => '_SCRIPT_'
+        group: '_GROUP_',
+        notify_script: '_SCRIPT_'
       }
     end
 
@@ -122,8 +122,8 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) do
       {
-        :group => '_GROUP_',
-        :smtp_alert => true
+        group: '_GROUP_',
+        smtp_alert: true
       }
     end
 

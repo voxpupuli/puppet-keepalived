@@ -1,7 +1,7 @@
 
 require 'spec_helper'
 
-describe 'keepalived::lvs::virtual_server', :type => 'define' do
+describe 'keepalived::lvs::virtual_server', type: 'define' do
   let(:title) { '_TITLE_' }
   let(:facts) { debian_facts }
   let(:pre_condition) { '$concat_basedir = "/tmp"' }
@@ -17,9 +17,9 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with bare minimum: ip address, lb_algo and port' do
     let(:params) do
       {
-        :ip_address   => '10.1.1.1',
-        :port         => '8080',
-        :lb_algo      => 'lc'
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc'
       }
     end
 
@@ -36,8 +36,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with bare minimum alternative: fwmark and lb_algo' do
     let(:params) do
       {
-        :fwmark       => '123',
-        :lb_algo      => 'lc'
+        fwmark: '123',
+        lb_algo: 'lc'
       }
     end
 
@@ -54,21 +54,21 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with optional parameters' do
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => '8080',
-        :lb_algo             => 'lc',
-        :lb_kind             => 'NAT',
-        :protocol            => 'UDP',
-        :delay_loop          => '60',
-        :persistence_timeout => 5,
-        :ha_suspend          => true,
-        :virtualhost         => 'example.com',
-        :alpha               => true,
-        :omega               => true,
-        :quorum              => '5',
-        :hysteresis          => '9',
-        :sorry_server        => { 'ip_address' => '10.1.1.3',
-                                  'port'       => '999' }
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc',
+        lb_kind: 'NAT',
+        protocol: 'UDP',
+        delay_loop: '60',
+        persistence_timeout: 5,
+        ha_suspend: true,
+        virtualhost: 'example.com',
+        alpha: true,
+        omega: true,
+        quorum: '5',
+        hysteresis: '9',
+        sorry_server: { 'ip_address' => '10.1.1.3',
+                        'port' => '999' }
       }
     end
 
@@ -88,9 +88,9 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:title) { '_TITLE_' }
     let(:params) do
       {
-        :ip_address          => 'rubbish',
-        :port                => '8080',
-        :lb_algo             => 'lc'
+        ip_address: 'rubbish',
+        port: '8080',
+        lb_algo: 'lc'
       }
     end
 
@@ -103,8 +103,8 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:title) { '_TITLE_' }
     let(:params) do
       {
-        :fwmark              => 'rubbish',
-        :lb_algo             => 'lc'
+        fwmark: 'rubbish',
+        lb_algo: 'lc'
       }
     end
 
@@ -117,9 +117,9 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:title) { '_TITLE_' }
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => 'something',
-        :lb_algo             => 'lc'
+        ip_address: '10.1.1.1',
+        port: 'something',
+        lb_algo: 'lc'
       }
     end
 
@@ -134,10 +134,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:title) { '_TITLE_' }
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => '80',
-        :lb_algo             => 'rr',
-        :delay_loop          => 'NaN'
+        ip_address: '10.1.1.1',
+        port: '80',
+        lb_algo: 'rr',
+        delay_loop: 'NaN'
       }
     end
 
@@ -152,9 +152,9 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:title) { '_TITLE_' }
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => '80',
-        :lb_algo             => 'rubbish'
+        ip_address: '10.1.1.1',
+        port: '80',
+        lb_algo: 'rubbish'
       }
     end
 
@@ -169,10 +169,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:title) { '_TITLE_' }
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => '80',
-        :lb_algo             => 'rr',
-        :protocol            => 'ICMP'
+        ip_address: '10.1.1.1',
+        port: '80',
+        lb_algo: 'rr',
+        protocol: 'ICMP'
       }
     end
 
@@ -187,10 +187,10 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:title) { '_TITLE_' }
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => '80',
-        :lb_algo             => 'rr',
-        :lb_kind             => 'BAT'
+        ip_address: '10.1.1.1',
+        port: '80',
+        lb_algo: 'rr',
+        lb_kind: 'BAT'
       }
     end
 
@@ -204,11 +204,11 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with a single real_server' do
     let(:params) do
       {
-        :ip_address   => '10.1.1.1',
-        :port         => '8080',
-        :lb_algo      => 'lc',
-        :real_servers => [{ 'ip_address' => '10.1.1.2',
-                            'port'       => '8081' }]
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc',
+        real_servers: [{ 'ip_address' => '10.1.1.2',
+                         'port'       => '8081' }]
       }
     end
 
@@ -222,12 +222,12 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with a real_server with a TCP_CHECK' do
     let(:params) do
       {
-        :ip_address   => '10.1.1.1',
-        :port         => '8080',
-        :lb_algo      => 'lc',
-        :tcp_check    => { 'connect_timeout' => 5 },
-        :real_servers => [{ 'ip_address' => '10.1.1.2',
-                            'port'       => '8081' }]
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc',
+        tcp_check: { 'connect_timeout' => 5 },
+        real_servers: [{ 'ip_address' => '10.1.1.2',
+                         'port'       => '8081' }]
       }
     end
 
@@ -241,13 +241,13 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with a real_server with a TCP_CHECK and non-overwritting real_server_options' do
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => '8080',
-        :lb_algo             => 'lc',
-        :tcp_check           => { 'connect_timeout' => 5 },
-        :real_servers        => [{ 'ip_address' => '10.1.1.2',
-                                   'port'       => '8081' }],
-        :real_server_options => {
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc',
+        tcp_check: { 'connect_timeout' => 5 },
+        real_servers: [{ 'ip_address' => '10.1.1.2',
+                         'port'       => '8081' }],
+        real_server_options: {
           'MISC_CHECK' => {
             'misc_path' => 'somepath'
           }
@@ -265,13 +265,13 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with a real_server with a TCP_CHECK and overwritting real_server_options' do
     let(:params) do
       {
-        :ip_address          => '10.1.1.1',
-        :port                => '8080',
-        :lb_algo             => 'lc',
-        :tcp_check           => { 'connect_timeout' => 5 },
-        :real_servers        => [{ 'ip_address' => '10.1.1.2',
-                                   'port'       => '8081' }],
-        :real_server_options => {
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc',
+        tcp_check: { 'connect_timeout' => 5 },
+        real_servers: [{ 'ip_address' => '10.1.1.2',
+                         'port'       => '8081' }],
+        real_server_options: {
           'TCP_CHECK' => {
             'connect_port'    => 42,
             'connect_timeout' => 10
@@ -290,11 +290,11 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'with a real_server without a port should default to VIP port' do
     let(:params) do
       {
-        :ip_address   => '10.1.1.1',
-        :port         => '8080',
-        :lb_algo      => 'lc',
-        :tcp_check    => { 'connect_timeout' => 5 },
-        :real_servers => [{ 'ip_address' => '10.1.1.2' }]
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc',
+        tcp_check: { 'connect_timeout' => 5 },
+        real_servers: [{ 'ip_address' => '10.1.1.2' }]
       }
     end
 
@@ -308,13 +308,13 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
   context 'two real_servers' do
     let(:params) do
       {
-        :ip_address   => '10.1.1.1',
-        :port         => '8080',
-        :lb_algo      => 'lc',
-        :real_servers => [{ 'ip_address' => '10.1.1.2',
-                            'port'       => '8081' },
-                          { 'ip_address' => '10.1.1.3',
-                            'port'       => '8082' }]
+        ip_address: '10.1.1.1',
+        port: '8080',
+        lb_algo: 'lc',
+        real_servers: [{ 'ip_address' => '10.1.1.2',
+                         'port'       => '8081' },
+                       { 'ip_address' => '10.1.1.3',
+                         'port'       => '8082' }]
       }
     end
 

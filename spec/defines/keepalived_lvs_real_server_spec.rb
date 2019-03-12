@@ -1,7 +1,7 @@
 
 require 'spec_helper'
 
-describe 'keepalived::lvs::real_server', :type => 'define' do
+describe 'keepalived::lvs::real_server', type: 'define' do
   let(:title) { 'test' }
   let(:facts) { debian_facts }
   let(:pre_condition) { '$concat_basedir = "/tmp"' }
@@ -9,9 +9,9 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   context 'with bare minimum: virtual_server, ip_address, and port' do
     let(:params) do
       {
-        :virtual_server => 'virtual_server',
-        :ip_address     => '127.3.4.5',
-        :port           => '8080'
+        virtual_server: 'virtual_server',
+        ip_address: '127.3.4.5',
+        port: '8080'
       }
     end
 
@@ -29,9 +29,9 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     let(:title) { 'test' }
     let(:params) do
       {
-        :virtual_server => 'virtual_server',
-        :ip_address     => 'rubbish',
-        :port           => '8080'
+        virtual_server: 'virtual_server',
+        ip_address: 'rubbish',
+        port: '8080'
       }
     end
 
@@ -44,9 +44,9 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
     let(:title) { 'test' }
     let(:params) do
       {
-        :virtual_server => 'virtual_server',
-        :ip_address     => '10.1.1.1',
-        :port           => 'something'
+        virtual_server: 'virtual_server',
+        ip_address: '10.1.1.1',
+        port: 'something'
       }
     end
 
@@ -60,10 +60,10 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   context 'with single-line and block options' do
     let(:params) do
       {
-        :virtual_server => 'virtual_server',
-        :ip_address     => '127.3.4.5',
-        :port           => '789',
-        :options        => {
+        virtual_server: 'virtual_server',
+        ip_address: '127.3.4.5',
+        port: '789',
+        options: {
           'weight' => 1,
           'notify_up' => "'notify-send \"good to go!\"'",
           'inhibit_on_failure' => true,
@@ -101,10 +101,10 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   context 'with only block options' do
     let(:params) do
       {
-        :virtual_server => 'virtual_server',
-        :ip_address     => '127.3.4.5',
-        :port           => '789',
-        :options        => {
+        virtual_server: 'virtual_server',
+        ip_address: '127.3.4.5',
+        port: '789',
+        options: {
           'SMTP_CHECK' => {
             'host' => {
               'connect_ip' => '127.0.0.1'
@@ -132,10 +132,10 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   context 'with only single-line options' do
     let(:params) do
       {
-        :virtual_server => 'virtual_server',
-        :ip_address     => '127.3.4.5',
-        :port           => '789',
-        :options        => {
+        virtual_server: 'virtual_server',
+        ip_address: '127.3.4.5',
+        port: '789',
+        options: {
           'weight' => 1,
           'notify_up' => "'notify-send \"good to go!\"'",
           'inhibit_on_failure' => true
