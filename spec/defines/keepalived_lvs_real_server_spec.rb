@@ -17,7 +17,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
 
     it {
       is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
           real_server 127.3.4.5 8080 {
           }
         CONTENT
@@ -36,7 +36,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
     end
 
     it do
-      expect { is_expected.to contain_concat__fragment }.to raise_error(Puppet::Error, /Invalid IP/)
+      expect { is_expected.to contain_concat__fragment }.to raise_error(Puppet::Error, %r{Invalid IP})
     end
   end
 
@@ -53,7 +53,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
     it do
       expect do
         is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test')
-      end.to raise_error(Puppet::Error, /Invalid port/)
+      end.to raise_error(Puppet::Error, %r{Invalid port})
     end
   end
 
@@ -79,7 +79,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
 
     it {
       is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
@@ -116,7 +116,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
 
     it {
       is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
           real_server 127.3.4.5 789 {
             SMTP_CHECK {
               host {
@@ -145,7 +145,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
 
     it {
       is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-        'content' => <<-CONTENT.gsub(/ {10}/, '  ')
+        'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'

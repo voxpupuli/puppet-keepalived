@@ -24,7 +24,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /group \{\n\s.*_VALUE_/
+          'content' => %r{group \{\n\s.*_VALUE_}
         )
     }
   end
@@ -41,7 +41,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /group \{\n\s.*_VALUE1_\n\s.*_VALUE2_/
+          'content' => %r{group \{\n\s.*_VALUE1_\n\s.*_VALUE2_}
         )
     }
   end
@@ -59,7 +59,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /notify_master\s.*_SCRIPT_/
+          'content' => %r{notify_master\s.*_SCRIPT_}
         )
     }
   end
@@ -77,7 +77,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /notify_backup\s.*_SCRIPT_/
+          'content' => %r{notify_backup\s.*_SCRIPT_}
         )
     }
   end
@@ -95,7 +95,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /notify_fault\s.*_SCRIPT_/
+          'content' => %r{notify_fault\s.*_SCRIPT_}
         )
     }
   end
@@ -113,7 +113,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /notify\s.*_SCRIPT_/
+          'content' => %r{notify\s.*_SCRIPT_}
         )
     }
   end
@@ -131,7 +131,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-          'content' => /smtp_alert/
+          'content' => %r{smtp_alert}
         )
     }
   end

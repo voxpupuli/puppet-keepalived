@@ -11,7 +11,7 @@ describe 'keepalived class' do
 
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_failures: true) do |r|
-        expect(r.stdout).to match(/Keepalived version was: (\d.\d.\d)/)
+        expect(r.stdout).to match(%r{Keepalived version was: (\d.\d.\d)})
       end
     end
   end
