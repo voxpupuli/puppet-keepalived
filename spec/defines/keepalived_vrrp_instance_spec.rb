@@ -401,20 +401,20 @@ describe 'keepalived::vrrp::instance', :type => :define do
    end
 
   describe 'with parameter virtual_ipaddress_int' do
-    let (:params) {
-      mandatory_params.merge({
-        :virtual_ipaddress_int => '_VALUE_',
-        :virtual_ipaddress => ['192.168.1.1'],
-      })
-    }
+      let (:params) {
+        mandatory_params.merge({
+          :virtual_ipaddress_int => '_VALUE_',
+          :virtual_ipaddress => ['192.168.1.1'],
+        })
+      }
 
-    it { should create_keepalived__vrrp__instance('_NAME_') }
-    it {
-      should \
-        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-        'content' => /192.168.1.1 dev _VALUE_/
-      )
-    }
+      it { should create_keepalived__vrrp__instance('_NAME_') }
+      it {
+        should \
+          contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+          'content' => /192.168.1.1 dev _VALUE_/
+        )
+      }
     end
 
   describe 'with virtual_ipaddress as hash' do
@@ -577,20 +577,20 @@ describe 'keepalived::vrrp::instance', :type => :define do
   end
 
   describe 'with parameter virtual_ipaddress_excluded' do
-    let (:params) {
-      mandatory_params.merge({
-        :virtual_ipaddress_int => '_VALUE_',
-        :virtual_ipaddress_excluded => ['192.168.1.1']
-      })
-    }
+      let (:params) {
+        mandatory_params.merge({
+          :virtual_ipaddress_int => '_VALUE_',
+          :virtual_ipaddress_excluded => ['192.168.1.1']
+        })
+      }
 
-    it { should create_keepalived__vrrp__instance('_NAME_') }
-    it {
-      should \
-        contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-        'content' => /192.168.1.1 dev _VALUE_/
-      )
-    }
+      it { should create_keepalived__vrrp__instance('_NAME_') }
+      it {
+        should \
+          contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+          'content' => /192.168.1.1 dev _VALUE_/
+        )
+      }
     end
 
   describe 'with virtual_ipaddress_excluded as hash' do
