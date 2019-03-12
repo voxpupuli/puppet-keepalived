@@ -327,8 +327,7 @@ describe 'keepalived::vrrp::instance', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-          'content' => %r{track_script},
-          'content' => %r{_VALUE_}
+          'content' => %r!^  track_script {\n    _VALUE_!
         )
     }
   end
@@ -360,8 +359,7 @@ describe 'keepalived::vrrp::instance', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-          'content' => %r{advert_int},
-          'content' => %r{_VALUE_}
+          'content' => %r{^  advert_int\s+_VALUE_$}
         )
     }
   end
@@ -377,8 +375,7 @@ describe 'keepalived::vrrp::instance', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-          'content' => %r{garp_master_delay},
-          'content' => %r{_VALUE_}
+          'content' => %r{^  garp_master_delay\s+_VALUE_$}
         )
     }
   end
@@ -394,8 +391,7 @@ describe 'keepalived::vrrp::instance', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-          'content' => %r{garp_master_refresh},
-          'content' => %r{_VALUE_}
+          'content' => %r{^  garp_master_refresh\s+_VALUE_$}
         )
     }
   end
