@@ -32,7 +32,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /interface.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -50,7 +50,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
           should \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
               'content' => /\spriority\s+#{valid_priority}$/
-          )
+            )
         }
       end
     end
@@ -83,7 +83,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /state.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -99,7 +99,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /_VALUE_/
-      )
+        )
     }
   end
 
@@ -116,7 +116,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /_VALUE_/
-      )
+        )
     }
   end
 
@@ -132,7 +132,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /_VALUE_/
-      )
+        )
     }
   end
 
@@ -148,7 +148,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /smtp_alert/
-      )
+        )
     }
   end
 
@@ -164,7 +164,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /nopreempt/
-      )
+        )
     }
   end
 
@@ -180,7 +180,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /notify_master.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -196,7 +196,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /notify_backup.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -212,7 +212,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /notify_fault.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -228,7 +228,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /notify_stop.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -244,7 +244,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /notify.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -262,7 +262,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
           should \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
               'content' => /\svirtual_router_id\s+#{valid_router_id}$/
-          )
+            )
         }
       end
     end
@@ -295,7 +295,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /auth_type.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -312,7 +312,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /auth_pass.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -329,7 +329,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /track_script/,
           'content' => /_VALUE_/
-      )
+        )
     }
   end
 
@@ -345,7 +345,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /lvs_sync_daemon_interface _VALUE_/
-      )
+        )
     }
   end
 
@@ -362,7 +362,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /advert_int/,
           'content' => /_VALUE_/
-      )
+        )
     }
   end
 
@@ -379,7 +379,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /garp_master_delay/,
           'content' => /_VALUE_/
-      )
+        )
     }
   end
 
@@ -396,7 +396,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /garp_master_refresh/,
           'content' => /_VALUE_/
-      )
+        )
     }
   end
 
@@ -413,7 +413,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -430,7 +430,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /^\s+192.168.1.1 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -448,11 +448,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.2 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -470,15 +470,15 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.2 dev _VALUE_/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.3 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -497,7 +497,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _DEV_/
-      )
+        )
     }
   end
   describe 'with virtual_ipaddress as hash containing device and array of ips' do
@@ -514,11 +514,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _DEV_/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.2 dev _DEV_/
-      )
+        )
     }
   end
 
@@ -536,7 +536,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_ label _LABEL_/
-      )
+        )
     }
   end
 
@@ -554,7 +554,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_ brd _BRD_/
-      )
+        )
     }
   end
 
@@ -572,7 +572,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_ scope _SCOPE_/
-      )
+        )
     }
   end
 
@@ -589,7 +589,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -606,7 +606,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /^\s+192.168.1.1 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -623,11 +623,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /^\s+192.168.1.1 dev _VALUE_/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /^\s+192.168.1.2 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -645,11 +645,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.2 dev _VALUE_/
-      )
+        )
     }
   end
 
@@ -668,7 +668,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _DEV_/
-      )
+        )
     }
   end
   describe 'with virtual_ipaddress_excluded as hash containing device and array of ips' do
@@ -685,11 +685,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _DEV_/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.2 dev _DEV_/
-      )
+        )
     }
   end
 
@@ -707,7 +707,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_ label _LABEL_/
-      )
+        )
     }
   end
 
@@ -725,7 +725,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_ brd _BRD_/
-      )
+        )
     }
   end
 
@@ -743,7 +743,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /192.168.1.1 dev _VALUE_ scope _SCOPE_/
-      )
+        )
     }
   end
 
@@ -760,7 +760,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /^\s+to 10.0.1.0\/24 via 192.168.0.1/
-      )
+        )
     }
   end
 
@@ -777,11 +777,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /^\s+to 10.0.1.0\/24 via 192.168.0.1/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /^\s+to 10.0.2.0\/24 via 192.168.0.2/
-      )
+        )
     }
   end
 
@@ -800,7 +800,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /dev _DEV_ to 10.0.1.0\/24 via 192.168.0.1/
-      )
+        )
     }
   end
 
@@ -818,7 +818,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /src _SOURCE_ to 10.0.1.0\/24 via 192.168.0.1/
-      )
+        )
     }
   end
 
@@ -837,7 +837,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /scope _SCOPE_ to 10.0.1.0\/24 via 192.168.0.1/
-      )
+        )
     }
   end
 
@@ -856,7 +856,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /table _TABLE_ to 10.0.1.0\/24 via 192.168.0.1/
-      )
+        )
     }
   end
 
@@ -872,7 +872,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /unicast_src_ip.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -888,7 +888,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /mcast_src_ip.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -904,11 +904,11 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /10.0.1.0/
-      )
+        )
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /10.0.2.0/
-      )
+        )
     }
   end
 
@@ -924,7 +924,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /dont_track_primary/
-      )
+        )
     }
   end
 
@@ -940,7 +940,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /use_vmac/
-      )
+        )
     }
   end
 
@@ -956,7 +956,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /\suse_vmac\s+vrrp250$/
-      )
+        )
     }
   end
 
@@ -973,7 +973,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
           'content' => /vmac_xmit_base/
-      )
+        )
     }
   end
 end

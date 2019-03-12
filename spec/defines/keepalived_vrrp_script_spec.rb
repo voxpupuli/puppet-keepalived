@@ -27,7 +27,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /interval.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -44,7 +44,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /script.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -62,7 +62,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /weight.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -80,7 +80,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should_not \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /weight.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -98,7 +98,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /fall.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -116,7 +116,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /rise.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -134,7 +134,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /timeout.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -152,7 +152,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /user.*_VALUE_/
-      )
+        )
     }
   end
 
@@ -171,7 +171,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       should \
         contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
           'content' => /user.*_USER_VALUE_ _GROUP_VALUE_/
-      )
+        )
     }
   end
 end
