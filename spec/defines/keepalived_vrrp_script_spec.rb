@@ -143,7 +143,7 @@ describe 'keepalived::vrrp::script', :type => :define do
     let (:params) {
       {
         :user => '_VALUE_',
-        :script  => '_SCRIPT_'
+        :script => '_SCRIPT_'
       }
     }
 
@@ -162,7 +162,7 @@ describe 'keepalived::vrrp::script', :type => :define do
       {
         :user => '_USER_VALUE_',
         :group => '_GROUP_VALUE_',
-        :script  => '_SCRIPT_'
+        :script => '_SCRIPT_'
       }
     }
 
