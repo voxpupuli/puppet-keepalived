@@ -58,7 +58,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   end
 
   context 'with single-line and block options' do
-    let(:params) {{
+    let(:params) { {
       :virtual_server => 'virtual_server',
       :ip_address     => '127.3.4.5',
       :port           => '789',
@@ -97,7 +97,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   end
 
   context 'with only block options' do
-    let(:params) {{
+    let(:params) { {
       :virtual_server => 'virtual_server',
       :ip_address     => '127.3.4.5',
       :port           => '789',
@@ -126,7 +126,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
   end
 
   context 'with only single-line options' do
-    let(:params) {{
+    let(:params) { {
       :virtual_server => 'virtual_server',
       :ip_address     => '127.3.4.5',
       :port           => '789',
