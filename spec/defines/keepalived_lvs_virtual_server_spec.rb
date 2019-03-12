@@ -19,7 +19,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       {
         :ip_address   => '10.1.1.1',
         :port         => '8080',
-        :lb_algo      => 'lc',
+        :lb_algo      => 'lc'
       }
     }
 
@@ -37,7 +37,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:params) {
       {
         :fwmark       => '123',
-        :lb_algo      => 'lc',
+        :lb_algo      => 'lc'
       }
     }
 
@@ -90,7 +90,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       {
         :ip_address          => 'rubbish',
         :port                => '8080',
-        :lb_algo             => 'lc',
+        :lb_algo             => 'lc'
       }
     }
 
@@ -104,7 +104,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
     let(:params) {
       {
         :fwmark              => 'rubbish',
-        :lb_algo             => 'lc',
+        :lb_algo             => 'lc'
       }
     }
 
@@ -119,7 +119,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       {
         :ip_address          => '10.1.1.1',
         :port                => 'something',
-        :lb_algo             => 'lc',
+        :lb_algo             => 'lc'
       }
     }
 
@@ -137,7 +137,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :ip_address          => '10.1.1.1',
         :port                => '80',
         :lb_algo             => 'rr',
-        :delay_loop          => 'NaN',
+        :delay_loop          => 'NaN'
       }
     }
 
@@ -154,7 +154,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
       {
         :ip_address          => '10.1.1.1',
         :port                => '80',
-        :lb_algo             => 'rubbish',
+        :lb_algo             => 'rubbish'
       }
     }
 
@@ -172,7 +172,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :ip_address          => '10.1.1.1',
         :port                => '80',
         :lb_algo             => 'rr',
-        :protocol            => 'ICMP',
+        :protocol            => 'ICMP'
       }
     }
 
@@ -190,7 +190,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
         :ip_address          => '10.1.1.1',
         :port                => '80',
         :lb_algo             => 'rr',
-        :lb_kind             => 'BAT',
+        :lb_kind             => 'BAT'
       }
     }
 
@@ -251,7 +251,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
           'MISC_CHECK' => {
             'misc_path' => 'somepath'
           }
-        },
+        }
       }
     }
 
@@ -276,7 +276,7 @@ describe 'keepalived::lvs::virtual_server', :type => 'define' do
             'connect_port'    => 42,
             'connect_timeout' => 10
           }
-        },
+        }
       }
     }
 

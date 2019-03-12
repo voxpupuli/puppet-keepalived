@@ -31,7 +31,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
       {
         :virtual_server => 'virtual_server',
         :ip_address     => 'rubbish',
-        :port           => '8080',
+        :port           => '8080'
       }
     }
 
@@ -46,7 +46,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
       {
         :virtual_server => 'virtual_server',
         :ip_address     => '10.1.1.1',
-        :port           => 'something',
+        :port           => 'something'
       }
     }
 
@@ -136,7 +136,7 @@ describe 'keepalived::lvs::real_server', :type => 'define' do
       :options        => {
         'weight' => 1,
         'notify_up' => "'notify-send \"good to go!\"'",
-        'inhibit_on_failure' => true,
+        'inhibit_on_failure' => true
       }
     }}
 

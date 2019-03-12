@@ -13,7 +13,7 @@ def centos_facts
   {
     :operatingsystem => 'CentOS',
     :osfamily        => 'RedHat',
-    :puppetversion   => ENV['PUPPET_VERSION'] || '3.7.5',
+    :puppetversion   => ENV['PUPPET_VERSION'] || '3.7.5'
   }
 end
 
@@ -21,6 +21,6 @@ def debian_facts
   {
     :operatingsystem => 'Debian',
     :osfamily        => 'Debian',
-    :puppetversion   => ENV['PUPPET_VERSION'] || '3.7.5',
+    :puppetversion   => ENV['PUPPET_VERSION'] || '3.7.5'
   }
 end

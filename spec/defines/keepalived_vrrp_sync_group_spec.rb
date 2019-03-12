@@ -16,7 +16,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) {
       {
-        :group => '_VALUE_',
+        :group => '_VALUE_'
       }
     }
 
@@ -33,7 +33,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:title) { '_NAME_' }
     let (:params) {
       {
-        :group => %w[_VALUE1_ _VALUE2_],
+        :group => %w[_VALUE1_ _VALUE2_]
       }
     }
 
@@ -51,7 +51,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:params) {
       {
         :group => '_GROUP_',
-        :notify_script_master => '_SCRIPT_',
+        :notify_script_master => '_SCRIPT_'
       }
     }
 
@@ -69,7 +69,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:params) {
       {
         :group => '_GROUP_',
-        :notify_script_backup => '_SCRIPT_',
+        :notify_script_backup => '_SCRIPT_'
       }
     }
 
@@ -87,7 +87,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:params) {
       {
         :group => '_GROUP_',
-        :notify_script_fault => '_SCRIPT_',
+        :notify_script_fault => '_SCRIPT_'
       }
     }
 
@@ -105,7 +105,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:params) {
       {
         :group => '_GROUP_',
-        :notify_script => '_SCRIPT_',
+        :notify_script => '_SCRIPT_'
       }
     }
 
@@ -123,7 +123,7 @@ describe 'keepalived::vrrp::sync_group', :type => :define do
     let (:params) {
       {
         :group => '_GROUP_',
-        :smtp_alert => true,
+        :smtp_alert => true
       }
     }
 
