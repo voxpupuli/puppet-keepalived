@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe 'keepalived::vrrp::script', type: :define do
-  let (:facts) { debian_facts }
-  let (:pre_condition) { '$concat_basedir = "/tmp"' }
+  let(:facts) { debian_facts }
+  let(:pre_condition) { '$concat_basedir = "/tmp"' }
 
   describe 'without parameters', type: :define do
-    let (:facts) { debian_facts }
-    let (:title) { '_TITLE_' }
+    let(:facts) { debian_facts }
+    let(:title) { '_TITLE_' }
 
     it do
       expect { is_expected.to create_class('keepalived') }.to raise_error(Puppet::Error)
@@ -14,8 +14,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter interval' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         interval: '_VALUE_',
         script: '_SCRIPT_'
@@ -32,8 +32,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter script' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         script: '_VALUE_'
       }
@@ -49,8 +49,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter weight' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         weight: '_VALUE_',
         script: '_SCRIPT_'
@@ -67,8 +67,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter no_weight' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         no_weight: true,
         script: '_SCRIPT_'
@@ -85,8 +85,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter fall' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         fall: '_VALUE_',
         script: '_SCRIPT_'
@@ -103,8 +103,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter rise' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         rise: '_VALUE_',
         script: '_SCRIPT_'
@@ -121,8 +121,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter timeout' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         timeout: '_VALUE_',
         script: '_SCRIPT_'
@@ -139,8 +139,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter user' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         user: '_VALUE_',
         script: '_SCRIPT_'
@@ -157,8 +157,8 @@ describe 'keepalived::vrrp::script', type: :define do
   end
 
   describe 'with parameter group' do
-    let (:title) { '_TITLE_' }
-    let (:params) do
+    let(:title) { '_TITLE_' }
+    let(:params) do
       {
         user: '_USER_VALUE_',
         group: '_GROUP_VALUE_',

@@ -7,7 +7,7 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
   let(:pre_condition) { '$concat_basedir = "/tmp"' }
 
   context 'without parameters' do
-    let (:title) { '_TITLE_' }
+    let(:title) { '_TITLE_' }
 
     it do
       expect { is_expected.to create_class('keepalived') }.to raise_error(Puppet::Error)
