@@ -716,7 +716,7 @@ describe 'keepalived::vrrp::instance', :type => :define do
       mandatory_params.merge({
         :virtual_ipaddress_int => '_VALUE_',
         :virtual_ipaddress_excluded => [ {'ip' => '192.168.1.1',
-                                         'brd' => '_BRD_'} ],
+                                          'brd' => '_BRD_'} ],
       })
     }
 
