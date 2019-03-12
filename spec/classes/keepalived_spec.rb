@@ -154,4 +154,3 @@ describe 'keepalived', :type => :class do
     }
   end
 end
-
