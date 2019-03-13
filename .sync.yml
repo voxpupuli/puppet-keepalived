@@ -1,4 +1,6 @@
 ---
+spec/spec_helper.rb
+  unmanaged: true
 spec/acceptance/nodesets/centos-65-x64.yml
   delete: true
 spec/acceptance/nodesets/ubuntu-server-12042-x64.yml
