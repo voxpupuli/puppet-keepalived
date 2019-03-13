@@ -3,7 +3,7 @@
   "version": "1.3.0",
   "author": "Voxpupuli",
   "summary": "Keepalived module",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/voxpupuli/puppet-keepalived.git",
   "project_page": "https://github.com/voxpupuli/puppet-keepalived",
   "issues_url": "https://github.com/voxpupuli/puppet-keepalived/issues",
