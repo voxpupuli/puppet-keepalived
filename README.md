@@ -1,4 +1,4 @@
-# Puppet Keepalived
+# keepalived
 
 [![License](https://img.shields.io/github/license/voxpupuli/puppet-keepalived.svg)](https://github.com/voxpupuli/puppet-keepalived/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/voxpupuli/puppet-keepalived.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-keepalived)
@@ -7,16 +7,19 @@
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/keepalived.svg)](https://forge.puppetlabs.com/puppet/keepalived)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/keepalived.svg)](https://forge.puppetlabs.com/puppet/keepalived)
 
-## Requirements
+#### Table of Contents
 
-* [concat module](https://github.com/ripienaar/puppet-concat)
+1. [Description](#description)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Limitations - OS compatibility, etc.](#limitations)
+5. [Development - Guide for contributing to the module](#development)
 
-## Tested on...
+## Description
 
-* Debian 8 (Jessie)
-* RHEL 6
+This puppet module manages [keepalived](http://www.keepalived.org/). 
+The main goal of keepalived is to provide simple and robust facilities for loadbalancing and high-availability to Linux system and Linux based infrastructures.
 
-## Example usage
+## Usage
 
 ### Basic IP-based VRRP failover
 
@@ -322,29 +325,21 @@ keepalived::lvs::real_server { 'example2.example.com':
 }
 ```
 
+## Reference
 
-## Unit testing
+Reference documentation [coming soon](https://github.com/voxpupuli/puppet-keepalived/issues/158).
 
-Plain RSpec:
+## Limitations
 
-    $ rake spec
+Details in `metadata.json`.
 
-Using bundle:
+## Development
 
-    $ bundle exec rake spec
+The contributing guide is in [CONTRIBUTING.md](https://github.com/voxpupuli/puppet-keepalived/blob/master/.github/CONTRIBUTING.md).
 
-Test against a specific Puppet or Facter version:
+## Release Notes/Contributors/Etc.
 
-    $ PUPPET_VERSION=3.2.1  bundle update && bundle exec rake spec
-    $ PUPPET_VERSION=2.7.19 bundle update && bundle exec rake spec
-    $ FACTER_VERSION=1.6.8  bundle update && bundle exec rake spec
+Details in `CHANGELOG.md`.
 
-## Contributing
+Migrated from https://github.com/arioch/puppet-keepalived to Vox Pupuli.
 
-* Fork it
-* Create a feature branch (`git checkout -b my-new-feature`)
-* Run rspec tests (`bundle exec rake spec`)
-* Commit your changes (`git commit -am 'Added some feature'`)
-* If you had multiple commits, merge them together into one (`git rebase -i HEAD~4 if you had 4 commits and use fixup`, see: http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)
-* Push to the branch (`git push origin my-new-feature`)
-* Create new Pull Request
