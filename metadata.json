@@ -1,7 +1,7 @@
 {
   "name": "puppet-keepalived",
-  "version": "1.3.0",
-  "author": "Voxpupuli",
+  "version": "2.0.0-rc0",
+  "author": "Vox Pupuli",
   "summary": "Keepalived module",
   "license": "Apache-2.0",
   "source": "https://github.com/voxpupuli/puppet-keepalived.git",
@@ -31,7 +31,7 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "7"
+        "8"
       ]
     },
     {
@@ -50,7 +50,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.8 < 5.0.0"
+      "version_requirement": ">= 5.5.8 < 7.0.0"
     }
   ]
 }
