@@ -126,7 +126,7 @@
 #                          May be specified as an array with ip addresses
 #                          Default: undef.
 #
-# $dont_track_primary      Tells keepalived to ignore VRRP interface faults.
+# $dont_track_primary::    Tells keepalived to ignore VRRP interface faults.
 #                          Can be useful on setup where two routers are
 #                          connected directly to each other on the interface
 #                          used for VRRP. Without this feature the link down
@@ -135,17 +135,17 @@
 #                          since it was also tracking link status.
 #                          Default: false.
 #
-# $use_vmac                Use virtual MAC address for virtual IP addresses.
+# $use_vmac::              Use virtual MAC address for virtual IP addresses.
 #
-# $vmac_xmit_base          When using virtual MAC addresses transmit and receive
+# $vmac_xmit_base::        When using virtual MAC addresses transmit and receive
 #                          VRRP messaged on the underlying interface whilst ARP
 #                          will happen from the the VMAC interface.
 
 define keepalived::vrrp::instance (
   $interface,
-  $priority,
+  Integer[1,254] $priority,
   $state,
-  $virtual_router_id,
+  Integer[1,255] $virtual_router_id,
   $virtual_ipaddress          = undef,
   $auth_type                  = undef,
   $auth_pass                  = undef,
@@ -175,13 +175,6 @@ define keepalived::vrrp::instance (
 
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
-
-  if (!is_integer($priority) or ($priority + 0) < 1 or ($priority + 0) > 254) {
-    fail('priority must be an integer 1 >= and <= 254')
-  }
-  if (!is_integer($virtual_router_id) or ($virtual_router_id + 0) < 1 or ($virtual_router_id + 0) > 255) {
-    fail('virtual_router_id must be an integer >= 1 and <= 255')
-  }
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
