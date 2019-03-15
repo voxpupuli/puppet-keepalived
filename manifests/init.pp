@@ -24,9 +24,10 @@ class keepalived (
   String[1]               $service_name       = $keepalived::params::service_name,
   Optional[String[1]]     $service_restart    = $keepalived::params::service_restart,
 
-  Hash $vrrp_instance   = {},
-  Hash $vrrp_script     = {},
-  Hash $vrrp_sync_group = {},
+  Hash $vrrp_instance      = {},
+  Hash $vrrp_script        = {},
+  Hash $vrrp_track_process = {},
+  Hash $vrrp_sync_group    = {},
 ) inherits keepalived::params {
 
   class { 'keepalived::install': }

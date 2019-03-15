@@ -57,6 +57,11 @@ class keepalived::config {
       * => $attrs,
     }
   }
+  $keepalived::vrrp_track_process.each |String $key, Hash $attrs| {
+    keepalived::vrrp::track_process { $key:
+      * => $attrs,
+    }
+  }
   $keepalived::vrrp_sync_group.each |String $key, Hash $attrs| {
     keepalived::vrrp::sync_group { $key:
       * => $attrs,
