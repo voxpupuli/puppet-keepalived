@@ -10,8 +10,7 @@
 
 ## Tested on...
 
-* Debian 7 (Wheezy)
-* Debian 6 (Squeeze)
+* Debian 8 (Jessie)
 * RHEL 6
 
 ## Example usage
