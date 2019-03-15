@@ -63,10 +63,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           )
         end
 
-        it {
-          expect { is_expected.to create_keepalived__vrrp__instance('_NAME_') }.to \
-            raise_error(Puppet::Error, %r{priority must be an integer 1 >= and <= 254})
-        }
+        it { is_expected.not_to compile }
       end
     end
   end
@@ -275,10 +272,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           )
         end
 
-        it {
-          expect { is_expected.to create_keepalived__vrrp__instance('_NAME_') }.to \
-            raise_error(Puppet::Error, %r{virtual_router_id must be an integer >= 1 and <= 255})
-        }
+        it { is_expected.not_to compile }
       end
     end
   end

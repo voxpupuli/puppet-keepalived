@@ -95,7 +95,7 @@ describe 'keepalived', type: :class do
   end
 
   describe 'with parameter: pkg_list' do
-    let(:params) { { pkg_list: '_VALUE_' } }
+    let(:params) { { pkg_list: ['_VALUE_'] } }
 
     it { is_expected.to contain_package('_VALUE_') }
   end

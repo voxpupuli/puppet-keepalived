@@ -29,8 +29,8 @@
 #             Default: undef
 #
 define keepalived::vrrp::script (
+  String[1] $script,
   $interval  = '2',
-  $script    = undef,
   $weight    = undef,
   $fall      = undef,
   $rise      = undef,
@@ -40,10 +40,6 @@ define keepalived::vrrp::script (
   $no_weight = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
-
-  if ! $script {
-    fail 'No script provided.'
-  }
 
   if ! $weight {
     $weight_real = 2

@@ -102,89 +102,36 @@
 #   Defaults to true => collect exported real_servers
 #
 define keepalived::lvs::virtual_server (
-  $lb_algo,
-  $ip_address           = undef,
-  $port                 = undef,
-  $fwmark               = undef,
-  $alpha                = false,
-  $collect_exported     = true,
-  $delay_loop           = undef,
-  $ha_suspend           = false,
-  $hysteresis           = undef,
-  $lb_kind              = 'NAT',
-  $omega                = false,
-  $persistence_timeout  = undef,
-  $protocol             = 'TCP',
-  $quorum               = undef,
-  $real_servers         = undef,
-  $sorry_server         = undef,
-  $sorry_server_inhibit = false,
-  $tcp_check            = undef,
-  $real_server_options  = {},
-  $virtualhost          = undef,
+  Enum['rr','wrr','lc','wlc','lblc','sh','dh'] $lb_algo,
+  Optional[Stdlib::IP::Address] $ip_address = undef,
+  Optional[Stdlib::Port] $port = undef,
+  Optional[Integer[1]] $fwmark = undef,
+  Boolean $alpha = false,
+  Boolean $collect_exported = true,
+  Optional[Integer[1]] $delay_loop = undef,
+  Boolean $ha_suspend = false,
+  Optional[Integer[0]] $hysteresis = undef,
+  Enum['NAT','DR','TUN'] $lb_kind = 'NAT',
+  Boolean $omega = false,
+  Optional[Integer[1]] $persistence_timeout = undef,
+  Enum['TCP','UDP'] $protocol = 'TCP',
+  Optional[Integer[1]] $quorum = undef,
+  Array[Hash] $real_servers = [],
+  Optional[Struct[{ip_address => Stdlib::IP::Address, port => Stdlib::Port}]] $sorry_server = undef,
+  Boolean $sorry_server_inhibit = false,
+  Optional[Hash] $tcp_check = undef,
+  Hash $real_server_options = {},
+  Optional[Stdlib::Fqdn] $virtualhost = undef,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
-  if ( ! $fwmark ) {
-    if ( ! is_ip_address($ip_address) ) {
-      fail('Invalid IP address')
-    }
-
-    validate_re($port, '^[0-9]{1,5}$', "Invalid port: ${port}")
-  }
-  else {
-    validate_re($fwmark, '^[0-9]+$', "Invalid fwmark: ${fwmark}")
+  unless $fwmark {
+    assert_type(Stdlib::Port, $port)
+    assert_type(Stdlib::IP::Address, $ip_address)
   }
 
-  validate_re(
-    $lb_algo, '^(rr|wrr|lc|wlc|lblc|sh|dh)$',
-    "Invalid lb_algo: ${lb_algo}"
-  )
-
-  if $delay_loop {
-    validate_re(
-      $delay_loop,
-      '^[0-9]+$',
-      "Invalid delay_loop: ${delay_loop}"
-    )
-  }
-
-  validate_re($lb_kind, '^(NAT|DR|TUN)$', "Invalid lb_kind: ${lb_kind}")
-  validate_re($protocol, '^(TCP|UDP)$', "Invalid protocol: ${protocol}")
-  validate_bool($ha_suspend)
-  validate_bool($alpha)
-  validate_bool($omega)
-  validate_bool($sorry_server_inhibit)
-
-  if $quorum { validate_re($quorum, '^[0-9]+$', "Invalid quorum: ${quorum}") }
-
-  if $hysteresis {
-    validate_re(
-      $hysteresis,
-      '^[0-9]+$',
-      "Invalid hysteresis ${hysteresis}"
-    )
-  }
-
-  if $sorry_server {
-    if ( ! is_ip_address($sorry_server['ip_address']) ) {
-      fail("Invalid sorry server IP address: ${sorry_server['ip_address']}")
-    }
-
-    validate_re(
-      $sorry_server['port'],
-      '^[0-9]{1,5}$',
-      "Invalid sorry serverport: ${sorry_server['port']}"
-    )
-  }
-
-  if $tcp_check != undef {
-    warning('the $tcp_check argument is deprecated in favor of
-            $real_server_options')
-  }
-
-  if $real_server_options != undef {
-    validate_hash($real_server_options)
+  if $tcp_check {
+    warning('the $tcp_check argument is deprecated in favor of $real_server_options')
   }
 
   concat::fragment { "keepalived.conf_lvs_virtual_server_${_name}":

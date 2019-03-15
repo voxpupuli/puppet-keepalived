@@ -31,18 +31,12 @@
 #     }
 #
 define keepalived::lvs::real_server (
-  $virtual_server,
-  $ip_address,
-  $port,
-  $options = {},
+  String[1] $virtual_server,
+  Stdlib::IP::Address $ip_address,
+  Stdlib::Port $port,
+  Keepalived::Options $options = {},
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
-
-  if ( ! is_ip_address($ip_address) ) {
-    fail('Invalid IP address')
-  }
-
-  validate_re($port, '^[0-9]{1,5}$', "Invalid port: ${port}")
 
   concat::fragment { "keepalived.conf_lvs_real_server_${_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",

@@ -11,7 +11,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
       {
         virtual_server: 'virtual_server',
         ip_address: '127.3.4.5',
-        port: '8080'
+        port: 8080
       }
     end
 
@@ -31,13 +31,11 @@ describe 'keepalived::lvs::real_server', type: 'define' do
       {
         virtual_server: 'virtual_server',
         ip_address: 'rubbish',
-        port: '8080'
+        port: 8080
       }
     end
 
-    it do
-      expect { is_expected.to contain_concat__fragment }.to raise_error(Puppet::Error, %r{Invalid IP})
-    end
+    it { is_expected.not_to compile }
   end
 
   context 'with an invalid port' do
@@ -50,11 +48,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
       }
     end
 
-    it do
-      expect do
-        is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test')
-      end.to raise_error(Puppet::Error, %r{Invalid port})
-    end
+    it { is_expected.not_to compile }
   end
 
   context 'with single-line and block options' do
@@ -62,7 +56,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
       {
         virtual_server: 'virtual_server',
         ip_address: '127.3.4.5',
-        port: '789',
+        port: 789,
         options: {
           'weight' => 1,
           'notify_up' => "'notify-send \"good to go!\"'",
@@ -103,7 +97,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
       {
         virtual_server: 'virtual_server',
         ip_address: '127.3.4.5',
-        port: '789',
+        port: 789,
         options: {
           'SMTP_CHECK' => {
             'host' => {
@@ -134,7 +128,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
       {
         virtual_server: 'virtual_server',
         ip_address: '127.3.4.5',
-        port: '789',
+        port: 789,
         options: {
           'weight' => 1,
           'notify_up' => "'notify-send \"good to go!\"'",
