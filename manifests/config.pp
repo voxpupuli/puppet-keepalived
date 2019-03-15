@@ -47,8 +47,19 @@ class keepalived::config {
     order   => '999',
   }
 
-  create_resources(keepalived::vrrp::instance, $::keepalived::vrrp_instance)
-  create_resources(keepalived::vrrp::script, $::keepalived::vrrp_script)
-  create_resources(keepalived::vrrp::sync_group, $::keepalived::vrrp_sync_group)
+  $keepalived::vrrp_instance.each |String $key, Hash $attrs| {
+    keepalived::vrrp::instance { $key:
+      * => $attrs,
+    }
+  }
+  $keepalived::vrrp_script.each |String $key, Hash $attrs| {
+    keepalived::vrrp::script { $key:
+      * => $attrs,
+    }
+  }
+  $keepalived::vrrp_sync_group.each |String $key, Hash $attrs| {
+    keepalived::vrrp::sync_group { $key:
+      * => $attrs,
+    }
+  }
 }
-
