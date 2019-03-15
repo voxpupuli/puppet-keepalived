@@ -38,6 +38,9 @@ virtual_server <%= @ip_address %> <%= @port %> {
     <%- if @sorry_server_inhibit -%>
     sorry_server_inhibit
     <%- end -%>
+    <%- if @sorry_server_lvs_method -%>
+    sorry_server_lvs_method <%= @sorry_server_lvs_method %>
+    <%- end -%>
   <%- end -%>
 
   <%- scope.function_template(['keepalived/_format_options.erb']) -%>
