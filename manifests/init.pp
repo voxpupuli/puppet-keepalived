@@ -21,6 +21,7 @@ class keepalived (
   $service_restart    = $::keepalived::params::service_restart,
   $vrrp_instance      = {},
   $vrrp_script        = {},
+  $vrrp_track_process = {},
   $vrrp_sync_group    = {},
 ) inherits keepalived::params {
   validate_string($sysconf_dir)
@@ -37,6 +38,7 @@ class keepalived (
   validate_string($service_name)
   validate_hash($vrrp_instance)
   validate_hash($vrrp_script)
+  validate_hash($vrrp_track_process)
   validate_hash($vrrp_sync_group)
 
   class { 'keepalived::install': }
