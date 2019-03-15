@@ -1,8 +1,11 @@
 # Puppet Keepalived
 
-## Build status
-
-[![Build Status](https://travis-ci.org/arioch/puppet-keepalived.png?branch=master)](https://travis-ci.org/arioch/puppet-keepalived)
+[![License](https://img.shields.io/github/license/voxpupuli/puppet-keepalived.svg)](https://github.com/voxpupuli/puppet-keepalived/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-keepalived.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-keepalived)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/keepalived.svg)](https://forge.puppetlabs.com/puppet/keepalived)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/keepalived.svg)](https://forge.puppetlabs.com/puppet/keepalived)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/keepalived.svg)](https://forge.puppetlabs.com/puppet/keepalived)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/keepalived.svg)](https://forge.puppetlabs.com/puppet/keepalived)
 
 ## Requirements
 
