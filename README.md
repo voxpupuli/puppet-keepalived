@@ -16,7 +16,7 @@
 
 ## Description
 
-This puppet module manages [keepalived](http://www.keepalived.org/). 
+This puppet module manages [keepalived](http://www.keepalived.org/).
 The main goal of keepalived is to provide simple and robust facilities for loadbalancing and high-availability to Linux system and Linux based infrastructures.
 
 ## Usage
