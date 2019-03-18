@@ -21,19 +21,15 @@
 #             Default: undef
 #
 define keepalived::vrrp::track_process (
-  $proc_name   = undef,
-  $weight      = undef,
-  $quorum      = '1',
-  $delay       = undef,
-  $fullcommand = undef
+  String[1] $proc_name,
+  Optional[Integer[0]] $weight   = undef,
+  Integer[0] $quorum             = 1,
+  Optional[Integer[0]] $delay    = undef,
+  Boolean $fullcommand           = false
 ) {
-  if ! $proc_name {
-    fail 'Missing process name'
-  }
-
   concat::fragment { "keepalived.conf_vrrp_track_process_${proc_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
-    content => template('keepalived/track_process.erb'),
+    content => template('keepalived/vrrp_track_process.erb'),
     order   => '002',
   }
 }

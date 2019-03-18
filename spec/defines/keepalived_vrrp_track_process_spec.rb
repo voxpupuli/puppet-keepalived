@@ -34,7 +34,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
     let(:title) { '_PROC_NAME_' }
     let(:params) do
       {
-        weight: '_VALUE_',
+        weight: 110,
         proc_name: '_PROC_NAME_'
       }
     end
@@ -43,7 +43,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
     it do
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
-          'content' => %r{weight.*_VALUE_}
+          'content' => %r{weight.*110}
         )
     end
   end
@@ -52,7 +52,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
     let(:title) { '_PROC_NAME_' }
     let(:params) do
       {
-        quorum:    '_VALUE_',
+        quorum:    203,
         proc_name: '_PROC_NAME_'
       }
     end
@@ -61,7 +61,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
     it do
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
-          'content' => %r{quorum.*_VALUE_}
+          'content' => %r{quorum.*203}
         )
     end
   end
@@ -70,7 +70,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
     let(:title) { '_PROC_NAME_' }
     let(:params) do
       {
-        delay:     '_VALUE_',
+        delay:     1200,
         proc_name: '_PROC_NAME_'
       }
     end
@@ -79,7 +79,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
     it {
       is_expected.to \
         contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
-          'content' => %r{delay.*_VALUE_}
+          'content' => %r{delay.*1200}
         )
     }
   end
@@ -88,7 +88,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
     let(:title) { '_PROC_NAME_' }
     let(:params) do
       {
-        fullcommand: '_VALUE_',
+        fullcommand: true,
         proc_name:   '_PROC_NAME_'
       }
     end
