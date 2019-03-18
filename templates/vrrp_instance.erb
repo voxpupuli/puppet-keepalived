@@ -86,6 +86,14 @@ vrrp_instance <%= @_name %> {
   }
   <%- end -%>
 
+  <%- if @track_process -%>
+  track_process {
+  <%- Array(@track_process).each do |track| -%>
+    <%= track %>
+  <%- end -%>
+  }
+  <%- end -%>
+
   <%- if @track_interface -%>
   track_interface {
   <%- Array(@track_interface).each do |interface| -%>
