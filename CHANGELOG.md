@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [Unreleased](https://github.com/voxpupuli/puppet-keepalived/tree/HEAD)
+## [v2.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v2.0.0) (2019-03-18)
 
-[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/1.3.0...HEAD)
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/1.3.0...v2.0.0)
 
 This is the first release since the module was migrated to the [Vox Pupuli](https://voxpupuli.org/) [`puppet`](https://forge.puppet.com/puppet) namespace.
 
@@ -19,6 +19,7 @@ This is the first release since the module was migrated to the [Vox Pupuli](http
 
 - Replace validate functions with data types [\#159](https://github.com/voxpupuli/puppet-keepalived/issues/159)
 - Review acceptance tests [\#156](https://github.com/voxpupuli/puppet-keepalived/issues/156)
+- No changelog available [\#148](https://github.com/voxpupuli/puppet-keepalived/issues/148)
 - Target Concat\_file with path or title '/keepalived.conf' or tag '\_keepalived.conf not found in the catalog [\#143](https://github.com/voxpupuli/puppet-keepalived/issues/143)
 - forge version 1.2.5 is outdated [\#131](https://github.com/voxpupuli/puppet-keepalived/issues/131)
 - Concat issue [\#106](https://github.com/voxpupuli/puppet-keepalived/issues/106)
