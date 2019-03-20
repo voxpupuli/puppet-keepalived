@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Facter::Util::Fact do
   before do
     Facter.clear
-    allow(Facter::Util::Resolution).to receive(:exec).with(anything)
   end
 
   describe 'keepalived_version' do
