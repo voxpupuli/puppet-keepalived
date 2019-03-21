@@ -29,7 +29,14 @@ define keepalived::vrrp::track_process (
 ) {
   concat::fragment { "keepalived.conf_vrrp_track_process_${proc_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
-    content => template('keepalived/vrrp_track_process.erb'),
-    order   => '002',
+    content => epp('keepalived/vrrp_track_process.epp', {
+      'name'        => $name,
+      'proc_name'   => $proc_name,
+      'weight'      => $weight,
+      'quorum'      => $quorum,
+      'delay'       => $delay,
+      'fullcommand' => $fullcommand
+    }),
+    order   => '020',
   }
 }

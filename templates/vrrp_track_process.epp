@@ -1,0 +1,23 @@
+<%- | String $name,
+      String $proc_name,
+      Optional[Integer] $weight,
+      Optional[Integer] $quorum,
+      Optional[Integer] $delay,
+      Optional[Boolean] $fullcommand
+    | -%>
+vrrp_track_process <%= $name %> {
+  process    "<%= $proc_name %>"
+  <%- if $weight { -%>
+  weight     <%= $weight %>
+  <%- } -%>
+  <%- if $quorum { -%>
+  quorum     <%= $quorum %>
+  <%- } -%>
+  <%- if $delay { -%>
+  delay      <%= $delay %>
+  <%- } -%>
+  <%- if $fullcommand { -%>
+  fullcommand
+  <%- } -%>
+}
+
