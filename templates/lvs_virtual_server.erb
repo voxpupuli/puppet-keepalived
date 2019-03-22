@@ -29,6 +29,12 @@ virtual_server <%= @ip_address %> <%= @port %> {
   <%- if @quorum -%>
   quorum <%= @quorum %>
   <%- end -%>
+  <%- if @quorum_up -%>
+  quorum_up "<%= @quorum_up %>"
+  <%- end -%>
+  <%- if @quorum_down -%>
+  quorum_down "<%= @quorum_down %>"
+  <%- end -%>
   <%- if @hysteresis -%>
   hysteresis <%= @hysteresis %>
   <%- end -%>
