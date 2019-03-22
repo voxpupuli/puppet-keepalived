@@ -57,6 +57,9 @@
 # $track_script::          Define which script to run to track service states.
 #                          Default: undef.
 #
+# $track_process::         Define which process trackers to run.
+#                          Default: undef.
+#
 # $track_interface::       Define which interface(s) to monitor.
 #                          Go to FAULT state if one of
 #                          these interfaces goes down.
@@ -146,32 +149,33 @@ define keepalived::vrrp::instance (
   Integer[1,254] $priority,
   $state,
   Integer[1,255] $virtual_router_id,
-  $virtual_ipaddress          = undef,
-  $auth_type                  = undef,
-  $auth_pass                  = undef,
-  $track_script               = undef,
-  $track_interface            = undef,
-  $lvs_interface              = undef,
-  $virtual_ipaddress_int      = undef,
-  $virtual_ipaddress_excluded = undef,
-  $virtual_routes             = undef,
-  $smtp_alert                 = false,
-  $nopreempt                  = false,
-  $preempt_delay              = undef,
-  $advert_int                 = 1,
-  $garp_master_delay          = 5,
-  $garp_master_refresh        = undef,
-  $notify_script_master       = undef,
-  $notify_script_backup       = undef,
-  $notify_script_fault        = undef,
-  $notify_script_stop         = undef,
-  $notify_script              = undef,
-  $multicast_source_ip        = undef,
-  $unicast_source_ip          = undef,
-  $unicast_peers              = undef,
-  $dont_track_primary         = false,
-  $use_vmac                   = false,
-  $vmac_xmit_base             = true,
+  $virtual_ipaddress                        = undef,
+  $auth_type                                = undef,
+  $auth_pass                                = undef,
+  $track_script                             = undef,
+  Optional[Array[String[1]]] $track_process = undef,
+  $track_interface                          = undef,
+  $lvs_interface                            = undef,
+  $virtual_ipaddress_int                    = undef,
+  $virtual_ipaddress_excluded               = undef,
+  $virtual_routes                           = undef,
+  $smtp_alert                               = false,
+  $nopreempt                                = false,
+  $preempt_delay                            = undef,
+  $advert_int                               = 1,
+  $garp_master_delay                        = 5,
+  $garp_master_refresh                      = undef,
+  $notify_script_master                     = undef,
+  $notify_script_backup                     = undef,
+  $notify_script_fault                      = undef,
+  $notify_script_stop                       = undef,
+  $notify_script                            = undef,
+  $multicast_source_ip                      = undef,
+  $unicast_source_ip                        = undef,
+  $unicast_peers                            = undef,
+  $dont_track_primary                       = false,
+  $use_vmac                                 = false,
+  $vmac_xmit_base                           = true,
 
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
