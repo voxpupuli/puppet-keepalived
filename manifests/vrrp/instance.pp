@@ -181,7 +181,7 @@ define keepalived::vrrp::instance (
   $_name = regsubst($name, '[:\/\n]', '')
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
-    target  => "${::keepalived::config_dir}/keepalived.conf",
+    target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),
     order   => '100',
   }

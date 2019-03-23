@@ -61,7 +61,7 @@ class keepalived::global_defs(
   $snmp_socket             = 'unix:/var/agentx/master',
 ) inherits keepalived::params {
   concat::fragment { 'keepalived.conf_globaldefs':
-    target  => "${::keepalived::params::config_dir}/keepalived.conf",
+    target  => "${keepalived::params::config_dir}/keepalived.conf",
     content => template('keepalived/globaldefs.erb'),
     order   => '010',
   }

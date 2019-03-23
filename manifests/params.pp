@@ -8,7 +8,7 @@ class keepalived::params {
   $service_manage  = true
   $service_restart = undef
 
-  case $::osfamily {
+  case $facts['osfamily'] {
     'redhat': {
       $sysconf_dir        = 'sysconfig'
       $sysconf_options    = '-D'
@@ -58,7 +58,7 @@ class keepalived::params {
     }
 
     default: {
-      fail "Operating system ${::operatingsystem} is not supported."
+      fail "Operating system ${facts['operatingsystem']} is not supported."
     }
   }
 }
