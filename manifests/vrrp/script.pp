@@ -29,7 +29,7 @@
 #             Default: undef
 #
 define keepalived::vrrp::script (
-  Stdlib::Absolutepath $script,
+  String[1] $script,
   $interval  = '2',
   $weight    = undef,
   $fall      = undef,
