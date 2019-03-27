@@ -51,6 +51,14 @@
 #   Integer.
 #   Defaults to unset => does not appear in config.
 #
+# [*quorum_up*]
+#   Script string.
+#   Defaults to unset => does not appear in config.
+#
+# [*quorum_down*]
+#   Script string.
+#   Defaults to unset => does not appear in config.
+#
 # [*hysteresis*]
 #   Integer.
 #   Defaults to unset => does not appear in config.
@@ -116,6 +124,8 @@ define keepalived::lvs::virtual_server (
   Optional[Integer[1]] $persistence_timeout = undef,
   Enum['TCP','UDP'] $protocol = 'TCP',
   Optional[Integer[1]] $quorum = undef,
+  Optional[String[1]] $quorum_up = undef,
+  Optional[String[1]] $quorum_down = undef,
   Array[Hash] $real_servers = [],
   Optional[Struct[{ip_address => Stdlib::IP::Address, port => Stdlib::Port}]] $sorry_server = undef,
   Boolean $sorry_server_inhibit = false,
