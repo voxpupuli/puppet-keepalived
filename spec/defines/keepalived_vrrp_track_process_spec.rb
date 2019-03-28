@@ -85,10 +85,10 @@ describe 'keepalived::vrrp::track_process', type: :define do
         }
       end
 
-      describe 'with parameter fullcommand' do
+      describe 'with parameter full_command' do
         let(:params) do
           {
-            fullcommand: true,
+            full_command: true,
             proc_name:   '_PROC_NAME_'
           }
         end
@@ -97,7 +97,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
-              'content' => %r{fullcommand$}
+              'content' => %r{full_command$}
             )
         end
       end

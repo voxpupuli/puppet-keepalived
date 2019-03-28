@@ -17,7 +17,7 @@
 #             considering process failed (in fractions of second)
 #             Default: undef
 #
-# $fullcommand::  Match entire process cmdline
+# $full_command::  Match entire process cmdline
 #             Default: undef
 #
 define keepalived::vrrp::track_process (
@@ -25,17 +25,17 @@ define keepalived::vrrp::track_process (
   Optional[Integer[0]] $weight   = undef,
   Integer[0] $quorum             = 1,
   Optional[Integer[0]] $delay    = undef,
-  Boolean $fullcommand           = false
+  Boolean $full_command           = false
 ) {
   concat::fragment { "keepalived.conf_vrrp_track_process_${proc_name}":
     target  => "${::keepalived::config_dir}/keepalived.conf",
     content => epp('keepalived/vrrp_track_process.epp', {
-      'name'        => $name,
-      'proc_name'   => $proc_name,
-      'weight'      => $weight,
-      'quorum'      => $quorum,
-      'delay'       => $delay,
-      'fullcommand' => $fullcommand
+      'name'         => $name,
+      'proc_name'    => $proc_name,
+      'weight'       => $weight,
+      'quorum'       => $quorum,
+      'delay'        => $delay,
+      'full_command' => $full_command
     }),
     order   => '020',
   }
