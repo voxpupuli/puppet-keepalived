@@ -9,12 +9,12 @@
   "issues_url": "https://github.com/voxpupuli/puppet-keepalived/issues",
   "dependencies": [
     {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.25.1 < 6.0.0"
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 4.1.0 < 7.0.0"
     },
     {
-      "name": "puppetlabs/concat",
-      "version_requirement": ">= 4.0.0 < 6.0.0"
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.1 < 7.0.0"
     }
   ],
   "description": "Keepalived vrrp and lvs failover module",
