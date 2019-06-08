@@ -31,6 +31,9 @@ vrrp_instance <%= @_name %> {
   <%- if @vmac_xmit_base -%>
   vmac_xmit_base
   <%- end -%>
+  <%- if @native_ipv6 -%>
+  native_ipv6
+  <%- end -%>
 
   <%- end -%>
   # notify scripts and alerts are optional
