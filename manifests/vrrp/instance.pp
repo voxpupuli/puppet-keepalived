@@ -179,7 +179,7 @@ define keepalived::vrrp::instance (
   $dont_track_primary                       = false,
   $use_vmac                                 = false,
   $vmac_xmit_base                           = true,
-  $native_ipv6                              = undef,
+  Boolean $native_ipv6                      = false,
 
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
