@@ -144,7 +144,7 @@
 #                          VRRP messaged on the underlying interface whilst ARP
 #                          will happen from the the VMAC interface.
 #
-# $native_ipv6::	   Force instance to use IPv6 (when mixed IPv4 and IPv6 config)
+# $native_ipv6::           Force instance to use IPv6 (when mixed IPv4 and IPv6 config)
 #
 
 define keepalived::vrrp::instance (
@@ -179,7 +179,7 @@ define keepalived::vrrp::instance (
   $dont_track_primary                       = false,
   $use_vmac                                 = false,
   $vmac_xmit_base                           = true,
-  $native_ipv6				    = undef,
+  $native_ipv6                              = undef,
 
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
