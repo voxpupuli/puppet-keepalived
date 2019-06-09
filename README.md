@@ -210,6 +210,75 @@ node /node01/ {
 }
 ```
 
+### IPv4 and IPv6 virtual IP, with application level failure detection
+
+This configuration will fail-over both the IPv4 address and the IPv6 address when:
+
+a. NGINX daemon is not running
+b. Master node is unavailable
+
+It is not possible to configure both IPv4 and IPv6 addresses as
+virtual\_ipaddresses in a single vrrp\_instance; the reason is that the VRRP
+protocol doesn't support it. The two VRRP instances can both use the same
+virtual\_router\_id since VRRP IPv4 and IPv6 instances are completely
+independent of each other. Both nodes have state set to BACKUP, which will
+prevent them from entering MASTER state until the check script(s) have succeeded
+and the election has been held.
+
+To ensure that the IPv4 and IPv6 vrrp\_instances are always in the same state as
+each other, configure a vrrp\_sync\_group to include both the instances. The
+vrrp\_sync\_group require the global\_tracking flag to be enabled to prevent
+keepalived from ignoring the tracking scripts for the vrrp\_sync\_group's
+vrrp\_instance members.
+
+Configure the vrrp\_instance with the native\_ipv6 flag to force the instance to
+use IPv6. An IPv6 vrrp\_instance without the "native\_ipv6" keyword does not
+configure the virtual IPv6 address with the "deprecated nodad" options.
+
+RFC 3484, “Default Address Selection for Internet Protocol version 6 (IPv6)”:
+Configure a /128 mask for the IPv6 address for keepliaved to set
+preferred\_lft to 0 to avoid the VI to be used for outgoing connections.
+
+RFC5798 section 5.2.9 requires that if the protocol is IPv6, then the first
+address must be the link local address of the virtual router.
+
+IPv6 VRRP uses VRRP version 3, which does not support authentication, so the
+auth\_type and auth\_pass parameters are removed for the IPv6 VRRP instance.
+
+```puppet
+node /node0x/ {
+  keepalived::vrrp::script { 'check_nginx':
+    script => '/usr/bin/pkill -0 nginx',
+  }
+
+  keepalived::vrrp::sync_group { 'VI_50':
+    group               => [ 'VI_50_IPV4', 'VI_50_IPV6' ],
+    global_tracking     => true,
+  }
+
+  keepalived::vrrp::instance { 'VI_50_IPV4':
+    interface           => 'eth0',
+    state               => 'BACKUP',
+    virtual_router_id   => 50,
+    priority            => 100,
+    auth_type           => 'PASS',
+    auth_pass           => 'secret',
+    virtual_ipaddress   => '10.0.0.1/32',
+    track_script        => 'check_nginx',
+  }
+
+  keepalived::vrrp::instance { 'VI_50_IPV6':
+    interface           => 'eth0',
+    state               => 'BACKUP',
+    virtual_router_id   => 50,
+    priority            => 100,
+    virtual_ipaddress   => ['fe80::50/128', '2001:db8::50/128', ],
+    track_script        => 'check_nginx',
+    native_ipv6         => true,
+  }
+}
+```
+
 ### Global definitions
 
 ```puppet
