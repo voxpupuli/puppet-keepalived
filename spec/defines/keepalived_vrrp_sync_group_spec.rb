@@ -134,6 +134,23 @@ describe 'keepalived::vrrp::sync_group', type: :define do
             )
         }
       end
+
+      describe 'with parameter global_tracking' do
+        let(:params) do
+          {
+            group: '_GROUP_',
+            global_tracking: true
+          }
+        end
+
+        it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
+              'content' => %r{global_tracking}
+            )
+        }
+      end
     end
   end
 end
