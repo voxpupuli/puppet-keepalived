@@ -22,12 +22,13 @@
 #
 define keepalived::vrrp::sync_group (
   $group,
-  $notify_script_master = undef,
-  $notify_script_backup = undef,
-  $notify_script_fault  = undef,
-  $notify_script        = undef,
-  $smtp_alert           = undef,
-  $nopreempt            = undef,
+  $notify_script_master    = undef,
+  $notify_script_backup    = undef,
+  $notify_script_fault     = undef,
+  $notify_script           = undef,
+  $smtp_alert              = undef,
+  $nopreempt               = undef,
+  Boolean $global_tracking = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
