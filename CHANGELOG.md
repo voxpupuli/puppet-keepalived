@@ -4,6 +4,33 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v2.1.0) (2019-06-09)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v2.0.0...v2.1.0)
+
+**Implemented enhancements:**
+
+- Please add support for "native\_ipv6" vrrp\_instance statement [\#183](https://github.com/voxpupuli/puppet-keepalived/issues/183)
+- add support for native\_ipv6 in vrrp instances [\#184](https://github.com/voxpupuli/puppet-keepalived/pull/184) ([sigbjorntux](https://github.com/sigbjorntux))
+- feat: add quorum\_up and quorum\_down in virtual\_server [\#174](https://github.com/voxpupuli/puppet-keepalived/pull/174) ([rotulet](https://github.com/rotulet))
+- add keepalived vrrp track\_process support w/tests [\#172](https://github.com/voxpupuli/puppet-keepalived/pull/172) ([jontow](https://github.com/jontow))
+
+**Fixed bugs:**
+
+- Problem with keepalived::vrrp::track\_process fullcommand [\#179](https://github.com/voxpupuli/puppet-keepalived/issues/179)
+- Allow puppetlabs/concat 6.x, puppetlabs/stdlib 6.x [\#182](https://github.com/voxpupuli/puppet-keepalived/pull/182) ([dhoppe](https://github.com/dhoppe))
+- Change the fullcommand parameter to full\_command for keepalived::vrrp::track\_process [\#180](https://github.com/voxpupuli/puppet-keepalived/pull/180) ([fduranti](https://github.com/fduranti))
+
+**Closed issues:**
+
+- Fix wrong warning [\#141](https://github.com/voxpupuli/puppet-keepalived/issues/141)
+
+**Merged pull requests:**
+
+- remove leading colons from variables [\#176](https://github.com/voxpupuli/puppet-keepalived/pull/176) ([Dan33l](https://github.com/Dan33l))
+- use rspec-puppet-facts [\#173](https://github.com/voxpupuli/puppet-keepalived/pull/173) ([Dan33l](https://github.com/Dan33l))
+- Support for metric argument in vrrp\_instancevirtual\_routes [\#128](https://github.com/voxpupuli/puppet-keepalived/pull/128) ([KrzysztofHajdamowicz](https://github.com/KrzysztofHajdamowicz))
+
 ## [v2.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v2.0.0) (2019-03-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/1.3.0...v2.0.0)
@@ -17,15 +44,16 @@ This is the first release since the module was migrated to the [Vox Pupuli](http
 
 **Closed issues:**
 
-- Replace validate functions with data types [\#159](https://github.com/voxpupuli/puppet-keepalived/issues/159)
 - Review acceptance tests [\#156](https://github.com/voxpupuli/puppet-keepalived/issues/156)
-- No changelog available [\#148](https://github.com/voxpupuli/puppet-keepalived/issues/148)
 - Target Concat\_file with path or title '/keepalived.conf' or tag '\_keepalived.conf not found in the catalog [\#143](https://github.com/voxpupuli/puppet-keepalived/issues/143)
 - forge version 1.2.5 is outdated [\#131](https://github.com/voxpupuli/puppet-keepalived/issues/131)
 - Concat issue [\#106](https://github.com/voxpupuli/puppet-keepalived/issues/106)
+- Replace validate functions with data types [\#159](https://github.com/voxpupuli/puppet-keepalived/issues/159)
+- No changelog available [\#148](https://github.com/voxpupuli/puppet-keepalived/issues/148)
 
 **Merged pull requests:**
 
+- \* Allow user and group in vrrp::script [\#149](https://github.com/voxpupuli/puppet-keepalived/pull/149) ([SpoonOne](https://github.com/SpoonOne))
 - Add badges [\#166](https://github.com/voxpupuli/puppet-keepalived/pull/166) ([alexjfisher](https://github.com/alexjfisher))
 - Replace `create\_resources` with iteration [\#165](https://github.com/voxpupuli/puppet-keepalived/pull/165) ([alexjfisher](https://github.com/alexjfisher))
 - Fix Github License detection [\#164](https://github.com/voxpupuli/puppet-keepalived/pull/164) ([alexjfisher](https://github.com/alexjfisher))
@@ -34,7 +62,6 @@ This is the first release since the module was migrated to the [Vox Pupuli](http
 - some README cleanup [\#155](https://github.com/voxpupuli/puppet-keepalived/pull/155) ([Dan33l](https://github.com/Dan33l))
 - Rubocop Fixes [\#154](https://github.com/voxpupuli/puppet-keepalived/pull/154) ([alexjfisher](https://github.com/alexjfisher))
 - clean up of metadata.json [\#152](https://github.com/voxpupuli/puppet-keepalived/pull/152) ([Dan33l](https://github.com/Dan33l))
-- \* Allow user and group in vrrp::script [\#149](https://github.com/voxpupuli/puppet-keepalived/pull/149) ([SpoonOne](https://github.com/SpoonOne))
 
 ## [1.3.0](https://github.com/voxpupuli/puppet-keepalived/tree/1.3.0) (2018-09-06)
 
