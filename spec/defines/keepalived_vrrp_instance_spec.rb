@@ -925,10 +925,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
-      describe 'with use_vmac' do
+      describe 'with use_vmac and virtual_ipaddress as string' do
         let(:params) do
           mandatory_params.merge(
-            use_vmac: true
+            use_vmac: true,
+            virtual_ipaddress: '192.168.1.1'
           )
         end
 
@@ -937,6 +938,133 @@ describe 'keepalived::vrrp::instance', type: :define do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
               'content' => %r{use_vmac}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.1$}
+            )
+        }
+      end
+
+      describe 'with use_vmac and virtual_ipaddress as hash' do
+        let(:params) do
+          mandatory_params.merge(
+            use_vmac: true,
+            virtual_ipaddress: { 'ip' => '192.168.1.1' }
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{use_vmac}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.1$}
+            )
+        }
+      end
+
+      describe 'with use_vmac and virtual_ipaddress as array of hashes and array of ips' do
+        let(:params) do
+          mandatory_params.merge(
+            use_vmac: true,
+            virtual_ipaddress_int: '_VALUE_',
+            virtual_ipaddress: [{ 'ip' => '192.168.1.1' },
+                                { 'ip' => ['192.168.1.2', '192.168.1.3'] }]
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{use_vmac}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.1$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.2$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.3$}
+            )
+        }
+      end
+
+      describe 'with use_vmac, virtual_ipaddress as hash and virtual_ipaddress_excluded as hash' do
+        let(:params) do
+          mandatory_params.merge(
+            use_vmac: true,
+            virtual_ipaddress: { 'ip' => '192.168.1.1' },
+            virtual_ipaddress_excluded: { 'ip' => '192.168.2.1' }
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{use_vmac}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.1$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.2.1$}
+            )
+        }
+      end
+
+      describe 'with use_vmac and virtual_ipaddress as array of hashes and array of ips' do
+        let(:params) do
+          mandatory_params.merge(
+            use_vmac: true,
+            virtual_ipaddress_int: '_VALUE_',
+            virtual_ipaddress: [{ 'ip' => '192.168.1.1' },
+                                { 'ip' => ['192.168.1.2', '192.168.1.3'] }],
+            virtual_ipaddress_excluded: [{ 'ip' => '192.168.2.1' },
+                                         { 'ip' => ['192.168.2.2', '192.168.2.3'] }]
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{use_vmac}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.1$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.2$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.1.3$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.2.1$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.2.2$}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+192.168.2.3$}
             )
         }
       end

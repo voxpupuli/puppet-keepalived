@@ -117,9 +117,17 @@ vrrp_instance <%= @_name %> {
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
       <%- attrs = Hash[ ip.select { |k,v| ['label', 'brd', 'scope'].include? k } ] -%>
+      <%- if @use_vmac -%>
+    <%= Array(ip['ip']).collect{|lip| "#{lip}" }.join("\n    ") %>
+      <%- else -%>
     <%= Array(ip['ip']).collect{|lip| "#{lip} dev #{device} #{attrs.sort_by{ |k,v| k }.entries.join ' '}" }.join("\n    ") %>
+      <%- end -%>
     <%- else -%>
+      <%- if @use_vmac -%>
+    <%= ip %>
+      <%- else -%>
     <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+      <%- end -%>
     <%- end -%>
   <%- end -%>
   }
@@ -136,9 +144,17 @@ vrrp_instance <%= @_name %> {
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
       <%- attrs = Hash[ ip.select { |k,v| ['label', 'brd', 'scope'].include? k } ] -%>
+      <%- if @use_vmac -%>
+    <%= Array(ip['ip']).collect{|lip| "#{lip}" }.join("\n    ") %>
+      <%- else -%>
     <%= Array(ip['ip']).collect{|lip| "#{lip} dev #{device} #{attrs.sort_by{ |k,v| k }.entries.join ' '}" }.join("\n    ") %>
+      <%- end -%>
     <%- else -%>
-      <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+      <%- if @use_vmac -%>
+    <%= ip %>
+      <%- else -%>
+    <%= ip %> dev <%= @virtual_ipaddress_int || @interface %>
+      <%- end -%>
     <%- end -%>
   <%- end -%>
   }
