@@ -3,7 +3,9 @@ require 'spec_helper_acceptance'
 describe 'keepalived class' do
   context 'with default parameters' do
     pp = <<-EOS
-    include keepalived
+    class { 'keepalived':
+      sysconf_options => '-D --vrrp',
+    }
 
     notify { "Keepalived version was: ${facts['keepalived_version']}":
       require => Class['keepalived'],
@@ -14,7 +16,12 @@ describe 'keepalived class' do
       apply_manifest(pp, catch_failures: true)
     end
     it 'works idempotently' do
-      apply_manifest('include keepalived', catch_changes: true)
+      pp2 = <<-EOS
+      class { 'keepalived':
+        sysconf_options => '-D --vrrp',
+      }
+      EOS
+      apply_manifest(pp2, catch_changes: true)
     end
     it 'creates fact keepalived_version' do
       service_fact = apply_manifest(pp, catch_failures: true)
@@ -32,7 +39,9 @@ describe 'keepalived class' do
 
   context 'on master with vrrp instance' do
     pp = <<-EOS
-    include keepalived
+    class { 'keepalived':
+      sysconf_options => '-D --vrrp',
+    }
 
     keepalived::vrrp::instance { 'VI_50':
       interface         => $facts['networking']['primary'],
