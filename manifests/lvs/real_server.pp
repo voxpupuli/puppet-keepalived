@@ -39,7 +39,7 @@ define keepalived::lvs::real_server (
   $_name = regsubst($name, '[:\/\n]', '')
 
   concat::fragment { "keepalived.conf_lvs_real_server_${_name}":
-    target  => "${::keepalived::config_dir}/keepalived.conf",
+    target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/lvs_real_server.erb'),
     order   => "250-${virtual_server}-${_name}",
   }
