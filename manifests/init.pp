@@ -28,6 +28,8 @@ class keepalived (
   Hash $vrrp_script        = {},
   Hash $vrrp_track_process = {},
   Hash $vrrp_sync_group    = {},
+  Hash $lvs_real_server    = {},
+  Hash $lvs_virtual_server = {},
 ) inherits keepalived::params {
 
   class { 'keepalived::install': }
