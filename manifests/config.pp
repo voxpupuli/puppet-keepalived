@@ -67,4 +67,14 @@ class keepalived::config {
       * => $attrs,
     }
   }
+  $keepalived::lvs_real_server.each |String $key, Hash $attrs| {
+    keepalived::lvs::real_server { $key:
+      * => $attrs,
+    }
+  }
+  $keepalived::lvs_virtual_server.each |String $key, Hash $attrs| {
+    keepalived::lvs::virtual_server { $key:
+      * => $attrs,
+    }
+  }
 }

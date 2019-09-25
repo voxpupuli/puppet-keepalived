@@ -377,6 +377,39 @@ keepalived::lvs::real_server { 'example2.example.com':
 }
 ```
 
+or hiera:
+
+```yaml
+---
+keepalived::lvs_virtual_server:
+  www.example.com:
+    ip_address: '1.2.3.4'
+    port: 80
+    delay_loop: 7
+    lb_algo: 'wlc'
+    lb_kind: 'DR'
+    persistence_timeout: 86400
+    virtualhost: 'www.example.com'
+    protocol: 'TCP'
+
+keepalived::lvs_real_server:
+  example1.example.com:
+    virtual_server: 'www.example.com'
+    ip_address: '1.2.3.8'
+    port: 80
+    options:
+      weight: '1000'
+      TCP_CHECK:
+        connect_timeout: 3
+  example2.example.com:
+    virtual_server: 'www.example.com'
+    ip_address: '1.2.3.9'
+    port: 80
+    options:
+      weight: '1000'
+      TCP_CHECK:
+        connect_timeout: 3
+```
 
 ### Creating firewall mark based virtual server instances with two real servers
 
