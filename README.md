@@ -235,7 +235,7 @@ Configure the vrrp\_instance with the native\_ipv6 flag to force the instance to
 use IPv6. An IPv6 vrrp\_instance without the "native\_ipv6" keyword does not
 configure the virtual IPv6 address with the "deprecated nodad" options.
 
-RFC 3484, “Default Address Selection for Internet Protocol version 6 (IPv6)”:
+RFC 3484, "Default Address Selection for Internet Protocol version 6 (IPv6)":
 Configure a /128 mask for the IPv6 address for keepliaved to set
 preferred\_lft to 0 to avoid the VI to be used for outgoing connections.
 
