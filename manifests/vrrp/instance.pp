@@ -97,6 +97,10 @@
 #                          this often.
 #                          Default: undef.
 #
+# $garp_lower_prio_repeat  Number of gratuitous ARP messages to send at a time
+#                          after lower priority advert received when MASTER.
+#                          Default: undef.
+#
 # $notify_script_master::  Define the notify master script.
 #                          Default: undef.
 #
@@ -171,6 +175,7 @@ define keepalived::vrrp::instance (
   $advert_int                               = 1,
   $garp_master_delay                        = 5,
   $garp_master_refresh                      = undef,
+  $garp_lower_prio_repeat                   = undef,
   $notify_script_master                     = undef,
   $notify_script_backup                     = undef,
   $notify_script_fault                      = undef,

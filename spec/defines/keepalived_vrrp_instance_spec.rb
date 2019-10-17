@@ -397,6 +397,22 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
+      describe 'with parameter garp_lower_prio_repeat' do
+        let(:params) do
+          mandatory_params.merge(
+            garp_lower_prio_repeat: '_VALUE_'
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^  garp_lower_prio_repeat\s+_VALUE_$}
+            )
+        }
+      end
+
       describe 'with parameter garp_master_refresh' do
         let(:params) do
           mandatory_params.merge(
