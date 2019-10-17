@@ -42,6 +42,12 @@ global_defs {
   <%- if @enable_traps -%>
   enable_traps
   <%- end -%>
+  <%- if @vrrp_higher_prio_send_advert -%>
+  vrrp_higher_prio_send_advert <%= @vrrp_higher_prio_send_advert %>
+  <%- end -%>
+  <%- if @vrrp_garp_lower_prio_repeat -%>
+  vrrp_garp_lower_prio_repeat <%= @vrrp_garp_lower_prio_repeat %>
+  <%- end -%>
   <%- if @snmp_socket -%>
   snmp_socket <%= @snmp_socket -%>
   <%- end -%>
