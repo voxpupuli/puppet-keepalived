@@ -112,6 +112,9 @@
 # $notify_script::         Define the notify script.
 #                          Default: undef.
 #
+# $notify_script_master_rx_lower_pri	Define the notify master_rx_lower_pri script.
+#                          		Default: undef.
+#
 # $multicast_source_ip::   default IP for binding vrrpd is the primary IP
 #                          on interface. If you want to hide the location of vrrpd,
 #                          use this IP as src_addr for multicast vrrp packets.
@@ -173,6 +176,7 @@ define keepalived::vrrp::instance (
   $notify_script_fault                      = undef,
   $notify_script_stop                       = undef,
   $notify_script                            = undef,
+  $notify_script_master_rx_lower_pri        = undef,
   $multicast_source_ip                      = undef,
   $unicast_source_ip                        = undef,
   $unicast_peers                            = undef,
