@@ -11,6 +11,9 @@ vrrp_instance <%= @_name %> {
   <%- if @lvs_interface -%>
   lvs_sync_daemon_interface <%= @lvs_interface %>
   <%- end -%>
+  <%- if @higher_prio_send_advert -%>
+  higher_prio_send_advert   <%= @higher_prio_send_advert %>
+  <%- end -%>
   <%- if @smtp_alert -%>
   smtp_alert
   <%- end -%>

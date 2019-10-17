@@ -140,6 +140,22 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
+      describe 'with parameter higher_prio_send_advert' do
+        let(:params) do
+          mandatory_params.merge(
+            higher_prio_send_advert: true
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{higher_prio_send_advert}
+            )
+        }
+      end
+
       describe 'with parameter smtp_alert' do
         let(:params) do
           mandatory_params.merge(

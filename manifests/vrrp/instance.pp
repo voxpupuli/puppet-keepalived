@@ -71,6 +71,13 @@
 # $lvs_interface::         Define lvs_sync_daemon_interface.
 #                          Default: undef.
 #
+# $higher_prio_send_advert If we are master and receive a higher priority advert,
+#                          send an advert before we transition set, it will resend
+#                          garp messages. This is to get around the problem of
+#                          their having been two simultaneous masters, and the last
+#                          GARP messages seen were from us.
+#                          Default: undef.
+#
 # $smtp_alert::            Send status alerts via SMTP. Requires user provided
 #                          in SMTP settings in keepalived::global_defs class.
 #                          Default: false.
@@ -169,6 +176,7 @@ define keepalived::vrrp::instance (
   $virtual_ipaddress_int                    = undef,
   $virtual_ipaddress_excluded               = undef,
   $virtual_routes                           = undef,
+  $higher_prio_send_advert                  = undef,
   $smtp_alert                               = false,
   $nopreempt                                = false,
   $preempt_delay                            = undef,
