@@ -21,6 +21,12 @@ vrrp_instance <%= @_name %> {
   <%- if @garp_master_refresh -%>
   garp_master_refresh         <%= @garp_master_refresh %>
   <%- end -%>
+  <%- if @garp_lower_prio_repeat -%>
+  garp_lower_prio_repeat <%= @garp_lower_prio_repeat %>
+  <%- end -%>
+  <%- if @higher_prio_send_advert -%>
+  higher_prio_send_advert <%= @higher_prio_send_advert %>
+  <%- end -%>
 
   <%- if @dont_track_primary -%>
   dont_track_primary

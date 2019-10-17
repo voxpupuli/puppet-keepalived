@@ -1115,6 +1115,36 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => %r{native_ipv6}
             )
         }
+      describe 'with garp_lower_prio_repeat' do
+        let(:params) do
+          mandatory_params.merge(
+            garp_lower_prio_repeat: 3
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{garp_lower_prio_repeat 3$}
+            )
+        }
+      end
+      describe 'with higher_prio_send_advert' do
+        let(:params) do
+          mandatory_params.merge(
+            higher_prio_send_advert: true
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{higher_prio_send_advert true$}
+            )
+        }
+      end
       end
     end
   end
