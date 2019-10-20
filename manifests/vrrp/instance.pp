@@ -176,7 +176,7 @@ define keepalived::vrrp::instance (
   $virtual_ipaddress_int                    = undef,
   $virtual_ipaddress_excluded               = undef,
   $virtual_routes                           = undef,
-  $higher_prio_send_advert                  = undef,
+  Boolean $higher_prio_send_advert          = false,
   $smtp_alert                               = false,
   $nopreempt                                = false,
   $preempt_delay                            = undef,
