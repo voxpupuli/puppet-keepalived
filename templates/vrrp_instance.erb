@@ -5,7 +5,7 @@ vrrp_instance <%= @_name %> {
   priority                  <%= @priority %>
   advert_int                <%= @advert_int %>
   garp_master_delay         <%= @garp_master_delay %>
-  <%- if @garp_lower_prio_repeat -%>
+  <%- if @garp_lower_prio_repeat != 0 -%>
   garp_lower_prio_repeat    <%= @garp_lower_prio_repeat %>
   <%- end -%>
   <%- if @lvs_interface -%>
