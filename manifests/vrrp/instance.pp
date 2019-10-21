@@ -76,7 +76,7 @@
 #                          garp messages. This is to get around the problem of
 #                          their having been two simultaneous masters, and the last
 #                          GARP messages seen were from us.
-#                          Default: undef.
+#                          Default: false
 #
 # $smtp_alert::            Send status alerts via SMTP. Requires user provided
 #                          in SMTP settings in keepalived::global_defs class.
