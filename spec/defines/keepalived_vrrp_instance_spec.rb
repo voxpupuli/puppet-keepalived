@@ -1115,6 +1115,7 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => %r{native_ipv6}
             )
         }
+      end
       describe 'with garp_lower_prio_repeat' do
         let(:params) do
           mandatory_params.merge(
@@ -1144,7 +1145,6 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => %r{higher_prio_send_advert true$}
             )
         }
-      end
       end
     end
   end
