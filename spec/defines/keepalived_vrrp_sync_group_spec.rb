@@ -118,6 +118,23 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
+      describe 'with parameter notify_script_master_rx_lower_pri' do
+        let(:params) do
+          {
+            group: '_GROUP_',
+            notify_script_master_rx_lower_pri: '/path/to/script'
+          }
+        end
+
+        it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
+              'content' => %r{notify_master_rx_lower_pri\s.*/path/to/script}
+            )
+        }
+      end
+
       describe 'with parameter smtp_alert' do
         let(:params) do
           {

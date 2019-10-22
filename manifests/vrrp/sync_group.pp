@@ -16,19 +16,25 @@
 # $notify_script::         Define the notify script.
 #                          Default: undef.
 #
+# $notify_script_master_rx_lower_pri   Define the notify_master_rx_lower_pri script.
+#                          This is executed if a master receives an advert with
+#                          priority lower than the master's advert.
+#                          Default: undef.
+#
 # $smtp_alert::            Send email on status change (Boolean)
 #                          Default: undef.
 #
 #
 define keepalived::vrrp::sync_group (
   $group,
-  $notify_script_master    = undef,
-  $notify_script_backup    = undef,
-  $notify_script_fault     = undef,
-  $notify_script           = undef,
-  $smtp_alert              = undef,
-  $nopreempt               = undef,
-  Boolean $global_tracking = false,
+  Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri = undef,
+  $notify_script_master                                             = undef,
+  $notify_script_backup                                             = undef,
+  $notify_script_fault                                              = undef,
+  $notify_script                                                    = undef,
+  $smtp_alert                                                       = undef,
+  $nopreempt                                                        = undef,
+  Boolean $global_tracking                                          = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
