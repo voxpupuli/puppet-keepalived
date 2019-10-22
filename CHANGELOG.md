@@ -4,6 +4,32 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v2.2.0) (2019-10-22)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v2.1.0...v2.2.0)
+
+**Implemented enhancements:**
+
+- Add support for sh-port and sh-fallback flags to lvs virtual servers [\#198](https://github.com/voxpupuli/puppet-keepalived/pull/198) ([hkbakke](https://github.com/hkbakke))
+- Add notify\_script\_master\_rx\_lower\_pri option to the module [\#195](https://github.com/voxpupuli/puppet-keepalived/pull/195) ([salindaliyanage](https://github.com/salindaliyanage))
+- Support for higher\_prio\_send\_advert  and garp\_lower\_prio\_repeat  [\#194](https://github.com/voxpupuli/puppet-keepalived/pull/194) ([foosinn](https://github.com/foosinn))
+- LVS hiera support [\#190](https://github.com/voxpupuli/puppet-keepalived/pull/190) ([7matd7](https://github.com/7matd7))
+
+**Fixed bugs:**
+
+- virtual\_ipaddress should be on vrrp interface if use\_vmac is set [\#186](https://github.com/voxpupuli/puppet-keepalived/pull/186) ([saz](https://github.com/saz))
+
+**Closed issues:**
+
+- Not able to set sh-port and sh-fallback flags in virtual\_server [\#192](https://github.com/voxpupuli/puppet-keepalived/issues/192)
+- Add Ubuntu to Metadata [\#175](https://github.com/voxpupuli/puppet-keepalived/issues/175)
+- Hiera lookups and this module [\#116](https://github.com/voxpupuli/puppet-keepalived/issues/116)
+
+**Merged pull requests:**
+
+- Add Ubuntu 16.04 and 18.04 to list of supported OSes [\#188](https://github.com/voxpupuli/puppet-keepalived/pull/188) ([alexjfisher](https://github.com/alexjfisher))
+- Add CentOS 7 to list of supported OSes [\#187](https://github.com/voxpupuli/puppet-keepalived/pull/187) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v2.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v2.1.0) (2019-06-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v2.0.0...v2.1.0)
