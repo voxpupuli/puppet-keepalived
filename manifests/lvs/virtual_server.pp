@@ -47,6 +47,14 @@
 #   Boolean.
 #   Default: false => not set in config.
 #
+# [*sh-port*]
+#   Boolean.
+#   Default: false => not set in config.
+#
+# [*sh-fallback*]
+#   Boolean.
+#   Default: false => not set in config.
+#
 # [*quorum*]
 #   Integer.
 #   Defaults to unset => does not appear in config.
@@ -121,6 +129,8 @@ define keepalived::lvs::virtual_server (
   Optional[Integer[0]] $hysteresis = undef,
   Enum['NAT','DR','TUN'] $lb_kind = 'NAT',
   Boolean $omega = false,
+  Boolean $sh_port = false,
+  Boolean $sh_fallback = false,
   Optional[Integer[1]] $persistence_timeout = undef,
   Enum['TCP','UDP'] $protocol = 'TCP',
   Optional[Integer[1]] $quorum = undef,

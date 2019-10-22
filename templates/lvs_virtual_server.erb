@@ -26,6 +26,12 @@ virtual_server <%= @ip_address %> <%= @port %> {
   <%- if @omega -%>
   omega
   <%- end -%>
+  <%- if @sh_port -%>
+  sh-port
+  <%- end -%>
+  <%- if @sh_fallback -%>
+  sh-fallback
+  <%- end -%>
   <%- if @quorum -%>
   quorum <%= @quorum %>
   <%- end -%>
