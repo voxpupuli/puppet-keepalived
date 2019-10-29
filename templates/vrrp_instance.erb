@@ -184,6 +184,14 @@ vrrp_instance <%= @_name %> {
   }
   <%- end -%>
 
+  <%- if @virtual_rules -%>
+  virtual_rules {
+  <%-  @virtual_rules.each do |rule| -%>
+    <%= rule['rule'] %>  <%= rule.sort_by{ |k,v| k }.entries.join ' ' %>
+  <%- end -%>
+  }
+  <%- end -%>
+
   <%- if @multicast_source_ip -%>
   mcast_src_ip <%= @multicast_source_ip %>
   <%- end -%>
