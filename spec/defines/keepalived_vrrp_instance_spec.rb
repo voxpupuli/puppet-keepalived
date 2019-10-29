@@ -798,6 +798,27 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
+      describe 'with virtual_rules as array of hashes' do
+        let(:params) do
+          mandatory_params.merge(
+            virtual_rules: [{ 'from' => '10.0.1.24', 'lookup' => 'customroute1' },
+                            { 'from' => '10.0.2.24', 'lookup' => 'customroute2' }]
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+from 10\.0\.1\.24 lookup customroute1}
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s+from 10\.0\.2\.24 lookup customroute2}
+            )
+        }
+      end
+
       # device in hash overrides anything
       describe 'with virtual_routes as hash containing device parameter' do
         let(:params) do

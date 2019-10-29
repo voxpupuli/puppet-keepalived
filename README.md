@@ -91,8 +91,9 @@ node /node01/ {
     auth_type         => 'PASS',
     auth_pass         => 'secret',
     virtual_ipaddress => [ '10.0.0.1/29' ],
-    virtual_routes    => [ { to  => '168.168.2.0/24', via => '10.0.0.2' },
-                           { to  => '168.168.3.0/24', via => '10.0.0.3' } ]
+    virtual_routes    => [ { to   => '168.168.2.0/24', via => '10.0.0.2' },
+                           { to   => '168.168.3.0/24', via => '10.0.0.3' } ],
+    virtual_rules     => [ { from => '168.168.2.42', lookup => 'customroute' } ]
   }
 }
 ```
@@ -115,6 +116,9 @@ keepalived::vrrp_instance:
         via: '10.0.0.2'
       - to: 168.168.3.0/24'
         via: '10.0.0.3'
+    virtual_rules:
+      - from: '168.168.2.42'
+        lookup: 'customroute'
 ```
 
 ### Detect application level failure

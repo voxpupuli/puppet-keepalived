@@ -32,6 +32,16 @@
 #                                     'metric' => '15' }`
 #                             Supported properties: src, to, via, dev, scope, table, metric
 #
+# $virtual_rules::        Set floating rules.
+#
+#                          May be specified as a hash (or array of hashes)
+#                             containing extra properties
+#                             e.g. `{ 'from' => '10.0.0.1',
+#                                     'via' => '10.0.0.254',
+#                                     'lookup' => 'customroute',
+#                                     'metric' => '15' }`
+#                             Supported properties: from, to, dev, lookup, metric
+#
 # $virtual_ipaddress_excluded:: For cases with large numbers (eg 200) of IPs
 #                               on the same interface. To decrease the number
 #                               of packets sent in adverts, you can exclude
@@ -167,6 +177,7 @@ define keepalived::vrrp::instance (
   $virtual_ipaddress_int                                            = undef,
   $virtual_ipaddress_excluded                                       = undef,
   $virtual_routes                                                   = undef,
+  Optional[Array[Keepalived::Vrrp::Instance::VRule]] $virtual_rules = undef,
   $smtp_alert                                                       = false,
   $nopreempt                                                        = false,
   $preempt_delay                                                    = undef,
