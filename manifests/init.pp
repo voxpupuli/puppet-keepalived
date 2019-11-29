@@ -32,7 +32,11 @@ class keepalived (
   Hash $lvs_virtual_server = {},
 ) inherits keepalived::params {
 
-  class { 'keepalived::install': }
-  -> class { 'keepalived::config': }
-  -> class { 'keepalived::service': }
+  contain keepalived::install
+  contain keepalived::config
+  contain keepalived::service
+
+  Class['keepalived::install']
+  -> Class['keepalived::config']
+  -> Class['keepalived::service']
 }
