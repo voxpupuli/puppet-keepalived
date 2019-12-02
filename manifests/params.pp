@@ -8,7 +8,7 @@ class keepalived::params {
   $service_manage  = true
   $service_restart = undef
 
-  case $facts['osfamily'] {
+  case $facts['os']['family'] {
     'redhat': {
       $sysconf_dir        = 'sysconfig'
       $sysconf_options    = '-D'
