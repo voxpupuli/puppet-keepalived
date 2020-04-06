@@ -58,7 +58,7 @@ class keepalived::params {
     }
 
     default: {
-      fail "Operating system ${facts['operatingsystem']} is not supported."
+      fail "Operating system ${facts['os']['name']} is not supported."
     }
   }
 }
