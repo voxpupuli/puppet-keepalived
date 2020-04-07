@@ -1,8 +1,3 @@
-require 'beaker-rspec'
-require 'beaker-puppet'
-require 'beaker/puppet_install_helper'
-require 'beaker/module_install_helper'
+require 'voxpupuli/acceptance/spec_helper_acceptance'
 
-run_puppet_install_helper unless ENV['BEAKER_provision'] == 'no'
-install_module_on(hosts)
-install_module_dependencies_on(hosts)
+configure_beaker
