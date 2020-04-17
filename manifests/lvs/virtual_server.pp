@@ -1,121 +1,71 @@
-# == Define: keepalived::lvs::virtual_server
+# @summary
+#   Configure a Linux Virtual Server with keepalived
 #
-# Configure a Linux Virtual Server with keepalived
+#   Work in progress, supports:
+#     - single IP/port virtual servers
+#     - TCP_CHECK healthchecks
 #
-# Work in progress, supports:
-#   - single IP/port virtual servers
-#   - TCP_CHECK healthchecks
+# @param ip_address Virtual server IP address.
 #
-# === Parameters
+# @param port Virtual sever IP port.
 #
-# Refer to keepalived's documentation to understand the behaviour
-# of these parameters
+# @param fwmark Virtual Server firewall mark. (overrides ip_address and port)
 #
-# [*ip_address*]
-#   Virtual server IP address.
+# @param lb_algo Must be one of rr, wrr, lc, wlc, lblc, sh, dh
 #
-# [*port*]
-#   Virtual sever IP port.
+# @param delay_loop
 #
-# [*fwmark*]
-#   Virtual Server firewall mark. (overrides ip_address and port)
-#   Default: not set
+# @param protocol
 #
-# [*lb_algo*]
-#   Must be one of rr, wrr, lc, wlc, lblc, sh, dh
-#   Default: not set.
+# @param lb_kind Must be one of NAT, TUN, DR.
 #
-# [*delay_loop*]
-#   Default: not set.
+# @param ha_suspend
 #
-# [*protocol*]
-#   Default: TCP
+# @param alpha
 #
-# [*lb_kind*]
-#   Must be one of NAT, TUN, DR.
-#   Default: NAT
+# @param omega
 #
-# [*ha_suspend*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param sh_port
 #
-# [*alpha*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param sh_fallback
 #
-# [*omega*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param quorum
 #
-# [*sh-port*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param quorum_up
 #
-# [*sh-fallback*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param quorum_down
 #
-# [*quorum*]
-#   Integer.
-#   Defaults to unset => does not appear in config.
+# @param hysteresis
 #
-# [*quorum_up*]
-#   Script string.
-#   Defaults to unset => does not appear in config.
+# @param tcp_check The TCP_CHECK to configure for real_servers.
 #
-# [*quorum_down*]
-#   Script string.
-#   Defaults to unset => does not appear in config.
+# @param real_server_options One or more options to apply to all real_server blocks inside this virtual_server.
 #
-# [*hysteresis*]
-#   Integer.
-#   Defaults to unset => does not appear in config.
+# @param sorry_server The sorry_server to define
 #
-# [*tcp_check*]
-#   The TCP_CHECK to configure for real_servers.
-#   Should be a hash containing these keys:
-#     [*connect_timeout*]
-#   Default: unset => no TCP_CHECK configured.
+# @param sorry_server_inhibit
 #
-# [*real_server_options*]
-#   One or more options to apply to all real_server blocks inside this
-#   virtual_server.
+# @param persistence_timeout
 #
-#   Example:
-#     real_server_options => {
-#       inhibit_on_failure => true,
-#       SMTP_CHECK => {
-#         connect_timeout => 10
-#         host => {
-#           connect_ip => '127.0.0.1'
-#         }
-#       }
-#     }
+# @param virtualhost
 #
-#   Default: unset => no default options
+# @param real_servers The real servers to balance to.
 #
-# [*sorry_server*]
-#   The sorry_server to define
-#   A hash with these keys:
-#     [*ip_address*]
-#     [*port*]
-#
-# [*sorry_server_inhibit*]
-#   Boolean.
-#   Default: false => not set in config.
-#
-# [*real_servers*]
-#   The real servers to balance to.
-#   An array of hashes.
-#   Hash keys:
-#     [*ip_address*]
-#     [*port*]       (if ommitted the port defaults to the VIP port)
-#
-# [*collect_exported*]
+# @param collect_exported
 #   Boolean. Automatically collect exported @@keepalived::lvs::real_servers
 #   with a virtual_server equal to the name/title of this resource. This allows
 #   you to easily export a real_server resource on each node in the pool.
-#   Defaults to true => collect exported real_servers
+#
+# @example
+#   real_server_options => {
+#     inhibit_on_failure => true,
+#     SMTP_CHECK => {
+#       connect_timeout => 10
+#       host => {
+#         connect_ip => '127.0.0.1'
+#       }
+#     }
+#   }
 #
 define keepalived::lvs::virtual_server (
   Enum['rr','wrr','lc','wlc','lblc','sh','dh'] $lb_algo,

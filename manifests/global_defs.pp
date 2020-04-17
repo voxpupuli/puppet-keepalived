@@ -1,71 +1,48 @@
-# == Class keepalived::global_defs
 #
-# === Parameters:
+# @summary Manage keepalived notifictions
 #
-# $notification_email::            Array of notification email Recipients.
-#                                  Default: undef.
+# @param notification_email Array of notification email Recipients.
 #
-# $notification_email_from::       Define the notification email Sender.
-#                                  Default: undef.
+# @param notification_email_from Define the notification email Sender.
 #
-# $smtp_server::                   Define the smtp server addres.
-#                                  Default: undef.
+# @param smtp_server Define the smtp server addres.
 #
-# $smtp_connect_timeout::          Define the smtp connect timeout.
-#                                  Default: undef.
+# @param smtp_connect_timeout Define the smtp connect timeout.
 #
-# $router_id::                     Define the router ID.
-#                                  Default: undef.
+# @param router_id Define the router ID.
 #
-# $script_user                     Set the global script_user option.
-#                                  Default: undef.
+# @param script_user Set the global script_user option.
 #
-# $enable_script_security::        Set the enable_script_security option.
-#                                  Default: undef.
+# @param enable_script_security Set the enable_script_security option.
 #
-# $snmp_socket::                   Define snmp master agent socker
-#                                  Default: unix:/var/agentx/master
+# @param snmp_socket Define snmp master agent socker
 #
-# $enable_snmp_keepalived::        Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param enable_snmp_keepalived Set enable_snmp_keepalived option.
 #
-# $enable_snmp_vrrp::              Set enable_snmp_vrrp option.
-#                                  Default: undef.
+# @param enable_snmp_vrrp Set enable_snmp_vrrp option.
 #
-# $enable_snmp_checker::           Set enable_snmp_checker option.
-#                                  Default: undef.
+# @param enable_snmp_checker Set enable_snmp_checker option
 #
-# $enable_snmp_rfc::               Set enable_snmp_rfc option.
-#                                  Default: undef.
+# @param enable_snmp_rfc Set enable_snmp_rfc option.
 #
-# $enable_snmp_rfcv2::             Set enable_snmp_rfcv2 option.
-#                                  Default: undef.
+# @param enable_snmp_rfcv2 Set enable_snmp_rfcv2 option.
 #
-# $enable_snmp_rfcv3::             Set enable_snmp_rfcv3 option.
-#                                  Default: undef.
+# @param enable_snmp_rfcv3 Set enable_snmp_rfcv3 option.
 #
-# $enable_traps::                  Set enable_traps option.
-#                                  Default: undef.
+# @param enable_traps Set enable_traps option.
 #
-# $enable_dbus::                   Set enable_dbus option
-#                                  Default: false.
+# @param enable_dbus Set enable_dbus option
 #
-# $vrrp_higher_prio_send_advert::  Set vrrp_higher_prio_send_advert option.
-#                                  Default: undef.
+# @param vrrp_higher_prio_send_advert Set vrrp_higher_prio_send_advert option.
 #
-# $vrrp_garp_lower_prio_repeat::  Set vrrp_garp_lower_prio_repeat option.
-#                                  Default: undef.
+# @param vrrp_garp_lower_prio_repeat Set vrrp_garp_lower_prio_repeat option.
 #
-# $vrrp_garp_master_refresh::     Set vrrp_garp_master_refresh option.
-#                                  Default: undef.
+# @param vrrp_garp_master_refresh Set vrrp_garp_master_refresh option.
 #
-# $vrrp_garp_lower_prio_delay::   Set vrrp_garp_lower_prio_delay option.
-#                                  Default: undef.
+# @param vrrp_garp_lower_prio_delay Set vrrp_garp_lower_prio_delay option.
 #
-# $vrrp_startup_delay::           Set vrrp_startup_delay option.
-#                                  Default: undef.
+# @param vrrp_startup_delay Set vrrp_startup_delay option.
 #
-
 class keepalived::global_defs (
   $notification_email                             = undef,
   $notification_email_from                        = undef,

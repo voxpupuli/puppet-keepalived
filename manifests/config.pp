@@ -1,4 +1,5 @@
-# == Class keepalived::config
+# @summary
+#   Configure keepalived module
 #
 class keepalived::config {
   File {

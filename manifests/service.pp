@@ -1,4 +1,5 @@
-# == Class keepalived
+# @summary
+#   Manage keepalived service
 #
 class keepalived::service {
   if $keepalived::service_manage == true {
