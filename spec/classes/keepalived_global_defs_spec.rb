@@ -6,6 +6,7 @@ describe 'keepalived::global_defs', type: :class do
       let(:facts) do
         facts
       end
+      let(:pre_condition) { 'include keepalived' }
 
       describe 'without parameters' do
         it { is_expected.to create_class('keepalived::global_defs') }

@@ -1,0 +1,5 @@
+---
+keepalived::sysconf_dir: 'conf.d'
+keepalived::sysconf_options: '-D'
+keepalived::service_hasstatus: false
+keepalived::service_hasrestart: false

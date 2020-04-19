@@ -1,28 +1,28 @@
 # == Class keepalived
 #
 class keepalived (
-  String[1] $sysconf_dir     = $keepalived::params::sysconf_dir,
-  String    $sysconf_options = $keepalived::params::sysconf_options,
+  String[1] $sysconf_dir,
+  String    $sysconf_options,
+  Boolean   $service_hasrestart,
+  Boolean   $service_hasstatus,
 
-  Stdlib::Absolutepath $config_dir       = $keepalived::params::config_dir,
-  Stdlib::Filemode     $config_dir_mode  = $keepalived::params::config_dir_mode,
-  Stdlib::Filemode     $config_file_mode = $keepalived::params::config_file_mode,
+  Stdlib::Absolutepath $config_dir       = '/etc/keepalived',
+  Stdlib::Filemode     $config_dir_mode  = '0755',
+  Stdlib::Filemode     $config_file_mode = '0644',
 
-  String[1] $config_group = $keepalived::params::config_group,
-  String[1] $config_owner = $keepalived::params::config_owner,
-  String[1] $daemon_group = $keepalived::params::daemon_group,
-  String[1] $daemon_user  = $keepalived::params::daemon_user,
+  String[1] $config_group = 'root',
+  String[1] $config_owner = 'root',
+  String[1] $daemon_group = 'root',
+  String[1] $daemon_user  = 'root',
 
-  String[1]        $pkg_ensure = $keepalived::params::pkg_ensure,
-  Array[String[1]] $pkg_list   = $keepalived::params::pkg_list,
+  String[1]        $pkg_ensure = 'present',
+  Array[String[1]] $pkg_list   = ['keepalived'],
 
-  Boolean                 $service_enable     = $keepalived::params::service_enable,
-  Stdlib::Ensure::Service $service_ensure     = $keepalived::params::service_ensure,
-  Boolean                 $service_hasrestart = $keepalived::params::service_hasrestart,
-  Boolean                 $service_hasstatus  = $keepalived::params::service_hasstatus,
-  Boolean                 $service_manage     = $keepalived::params::service_manage,
-  String[1]               $service_name       = $keepalived::params::service_name,
-  Optional[String[1]]     $service_restart    = $keepalived::params::service_restart,
+  Boolean                 $service_enable     = true,
+  Stdlib::Ensure::Service $service_ensure     = 'running',
+  Boolean                 $service_manage     = true,
+  String[1]               $service_name       = 'keepalived',
+  Optional[String[1]]     $service_restart    = undef,
 
   Hash $vrrp_instance      = {},
   Hash $vrrp_script        = {},
@@ -30,7 +30,7 @@ class keepalived (
   Hash $vrrp_sync_group    = {},
   Hash $lvs_real_server    = {},
   Hash $lvs_virtual_server = {},
-) inherits keepalived::params {
+) {
 
   contain keepalived::install
   contain keepalived::config
