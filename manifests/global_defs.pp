@@ -67,9 +67,9 @@ class keepalived::global_defs(
   Optional[Boolean] $vrrp_higher_prio_send_advert = undef,
   Optional[Integer] $vrrp_garp_lower_prio_repeat  = undef,
   $snmp_socket                                    = 'unix:/var/agentx/master',
-) inherits keepalived::params {
+) {
   concat::fragment { 'keepalived.conf_globaldefs':
-    target  => "${keepalived::params::config_dir}/keepalived.conf",
+    target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/globaldefs.erb'),
     order   => '010',
   }

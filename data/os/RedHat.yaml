@@ -1,0 +1,5 @@
+---
+keepalived::sysconf_dir: 'sysconfig'
+keepalived::sysconf_options: '-D'
+keepalived::service_hasstatus: true
+keepalived::service_hasrestart: true
