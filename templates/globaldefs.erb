@@ -48,6 +48,12 @@ global_defs {
   <%- if @vrrp_garp_lower_prio_repeat -%>
   vrrp_garp_lower_prio_repeat <%= @vrrp_garp_lower_prio_repeat %>
   <%- end -%>
+  <%- if @vrrp_garp_master_refresh -%>
+  vrrp_garp_master_refresh <%= @vrrp_garp_master_refresh %>
+  <%- end -%>
+  <%- if @vrrp_garp_lower_prio_delay -%>
+  vrrp_garp_lower_prio_delay <%= @vrrp_garp_lower_prio_delay %>
+  <%- end -%>
   <%- if @snmp_socket -%>
   snmp_socket <%= @snmp_socket -%>
   <%- end -%>
