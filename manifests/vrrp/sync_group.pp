@@ -1,29 +1,27 @@
-# == Define: keepalived::vrrp::sync_group
+# @summary keepalived::vrrp::sync_group
 #
-# === Parameters:
+# @param group
+#   Define vrrp instances to group (Array)
 #
-# $group::                 Define vrrp instances to group (Array)
+# @param notify_script_master
+#   Define the notify master script.
 #
-# $notify_script_master::  Define the notify master script.
-#                          Default: undef.
+# @param notify_script_backup
+#   Define the notify backup script.
 #
-# $notify_script_backup::  Define the notify backup script.
-#                          Default: undef.
+# @param notify_script_fault
+#   Define the notify fault script.
 #
-# $notify_script_fault::   Define the notify fault script.
-#                          Default: undef.
+# @param notify_script
+#   Define the notify script.
 #
-# $notify_script::         Define the notify script.
-#                          Default: undef.
+# @param notify_script_master_rx_lower_pri
+#   Define the notify_master_rx_lower_pri script.
+#   This is executed if a master receives an advert with
+#   priority lower than the master's advert.
 #
-# $notify_script_master_rx_lower_pri   Define the notify_master_rx_lower_pri script.
-#                          This is executed if a master receives an advert with
-#                          priority lower than the master's advert.
-#                          Default: undef.
-#
-# $smtp_alert::            Send email on status change (Boolean)
-#                          Default: undef.
-#
+# @param smtp_alert
+#   Send email on status change (Boolean)
 #
 define keepalived::vrrp::sync_group (
   $group,

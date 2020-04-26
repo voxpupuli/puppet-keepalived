@@ -11,107 +11,115 @@
 # Refer to keepalived's documentation to understand the behaviour
 # of these parameters
 #
-# [*ip_address*]
+# @param ip_address
 #   Virtual server IP address.
 #
-# [*port*]
+# @param port
 #   Virtual sever IP port.
 #
-# [*fwmark*]
+# @param fwmark
 #   Virtual Server firewall mark. (overrides ip_address and port)
 #   Default: not set
 #
-# [*lb_algo*]
+# @param lb_algo
 #   Must be one of rr, wrr, lc, wlc, lblc, sh, dh
 #   Default: not set.
 #
-# [*delay_loop*]
+# @param delay_loop
 #   Default: not set.
 #
-# [*protocol*]
+# @param protocol
 #   Default: TCP
 #
-# [*lb_kind*]
+# @param lb_kind
 #   Must be one of NAT, TUN, DR.
 #   Default: NAT
 #
-# [*ha_suspend*]
+# @param ha_suspend
 #   Boolean.
 #   Default: false => not set in config.
 #
-# [*alpha*]
+# @param alpha
 #   Boolean.
 #   Default: false => not set in config.
 #
-# [*omega*]
+# @param omega
 #   Boolean.
 #   Default: false => not set in config.
 #
-# [*sh-port*]
+# @param sh_port
 #   Boolean.
 #   Default: false => not set in config.
 #
-# [*sh-fallback*]
+# @param sh_fallback
 #   Boolean.
 #   Default: false => not set in config.
 #
-# [*quorum*]
+# @param quorum
 #   Integer.
 #   Defaults to unset => does not appear in config.
 #
-# [*quorum_up*]
+# @param quorum_up
 #   Script string.
 #   Defaults to unset => does not appear in config.
 #
-# [*quorum_down*]
+# @param quorum_down
 #   Script string.
 #   Defaults to unset => does not appear in config.
 #
-# [*hysteresis*]
+# @param hysteresis
 #   Integer.
 #   Defaults to unset => does not appear in config.
 #
-# [*tcp_check*]
+# @param tcp_check
 #   The TCP_CHECK to configure for real_servers.
 #   Should be a hash containing these keys:
 #     [*connect_timeout*]
 #   Default: unset => no TCP_CHECK configured.
 #
-# [*real_server_options*]
+# @param real_server_options
 #   One or more options to apply to all real_server blocks inside this
 #   virtual_server.
 #
-#   Example:
-#     real_server_options => {
-#       inhibit_on_failure => true,
-#       SMTP_CHECK => {
-#         connect_timeout => 10
-#         host => {
-#           connect_ip => '127.0.0.1'
-#         }
+# @example
+#   real_server_options => {
+#     inhibit_on_failure => true,
+#     SMTP_CHECK => {
+#       connect_timeout => 10
+#       host => {
+#         connect_ip => '127.0.0.1'
 #       }
 #     }
+#   }
 #
 #   Default: unset => no default options
 #
-# [*sorry_server*]
+# @param sorry_server
 #   The sorry_server to define
 #   A hash with these keys:
 #     [*ip_address*]
 #     [*port*]
 #
-# [*sorry_server_inhibit*]
+# @param sorry_server_inhibit
 #   Boolean.
 #   Default: false => not set in config.
 #
-# [*real_servers*]
+# @param persistence_timeout
+#   Integer.
+#   Default: unset.
+#
+# @param virtualhost
+#   FQDN.
+#   Default: unset.
+#
+# @param real_servers
 #   The real servers to balance to.
 #   An array of hashes.
 #   Hash keys:
 #     [*ip_address*]
 #     [*port*]       (if ommitted the port defaults to the VIP port)
 #
-# [*collect_exported*]
+# @param collect_exported
 #   Boolean. Automatically collect exported @@keepalived::lvs::real_servers
 #   with a virtual_server equal to the name/title of this resource. This allows
 #   you to easily export a real_server resource on each node in the pool.
