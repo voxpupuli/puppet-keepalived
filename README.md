@@ -258,6 +258,8 @@ node /node0x/ {
   keepalived::vrrp::sync_group { 'VI_50':
     group               => [ 'VI_50_IPV4', 'VI_50_IPV6' ],
     global_tracking     => true,
+    # or specify track-scripts instead
+    # track_script      => [ 'notify.sh' ],
   }
 
   keepalived::vrrp::instance { 'VI_50_IPV4':

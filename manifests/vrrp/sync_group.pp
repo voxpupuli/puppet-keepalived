@@ -24,6 +24,8 @@
 # $smtp_alert::            Send email on status change (Boolean)
 #                          Default: undef.
 #
+# $track_script::          Define which script to run to track service states.
+#                          Default: undef.
 #
 define keepalived::vrrp::sync_group (
   $group,
@@ -33,6 +35,7 @@ define keepalived::vrrp::sync_group (
   $notify_script_fault                                              = undef,
   $notify_script                                                    = undef,
   $smtp_alert                                                       = undef,
+  $track_script                                                     = undef,
   $nopreempt                                                        = undef,
   Boolean $global_tracking                                          = false,
 ) {
