@@ -75,4 +75,27 @@ describe 'keepalived class' do
       its(:stdout) { is_expected.to match %r{.*inet 10\.0\.0\.1/16 .*} }
     end
   end
+
+  context 'on master with globalconf' do
+    pp = <<-EOS
+    class { 'keepalived':
+      sysconf_options => '-D --vrrp',
+    }
+    class { 'keepalived::global_defs':
+      notification_email => 'nospan@example.com',
+    }
+    EOS
+
+    it 'works with no error' do
+      apply_manifest(pp, catch_failures: true)
+    end
+    it 'works idempotently' do
+      apply_manifest(pp, catch_changes: true)
+    end
+
+    describe file('/etc/keepalived/keepalived.conf') do
+      it { is_expected.to be_file }
+      its(:content) { is_expected.to contain('notification_email').from('global_defs').to('nospan@example.com') }
+    end
+  end
 end
