@@ -5,4 +5,3 @@ class keepalived::install {
     ensure => $keepalived::pkg_ensure,
   }
 }
-

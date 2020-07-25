@@ -209,4 +209,3 @@ define keepalived::vrrp::instance (
     order   => '100',
   }
 }
-

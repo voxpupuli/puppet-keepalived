@@ -31,7 +31,6 @@ class keepalived (
   Hash $lvs_real_server    = {},
   Hash $lvs_virtual_server = {},
 ) {
-
   contain keepalived::install
   contain keepalived::config
   contain keepalived::service
