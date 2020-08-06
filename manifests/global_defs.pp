@@ -26,6 +26,9 @@
 # $snmp_socket::                   Define snmp master agent socker
 #                                  Default: unix:/var/agentx/master
 #
+# $enable_dynamic_interfaces::     Set dynamic_interfaces option.
+#                                  Default: undef.
+#
 # $enable_snmp_keepalived::        Set enable_snmp_keepalived option.
 #                                  Default: undef.
 #
@@ -63,6 +66,7 @@ class keepalived::global_defs(
   $smtp_connect_timeout                           = undef,
   $router_id                                      = undef,
   $script_user                                    = undef,
+  $enable_dynamic_interfaces                      = undef,
   $enable_script_security                         = undef,
   $enable_snmp_keepalived                         = undef,
   $enable_snmp_checker                            = undef,
