@@ -56,7 +56,7 @@
 # $vrrp_garp_lower_prio_delay::   Set vrrp_garp_lower_prio_delay option.
 #                                  Default: undef.
 #
-class keepalived::global_defs(
+class keepalived::global_defs (
   $notification_email                             = undef,
   $notification_email_from                        = undef,
   $smtp_server                                    = undef,

@@ -44,4 +44,3 @@ define keepalived::vrrp::sync_group (
     order   => '050',
   }
 }
-

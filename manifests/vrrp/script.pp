@@ -57,4 +57,3 @@ define keepalived::vrrp::script (
     order   => '002',
   }
 }
-

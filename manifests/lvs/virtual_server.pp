@@ -137,7 +137,7 @@ define keepalived::lvs::virtual_server (
   Optional[String[1]] $quorum_up = undef,
   Optional[String[1]] $quorum_down = undef,
   Array[Hash] $real_servers = [],
-  Optional[Struct[{ip_address => Stdlib::IP::Address, port => Stdlib::Port}]] $sorry_server = undef,
+  Optional[Struct[{ ip_address => Stdlib::IP::Address, port => Stdlib::Port }]] $sorry_server = undef,
   Boolean $sorry_server_inhibit = false,
   Optional[Hash] $tcp_check = undef,
   Hash $real_server_options = {},
