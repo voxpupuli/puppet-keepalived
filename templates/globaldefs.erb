@@ -27,6 +27,9 @@ global_defs {
   <%- if @enable_snmp_keepalived -%>
   enable_snmp_keepalived
   <%- end -%>
+  <%- if @enable_snmp_vrrp -%>
+  enable_snmp_vrrp
+  <%- end -%>
   <%- if @enable_snmp_checker -%>
   enable_snmp_checker
   <%- end -%>
