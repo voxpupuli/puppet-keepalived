@@ -29,6 +29,9 @@
 # $enable_snmp_keepalived::        Set enable_snmp_keepalived option.
 #                                  Default: undef.
 #
+# $enable_snmp_vrrp::              Set enable_snmp_vrrp option.
+#                                  Default: undef.
+#
 # $enable_snmp_checker::           Set enable_snmp_keepalived option.
 #                                  Default: undef.
 #
@@ -65,6 +68,7 @@ class keepalived::global_defs (
   $script_user                                    = undef,
   $enable_script_security                         = undef,
   $enable_snmp_keepalived                         = undef,
+  $enable_snmp_vrrp                               = undef,
   $enable_snmp_checker                            = undef,
   $enable_snmp_rfc                                = undef,
   $enable_snmp_rfcv2                              = undef,

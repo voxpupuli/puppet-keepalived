@@ -147,6 +147,21 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
+      describe 'with parameter enable_snmp_vrrp' do
+        let(:params) do
+          {
+            enable_snmp_vrrp: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{enable_snmp_vrrp$}
+            )
+        }
+      end
+
       describe 'with parameter enable_snmp_checker' do
         let(:params) do
           {
