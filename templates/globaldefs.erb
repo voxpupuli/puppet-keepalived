@@ -21,8 +21,11 @@ global_defs {
   <%- if @script_user -%>
   script_user <%= @script_user %>
   <%- end -%>
-  <%- if @enable_script_security -%>
-  enable_script_security
+  <%- if @enable_dynamic_interfaces -%>
+  enable_dynamic_interfaces
+  <%- end -%>
+  <%- if @enable_snmp_keepalived -%>
+  enable_snmp_keepalived
   <%- end -%>
   <%- if @enable_snmp_keepalived -%>
   enable_snmp_keepalived
