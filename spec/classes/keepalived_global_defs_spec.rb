@@ -105,14 +105,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter startup_script_timeout' do
         let(:params) do
           {
-            startup_script_timeout: '_VALUE_'
+            startup_script_timeout: 1
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*startup_script_timeout\s+_VALUE_$}
+              'content' => %r{^\s*startup_script_timeout\s+1$}
             )
         }
       end
@@ -135,14 +135,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter shutdown_script_timeout' do
         let(:params) do
           {
-            shutdown_script_timeout: '_VALUE_'
+            shutdown_script_timeout: 1
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*shutdown_script_timeout\s+_VALUE_$}
+              'content' => %r{^\s*shutdown_script_timeout\s+1$}
             )
         }
       end
@@ -187,7 +187,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*notification_email_from\s+_VALUE_}
+              'content' => %r{^\s*notification_email_from\s+_VALUE_$}
             )
         }
       end
@@ -202,7 +202,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_server\s+_VALUE_}
+              'content' => %r{^\s*smtp_server\s+_VALUE_$}
             )
         }
       end
@@ -210,14 +210,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter smtp_connect_timeout' do
         let(:params) do
           {
-            smtp_connect_timeout: '_VALUE_'
+            smtp_connect_timeout: 30
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_connect_timeout\s+_VALUE_}
+              'content' => %r{^\s*smtp_connect_timeout\s+30$}
             )
         }
       end
@@ -232,7 +232,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_alert\s+_VALUE_}
+              'content' => %r{^\s*smtp_alert\s+_VALUE_$}
             )
         }
       end
@@ -247,7 +247,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_alert_vrrp\s+_VALUE_}
+              'content' => %r{^\s*smtp_alert_vrrp\s+_VALUE_$}
             )
         }
       end
@@ -262,7 +262,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_alert_checker\s+_VALUE_}
+              'content' => %r{^\s*smtp_alert_checker\s+_VALUE_$}
             )
         }
       end
@@ -277,7 +277,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*checker_log_all_failures\s+_VALUE_}
+              'content' => %r{^\s*checker_log_all_failures\s+_VALUE_$}
             )
         }
       end
@@ -420,14 +420,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_garp_master_delay' do
         let(:params) do
           {
-            vrrp_garp_master_delay: '_VALUE_'
+            vrrp_garp_master_delay: 10
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_garp_master_delay\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_garp_master_delay\s+10$}
             )
         }
       end
@@ -435,14 +435,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_garp_master_repeat' do
         let(:params) do
           {
-            vrrp_garp_master_repeat: '_VALUE_'
+            vrrp_garp_master_repeat: 1
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_garp_master_repeat\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_garp_master_repeat\s+1$}
             )
         }
       end
@@ -450,14 +450,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_garp_lower_prio_delay' do
         let(:params) do
           {
-            vrrp_garp_lower_prio_delay: '_VALUE_'
+            vrrp_garp_lower_prio_delay: 10
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_garp_lower_prio_delay\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_garp_lower_prio_delay\s+10$}
             )
         }
       end
@@ -465,14 +465,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_garp_lower_prio_repeat' do
         let(:params) do
           {
-            vrrp_garp_lower_prio_repeat: '_VALUE_'
+            vrrp_garp_lower_prio_repeat: 1
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_garp_lower_prio_repeat\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_garp_lower_prio_repeat\s+1$}
             )
         }
       end
@@ -480,14 +480,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_garp_master_refresh' do
         let(:params) do
           {
-            vrrp_garp_master_refresh: '_VALUE_'
+            vrrp_garp_master_refresh: 60
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_garp_master_refresh\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_garp_master_refresh\s+60$}
             )
         }
       end
@@ -495,14 +495,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_garp_master_refresh_repeat' do
         let(:params) do
           {
-            vrrp_garp_master_refresh_repeat: '_VALUE_'
+            vrrp_garp_master_refresh_repeat: 2
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_garp_master_refresh_repeat\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_garp_master_refresh_repeat\s+2$}
             )
         }
       end
@@ -525,14 +525,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_gna_interval' do
         let(:params) do
           {
-            vrrp_gna_interval: '_VALUE_'
+            vrrp_gna_interval: 0.000001
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_gna_interval\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_gna_interval\s+0.000001$}
             )
         }
       end
@@ -540,7 +540,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_min_garp' do
         let(:params) do
           {
-            vrrp_min_garp: '_VALUE_'
+            vrrp_min_garp: true
           }
         end
 
@@ -555,14 +555,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_lower_prio_no_advert' do
         let(:params) do
           {
-            vrrp_lower_prio_no_advert: '_VALUE_'
+            vrrp_lower_prio_no_advert: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_lower_prio_no_advert\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_lower_prio_no_advert\s+true$}
             )
         }
       end
@@ -570,14 +570,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_higher_prio_send_advert' do
         let(:params) do
           {
-            vrrp_higher_prio_send_advert: '_VALUE_'
+            vrrp_higher_prio_send_advert: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_higher_prio_send_advert\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_higher_prio_send_advert\s+true$}
             )
         }
       end
@@ -585,14 +585,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_version' do
         let(:params) do
           {
-            vrrp_version: '_VALUE_'
+            vrrp_version: 3
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_version\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_version\s+3$}
             )
         }
       end
@@ -630,14 +630,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter nftables_priority' do
         let(:params) do
           {
-            nftables_priority: '_VALUE_'
+            nftables_priority: -1
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*nftables_priority\s+_VALUE_$}
+              'content' => %r{^\s*nftables_priority\s+-1$}
             )
         }
       end
@@ -795,14 +795,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter max_auto_priority' do
         let(:params) do
           {
-            max_auto_priority: '_VALUE_'
+            max_auto_priority: 17
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*max_auto_priority\s+_VALUE_$}
+              'content' => %r{^\s*max_auto_priority\s+17$}
             )
         }
       end
@@ -810,14 +810,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter min_auto_priority_delay' do
         let(:params) do
           {
-            min_auto_priority_delay: '_VALUE_'
+            min_auto_priority_delay: 1000000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*min_auto_priority_delay\s+_VALUE_$}
+              'content' => %r{^\s*min_auto_priority_delay\s+1000000$}
             )
         }
       end
@@ -825,14 +825,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_priority' do
         let(:params) do
           {
-            vrrp_priority: '_VALUE_'
+            vrrp_priority: 17
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_priority\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_priority\s+17$}
             )
         }
       end
@@ -840,14 +840,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter checker_priority' do
         let(:params) do
           {
-            checker_priority: '_VALUE_'
+            checker_priority: 17
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*checker_priority\s+_VALUE_$}
+              'content' => %r{^\s*checker_priority\s+17$}
             )
         }
       end
@@ -855,14 +855,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter bfd_priority' do
         let(:params) do
           {
-            bfd_priority: '_VALUE_'
+            bfd_priority: 17
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*bfd_priority\s+_VALUE_$}
+              'content' => %r{^\s*bfd_priority\s+17$}
             )
         }
       end
@@ -960,14 +960,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_rt_priority' do
         let(:params) do
           {
-            vrrp_rt_priority: '_VALUE_'
+            vrrp_rt_priority: 17
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_rt_priority\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_rt_priority\s+17$}
             )
         }
       end
@@ -975,14 +975,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter checker_rt_priority' do
         let(:params) do
           {
-            checker_rt_priority: '_VALUE_'
+            checker_rt_priority: 17
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*checker_rt_priority\s+_VALUE_$}
+              'content' => %r{^\s*checker_rt_priority\s+17$}
             )
         }
       end
@@ -990,14 +990,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter bfd_rt_priority' do
         let(:params) do
           {
-            bfd_rt_priority: '_VALUE_'
+            bfd_rt_priority: 17
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*bfd_rt_priority\s+_VALUE_$}
+              'content' => %r{^\s*bfd_rt_priority\s+17$}
             )
         }
       end
@@ -1005,14 +1005,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_rlimit_rttime' do
         let(:params) do
           {
-            vrrp_rlimit_rttime: '_VALUE_'
+            vrrp_rlimit_rttime: 10000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_rlimit_rttime\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_rlimit_rttime\s+10000$}
             )
         }
       end
@@ -1020,14 +1020,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter checker_rlimit_rttime' do
         let(:params) do
           {
-            checker_rlimit_rttime: '_VALUE_'
+            checker_rlimit_rttime: 10000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*checker_rlimit_rttime\s+_VALUE_$}
+              'content' => %r{^\s*checker_rlimit_rttime\s+10000$}
             )
         }
       end
@@ -1035,14 +1035,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter bfd_rlimit_rttime' do
         let(:params) do
           {
-            bfd_rlimit_rttime: '_VALUE_'
+            bfd_rlimit_rttime: 10000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*bfd_rlimit_rttime\s+_VALUE_$}
+              'content' => %r{^\s*bfd_rlimit_rttime\s+10000$}
             )
         }
       end
@@ -1350,14 +1350,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_netlink_cmd_rcv_bufs' do
         let(:params) do
           {
-            vrrp_netlink_cmd_rcv_bufs: '_VALUE_'
+            vrrp_netlink_cmd_rcv_bufs: 9000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_netlink_cmd_rcv_bufs\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_netlink_cmd_rcv_bufs\s+9000$}
             )
         }
       end
@@ -1365,14 +1365,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_netlink_cmd_rcv_bufs_force' do
         let(:params) do
           {
-            vrrp_netlink_cmd_rcv_bufs_force: '_VALUE_'
+            vrrp_netlink_cmd_rcv_bufs_force: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_netlink_cmd_rcv_bufs_force\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_netlink_cmd_rcv_bufs_force\s+true$}
             )
         }
       end
@@ -1380,14 +1380,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_netlink_monitor_rcv_bufs' do
         let(:params) do
           {
-            vrrp_netlink_monitor_rcv_bufs: '_VALUE_'
+            vrrp_netlink_monitor_rcv_bufs: 9000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_netlink_monitor_rcv_bufs\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_netlink_monitor_rcv_bufs\s+9000$}
             )
         }
       end
@@ -1395,14 +1395,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_netlink_monitor_rcv_bufs_force' do
         let(:params) do
           {
-            vrrp_netlink_monitor_rcv_bufs_force: '_VALUE_'
+            vrrp_netlink_monitor_rcv_bufs_force: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_netlink_monitor_rcv_bufs_force\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_netlink_monitor_rcv_bufs_force\s+true$}
             )
         }
       end
@@ -1410,14 +1410,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter lvs_netlink_cmd_rcv_bufs' do
         let(:params) do
           {
-            lvs_netlink_cmd_rcv_bufs: '_VALUE_'
+            lvs_netlink_cmd_rcv_bufs: 9000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*lvs_netlink_cmd_rcv_bufs\s+_VALUE_$}
+              'content' => %r{^\s*lvs_netlink_cmd_rcv_bufs\s+9000$}
             )
         }
       end
@@ -1425,14 +1425,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter lvs_netlink_cmd_rcv_bufs_force' do
         let(:params) do
           {
-            lvs_netlink_cmd_rcv_bufs_force: '_VALUE_'
+            lvs_netlink_cmd_rcv_bufs_force: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*lvs_netlink_cmd_rcv_bufs_force\s+_VALUE_$}
+              'content' => %r{^\s*lvs_netlink_cmd_rcv_bufs_force\s+true$}
             )
         }
       end
@@ -1440,14 +1440,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter lvs_netlink_monitor_rcv_bufs' do
         let(:params) do
           {
-            lvs_netlink_monitor_rcv_bufs: '_VALUE_'
+            lvs_netlink_monitor_rcv_bufs: 9000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*lvs_netlink_monitor_rcv_bufs\s+_VALUE_$}
+              'content' => %r{^\s*lvs_netlink_monitor_rcv_bufs\s+9000$}
             )
         }
       end
@@ -1455,14 +1455,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter lvs_netlink_monitor_rcv_bufs_force' do
         let(:params) do
           {
-            lvs_netlink_monitor_rcv_bufs_force: '_VALUE_'
+            lvs_netlink_monitor_rcv_bufs_force: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*lvs_netlink_monitor_rcv_bufs_force\s+_VALUE_$}
+              'content' => %r{^\s*lvs_netlink_monitor_rcv_bufs_force\s+true$}
             )
         }
       end
@@ -1470,14 +1470,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter process_monitor_rcv_bufs' do
         let(:params) do
           {
-            process_monitor_rcv_bufs: '_VALUE_'
+            process_monitor_rcv_bufs: 500000
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*process_monitor_rcv_bufs\s+_VALUE_$}
+              'content' => %r{^\s*process_monitor_rcv_bufs\s+500000$}
             )
         }
       end
@@ -1485,19 +1485,19 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter process_monitor_rcv_bufs_force' do
         let(:params) do
           {
-            process_monitor_rcv_bufs_force: '_VALUE_'
+            process_monitor_rcv_bufs_force: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*process_monitor_rcv_bufs_force\s+_VALUE_$}
+              'content' => %r{^\s*process_monitor_rcv_bufs_force\s+true$}
             )
         }
       end
 
-      describe 'with parameter vrrp_rx_bufs_policy' do
+      describe 'with parameter vrrp_rx_bufs_policy using String' do
         let(:params) do
           {
             vrrp_rx_bufs_policy: '_VALUE_'
@@ -1512,17 +1512,32 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      describe 'with parameter vrrp_rx_bufs_multiplier' do
+      describe 'with parameter vrrp_rx_bufs_policy using Integer' do
         let(:params) do
           {
-            vrrp_rx_bufs_multiplier: '_VALUE_'
+            vrrp_rx_bufs_policy: 4500
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_rx_bufs_multiplier\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_rx_bufs_policy\s+4500$}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_rx_bufs_multiplier' do
+        let(:params) do
+          {
+            vrrp_rx_bufs_multiplier: 3
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*vrrp_rx_bufs_multiplier\s+3$}
             )
         }
       end
@@ -1557,7 +1572,7 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      describe 'with parameter umask' do
+      describe 'with parameter umask using Boolean' do
         let(:params) do
           {
             umask: true
@@ -1572,7 +1587,7 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      describe 'with parameter umask' do
+      describe 'with parameter umas using Stringk' do
         let(:params) do
           {
             umask: '_VALUE_'
@@ -1587,17 +1602,32 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      describe 'with parameter vrrp_startup_delay' do
+      describe 'with parameter vrrp_startup_delay using Float' do
         let(:params) do
           {
-            vrrp_startup_delay: '_VALUE_'
+            vrrp_startup_delay: 5.5
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_startup_delay\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_startup_delay\s+5.5$}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_startup_delay using Integer' do
+        let(:params) do
+          {
+            vrrp_startup_delay: 1
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*vrrp_startup_delay\s+1$}
             )
         }
       end
@@ -1620,14 +1650,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter random_seed' do
         let(:params) do
           {
-            random_seed: '_VALUE_'
+            random_seed: 17523
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*random_seed\s+_VALUE_$}
+              'content' => %r{^\s*random_seed\s+17523$}
             )
         }
       end
