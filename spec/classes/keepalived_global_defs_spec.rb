@@ -765,14 +765,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_notify_priority_changes' do
         let(:params) do
           {
-            vrrp_notify_priority_changes: '_VALUE_'
+            vrrp_notify_priority_changes: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_notify_priority_changes\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_notify_priority_changes\s+true$}
             )
         }
       end
@@ -1500,14 +1500,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_rx_bufs_policy using String' do
         let(:params) do
           {
-            vrrp_rx_bufs_policy: '_VALUE_'
+            vrrp_rx_bufs_policy: 'MTU'
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_rx_bufs_policy\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_rx_bufs_policy\s+MTU$}
             )
         }
       end
@@ -1515,7 +1515,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_rx_bufs_policy using Integer' do
         let(:params) do
           {
-            vrrp_rx_bufs_policy: 4500
+            vrrp_rx_bufs_policy: 4_500
           }
         end
 

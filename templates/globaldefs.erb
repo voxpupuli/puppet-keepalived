@@ -211,14 +211,6 @@ global_defs {
   vrrp_notify_priority_changes <%= @vrrp_notify_priority_changes %>
   <%- end -%>
   <%# --- %>
-
-
-  <%- if @max_auto_priority and @max_auto_priority.is_a?(Boolean) -%>
-  max_auto_priority
-  <%- elsif @max_auto_priority.is_a?(Integer) -%>
-  max_auto_priority <%= @max_auto_priority %>
-  <%- end -%>
-  <%# --- %>
   <%- if @max_auto_priority -%>
   <%- if @max_auto_priority.is_a?(Integer) -%>
   max_auto_priority <%= @max_auto_priority %>
@@ -287,7 +279,7 @@ global_defs {
   <%- end -%>
   <%# --- %>
   <%- if @bfd_rlimit_rttime -%>
-   <%= @bfd_rlimit_rttime %>
+  bfd_rlimit_rttime <%= @bfd_rlimit_rttime %>
   <%- end -%>
   <%# --- %>
   <%- if @snmp_socket -%>
