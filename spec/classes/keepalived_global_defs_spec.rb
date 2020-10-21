@@ -810,7 +810,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter min_auto_priority_delay' do
         let(:params) do
           {
-            min_auto_priority_delay: 1000000
+            min_auto_priority_delay: 1_000_000
           }
         end
 
@@ -1005,7 +1005,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_rlimit_rttime' do
         let(:params) do
           {
-            vrrp_rlimit_rttime: 10000
+            vrrp_rlimit_rttime: 10_000
           }
         end
 
@@ -1020,7 +1020,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter checker_rlimit_rttime' do
         let(:params) do
           {
-            checker_rlimit_rttime: 10000
+            checker_rlimit_rttime: 10_000
           }
         end
 
@@ -1035,7 +1035,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter bfd_rlimit_rttime' do
         let(:params) do
           {
-            bfd_rlimit_rttime: 10000
+            bfd_rlimit_rttime: 10_000
           }
         end
 
@@ -1470,7 +1470,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter process_monitor_rcv_bufs' do
         let(:params) do
           {
-            process_monitor_rcv_bufs: 500000
+            process_monitor_rcv_bufs: 500_000
           }
         end
 
@@ -1650,7 +1650,7 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter random_seed' do
         let(:params) do
           {
-            random_seed: 17523
+            random_seed: 17_523
           }
         end
 
