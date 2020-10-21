@@ -407,7 +407,7 @@ global_defs {
   <%# --- %>
   <%- if @umask.is_a?(Boolean) -%>
   umask
-  <%- elsif @umask.is_a?(String) 0%>
+  <%- elsif @umask.is_a?(String) %>
   umask <%= @umask %>
   <%- end -%>
   <%# --- %>
