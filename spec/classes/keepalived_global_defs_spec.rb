@@ -1493,7 +1493,6 @@ describe 'keepalived::global_defs', type: :class do
             )
         }
       end
-
     end
   end
 end
