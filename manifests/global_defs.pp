@@ -394,7 +394,7 @@ class keepalived::global_defs (
   Optional[Integer] $startup_script_timeout       = undef,
   Optional[String] $shutdown_script               = undef,
   Optional[Integer] $shutdown_script_timeout      = undef,
-  Optional[String] $notification_email            = undef,
+  Variant[String, Array[String]] $notification_email  = undef,
   Optional[String] $notification_email_from       = undef,
   Optional[String] $smtp_server                   = undef,
   Optional[String] $smtp_helo_name                = undef,

@@ -387,7 +387,35 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      # TODO: lvs_flush_onstop
+      describe 'with parameter lvs_flush_onstop' do
+        let(:params) do
+          {
+            lvs_flush_onstop: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*lvs_flush_onstop$}
+            )
+        }
+      end
+
+      describe 'with parameter lvs_flush_onstop VS' do
+        let(:params) do
+          {
+            lvs_flush_onstop: 'VS'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*lvs_flush_onstop\s+VS$}
+            )
+        }
+      end
 
       describe 'with parameter vrrp_garp_master_delay' do
         let(:params) do
@@ -569,7 +597,35 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      # TODO: nftables
+      describe 'with parameter nftables' do
+        let(:params) do
+          {
+            nftables: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*nftables$}
+            )
+        }
+      end
+
+      describe 'with parameter nftables' do
+        let(:params) do
+          {
+            nftables: '_VALUE_'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*nftables\s+_VALUE_$}
+            )
+        }
+      end
 
       describe 'with parameter nftables_priority' do
         let(:params) do
@@ -616,7 +672,35 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      # TODO: vrrp_iptables
+      describe 'with parameter vrrp_iptables' do
+        let(:params) do
+          {
+            vrrp_iptables: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*vrrp_iptables$}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_iptables' do
+        let(:params) do
+          {
+            vrrp_iptables: '_VALUE_'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*vrrp_iptables\s+_VALUE_$}
+            )
+        }
+      end
 
       describe 'with parameter vrrp_ipsets' do
         let(:params) do
@@ -693,7 +777,35 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      # TODO: max_auto_priority
+      describe 'with parameter max_auto_priority' do
+        let(:params) do
+          {
+            max_auto_priority: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*max_auto_priority$}
+            )
+        }
+      end
+
+      describe 'with parameter max_auto_priority' do
+        let(:params) do
+          {
+            max_auto_priority: '_VALUE_'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*max_auto_priority\s+_VALUE_$}
+            )
+        }
+      end
 
       describe 'with parameter min_auto_priority_delay' do
         let(:params) do
@@ -1205,7 +1317,35 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      # TODO: dynamic_interfaces
+      describe 'with parameter dynamic_interfaces' do
+        let(:params) do
+          {
+            dynamic_interfaces: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*dynamic_interfaces$}
+            )
+        }
+      end
+
+      describe 'with parameter dynamic_interfaces allow_if_changes' do
+        let(:params) do
+          {
+            dynamic_interfaces: 'allow_if_changes'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*dynamic_interfaces\s+allow_if_changes$}
+            )
+        }
+      end
 
       describe 'with parameter vrrp_netlink_cmd_rcv_bufs' do
         let(:params) do
@@ -1417,7 +1557,37 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      # TODO: umask
+      describe 'with parameter umask' do
+        let(:params) do
+          {
+            umask: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*umask$}
+            )
+        }
+      end
+
+      describe 'with parameter umask' do
+        let(:params) do
+          {
+            umask: '_VALUE_'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{^\s*umask\s+_VALUE_$}
+            )
+        }
+      end
+
+
 
       describe 'with parameter vrrp_startup_delay' do
         let(:params) do
