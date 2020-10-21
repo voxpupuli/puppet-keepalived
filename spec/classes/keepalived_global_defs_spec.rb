@@ -157,7 +157,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*notification_email\s*\{\n\s+_VALUE_}
+              'content' => %r{notification_email\s*\{\n\s*_VALUE_}
             )
         }
       end
@@ -172,7 +172,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*notification_email\s*\{\n\s+_VALUE1_\n\s+_VALUE2_}
+              'content' => %r{notification_email\s*\{\n\s*_VALUE1_\n\s*_VALUE2_}
             )
         }
       end

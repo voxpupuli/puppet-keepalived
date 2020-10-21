@@ -471,7 +471,7 @@ class keepalived::global_defs (
   Variant[Boolean, String] $dynamic_interfaces        = undef,
   Optional[Integer] $vrrp_netlink_cmd_rcv_bufs        = undef,
   Optional[Boolean] $vrrp_netlink_cmd_rcv_bufs_force  = undef,
-  Optinal[Integer] $vrrp_netlink_monitor_rcv_bufs     = undef,
+  Optional[Integer] $vrrp_netlink_monitor_rcv_bufs     = undef,
   Optional[Boolean] $vrrp_netlink_monitor_rcv_bufs_force  = undef,
   Optional[Integer] $lvs_netlink_cmd_rcv_bufs         = undef,
   Optional[Boolean] $lvs_netlink_cmd_rcv_bufs_force   = undef,
