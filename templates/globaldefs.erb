@@ -107,7 +107,7 @@ global_defs {
   lvs_flush
   <%- end -%>
   <%# --- %>
-  <%- if @lvs_flush_onstop.is_a?(Boolean) -%>
+  <%- if @lvs_flush and @lvs_flush_onstop.is_a?(Boolean) -%>
   lvs_flush_onstop
   <%- elsif @lvs_flush_onstop.is_a?(String) and @lvs_flush_onstop == "VS" -%>
   lvs_flush_onstop VS
@@ -161,7 +161,7 @@ global_defs {
   vrrp_version <%= @vrrp_version %>
   <%- end -%>
   <%# --- %>
-  <%- if @nftables.is_a?(Boolean) -%>
+  <%- if @nftables and @nftables.is_a?(Boolean) -%>
   nftables
   <%- elsif @nftables.is_a?(String) -%>
   nftables <%= @nftables %>
@@ -179,7 +179,7 @@ global_defs {
   nftables_ifindex
   <%- end -%>
   <%# --- %>
-  <%- if @vrrp_iptables.is_a?(Boolean) -%>
+  <%- if @vrrp_iptables and @vrrp_iptables.is_a?(Boolean) -%>
   vrrp_iptables
   <%- elsif @vrrp_iptables.is_a?(String) -%>
   vrrp_iptables <%= @vrrp_iptables %>
@@ -205,7 +205,7 @@ global_defs {
   vrrp_notify_priority_changes <%= @vrrp_notify_priority_changes %>
   <%- end -%>
   <%# --- %>
-  <%- if @max_auto_priority.is_a?(Boolean) -%>
+  <%- if @max_auto_priority and @max_auto_priority.is_a?(Boolean) -%>
   max_auto_priority
   <%- elsif @max_auto_priority.is_a?(Integer) -%>
   max_auto_priority <%= @max_auto_priority %>
@@ -347,7 +347,7 @@ global_defs {
   lvs_notify_fifo_script <%= @lvs_notify_fifo_script %>
   <%- end -%>
   <%# --- %>
-  <%- if @dynamic_interfaces.is_a?(Boolean) -%>
+  <%- if @dynamic_interfaces and @dynamic_interfaces.is_a?(Boolean) -%>
   dynamic_interfaces
   <%- elsif @dynamic_interfaces.is_a?(String) and @dynamic_interfaces == "allow_if_changes" -%>
   dynamic_interfaces allow_if_changes
@@ -409,7 +409,7 @@ global_defs {
   no_checker_emails
   <%- end -%>
   <%# --- %>
-  <%- if @umask.is_a?(Boolean) -%>
+  <%- if @umask and @umask.is_a?(Boolean) -%>
   umask
   <%- elsif @umask.is_a?(String) %>
   umask <%= @umask %>
