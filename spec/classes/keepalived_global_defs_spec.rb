@@ -1587,8 +1587,6 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-
-
       describe 'with parameter vrrp_startup_delay' do
         let(:params) do
           {

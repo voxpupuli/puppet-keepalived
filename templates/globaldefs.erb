@@ -35,7 +35,11 @@ global_defs {
   shutdown_script_timeout <%= @shutdown_script_timeout %>
   <%- end -%>
   <%# --- %>
-  <%- if @notification_email -%>
+  <%- if @notification_email.is_a?(String) -%>
+  notification_email {
+    <%= @notification_email %>
+  }
+  <%- elsif @notification_email.is_a?(Array) -%>
   notification_email {
     <%- Array(@notification_email).each do |email| -%>
     <%= email %>
