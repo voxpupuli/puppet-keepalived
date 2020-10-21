@@ -225,14 +225,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter smtp_alert' do
         let(:params) do
           {
-            smtp_alert: '_VALUE_'
+            smtp_alert: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_alert\s+_VALUE_$}
+              'content' => %r{^\s*smtp_alert\s+true$}
             )
         }
       end
@@ -240,14 +240,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter smtp_alert_vrrp' do
         let(:params) do
           {
-            smtp_alert_vrrp: '_VALUE_'
+            smtp_alert_vrrp: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_alert_vrrp\s+_VALUE_$}
+              'content' => %r{^\s*smtp_alert_vrrp\s+true$}
             )
         }
       end
@@ -255,14 +255,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter smtp_alert_checker' do
         let(:params) do
           {
-            smtp_alert_checker: '_VALUE_'
+            smtp_alert_checker: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*smtp_alert_checker\s+_VALUE_$}
+              'content' => %r{^\s*smtp_alert_checker\s+true$}
             )
         }
       end
@@ -270,14 +270,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter checker_log_all_failures' do
         let(:params) do
           {
-            checker_log_all_failures: '_VALUE_'
+            checker_log_all_failures: true
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*checker_log_all_failures\s+_VALUE_$}
+              'content' => %r{^\s*checker_log_all_failures\s+true$}
             )
         }
       end
@@ -510,14 +510,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_garp_interval' do
         let(:params) do
           {
-            vrrp_garp_interval: '_VALUE_'
+            vrrp_garp_interval: 0.001
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_garp_interval\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_garp_interval\s+0.001$}
             )
         }
       end
@@ -525,14 +525,14 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter vrrp_gna_interval' do
         let(:params) do
           {
-            vrrp_gna_interval: 0.000001
+            vrrp_gna_interval: 0.01
           }
         end
 
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_gna_interval\s+0.000001$}
+              'content' => %r{^\s*vrrp_gna_interval\s+0.01$}
             )
         }
       end
@@ -547,7 +547,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{^\s*vrrp_min_garp\s+_VALUE_$}
+              'content' => %r{^\s*vrrp_min_garp\s+true$}
             )
         }
       end
