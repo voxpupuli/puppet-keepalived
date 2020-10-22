@@ -12,7 +12,7 @@ vrrp_sync_group <%= @_name %> {
 
   <%- if @track_interface -%>
   track_interface {
-  <%- if @track_interface.is_a(String) -%>
+  <%- if @track_interface.is_a?(String) -%>
     <%= @track_interface %>
   <%- elsif @track_interface.is_a?(Array) -%>
   <%- Array(@track_interface).each do |interface| -%>
@@ -25,7 +25,7 @@ vrrp_sync_group <%= @_name %> {
 
   <%- if @track_script -%>
   track_script {
-  <%- if @track_script.is_a(String) -%>
+  <%- if @track_script.is_a?(String) -%>
     <%= @track_script %>
   <%- elsif @track_script.is_a?(Array) -%>
   <%- Array(@track_script).each do |script| -%>
@@ -38,7 +38,7 @@ vrrp_sync_group <%= @_name %> {
 
   <%- if @track_file -%>
   track_file {
-  <%- if @track_file.is_a(String) -%>
+  <%- if @track_file.is_a?(String) -%>
     <%= @track_file %>
   <%- elsif @track_file.is_a?(Array) -%>
   <%- Array(@track_file).each do |file| -%>
@@ -51,7 +51,7 @@ vrrp_sync_group <%= @_name %> {
 
   <%- if @track_process -%>
   track_process {
-  <%- if @track_process.is_a(String) -%>
+  <%- if @track_process.is_a?(String) -%>
     <%= @track_process %>
   <%- elsif @track_process.is_a?(Array) -%>
   <%- Array(@track_process).each do |process| -%>
@@ -64,7 +64,7 @@ vrrp_sync_group <%= @_name %> {
 
   <%- if @track_bfd -%>
   track_bfd {
-  <%- if @track_bfd.is_a(String) -%>
+  <%- if @track_bfd.is_a?(String) -%>
     <%= @track_bfd %>
   <%- elsif @track_bfd.is_a?(Array) -%>
   <%- Array(@track_bfd).each do |bfd_instance| -%>
