@@ -220,11 +220,11 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter notify_master' do
+      describe 'with parameter notify_script_master' do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_master: '_SCRIPT_'
+            notify_script_master: '_SCRIPT_'
           }
         end
 
@@ -237,11 +237,11 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter notify_backup' do
+      describe 'with parameter notify_script_backup' do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_backup: '_SCRIPT_'
+            notify_script_backup: '_SCRIPT_'
           }
         end
 
@@ -254,11 +254,11 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter notify_fault' do
+      describe 'with parameter notify_script_fault' do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_fault: '_SCRIPT_'
+            notify_script_fault: '_SCRIPT_'
           }
         end
 
@@ -271,11 +271,11 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter notify_stop' do
+      describe 'with parameter notify_script_stop' do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_stop: '_SCRIPT_'
+            notify_script_stop: '_SCRIPT_'
           }
         end
 
@@ -288,11 +288,11 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter notify_deleted' do
+      describe 'with parameter notify_script_deleted' do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_deleted: '_SCRIPT_'
+            notify_script_deleted: '_SCRIPT_'
           }
         end
 
@@ -305,11 +305,11 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter notify_deleted' do
+      describe 'with parameter notify_script_deleted' do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_deleted: true
+            notify_script_deleted: true
           }
         end
 
@@ -322,11 +322,11 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter notify' do
+      describe 'with parameter notify_script' do
         let(:params) do
           {
             group: '_GROUP_',
-            notify: '_SCRIPT_'
+            notify_script: '_SCRIPT_'
           }
         end
 
