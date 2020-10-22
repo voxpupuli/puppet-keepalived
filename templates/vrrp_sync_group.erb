@@ -1,57 +1,122 @@
 vrrp_sync_group <%= @_name %> {
   group {
+  <%- if @group.is_a?(String) -%>
+    <%= @group %>
+  <%- elsif @group.is_a?(Array) -%>
   <%- Array(@group).each do |vrrp_instance| -%>
     <%= vrrp_instance %>
   <%- end -%>
+  <%- end -%>
   }
+  <%# --- -%>
 
-  # notify scripts and alerts are optional
-  #
-  # filenames of scripts to run on transitions
-  # can be unquoted (if just filename)
-  # or quoted (if has parameters)
-  <%- if @notify_script_master -%>
-  # to MASTER transition
-  notify_master <%= @notify_script_master %>
+  <%- if @track_interface -%>
+  track_interface {
+  <%- if @track_interface.is_a(String) -%>
+    <%= @track_interface %>
+  <%- elsif @track_interface.is_a?(Array) -%>
+  <%- Array(@track_interface).each do |interface| -%>
+    <%= interface %>
   <%- end -%>
-  <%- if @notify_script_backup -%>
-  # to BACKUP transition
-  notify_backup <%= @notify_script_backup %>
   <%- end -%>
-  <%- if @notify_script_fault -%>
-  # FAULT transition
-  notify_fault <%= @notify_script_fault %>
+  }
   <%- end -%>
-  <%- if @notify_script_master_rx_lower_pri -%>
-  # The notify_master_rx_lower_pri script is executed if a master
-  # receives an advert with priority lower than the master's advert.
-  notify_master_rx_lower_pri "<%= @notify_script_master_rx_lower_pri %>"
-  <%- end -%>
+  <%# --- -%>
 
-  <%- if @notify_script -%>
-  # for ANY state transition.
-  # "notify" script is called AFTER the
-  # notify_* script(s) and is executed
-  # with 3 arguments provided by keepalived
-  # (ie don't include parameters in the notify line).
-  # arguments
-  # $1 = "GROUP"|"INSTANCE"
-  # $2 = name of group or instance
-  # $3 = target state of transition
-  #     ("MASTER"|"BACKUP"|"FAULT")
-  notify <%= @notify_script %>
+  <%- if @track_script -%>
+  track_script {
+  <%- if @track_script.is_a(String) -%>
+    <%= @track_script %>
+  <%- elsif @track_script.is_a?(Array) -%>
+  <%- Array(@track_script).each do |script| -%>
+    <%= script %>
   <%- end -%>
+  <%- end -%>
+  }
+  <%- end -%>
+  <%# --- -%>
 
-  # Send email notifcation during state transition,
-  # using addresses in global_defs above.
+  <%- if @track_file -%>
+  track_file {
+  <%- if @track_file.is_a(String) -%>
+    <%= @track_file %>
+  <%- elsif @track_file.is_a?(Array) -%>
+  <%- Array(@track_file).each do |file| -%>
+    <%= file %>
+  <%- end -%>
+  <%- end -%>
+  }
+  <%- end -%>
+  <%# --- -%>
+
+  <%- if @track_process -%>
+  track_process {
+  <%- if @track_process.is_a(String) -%>
+    <%= @track_process %>
+  <%- elsif @track_process.is_a?(Array) -%>
+  <%- Array(@track_process).each do |process| -%>
+    <%= process %>
+  <%- end -%>
+  <%- end -%>
+  }
+  <%- end -%>
+  <%# --- -%>
+
+  <%- if @track_bfd -%>
+  track_bfd {
+  <%- if @track_bfd.is_a(String) -%>
+    <%= @track_bfd %>
+  <%- elsif @track_bfd.is_a?(Array) -%>
+  <%- Array(@track_bfd).each do |bfd_instance| -%>
+    <%= bfd_instance %>
+  <%- end -%>
+  <%- end -%>
+  }
+  <%- end -%>
+  <%# --- -%>
+
+  <%- if @notify_master -%>
+  notify_master <%= @notify_master %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify_backup -%>
+  notify_backup <%= @notify_backup %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify_fault -%>
+  notify_fault <%= @notify_fault %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify_stop -%>
+  notify_stop <%= @notify_stop %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify_deleted -%>
+  <%- if @notify_deleted.is_a?(String) -%>
+  notify_deleted <%= @notify_deleted %>
+  <%- else -%>
+  notify_deleted
+  <%- end -%>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify -%>
+  notify <%= @notify %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify_priority_changes -%>
+  notify_priority_changes
+  <%- end -%>
+  <%# --- -%>
   <%- if @smtp_alert -%>
   smtp_alert
   <%- end -%>
-
+  <%# --- -%>
   <%- if @global_tracking -%>
-  # All VRRP share the same tracking config.
   global_tracking
   <%- end -%>
-
+  <%# --- -%>
+  <%- if @sync_group_tracking_weight -%>
+  sync_group_tracking_weight
+  <%- end -%>
+  <%# --- -%>
 }
-

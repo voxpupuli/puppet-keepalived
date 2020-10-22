@@ -3,38 +3,102 @@
 # === Parameters:
 #
 # $group::                 Define vrrp instances to group (Array)
+#                          Default: undef.
+#
+# $track_interface::       Synchronization group tracking interface will
+#                          update the status/priority of all VRRP instances
+#                          which are members of the sync group.
+#                          Default: undef.
+#
+# $track_script::          Add a tracking script to the sync group
+#                          (<SCRIPT_NAME> is the name of the vrrp_script entry)
+#                          Default: undef.
+#
+# $track_file::            Files whose state we monitor, value is added to
+#                          effective priority.
+#                          Default: undef.
+#
+# $track_process::         Process to monitor
+#                          Default: undef.
+#
+# $track_bfd::             BFD instances we monitor
+#                          Default: undef.
 #
 # $notify_script_master::  Define the notify master script.
+#                          Depricated: Use $notify_master
+#                          Default: undef.
+#
+# $notify_master::         Define the notify master script.
 #                          Default: undef.
 #
 # $notify_script_backup::  Define the notify backup script.
+#                          Depricated: Use $notify_backup
+#                          Default: undef.
+#
+# $notify_backup::         Define the notify backup script.
 #                          Default: undef.
 #
 # $notify_script_fault::   Define the notify fault script.
+#                          Depricated: Use $notify_fault
+#                          Default: undef.
+#
+# $notify_fault::          Define the notify fault script.
+#                          Default: undef.
+#
+# $notify_stop::           Executed when stopping vrrp
+#                          Default: undef.
+#
+# $notify_deleted::        Causes DELETED to be sent to notifies rather than the
+#                          default FAULT after a vrrp instance is deleted during
+#                          a reload. If a script is specified, that script will
+#                          be executed as well.
 #                          Default: undef.
 #
 # $notify_script::         Define the notify script.
+#                          Depricated: Use $notify
 #                          Default: undef.
 #
-# $notify_script_master_rx_lower_pri   Define the notify_master_rx_lower_pri script.
-#                          This is executed if a master receives an advert with
-#                          priority lower than the master's advert.
+# $notify::                Define the notify script.
+#                          Depricated: Use $notify
 #                          Default: undef.
 #
-# $smtp_alert::            Send email on status change (Boolean)
+# $notify_priority_changes:: Send FIFO notifies for vrrp priority changes
 #                          Default: undef.
 #
+# $smtp_alert::            Send email notification during state transition
+#                          Default: undef.
+#
+# $global_tracking::       DEPRECATED. Use track_interface, track_script and
+#                          track_file on vrrp_sync_groups instead.
+#                          Default: undef.
+#
+# $sync_group_tracking_weight:: Allow sync groups to use differing weights.
+#                          This probably WON'T WORK, but is a replacement for
+#                          global_tracking in case different weights were used
+#                          across different vrrp instances in the same sync group.
+#                          Default: undef.
 #
 define keepalived::vrrp::sync_group (
-  $group,
-  Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri = undef,
-  $notify_script_master                                             = undef,
-  $notify_script_backup                                             = undef,
-  $notify_script_fault                                              = undef,
-  $notify_script                                                    = undef,
-  $smtp_alert                                                       = undef,
-  $nopreempt                                                        = undef,
-  Boolean $global_tracking                                          = false,
+  Variant[String, Array[String]] $group                             = undef,
+  Variant[String, Array[String]] $track_interface                   = undef,
+  Variant[String, Array[String]] $track_script                      = undef,
+  Variant[String, Array[String]] $track_file                        = undef,
+  Variant[String, Array[String]] $track_process                     = undef,
+  Variant[String, Array[String]] $track_bfd                         = undef,
+  Optional[String] $notify_script_master                            = undef,
+  Optional[String] $notify_master                   = $notify_script_master,
+  Optional[String] $notify_script_backup                            = undef,
+  Optional[String] $notify_backup                   = $notify_script_backup,
+  Optional[String] $notify_script_fault                             = undef,
+  Optional[String] $notify_fault                     = $notify_script_fault,
+  Optional[String] $notify_stop                                     = undef,
+  Variant[Boolean, String] $notify_deleted                          = undef,
+  Optional[String] $notify_script                                   = undef,
+  Optional[String] $notify                                 = $notify_script,
+  Optional[Boolean] $notify_priority_changes                        = undef,
+  Optional[Boolean] $smtp_alert                                     = undef,
+  Optional[Boolean] $global_tracking                                = undef,
+  Optional[Boolean] $sync_group_tracking_weight                     = undef,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
