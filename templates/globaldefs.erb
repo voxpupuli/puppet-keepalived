@@ -1,65 +1,449 @@
 global_defs {
-  <%- if @notification_email -%>
+  <%- if @process_names -%>
+  process_names
+  <%- end -%>
+  <%# --- -%>
+  <%- if @process_name -%>
+  process_name <%= @process_name %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_process_name -%>
+  vrrp_process_name <%= @vrrp_process_name %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @ipvs_process_name -%>
+  ipvs_process_name <%= @ipvs_process_name %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @bfd_process_name -%>
+  bfd_process_name <%= @bfd_process_name %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @startup_script -%>
+  startup_script <%= @startup_script %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @startup_script_timeout -%>
+  startup_script_timeout <%= @startup_script_timeout %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @shutdown_script -%>
+  shutdown_script <%= @shutdown_script %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @shutdown_script_timeout -%>
+  shutdown_script_timeout <%= @shutdown_script_timeout %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notification_email.is_a?(String) -%>
+  notification_email {
+    <%= @notification_email %>
+  }
+  <%- elsif @notification_email.is_a?(Array) -%>
   notification_email {
     <%- Array(@notification_email).each do |email| -%>
     <%= email %>
     <%- end -%>
   }
   <%- end -%>
+  <%# --- -%>
   <%- if @notification_email_from -%>
   notification_email_from <%= @notification_email_from %>
   <%- end -%>
+  <%# --- -%>
   <%- if @smtp_server -%>
   smtp_server <%= @smtp_server %>
   <%- end -%>
+  <%# --- -%>
+  <%- if @smtp_helo_name -%>
+  smtp_helo_name <%= @smtp_helo_name %>
+  <%- end -%>
+  <%# --- -%>
   <%- if @smtp_connect_timeout -%>
   smtp_connect_timeout <%= @smtp_connect_timeout %>
   <%- end -%>
+  <%# --- -%>
+  <%- if @smtp_alert -%>
+  smtp_alert <%= @smtp_alert %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @smtp_alert_vrrp -%>
+  smtp_alert_vrrp <%= @smtp_alert_vrrp %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @smtp_alert_checker -%>
+  smtp_alert_checker <%= @smtp_alert_checker %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @checker_log_all_failures -%>
+  checker_log_all_failures <%= @checker_log_all_failures %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @no_email_faults -%>
+  no_email_faults
+  <%- end -%>
+  <%# --- -%>
   <%- if @router_id -%>
   router_id <%= @router_id %>
   <%- end -%>
-  <%- if @script_user -%>
-  script_user <%= @script_user %>
+  <%# --- -%>
+  <%- if @vrrp_mcast_group4 -%>
+  vrrp_mcast_group4 <%= @vrrp_mcast_group4 %>
   <%- end -%>
-  <%- if @enable_script_security -%>
-  enable_script_security
+  <%# --- -%>
+  <%- if @vrrp_mcast_group6 -%>
+  vrrp_mcast_group6 <%= @vrrp_mcast_group6 %>
   <%- end -%>
-  <%- if @enable_snmp_keepalived -%>
-  enable_snmp_keepalived
+  <%# --- -%>
+  <%- if @default_interface -%>
+  default_interface <%= @default_interface %>
   <%- end -%>
-  <%- if @enable_snmp_vrrp -%>
-  enable_snmp_vrrp
+  <%# --- -%>
+  <%- if @lvs_sync_daemon -%>
+  lvs_sync_daemon <%= @lvs_sync_daemon %>
   <%- end -%>
-  <%- if @enable_snmp_checker -%>
-  enable_snmp_checker
+  <%# --- -%>
+  <%- if @lvs_flush -%>
+  lvs_flush
   <%- end -%>
-  <%- if @enable_snmp_rfc -%>
-  enable_snmp_rfc
+  <%# --- -%>
+  <%- if @lvs_flush_onstop -%>
+  <%- if @lvs_flush_onstop.is_a?(String) and @lvs_flush_onstop == "VS" -%>
+  lvs_flush_onstop VS
+  <%- else -%>
+  lvs_flush_onstop
   <%- end -%>
-  <%- if @enable_snmp_rfcv2 -%>
-  enable_snmp_rfcv2
   <%- end -%>
-  <%- if @enable_snmp_rfcv3 -%>
-  enable_snmp_rfcv3
+  <%# --- -%>
+  <%- if @vrrp_garp_master_delay -%>
+  vrrp_garp_master_delay <%= @vrrp_garp_master_delay %>
   <%- end -%>
-  <%- if @enable_traps -%>
-  enable_traps
+  <%# --- -%>
+  <%- if @vrrp_garp_master_repeat -%>
+  vrrp_garp_master_repeat <%= @vrrp_garp_master_repeat %>
   <%- end -%>
-  <%- if @vrrp_higher_prio_send_advert -%>
-  vrrp_higher_prio_send_advert <%= @vrrp_higher_prio_send_advert %>
-  <%- end -%>
-  <%- if @vrrp_garp_lower_prio_repeat -%>
-  vrrp_garp_lower_prio_repeat <%= @vrrp_garp_lower_prio_repeat %>
-  <%- end -%>
-  <%- if @vrrp_garp_master_refresh -%>
-  vrrp_garp_master_refresh <%= @vrrp_garp_master_refresh %>
-  <%- end -%>
+  <%# --- -%>
   <%- if @vrrp_garp_lower_prio_delay -%>
   vrrp_garp_lower_prio_delay <%= @vrrp_garp_lower_prio_delay %>
   <%- end -%>
-  <%- if @snmp_socket -%>
-  snmp_socket <%= @snmp_socket -%>
+  <%# --- -%>
+  <%- if @vrrp_garp_lower_prio_repeat -%>
+  vrrp_garp_lower_prio_repeat <%= @vrrp_garp_lower_prio_repeat %>
   <%- end -%>
-
+  <%# --- -%>
+  <%- if @vrrp_garp_master_refresh -%>
+  vrrp_garp_master_refresh <%= @vrrp_garp_master_refresh %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_garp_master_refresh_repeat -%>
+  vrrp_garp_master_refresh_repeat <%= @vrrp_garp_master_refresh_repeat %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_garp_interval -%>
+  vrrp_garp_interval <%= @vrrp_garp_interval %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_gna_interval -%>
+  vrrp_gna_interval <%= @vrrp_gna_interval %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_min_garp -%>
+  vrrp_min_garp <%= @vrrp_min_garp %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_lower_prio_no_advert -%>
+  vrrp_lower_prio_no_advert <%= @vrrp_lower_prio_no_advert %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_higher_prio_send_advert -%>
+  vrrp_higher_prio_send_advert <%= @vrrp_higher_prio_send_advert %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_version -%>
+  vrrp_version <%= @vrrp_version %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @nftables -%>
+  <%- if @nftables.is_a?(String) -%>
+  nftables <%= @nftables %>
+  <%- else -%>
+  nftables
+  <%- end -%>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @nftables_priority -%>
+  nftables_priority <%= @nftables_priority %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @nftables_counters -%>
+  nftables_counters
+  <%- end -%>
+  <%# --- -%>
+  <%- if @nftables_ifindex -%>
+  nftables_ifindex
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_iptables -%>
+  <%- if @vrrp_iptables.is_a?(String) -%>
+  vrrp_iptables <%= @vrrp_iptables %>
+  <%- else -%>
+  vrrp_iptables
+  <%- end -%>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_ipsets -%>
+  vrrp_ipsets <%= @vrrp_ipsets %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_check_unicast_src -%>
+  vrrp_check_unicast_src
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_skip_check_adv_addr -%>
+  vrrp_skip_check_adv_addr
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_strict -%>
+  vrrp_strict
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_notify_priority_changes -%>
+  vrrp_notify_priority_changes <%= @vrrp_notify_priority_changes %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @max_auto_priority -%>
+  <%- if @max_auto_priority.is_a?(Integer) -%>
+  max_auto_priority <%= @max_auto_priority %>
+  <%- else -%>
+  max_auto_priority
+  <%- end -%>
+  <%- end -%>
+  <%- if @min_auto_priority_delay -%>
+  min_auto_priority_delay <%= @min_auto_priority_delay %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_priority -%>
+  vrrp_priority <%= @vrrp_priority %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @checker_priority -%>
+  checker_priority <%= @checker_priority %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @bfd_priority -%>
+  bfd_priority <%= @bfd_priority %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_no_swap -%>
+  vrrp_no_swap
+  <%- end -%>
+  <%# --- -%>
+  <%- if @checker_no_swap -%>
+  checker_no_swap
+  <%- end -%>
+  <%# --- -%>
+  <%- if @bfd_no_swap -%>
+  bfd_no_swap
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_cpu_affinity -%>
+  vrrp_cpu_affinity <%= @vrrp_cpu_affinity %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @checker_cpu_affinity -%>
+  checker_cpu_affinity <%= @checker_cpu_affinity %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @bfd_cpu_affinity -%>
+  bfd_cpu_affinity <%= @bfd_cpu_affinity %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_rt_priority -%>
+  vrrp_rt_priority <%= @vrrp_rt_priority %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @checker_rt_priority -%>
+  checker_rt_priority <%= @checker_rt_priority %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @bfd_rt_priority -%>
+  bfd_rt_priority <%= @bfd_rt_priority %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_rlimit_rttime -%>
+  vrrp_rlimit_rttime <%= @vrrp_rlimit_rttime %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @checker_rlimit_rttime -%>
+  checker_rlimit_rttime <%= @checker_rlimit_rttime %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @bfd_rlimit_rttime -%>
+  bfd_rlimit_rttime <%= @bfd_rlimit_rttime %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @snmp_socket -%>
+  snmp_socket <%= @snmp_socket %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_snmp_keepalived -%>
+  enable_snmp_keepalived
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_snmp_vrrp -%>
+  enable_snmp_vrrp
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_snmp_checker -%>
+  enable_snmp_checker
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_snmp_rfc -%>
+  enable_snmp_rfc
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_snmp_rfcv2 -%>
+  enable_snmp_rfcv2
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_snmp_rfcv3 -%>
+  enable_snmp_rfcv3
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_traps -%>
+  enable_traps
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_dbus -%>
+  enable_dbus
+  <%- end -%>
+  <%# --- -%>
+  <%- if @dbus_service_name -%>
+  dbus_service_name <%= @dbus_service_name %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @script_user -%>
+  script_user <%= @script_user %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @enable_script_security -%>
+  enable_script_security
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify_fifo -%>
+  notify_fifo <%= @notify_fifo %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @notify_fifo_script -%>
+  notify_fifo_script <%= @notify_fifo_script %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_notify_fifo -%>
+  vrrp_notify_fifo <%= @vrrp_notify_fifo %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_notify_fifo_script -%>
+  vrrp_notify_fifo_script <%= @vrrp_notify_fifo_script %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @lvs_notify_fifo -%>
+  lvs_notify_fifo <%= @lvs_notify_fifo %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @lvs_notify_fifo_script -%>
+  lvs_notify_fifo_script <%= @lvs_notify_fifo_script %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @dynamic_interfaces -%>
+  <%- if @dynamic_interfaces.is_a?(String) and @dynamic_interfaces == "allow_if_changes" -%>
+  dynamic_interfaces allow_if_changes
+  <%- else -%>
+  dynamic_interfaces
+  <%- end -%>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_netlink_cmd_rcv_bufs -%>
+  vrrp_netlink_cmd_rcv_bufs <%= @vrrp_netlink_cmd_rcv_bufs %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_netlink_cmd_rcv_bufs_force -%>
+  vrrp_netlink_cmd_rcv_bufs_force <%= @vrrp_netlink_cmd_rcv_bufs_force %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_netlink_monitor_rcv_bufs -%>
+  vrrp_netlink_monitor_rcv_bufs <%= @vrrp_netlink_monitor_rcv_bufs %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_netlink_monitor_rcv_bufs_force -%>
+  vrrp_netlink_monitor_rcv_bufs_force <%= @vrrp_netlink_monitor_rcv_bufs_force %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @lvs_netlink_cmd_rcv_bufs -%>
+  lvs_netlink_cmd_rcv_bufs <%= @lvs_netlink_cmd_rcv_bufs %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @lvs_netlink_cmd_rcv_bufs_force -%>
+  lvs_netlink_cmd_rcv_bufs_force <%= @lvs_netlink_cmd_rcv_bufs_force %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @lvs_netlink_monitor_rcv_bufs -%>
+  lvs_netlink_monitor_rcv_bufs <%= @lvs_netlink_monitor_rcv_bufs %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @lvs_netlink_monitor_rcv_bufs_force -%>
+  lvs_netlink_monitor_rcv_bufs_force <%= @lvs_netlink_monitor_rcv_bufs_force %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @process_monitor_rcv_bufs -%>
+  process_monitor_rcv_bufs <%= @process_monitor_rcv_bufs %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @process_monitor_rcv_bufs_force -%>
+  process_monitor_rcv_bufs_force <%= @process_monitor_rcv_bufs_force %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_rx_bufs_policy.is_a?(Integer) or (@vrrp_rx_bufs_policy.is_a?(String) and (@vrrp_rx_bufs_policy == "MTU" or @vrrp_rx_bufs_policy == "ADVERT")) -%>
+  vrrp_rx_bufs_policy <%= @vrrp_rx_bufs_policy %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_rx_bufs_multiplier -%>
+  vrrp_rx_bufs_multiplier <%= @vrrp_rx_bufs_multiplier %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @rs_init_notifies -%>
+  rs_init_notifies
+  <%- end -%>
+  <%# --- -%>
+  <%- if @no_checker_emails -%>
+  no_checker_emails
+  <%- end -%>
+  <%# --- -%>
+  <%- if @umask -%>
+  <%- if @umask.is_a?(String) %>
+  umask <%= @umask %>
+  <%- else -%>
+  umask
+  <%- end -%>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @vrrp_startup_delay -%>
+  vrrp_startup_delay <%= @vrrp_startup_delay %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @log_unknown_vrids -%>
+  log_unknown_vrids
+  <%- end -%>
+  <%# --- -%>
+  <%- if @random_seed -%>
+  random_seed <%= @random_seed %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @reload_time_file -%>
+  reload_time_file <%= @reload_time_file %>
+  <%- end -%>
+  <%# --- -%>
+  <%- if @reload_repeat -%>
+  reload_repeat
+  <%- end -%>
+  <%# --- -%>
 }
-
