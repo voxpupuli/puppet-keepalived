@@ -79,7 +79,6 @@
 #                          Default: undef.
 #
 define keepalived::vrrp::sync_group (
-#  Variant[String, Array[String], Undef] $group                      = undef,
   $group,
   Variant[String, Array[String], Undef] $track_interface            = undef,
   Variant[String, Array[String], Undef] $track_script               = undef,
