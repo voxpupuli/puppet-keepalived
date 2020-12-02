@@ -1,25 +1,3 @@
 ---
-.travis.yml:
-  docker_sets:
-    - set: centos6-64
-    - set: centos7-64
-    - set: debian8-64
-    - set: ubuntu1604-64
-    - set: ubuntu1804-64
-  secure: "GkH8b+4jKSQ9TwHnUca5HG5L1g+doS8k1Sp9/K7MBtzFdcWIZxVAc7xUNogq1BbKRm50aNcWbFK7NL5t3GkUH8fNuybZegLEdsrLhJAx57GplC9ip7qVVHsT6GjJ3MrdhbyCOvgHRprMpmENG5vqtXEfrnJ6LSf1MP3DkQPlfrY="
-spec/acceptance/nodesets/ec2/amazonlinux-2016091.yml:
-  delete: true
-spec/acceptance/nodesets/ec2/image_templates.yaml:
-  delete: true
-spec/acceptance/nodesets/ec2/rhel-73-x64.yml:
-  delete: true
-spec/acceptance/nodesets/ec2/sles-12sp2-x64.yml:
-  delete: true
-spec/acceptance/nodesets/ec2/ubuntu-1604-x64.yml:
-  delete: true
-spec/acceptance/nodesets/ec2/windows-2016-base-x64.yml:
-  delete: true
-spec/acceptance/nodesets/archlinux-2-x64.yml:
-  delete: true
 spec/spec_helper_acceptance.rb:
   unmanaged: false
