@@ -897,7 +897,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter unicast_source_ip' do
         let(:params) do
           mandatory_params.merge(
-            unicast_source_ip: '_VALUE_'
+            unicast_source_ip: '10.1.2.3'
           )
         end
 
@@ -905,7 +905,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{unicast_src_ip.*_VALUE_}
+              'content' => %r{unicast_src_ip.*10\.1\.2\.3}
             )
         }
       end
@@ -936,12 +936,53 @@ describe 'keepalived::vrrp::instance', type: :define do
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
         it {
           is_expected.to \
-            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{10.0.1.0}
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
+              'content' => "  unicast_peer {\n"
             )
           is_expected.to \
-            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{10.0.2.0}
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_peer_10.0.1.0').with(
+              'content' => "    10.0.1.0\n"
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_peer_10.0.2.0').with(
+              'content' => "    10.0.2.0\n"
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_footer').with(
+              'content' => "  }\n\n"
+            )
+          is_expected.to \
+            contain_keepalived__vrrp__unicast_peer('10.0.1.0').with(
+              'instance' => '_NAME_'
+            )
+          is_expected.to \
+            contain_keepalived__vrrp__unicast_peer('10.0.2.0').with(
+              'instance' => '_NAME_'
+            )
+        }
+      end
+
+      describe 'with collect_unicast_peers set to true' do
+        let(:params) do
+          mandatory_params.merge(
+            collect_unicast_peers: true,
+            unicast_source_ip: '10.0.3.0'
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
+              'content' => "  unicast_peer {\n"
+            )
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_footer').with(
+              'content' => "  }\n\n"
+            )
+          expect(exported_resources).to \
+            contain_keepalived__vrrp__unicast_peer('10.0.3.0').with(
+              'instance' => '_NAME_'
             )
         }
       end

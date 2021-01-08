@@ -173,61 +173,42 @@ define keepalived::vrrp::instance (
   Integer[1,254] $priority,
   $state,
   Integer[1,255] $virtual_router_id,
-  $virtual_ipaddress                                                = undef,
-  $auth_type                                                        = undef,
-  $auth_pass                                                        = undef,
-  $track_script                                                     = undef,
-  Optional[Array[String[1]]] $track_process                         = undef,
-  $track_interface                                                  = undef,
-  $lvs_interface                                                    = undef,
-  $virtual_ipaddress_int                                            = undef,
-  $virtual_ipaddress_excluded                                       = undef,
-  $virtual_routes                                                   = undef,
-  Optional[Array[Keepalived::Vrrp::Instance::VRule]] $virtual_rules = undef,
-  $smtp_alert                                                       = false,
-  $nopreempt                                                        = false,
-  $preempt_delay                                                    = undef,
-  $advert_int                                                       = 1,
-  $garp_master_delay                                                = 5,
-  $garp_master_refresh                                              = undef,
-  Optional[Integer] $garp_lower_prio_repeat                         = undef,
-  Optional[Boolean] $higher_prio_send_advert                        = undef,
-  Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri = undef,
-  $notify_script_master                                             = undef,
-  $notify_script_backup                                             = undef,
-  $notify_script_fault                                              = undef,
-  $notify_script_stop                                               = undef,
-  $notify_script                                                    = undef,
-  $multicast_source_ip                                              = undef,
-  $unicast_source_ip                                                = undef,
-  $unicast_peers                                                    = undef,
-  $collect_unicast_peers                                            = false,
-  $dont_track_primary                                               = false,
-  $use_vmac                                                         = false,
-  $vmac_xmit_base                                                   = true,
-  Boolean $native_ipv6                                              = false,
+  $virtual_ipaddress                                                      = undef,
+  $auth_type                                                              = undef,
+  $auth_pass                                                              = undef,
+  $track_script                                                           = undef,
+  Optional[Array[String[1]]] $track_process                               = undef,
+  $track_interface                                                        = undef,
+  $lvs_interface                                                          = undef,
+  $virtual_ipaddress_int                                                  = undef,
+  $virtual_ipaddress_excluded                                             = undef,
+  $virtual_routes                                                         = undef,
+  Optional[Array[Keepalived::Vrrp::Instance::VRule]] $virtual_rules       = undef,
+  $smtp_alert                                                             = false,
+  $nopreempt                                                              = false,
+  $preempt_delay                                                          = undef,
+  $advert_int                                                             = 1,
+  $garp_master_delay                                                      = 5,
+  $garp_master_refresh                                                    = undef,
+  Optional[Integer] $garp_lower_prio_repeat                               = undef,
+  Optional[Boolean] $higher_prio_send_advert                              = undef,
+  Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri       = undef,
+  $notify_script_master                                                   = undef,
+  $notify_script_backup                                                   = undef,
+  $notify_script_fault                                                    = undef,
+  $notify_script_stop                                                     = undef,
+  $notify_script                                                          = undef,
+  $multicast_source_ip                                                    = undef,
+  Optional[Stdlib::IP::Address] $unicast_source_ip                        = undef,
+  Variant[Array[Stdlib::IP::Address], Stdlib::IP::Address] $unicast_peers = [],
+  Boolean $collect_unicast_peers                                          = false,
+  $dont_track_primary                                                     = false,
+  $use_vmac                                                               = false,
+  $vmac_xmit_base                                                         = true,
+  Boolean $native_ipv6                                                    = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
-
-  if (!is_integer($priority) or ($priority + 0) < 1 or ($priority + 0) > 254) {
-    fail('priority must be an integer 1 >= and <= 254')
-  }
-
-  if (!is_integer($virtual_router_id) or ($virtual_router_id + 0) < 1 or ($virtual_router_id + 0) > 255) {
-    fail('virtual_router_id must be an integer >= 1 and <= 255')
-  }
-
-  if $unicast_source_ip != undef and ! $collect_unicast_peers {
-    validate_ip_address($unicast_source_ip)
-  }
-
-  if $unicast_peers != undef {
-    if ! is_string($unicast_peers) {
-      validate_array($unicast_peers)
-    }
-  }
-
-  validate_bool($collect_unicast_peers)
+  $unicast_peer_array = Array($unicast_peers, true)
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
@@ -235,11 +216,11 @@ define keepalived::vrrp::instance (
     order   => "100-${_name}-000",
   }
 
-  if $unicast_peers != undef or $collect_unicast_peers {
+  if size($unicast_peer_array) > 0 or $collect_unicast_peers {
     concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_header":
       target  => "${keepalived::config_dir}/keepalived.conf",
       content => "  unicast_peer {\n",
-      order   => "100-${_name}-000",
+      order   => "100-${_name}-010",
     }
 
     if $collect_unicast_peers {
@@ -250,17 +231,17 @@ define keepalived::vrrp::instance (
       }
 
       @@keepalived::vrrp::unicast_peer { $unicast_src: instance => $name }
-      Keepalived::Vrrp::Unicast_peer <<| instance == $name |>>
+      Keepalived::Vrrp::Unicast_peer <<| instance == $name and title != $unicast_src |>>
     }
 
-    if $unicast_peers != undef {
-      keepalived::vrrp::unicast_peer { $unicast_peers: instance => $name }
+    if size($unicast_peer_array) > 0 {
+      keepalived::vrrp::unicast_peer { $unicast_peer_array: instance => $name }
     }
 
     concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_footer":
       target  => "${keepalived::config_dir}/keepalived.conf",
       content => "  }\n\n",
-      order   => "100-${_name}-020",
+      order   => "100-${_name}-030",
     }
   }
 
