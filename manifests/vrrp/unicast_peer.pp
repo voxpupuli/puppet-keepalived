@@ -1,11 +1,22 @@
-# == Define: keepalived::vrrp::unicast_peer
+# @summary
+#   Define a unicast peer for a vrrp instance.
 #
-# === Parameters:
+# @api private
 #
-# $instance::   Name of vrrp instance this peer belongs to
+# @example Define a known, static unicast peer
+#   keepalived::vrrp::unicast_peer { '10.1.2.3':
+#     instance => 'my_vrrp_instance_name',
+#   }
 #
-# $ip_address:: IP address of unicast peer
-#               Default: $name
+# @example Export ourselves as a unicast peer for other peers to import
+#   @@keepalived::vrrp::unicast_peer { $facts['networking']['ip']:
+#     instance => 'my_vrrp_instance_name',
+#   }
+#
+# @param instance
+#   Name of vrrp instance this peer belongs to.
+# @param ip_address
+#   IP address of unicast peer. Defaults to $name.
 #
 define keepalived::vrrp::unicast_peer (
   String $instance,

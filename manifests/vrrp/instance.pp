@@ -208,7 +208,7 @@ define keepalived::vrrp::instance (
   Boolean $native_ipv6                                                    = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
-  $unicast_peer_array = Array($unicast_peers, true)
+  $unicast_peer_array = [$unicast_peers].flatten
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
