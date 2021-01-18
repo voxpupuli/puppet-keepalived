@@ -127,7 +127,7 @@
 #                          use this IP as src_addr for multicast vrrp packets.
 #                          Default: undef.
 #
-# $notify_script_master_rx_lower_pri	Define the notify_master_rx_lower_pri script.
+# $notify_script_master_rx_lower_pri:: Define the notify_master_rx_lower_pri script.
 #                          This is executed if a master receives an advert with
 #                          priority lower than the master's advert.
 #                          Default: undef.
@@ -143,6 +143,12 @@
 #
 #                          May be specified as an array with ip addresses
 #                          Default: undef.
+#
+# $collect_unicast_peers:: Enable automatic VRRP unicast configuration with
+#                          exported resources and disable VRRP multicast.
+#                          Optionally, override default peer settings with
+#                          $unicast_source_ip and $unicast_peers params.
+#                          Default: false
 #
 # $dont_track_primary::    Tells keepalived to ignore VRRP interface faults.
 #                          Can be useful on setup where two routers are
@@ -167,45 +173,81 @@ define keepalived::vrrp::instance (
   Integer[1,254] $priority,
   $state,
   Integer[1,255] $virtual_router_id,
-  $virtual_ipaddress                                                = undef,
-  $auth_type                                                        = undef,
-  $auth_pass                                                        = undef,
-  $track_script                                                     = undef,
-  Optional[Array[String[1]]] $track_process                         = undef,
-  $track_interface                                                  = undef,
-  $lvs_interface                                                    = undef,
-  $virtual_ipaddress_int                                            = undef,
-  $virtual_ipaddress_excluded                                       = undef,
-  $virtual_routes                                                   = undef,
-  Optional[Array[Keepalived::Vrrp::Instance::VRule]] $virtual_rules = undef,
-  $smtp_alert                                                       = false,
-  $nopreempt                                                        = false,
-  $preempt_delay                                                    = undef,
-  $advert_int                                                       = 1,
-  $garp_master_delay                                                = 5,
-  $garp_master_refresh                                              = undef,
-  Optional[Integer] $garp_lower_prio_repeat                         = undef,
-  Optional[Boolean] $higher_prio_send_advert                        = undef,
-  Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri = undef,
-  $notify_script_master                                             = undef,
-  $notify_script_backup                                             = undef,
-  $notify_script_fault                                              = undef,
-  $notify_script_stop                                               = undef,
-  $notify_script                                                    = undef,
-  $multicast_source_ip                                              = undef,
-  $unicast_source_ip                                                = undef,
-  $unicast_peers                                                    = undef,
-  $dont_track_primary                                               = false,
-  $use_vmac                                                         = false,
-  $vmac_xmit_base                                                   = true,
-  Boolean $native_ipv6                                              = false,
-
+  $virtual_ipaddress                                                      = undef,
+  $auth_type                                                              = undef,
+  $auth_pass                                                              = undef,
+  $track_script                                                           = undef,
+  Optional[Array[String[1]]] $track_process                               = undef,
+  $track_interface                                                        = undef,
+  $lvs_interface                                                          = undef,
+  $virtual_ipaddress_int                                                  = undef,
+  $virtual_ipaddress_excluded                                             = undef,
+  $virtual_routes                                                         = undef,
+  Optional[Array[Keepalived::Vrrp::Instance::VRule]] $virtual_rules       = undef,
+  $smtp_alert                                                             = false,
+  $nopreempt                                                              = false,
+  $preempt_delay                                                          = undef,
+  $advert_int                                                             = 1,
+  $garp_master_delay                                                      = 5,
+  $garp_master_refresh                                                    = undef,
+  Optional[Integer] $garp_lower_prio_repeat                               = undef,
+  Optional[Boolean] $higher_prio_send_advert                              = undef,
+  Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri       = undef,
+  $notify_script_master                                                   = undef,
+  $notify_script_backup                                                   = undef,
+  $notify_script_fault                                                    = undef,
+  $notify_script_stop                                                     = undef,
+  $notify_script                                                          = undef,
+  $multicast_source_ip                                                    = undef,
+  Optional[Stdlib::IP::Address] $unicast_source_ip                        = undef,
+  Variant[Array[Stdlib::IP::Address], Stdlib::IP::Address] $unicast_peers = [],
+  Boolean $collect_unicast_peers                                          = false,
+  $dont_track_primary                                                     = false,
+  $use_vmac                                                               = false,
+  $vmac_xmit_base                                                         = true,
+  Boolean $native_ipv6                                                    = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
+  $unicast_peer_array = [$unicast_peers].flatten
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),
-    order   => '100',
+    order   => "100-${_name}-000",
+  }
+
+  if size($unicast_peer_array) > 0 or $collect_unicast_peers {
+    concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_header":
+      target  => "${keepalived::config_dir}/keepalived.conf",
+      content => "  unicast_peer {\n",
+      order   => "100-${_name}-010",
+    }
+
+    if $collect_unicast_peers {
+      if $unicast_source_ip != undef {
+        $unicast_src = $unicast_source_ip
+      } else {
+        $unicast_src = inline_template("<%= scope.lookupvar('::ipaddress_${interface}') -%>")
+      }
+
+      @@keepalived::vrrp::unicast_peer { $unicast_src: instance => $name }
+      Keepalived::Vrrp::Unicast_peer <<| instance == $name and title != $unicast_src |>>
+    }
+
+    if size($unicast_peer_array) > 0 {
+      keepalived::vrrp::unicast_peer { $unicast_peer_array: instance => $name }
+    }
+
+    concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_footer":
+      target  => "${keepalived::config_dir}/keepalived.conf",
+      content => "  }\n\n",
+      order   => "100-${_name}-030",
+    }
+  }
+
+  concat::fragment { "keepalived.conf_vrrp_instance_${_name}_footer":
+    target  => "${keepalived::config_dir}/keepalived.conf",
+    content => "}\n\n",
+    order   => "100-${_name}-zzz",
   }
 }

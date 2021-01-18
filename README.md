@@ -10,9 +10,9 @@
 #### Table of Contents
 
 1. [Description](#description)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
+2. [Usage - Configuration options and additional functionality](#usage)
+3. [Limitations - OS compatibility, etc.](#limitations)
+4. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
@@ -25,7 +25,7 @@ The main goal of keepalived is to provide simple and robust facilities for loadb
 
 This configuration will fail-over when:
 
-a. Master node is unavailable
+1. Master node is unavailable
 
 ```puppet
 node /node01/ {
@@ -125,8 +125,8 @@ keepalived::vrrp_instance:
 
 This configuration will fail-over when:
 
-a. NGinX daemon is not running<br>
-b. Master node is unavailable
+1. NGinX daemon is not running
+1. Master node is unavailable
 
 ```puppet
 node /node01/ {
@@ -218,8 +218,8 @@ node /node01/ {
 
 This configuration will fail-over both the IPv4 address and the IPv6 address when:
 
-a. NGINX daemon is not running
-b. Master node is unavailable
+1. NGINX daemon is not running
+1. Master node is unavailable
 
 It is not possible to configure both IPv4 and IPv6 addresses as
 virtual\_ipaddresses in a single vrrp\_instance; the reason is that the VRRP
@@ -314,11 +314,33 @@ class { '::keepalived':
 
 ### Unicast instead of Multicast
 
-**caution: unicast support has only been added to Keepalived since version 1.2.8**
+**Caution: unicast support has only been added to Keepalived since version 1.2.8**
 
 By default Keepalived will use multicast packets to determine failover conditions.
 However, in many cloud environments it is not possible to use multicast because of
-network restrictions. Keepalived can be configured to use unicast in such environments:
+network restrictions.
+Keepalived can be configured to use unicast in such environments:
+
+Enable automatic unicast configuration with exported resources by setting
+parameter 'collect\_unicast\_peers => true'
+
+Automatic unicast configuration:
+
+```puppet
+  keepalived::vrrp::instance { 'VI_50':
+    interface         => 'eth1',
+    state             => 'BACKUP',
+    virtual_router_id => '50',
+    priority          => '100',
+    auth_type         => 'PASS',
+    auth_pass         => 'secret',
+    virtual_ipaddress => '10.0.0.1/29',
+    track_script      => 'check_nginx',
+    collect_unicast_peers => true,
+  }
+```
+
+Manual unicast configuration or override auto default IP:
 
 ```puppet
   keepalived::vrrp::instance { 'VI_50':
@@ -334,9 +356,12 @@ network restrictions. Keepalived can be configured to use unicast in such enviro
     unicast_peers     => ['10.0.0.1', '10.0.0.2']
   }
 ```
-The 'unicast\_source\_ip' parameter is optional as Keepalived will bind to the specified interface by default.
-The 'unicast\_peers' parameter contains an array of ip addresses that correspond to the failover nodes.
 
+The 'unicast\_source\_ip' parameter is optional as Keepalived will bind to the
+specified interface by default. This value will be exported in place of the default
+when 'collect\_unicast\_peers => true'.
+The 'unicast\_peers' parameter contains an array of ip addresses that correspond
+to the failover nodes.
 
 ### Creating ip-based virtual server instances with two real servers
 
@@ -474,4 +499,3 @@ The contributing guide is in [CONTRIBUTING.md](https://github.com/voxpupuli/pupp
 Details in `CHANGELOG.md`.
 
 Migrated from https://github.com/arioch/puppet-keepalived to Vox Pupuli.
-
