@@ -964,12 +964,14 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => "  }\n\n"
             )
           is_expected.to \
-            contain_keepalived__vrrp__unicast_peer('10.0.1.0').with(
-              'instance' => '_NAME_'
+            contain_keepalived__vrrp__unicast_peer('_NAME__10.0.1.0').with(
+              'instance' => '_NAME_',
+              'ip_address' => '10.0.1.0'
             )
           is_expected.to \
-            contain_keepalived__vrrp__unicast_peer('10.0.2.0').with(
-              'instance' => '_NAME_'
+            contain_keepalived__vrrp__unicast_peer('_NAME__10.0.2.0').with(
+              'instance' => '_NAME_',
+              'ip_address' => '10.0.2.0',
             )
         }
       end
@@ -996,8 +998,9 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => "  }\n\n"
             )
           is_expected.to \
-            contain_keepalived__vrrp__unicast_peer('10.0.3.0').with(
-              'instance' => '_NAME_'
+            contain_keepalived__vrrp__unicast_peer('_NAME__10.0.3.0').with(
+              'instance' => '_NAME_',
+              'ip_address' => '10.0.3.0'
             )
         }
       end
@@ -1030,16 +1033,19 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => "  }\n\n"
             )
           is_expected.to \
-            contain_keepalived__vrrp__unicast_peer('10.2.1.0').with(
-              'instance' => '_NAME_'
+            contain_keepalived__vrrp__unicast_peer('_NAME__10.2.1.0').with(
+              'instance' => '_NAME_',
+              'ip_address' => '10.2.1.0'
             )
           is_expected.to \
-            contain_keepalived__vrrp__unicast_peer('10.2.2.0').with(
-              'instance' => '_NAME_'
+            contain_keepalived__vrrp__unicast_peer('_NAME__10.2.2.0').with(
+              'instance' => '_NAME_',
+              'ip_address' => '10.2.2.0'
             )
           expect(exported_resources).to \
-            contain_keepalived__vrrp__unicast_peer('10.1.1.0').with(
-              'instance' => '_NAME_'
+            contain_keepalived__vrrp__unicast_peer('_NAME__10.1.1.0').with(
+              'instance' => '_NAME_',
+              'ip_address' => '10.1.1.0'
             )
         }
       end
@@ -1063,8 +1069,9 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => "  }\n\n"
             )
           expect(exported_resources).to \
-            contain_keepalived__vrrp__unicast_peer('10.0.4.0').with(
-              'instance' => '_NAME_'
+            contain_keepalived__vrrp__unicast_peer('_NAME__10.0.4.0').with(
+              'instance' => '_NAME_',
+              'ip_address' => '10.0.4.0'
             )
         }
       end
