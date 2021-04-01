@@ -10,11 +10,11 @@
   "dependencies": [
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">= 4.1.0 < 7.0.0"
+      "version_requirement": ">= 4.1.0 < 8.0.0"
     },
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.25.1 < 7.0.0"
+      "version_requirement": ">= 4.25.1 < 8.0.0"
     }
   ],
   "description": "Keepalived vrrp and lvs failover module",
