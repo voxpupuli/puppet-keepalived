@@ -14,7 +14,7 @@
     },
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.25.1 < 7.0.0"
+      "version_requirement": ">= 4.25.1 < 8.0.0"
     }
   ],
   "description": "Keepalived vrrp and lvs failover module",
