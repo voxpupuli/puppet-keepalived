@@ -4,6 +4,43 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.0.0) (2021-04-03)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v2.2.0...v3.0.0)
+
+**Breaking changes:**
+
+- Drop Debian 8 support [\#235](https://github.com/voxpupuli/puppet-keepalived/pull/235) ([bastelfreak](https://github.com/bastelfreak))
+- Drop Puppet 5 support; add Puppet 7 support [\#234](https://github.com/voxpupuli/puppet-keepalived/pull/234) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Enable Debian 9 support [\#233](https://github.com/voxpupuli/puppet-keepalived/pull/233) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/concat: Allow 7.x / puppetlabs/stdlib: Allow 7.x [\#232](https://github.com/voxpupuli/puppet-keepalived/pull/232) ([bastelfreak](https://github.com/bastelfreak))
+- add vrrp\_garp\_master\_refresh / vrrp\_garp\_lower\_prio\_delay params [\#206](https://github.com/voxpupuli/puppet-keepalived/pull/206) ([a-dekker](https://github.com/a-dekker))
+- add support for virtual\_rules [\#199](https://github.com/voxpupuli/puppet-keepalived/pull/199) ([derJD](https://github.com/derJD))
+
+**Fixed bugs:**
+
+- Fix `Keepalived::Vrrp::Instance::VRule` syntax [\#200](https://github.com/voxpupuli/puppet-keepalived/pull/200) ([cocker-cc](https://github.com/cocker-cc))
+
+**Closed issues:**
+
+- `dev` is set on `virtual_ipaddress` when `use_vmac` is enabled [\#215](https://github.com/voxpupuli/puppet-keepalived/issues/215)
+- support of additional parameters [\#205](https://github.com/voxpupuli/puppet-keepalived/issues/205)
+- forge version of module vs current master - vrrp script timeouts [\#111](https://github.com/voxpupuli/puppet-keepalived/issues/111)
+
+**Merged pull requests:**
+
+- Enable automatic unicast configuration with exported resources - pass tests [\#227](https://github.com/voxpupuli/puppet-keepalived/pull/227) ([daaang](https://github.com/daaang))
+- Drop EL6 support [\#226](https://github.com/voxpupuli/puppet-keepalived/pull/226) ([ekohl](https://github.com/ekohl))
+- Add enable\_snmp\_vrrp option [\#221](https://github.com/voxpupuli/puppet-keepalived/pull/221) ([sprd-bena](https://github.com/sprd-bena))
+- Resolve puppet-lint notices [\#220](https://github.com/voxpupuli/puppet-keepalived/pull/220) ([jcpunk](https://github.com/jcpunk))
+- modulesync 3.0.0 & puppet-lint updates [\#218](https://github.com/voxpupuli/puppet-keepalived/pull/218) ([bastelfreak](https://github.com/bastelfreak))
+- use hiera data in module instead of params.pp [\#210](https://github.com/voxpupuli/puppet-keepalived/pull/210) ([Dan33l](https://github.com/Dan33l))
+- Use voxpupuli-acceptance [\#208](https://github.com/voxpupuli/puppet-keepalived/pull/208) ([ekohl](https://github.com/ekohl))
+- Use contain for sub classes in this module [\#202](https://github.com/voxpupuli/puppet-keepalived/pull/202) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v2.2.0) (2019-10-22)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v2.1.0...v2.2.0)
@@ -81,7 +118,7 @@ This is the first release since the module was migrated to the [Vox Pupuli](http
 
 - \* Allow user and group in vrrp::script [\#149](https://github.com/voxpupuli/puppet-keepalived/pull/149) ([SpoonOne](https://github.com/SpoonOne))
 - Add badges [\#166](https://github.com/voxpupuli/puppet-keepalived/pull/166) ([alexjfisher](https://github.com/alexjfisher))
-- Replace `create\_resources` with iteration [\#165](https://github.com/voxpupuli/puppet-keepalived/pull/165) ([alexjfisher](https://github.com/alexjfisher))
+- Replace `create_resources` with iteration [\#165](https://github.com/voxpupuli/puppet-keepalived/pull/165) ([alexjfisher](https://github.com/alexjfisher))
 - Fix Github License detection [\#164](https://github.com/voxpupuli/puppet-keepalived/pull/164) ([alexjfisher](https://github.com/alexjfisher))
 - Allow latest concat/stdlib and bump minimum versions [\#160](https://github.com/voxpupuli/puppet-keepalived/pull/160) ([alexjfisher](https://github.com/alexjfisher))
 - Enable beaker tests and drop Debian 6 support [\#157](https://github.com/voxpupuli/puppet-keepalived/pull/157) ([Dan33l](https://github.com/Dan33l))
