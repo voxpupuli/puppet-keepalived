@@ -123,6 +123,7 @@ vrrp_instance <%= @_name %> {
   <%- else -%>
     <%- vips = @virtual_ipaddress -%>
   <%- end -%>
+<%- vips = vips.uniq -%>
   <%- Array(vips).each do |ip| -%>
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
