@@ -230,12 +230,20 @@ define keepalived::vrrp::instance (
         $unicast_src = inline_template("<%= scope.lookupvar('::ipaddress_${interface}') -%>")
       }
 
-      @@keepalived::vrrp::unicast_peer { $unicast_src: instance => $name }
+      @@keepalived::vrrp::unicast_peer { "${name}_${unicast_src}":
+        instance   => $name,
+        ip_address => $unicast_src,
+      }
       Keepalived::Vrrp::Unicast_peer <<| instance == $name and title != $unicast_src |>>
     }
 
     if size($unicast_peer_array) > 0 {
-      keepalived::vrrp::unicast_peer { $unicast_peer_array: instance => $name }
+      $unicast_peer_array.each | $_peer | {
+        keepalived::vrrp::unicast_peer { "${name}_${_peer}":
+          instance   => $name,
+          ip_address => $_peer,
+        }
+      }
     }
 
     concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_footer":
