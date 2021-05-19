@@ -3,18 +3,22 @@
       Optional[Integer] $weight,
       Optional[Integer] $quorum,
       Optional[Integer] $delay,
+      Optional[String]  $param_match,
       Optional[Boolean] $full_command
     | -%>
 vrrp_track_process <%= $name %> {
-  process    "<%= $proc_name %>"
+  process     "<%= $proc_name %>"
   <%- if $weight { -%>
-  weight     <%= $weight %>
+  weight      <%= $weight %>
   <%- } -%>
   <%- if $quorum { -%>
-  quorum     <%= $quorum %>
+  quorum      <%= $quorum %>
   <%- } -%>
   <%- if $delay { -%>
-  delay      <%= $delay %>
+  delay       <%= $delay %>
+  <%- } -%>
+  <%- if $param_match { -%>
+  param_match <%= $param_match %>
   <%- } -%>
   <%- if $full_command { -%>
   full_command

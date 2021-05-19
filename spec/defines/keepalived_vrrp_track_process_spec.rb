@@ -85,6 +85,23 @@ describe 'keepalived::vrrp::track_process', type: :define do
         }
       end
 
+      describe 'with parameter param_match' do
+        let(:params) do
+          {
+            param_match: initial,
+            proc_name: '_PROC_NAME_'
+          }
+        end
+
+        it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+        it do
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
+              'content' => %r{param_match.*initial}
+            )
+        end
+      end
+
       describe 'with parameter full_command' do
         let(:params) do
           {
