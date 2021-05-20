@@ -18,8 +18,11 @@ vrrp_instance <%= @_name %> {
   preempt_delay             <%= @preempt_delay %>
   <%- end -%>
 
+  <%- if @garp_master_repeat -%>
+  garp_master_repeat     <%= @garp_master_repeat %>
+  <%- end -%>
   <%- if @garp_master_refresh -%>
-  garp_master_refresh         <%= @garp_master_refresh %>
+  garp_master_refresh    <%= @garp_master_refresh %>
   <%- end -%>
   <%- if @garp_lower_prio_repeat -%>
   garp_lower_prio_repeat <%= @garp_lower_prio_repeat %>

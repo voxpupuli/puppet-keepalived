@@ -107,6 +107,10 @@
 #                          this often.
 #                          Default: undef.
 #
+# $garp_master_repeat::    The amount of gratuitous ARP sent out after transition
+#                          to MASTER
+#                          Default: undef.
+#
 # $notify_script_master::  Define the notify master script.
 #                          Default: undef.
 #
@@ -190,6 +194,7 @@ define keepalived::vrrp::instance (
   $advert_int                                                             = 1,
   $garp_master_delay                                                      = 5,
   $garp_master_refresh                                                    = undef,
+  $garp_master_repeat                                                     = undef,
   Optional[Integer] $garp_lower_prio_repeat                               = undef,
   Optional[Boolean] $higher_prio_send_advert                              = undef,
   Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri       = undef,
@@ -206,6 +211,7 @@ define keepalived::vrrp::instance (
   $use_vmac                                                               = false,
   $vmac_xmit_base                                                         = true,
   Boolean $native_ipv6                                                    = false,
+
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
   $unicast_peer_array = [$unicast_peers].flatten

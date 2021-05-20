@@ -58,7 +58,10 @@ global_defs {
   vrrp_garp_lower_prio_delay <%= @vrrp_garp_lower_prio_delay %>
   <%- end -%>
   <%- if @snmp_socket -%>
-  snmp_socket <%= @snmp_socket -%>
+  snmp_socket <%= @snmp_socket %>
+  <%- end -%>
+  <%- if @garp_interval -%>
+  vrrp_garp_interval <%= @garp_interval %>
   <%- end -%>
 
 }
