@@ -20,12 +20,17 @@
 # $full_command::  Match entire process cmdline
 #             Default: undef
 #
+# $param_match::  Set inital if command has no parameters or
+#             use partial if first n parameters match
+#             Default: undef
+#
 define keepalived::vrrp::track_process (
   String[1] $proc_name,
   Optional[Integer[0]] $weight   = undef,
   Integer[0] $quorum             = 1,
   Optional[Integer[0]] $delay    = undef,
-  Boolean $full_command           = false
+  Boolean $full_command          = false,
+  Optional[Enum['initial','partial']] $param_match = undef
 ) {
   concat::fragment { "keepalived.conf_vrrp_track_process_${proc_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
@@ -35,7 +40,8 @@ define keepalived::vrrp::track_process (
         'weight'       => $weight,
         'quorum'       => $quorum,
         'delay'        => $delay,
-        'full_command' => $full_command
+        'full_command' => $full_command,
+        'param_match'  => $param_match
     }),
     order   => '020',
   }
