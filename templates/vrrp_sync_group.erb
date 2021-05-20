@@ -47,6 +47,14 @@ vrrp_sync_group <%= @_name %> {
   <%- if @smtp_alert -%>
   smtp_alert
   <%- end -%>
+  <%- if @track_script -%>
+
+  track_script {
+  <%- Array(@track_script).each do |track| -%>
+    <%= track %>
+  <%- end -%>
+  }
+  <%- end -%>
 
   <%- if @global_tracking -%>
   # All VRRP share the same tracking config.
