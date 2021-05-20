@@ -971,7 +971,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           is_expected.to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.0.2.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.0.2.0',
+              'ip_address' => '10.0.2.0'
             )
         }
       end
