@@ -88,7 +88,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
       describe 'with parameter param_match' do
         let(:params) do
           {
-            param_match: initial,
+            param_match: 'initial',
             proc_name: '_PROC_NAME_'
           }
         end
