@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.1.0) (2021-05-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.0.0...v3.1.0)
+
+**Implemented enhancements:**
+
+- add parameter param\_match for VRRP tracking processes [\#237](https://github.com/voxpupuli/puppet-keepalived/pull/237) ([tobiWu](https://github.com/tobiWu))
+
+**Fixed bugs:**
+
+- make unicast-peer resource-name unique by adding the instance-name [\#230](https://github.com/voxpupuli/puppet-keepalived/pull/230) ([unki](https://github.com/unki))
+
 ## [v3.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.0.0) (2021-04-03)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v2.2.0...v3.0.0)
@@ -34,7 +46,7 @@ These should not affect the functionality of the module.
 
 - Enable automatic unicast configuration with exported resources - pass tests [\#227](https://github.com/voxpupuli/puppet-keepalived/pull/227) ([daaang](https://github.com/daaang))
 - Drop EL6 support [\#226](https://github.com/voxpupuli/puppet-keepalived/pull/226) ([ekohl](https://github.com/ekohl))
-- Add enable\_snmp\_vrrp option [\#221](https://github.com/voxpupuli/puppet-keepalived/pull/221) ([sprd-bena](https://github.com/sprd-bena))
+- Add enable\_snmp\_vrrp option [\#221](https://github.com/voxpupuli/puppet-keepalived/pull/221) ([ghost](https://github.com/ghost))
 - Resolve puppet-lint notices [\#220](https://github.com/voxpupuli/puppet-keepalived/pull/220) ([jcpunk](https://github.com/jcpunk))
 - modulesync 3.0.0 & puppet-lint updates [\#218](https://github.com/voxpupuli/puppet-keepalived/pull/218) ([bastelfreak](https://github.com/bastelfreak))
 - use hiera data in module instead of params.pp [\#210](https://github.com/voxpupuli/puppet-keepalived/pull/210) ([Dan33l](https://github.com/Dan33l))
@@ -107,16 +119,15 @@ This is the first release since the module was migrated to the [Vox Pupuli](http
 
 **Closed issues:**
 
+- Replace validate functions with data types [\#159](https://github.com/voxpupuli/puppet-keepalived/issues/159)
 - Review acceptance tests [\#156](https://github.com/voxpupuli/puppet-keepalived/issues/156)
+- No changelog available [\#148](https://github.com/voxpupuli/puppet-keepalived/issues/148)
 - Target Concat\_file with path or title '/keepalived.conf' or tag '\_keepalived.conf not found in the catalog [\#143](https://github.com/voxpupuli/puppet-keepalived/issues/143)
 - forge version 1.2.5 is outdated [\#131](https://github.com/voxpupuli/puppet-keepalived/issues/131)
 - Concat issue [\#106](https://github.com/voxpupuli/puppet-keepalived/issues/106)
-- Replace validate functions with data types [\#159](https://github.com/voxpupuli/puppet-keepalived/issues/159)
-- No changelog available [\#148](https://github.com/voxpupuli/puppet-keepalived/issues/148)
 
 **Merged pull requests:**
 
-- \* Allow user and group in vrrp::script [\#149](https://github.com/voxpupuli/puppet-keepalived/pull/149) ([SpoonOne](https://github.com/SpoonOne))
 - Add badges [\#166](https://github.com/voxpupuli/puppet-keepalived/pull/166) ([alexjfisher](https://github.com/alexjfisher))
 - Replace `create_resources` with iteration [\#165](https://github.com/voxpupuli/puppet-keepalived/pull/165) ([alexjfisher](https://github.com/alexjfisher))
 - Fix Github License detection [\#164](https://github.com/voxpupuli/puppet-keepalived/pull/164) ([alexjfisher](https://github.com/alexjfisher))
@@ -125,6 +136,7 @@ This is the first release since the module was migrated to the [Vox Pupuli](http
 - some README cleanup [\#155](https://github.com/voxpupuli/puppet-keepalived/pull/155) ([Dan33l](https://github.com/Dan33l))
 - Rubocop Fixes [\#154](https://github.com/voxpupuli/puppet-keepalived/pull/154) ([alexjfisher](https://github.com/alexjfisher))
 - clean up of metadata.json [\#152](https://github.com/voxpupuli/puppet-keepalived/pull/152) ([Dan33l](https://github.com/Dan33l))
+- \* Allow user and group in vrrp::script [\#149](https://github.com/voxpupuli/puppet-keepalived/pull/149) ([SpoonOne](https://github.com/SpoonOne))
 
 ## [1.3.0](https://github.com/voxpupuli/puppet-keepalived/tree/1.3.0) (2018-09-06)
 
