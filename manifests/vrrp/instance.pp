@@ -175,7 +175,7 @@ define keepalived::vrrp::instance (
   Integer[1,255] $virtual_router_id,
   $virtual_ipaddress                                                      = undef,
   $auth_type                                                              = undef,
-  $auth_pass                                                              = undef,
+  Optional[Variant[String, Sensitive[String]]] $auth_pass                 = undef,
   $track_script                                                           = undef,
   Optional[Array[String[1]]] $track_process                               = undef,
   $track_interface                                                        = undef,
@@ -209,6 +209,11 @@ define keepalived::vrrp::instance (
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
   $unicast_peer_array = [$unicast_peers].flatten
+  $auth_pass_unsensitive = if $auth_pass =~ Sensitive {
+    $auth_pass.unwrap
+  } else {
+    $auth_pass
+  }
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
