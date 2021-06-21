@@ -88,7 +88,7 @@ vrrp_instance <%= @_name %> {
 
   authentication {
     auth_type <%= @auth_type %>
-    auth_pass <%= @auth_pass %>
+    auth_pass <%= @auth_pass_unsensitive %>
   }
   <%- end -%>
   <%- if @track_script -%>

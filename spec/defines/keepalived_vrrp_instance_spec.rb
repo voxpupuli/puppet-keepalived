@@ -333,6 +333,23 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
+      describe 'with sensitive parameter auth_pass' do
+        let(:params) do
+          mandatory_params.merge(
+            auth_type: '_AUTH_TYPE_',
+            auth_pass: sensitive('_VALUE_')
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{auth_pass.*_VALUE_}
+            )
+        }
+      end
+
       describe 'with parameter track_script' do
         let(:params) do
           mandatory_params.merge(
