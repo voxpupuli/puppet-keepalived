@@ -67,8 +67,8 @@ keepalived::vrrp_instance:
   VI_50:
     interface: 'eth1'
     state: 'MASTER'
-    virtual_router_id: '50'
-    priority: '101'
+    virtual_router_id: 50
+    priority: 101
     auth_type: 'PASS'
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
@@ -106,8 +106,8 @@ keepalived::vrrp_instance:
   VI_50:
     interface: 'eth1'
     state: 'MASTER'
-    virtual_router_id: '50'
-    priority: '101'
+    virtual_router_id: 50
+    priority: 101
     auth_type: 'PASS'
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
@@ -180,8 +180,8 @@ keepalived::vrrp_instance:
   VI_50:
     interface: 'eth1'
     state: 'MASTER'
-    virtual_router_id: '50'
-    priority: '101'
+    virtual_router_id: 50
+    priority: 101
     auth_type: 'PASS'
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
