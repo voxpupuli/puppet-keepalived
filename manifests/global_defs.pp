@@ -47,6 +47,9 @@
 # $enable_traps::                  Set enable_traps option.
 #                                  Default: undef.
 #
+# $enable_dbus::                   Set enable_dbus option
+#                                  Default: false.
+#
 # $vrrp_higher_prio_send_advert::  Set vrrp_higher_prio_send_advert option.
 #                                  Default: undef.
 #
@@ -74,6 +77,7 @@ class keepalived::global_defs (
   $enable_snmp_rfcv2                              = undef,
   $enable_snmp_rfcv3                              = undef,
   $enable_traps                                   = undef,
+  Boolean $enable_dbus                            = false,
   Optional[Boolean] $vrrp_higher_prio_send_advert = undef,
   Optional[Integer] $vrrp_garp_lower_prio_repeat  = undef,
   Optional[Integer] $vrrp_garp_master_refresh     = undef,
