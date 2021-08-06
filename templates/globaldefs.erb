@@ -45,6 +45,9 @@ global_defs {
   <%- if @enable_traps -%>
   enable_traps
   <%- end -%>
+  <%- if @enable_dbus -%>
+  enable_dbus
+  <%- end -%>
   <%- if @vrrp_higher_prio_send_advert -%>
   vrrp_higher_prio_send_advert <%= @vrrp_higher_prio_send_advert %>
   <%- end -%>

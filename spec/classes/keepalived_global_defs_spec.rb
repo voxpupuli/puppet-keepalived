@@ -236,6 +236,22 @@ describe 'keepalived::global_defs', type: :class do
             )
         }
       end
+
+      describe 'with parameter enable_dbus' do
+        let(:params) do
+          {
+            enable_dbus: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{enable_dbus$}
+            )
+        }
+      end
+
       describe 'with vrrp_higher_prio_send_advert' do
         let(:params) do
           {
