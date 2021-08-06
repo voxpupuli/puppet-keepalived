@@ -32,19 +32,19 @@
 # $enable_snmp_vrrp::              Set enable_snmp_vrrp option.
 #                                  Default: undef.
 #
-# $enable_snmp_checker::           Set enable_snmp_keepalived option.
+# $enable_snmp_checker::           Set enable_snmp_checker option.
 #                                  Default: undef.
 #
-# $enable_snmp_rfc::               Set enable_snmp_keepalived option.
+# $enable_snmp_rfc::               Set enable_snmp_rfc option.
 #                                  Default: undef.
 #
-# $enable_snmp_rfcv2::             Set enable_snmp_keepalived option.
+# $enable_snmp_rfcv2::             Set enable_snmp_rfcv2 option.
 #                                  Default: undef.
 #
-# $enable_snmp_rfcv3::             Set enable_snmp_keepalived option.
+# $enable_snmp_rfcv3::             Set enable_snmp_rfcv3 option.
 #                                  Default: undef.
 #
-# $enable_traps::                  Set enable_snmp_keepalived option.
+# $enable_traps::                  Set enable_traps option.
 #                                  Default: undef.
 #
 # $vrrp_higher_prio_send_advert::  Set vrrp_higher_prio_send_advert option.
