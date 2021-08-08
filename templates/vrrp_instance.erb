@@ -150,7 +150,7 @@ vrrp_instance <%= @_name %> {
   <%- else -%>
     <%- vips = @virtual_ipaddress_excluded -%>
   <%- end -%>
-  <%- vips.each do |ip| -%>
+  <%- Array(vips).each do |ip| -%>
     <%- if ip.class == Hash -%>
       <%- device = ip['dev'] || @virtual_ipaddress_int || @interface -%>
       <%- attrs = Hash[ ip.select { |k,v| ['label', 'brd', 'scope'].include? k } ] -%>
