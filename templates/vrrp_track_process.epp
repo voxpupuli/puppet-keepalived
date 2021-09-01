@@ -7,7 +7,7 @@
       Optional[Boolean] $full_command
     | -%>
 vrrp_track_process <%= $name %> {
-  process     "<%= $proc_name %>"
+  process     <%= $proc_name %>
   <%- if $weight { -%>
   weight      <%= $weight %>
   <%- } -%>
