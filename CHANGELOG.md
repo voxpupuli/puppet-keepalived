@@ -4,7 +4,28 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v3.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.1.0) (2021-05-20)
+## [v3.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.2.0) (2021-10-02)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.1.0...v3.2.0)
+
+**Implemented enhancements:**
+
+- Add support for vrrp\_startup\_delay option [\#248](https://github.com/voxpupuli/puppet-keepalived/pull/248) ([fklajn](https://github.com/fklajn))
+- Add enable\_dbus option [\#242](https://github.com/voxpupuli/puppet-keepalived/pull/242) ([aagor](https://github.com/aagor))
+- Use Puppet-Datatype Sensitive for $auth\_pass [\#241](https://github.com/voxpupuli/puppet-keepalived/pull/241) ([cocker-cc](https://github.com/cocker-cc))
+- create puppet strings based reference docs [\#209](https://github.com/voxpupuli/puppet-keepalived/pull/209) ([your1p](https://github.com/your1p))
+
+**Closed issues:**
+
+- Create puppet-strings based reference docs [\#158](https://github.com/voxpupuli/puppet-keepalived/issues/158)
+
+**Merged pull requests:**
+
+- Allow stdlib 8.0.0 [\#245](https://github.com/voxpupuli/puppet-keepalived/pull/245) ([smortex](https://github.com/smortex))
+- Allow virtual\_ipaddress\_excluded to be a string [\#244](https://github.com/voxpupuli/puppet-keepalived/pull/244) ([aagor](https://github.com/aagor))
+- Fix incorrect documentation [\#243](https://github.com/voxpupuli/puppet-keepalived/pull/243) ([aagor](https://github.com/aagor))
+
+## [v3.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.1.0) (2021-05-21)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.0.0...v3.1.0)
 
