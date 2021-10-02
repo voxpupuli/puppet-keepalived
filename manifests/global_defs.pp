@@ -62,6 +62,10 @@
 # $vrrp_garp_lower_prio_delay::   Set vrrp_garp_lower_prio_delay option.
 #                                  Default: undef.
 #
+# $vrrp_startup_delay::           Set vrrp_startup_delay option.
+#                                  Default: undef.
+#
+
 class keepalived::global_defs (
   $notification_email                             = undef,
   $notification_email_from                        = undef,
@@ -82,6 +86,7 @@ class keepalived::global_defs (
   Optional[Integer] $vrrp_garp_lower_prio_repeat  = undef,
   Optional[Integer] $vrrp_garp_master_refresh     = undef,
   Optional[Integer] $vrrp_garp_lower_prio_delay   = undef,
+  Optional[Float] $vrrp_startup_delay             = undef,
   $snmp_socket                                    = 'unix:/var/agentx/master',
 ) {
   concat::fragment { 'keepalived.conf_globaldefs':
