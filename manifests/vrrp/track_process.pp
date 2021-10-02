@@ -1,28 +1,17 @@
-# == Define: keepalived::vrrp::track_process
 #
-# === Parameters:
+# @summary Configure the process tracker
 #
-# $ensure::   Default: present
+# @param proc_name process name to track
 #
-# $proc_name:: process name to track
-#              Default: undef (error)
+# @param weight The weight that should add to the instance.
 #
-# $weight::   The weight that should add to the instance.
-#             Default: undef (see keepalived.conf(5) for default)
+# @param quorum Number of processes to expect running
 #
-# $quorum::   Number of processes to expect running
-#             Default: 1
+# @param delay Time to delay after process quorum lost before considering process failed (in fractions of second)
 #
-# $delay::    Time to delay after process quorum lost before
-#             considering process failed (in fractions of second)
-#             Default: undef
+# @param full_command Match entire process cmdline
 #
-# $full_command::  Match entire process cmdline
-#             Default: undef
-#
-# $param_match::  Set inital if command has no parameters or
-#             use partial if first n parameters match
-#             Default: undef
+# @param param_match  Set inital if command has no parameters or use partial if first n parameters match
 #
 define keepalived::vrrp::track_process (
   String[1] $proc_name,

@@ -1,4 +1,53 @@
-# == Class keepalived
+# @summary
+#   Install and configure keepalived
+#
+# @param sysconf_dir
+#
+# @param sysconf_options
+#
+# @param config_dir
+#
+# @param config_dir_mode
+#
+# @param config_file_mode
+#
+# @param config_group
+#
+# @param config_owner
+#
+# @param daemon_group
+#
+# @param daemon_user
+#
+# @param pkg_ensure
+#
+# @param pkg_list
+#
+# @param service_enable
+#
+# @param service_ensure
+#
+# @param service_hasrestart
+#
+# @param service_hasstatus
+#
+# @param service_manage
+#
+# @param service_name
+#
+# @param service_restart
+#
+# @param vrrp_instance
+#
+# @param vrrp_script
+#
+# @param vrrp_track_process
+#
+# @param vrrp_sync_group
+#
+# @param lvs_real_server
+#
+# @param lvs_virtual_server
 #
 class keepalived (
   String[1] $sysconf_dir,

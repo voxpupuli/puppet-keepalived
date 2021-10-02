@@ -1,25 +1,19 @@
-# == Define: keepalived::lvs::real_server
+# @summary
+#   Add a real server to a Linux Virtual Server with keepalived
 #
-# Add a real server to a Linux Virtual Server with keepalived
-#
-# === Parameters
-#
-# Refer to keepalived's documentation to understand the behaviour
-# of these parameters
-#
-# [*virtual_server*]
+# @param virtual_server
 #   The name of the virtual server this real server will be added to
 #
-# [*ip_address*]
+# @param ip_address
 #   The ip address of the real server
 #
-# [*port*]
+# @param port
 #   Real sever IP port.  (if ommitted the port defaults to the VIP port)
 #
-# [*options*]
+# @param options
 #   One or more options to include in the real_server block
 #
-#   Example:
+#   @example
 #     options => {
 #       inhibit_on_failure => true,
 #       SMTP_CHECK => {
