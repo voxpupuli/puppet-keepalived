@@ -312,6 +312,14 @@ class { '::keepalived':
 }
 ```
 
+### Opt out of having the package managed by the module
+
+```puppet
+class { '::keepalived':
+  manage_package => false,
+}
+```
+
 ### Unicast instead of Multicast
 
 **Caution: unicast support has only been added to Keepalived since version 1.2.8**
