@@ -24,6 +24,8 @@ class keepalived (
   String[1]               $service_name       = 'keepalived',
   Optional[String[1]]     $service_restart    = undef,
 
+  Boolean                 $manage_package     = true,
+
   Hash $vrrp_instance      = {},
   Hash $vrrp_script        = {},
   Hash $vrrp_track_process = {},
