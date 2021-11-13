@@ -17,7 +17,9 @@ vrrp_instance <%= @_name %> {
   <%- if @preempt_delay -%>
   preempt_delay             <%= @preempt_delay %>
   <%- end -%>
+  <%- if @garp_master_refresh or @garp_lower_prio_repeat or @higher_prio_send_advert -%>
 
+  <%- end -%>
   <%- if @garp_master_refresh -%>
   garp_master_refresh         <%= @garp_master_refresh %>
   <%- end -%>
@@ -27,27 +29,29 @@ vrrp_instance <%= @_name %> {
   <%- if @higher_prio_send_advert -%>
   higher_prio_send_advert <%= @higher_prio_send_advert %>
   <%- end -%>
-
   <%- if @dont_track_primary -%>
+
   dont_track_primary
   <%- end -%>
-
   <%- if @use_vmac -%>
+
   use_vmac <%= @use_vmac.is_a?(String) ? @use_vmac : '' %>
   <%- if @vmac_xmit_base -%>
   vmac_xmit_base
   <%- end -%>
   <%- end -%>
-
   <%- if @native_ipv6 -%>
+
   native_ipv6
   <%- end -%>
+  <%- if @notify_script_master or @notify_script_backup or @notify_script_fault or @notify_script_stop or @notify_script_master_rx_lower_pri -%>
 
   # notify scripts and alerts are optional
   #
   # filenames of scripts to run on transitions
   # can be unquoted (if just filename)
   # or quoted (if has parameters)
+  <%- end -%>
   <%- if @notify_script_master -%>
   # to MASTER transition
   notify_master "<%= @notify_script_master %>"
@@ -69,8 +73,8 @@ vrrp_instance <%= @_name %> {
   # receives an advert with priority lower than the master's advert.
   notify_master_rx_lower_pri "<%= @notify_script_master_rx_lower_pri %>"
   <%- end -%>
-
   <%- if @notify_script -%>
+
   # for ANY state transition.
   # "notify" script is called AFTER the
   # notify_* script(s) and is executed
@@ -83,7 +87,6 @@ vrrp_instance <%= @_name %> {
   #     ("MASTER"|"BACKUP"|"FAULT"|"STOP")
   notify <%= @notify_script %>
   <%- end -%>
-
   <%- if @auth_type -%>
 
   authentication {
@@ -99,24 +102,24 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-
   <%- if @track_process -%>
+
   track_process {
   <%- Array(@track_process).each do |track| -%>
     <%= track %>
   <%- end -%>
   }
   <%- end -%>
-
   <%- if @track_interface -%>
+
   track_interface {
   <%- Array(@track_interface).each do |interface| -%>
     <%= interface %>
   <%- end -%>
   }
   <%- end -%>
-
   <%- if @virtual_ipaddress -%>
+
   virtual_ipaddress {
   <%- if @virtual_ipaddress.class == Hash -%>
     <%- vips = [ @virtual_ipaddress ] -%>
@@ -142,8 +145,8 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-
   <%- if @virtual_ipaddress_excluded -%>
+
   virtual_ipaddress_excluded {
   <%- if @virtual_ipaddress_excluded.class == Hash -%>
     <%- vips = [ @virtual_ipaddress_excluded ] -%>
@@ -169,8 +172,8 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-
   <%- if @virtual_routes -%>
+
   virtual_routes {
   <%- if @virtual_routes.class == Hash -%>
     <%- vroutes = [ @virtual_routes ] -%>
@@ -183,19 +186,19 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-
   <%- if @virtual_rules -%>
+
   virtual_rules {
   <%-  @virtual_rules.each do |rule| -%>
     <%= rule['rule'] %>  <%= rule.sort_by{ |k,v| k }.entries.join ' ' %>
   <%- end -%>
   }
   <%- end -%>
-
   <%- if @multicast_source_ip -%>
+
   mcast_src_ip <%= @multicast_source_ip %>
   <%- end -%>
-
   <%- if @unicast_source_ip -%>
+
   unicast_src_ip <%= @unicast_source_ip %>
   <%- end -%>
