@@ -71,10 +71,10 @@ describe 'keepalived class' do
       it { is_expected.to be_enabled }
     end
 
-    sleep 30
-
-    describe command('ip addr') do
-      its(:stdout) { is_expected.to match %r{.*inet 10\.0\.0\.1/16 .*} }
+    # Works around any timing issues
+    it 'has acquired the ip' do
+      ip_result = shell('sleep 10; ip addr')
+      expect(ip_result.stdout).to match %r{.*inet 10\.0\.0\.1/16 .*}
     end
   end
 
