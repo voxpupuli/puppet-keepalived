@@ -63,6 +63,42 @@ global_defs {
   <%- if @vrrp_startup_delay -%>
   vrrp_startup_delay <%= @vrrp_startup_delay %>
   <%- end -%>
+  <%- if @bfd_rlimit_rttime -%>
+  bfd_rlimit_rttime <%= @bfd_rlimit_rttime %>
+  <%- end -%>
+  <%- if @checker_rlimit_rttime -%>
+  checker_rlimit_rttime <%= @checker_rlimit_rttime %>
+  <%- end -%>
+  <%- if @vrrp_rlimit_rttime -%>
+  vrrp_rlimit_rttime <%= @vrrp_rlimit_rttime %>
+  <%- end -%>
+  <%- if @bfd_priority -%>
+  bfd_priority <%= @bfd_priority %>
+  <%- end -%>
+  <%- if @checker_priority -%>
+  checker_priority <%= @checker_priority %>
+  <%- end -%>
+  <%- if @vrrp_priority -%>
+  vrrp_priority <%= @vrrp_priority %>
+  <%- end -%>
+  <%- if @bfd_rt_priority -%>
+  bfd_rt_priority <%= @bfd_rt_priority %>
+  <%- end -%>
+  <%- if @checker_rt_priority -%>
+  checker_rt_priority <%= @checker_rt_priority %>
+  <%- end -%>
+  <%- if @vrrp_rt_priority -%>
+  vrrp_rt_priority <%= @vrrp_rt_priority %>
+  <%- end -%>
+  <%- if @bfd_no_swap -%>
+  bfd_no_swap
+  <%- end -%>
+  <%- if @checker_no_swap -%>
+  checker_no_swap
+  <%- end -%>
+  <%- if @vrrp_no_swap -%>
+  vrrp_no_swap
+  <%- end -%>
   <%- if @snmp_socket -%>
   snmp_socket <%= @snmp_socket -%>
   <%- end -%>

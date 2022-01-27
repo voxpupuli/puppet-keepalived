@@ -292,6 +292,18 @@ class { 'keepalived::global_defs':
   smtp_server             => 'localhost',
   smtp_connect_timeout    => '60',
   router_id               => 'your_router_instance_id',
+  bfd_rlimit_rttime       => 10000,
+  checker_rlimit_rttime   => 10000,
+  vrrp_rlimit_rttime      => 10000,
+  bfd_priority            => -20,
+  checker_priority        => -20,
+  vrrp_priority           => -20,
+  bfd_rt_priority         => 50,
+  checker_rt_priority     => 50,
+  vrrp_rt_priority        => 50,
+  bfd_no_swap             => true,
+  checker_no_swap         => true,
+  vrrp_no_swap            => true
 }
 ```
 
