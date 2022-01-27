@@ -43,6 +43,30 @@
 #
 # @param vrrp_startup_delay Set vrrp_startup_delay option.
 #
+# @param bfd_rlimit_rttime Set bfd_rlimit_rttime option.
+#
+# @param checker_rlimit_rttime Set checker_rlimit_rttime option.
+#
+# @param vrrp_rlimit_rttime Set vrrp_rlimit_rttime option.
+#
+# @param bfd_priority Set bfd_priority option.
+#
+# @param checker_priority Set checker_priority option.
+#
+# @param vrrp_priority Set vrrp_priority option.
+#
+# @param bfd_rt_priority Set bfd_rt_priority option.
+#
+# @param checker_rt_priority Set checker_rt_priority option.
+#
+# @param vrrp_rt_priority Set vrrp_rt_priority option.
+#
+# @param bfd_no_swap Set bfd_no_swap option.
+#
+# @param checker_no_swap Set checker_no_swap option.
+#
+# @param vrrp_no_swap Set vrrp_no_swap option.
+#
 class keepalived::global_defs (
   $notification_email                             = undef,
   $notification_email_from                        = undef,
@@ -64,6 +88,18 @@ class keepalived::global_defs (
   Optional[Integer] $vrrp_garp_master_refresh     = undef,
   Optional[Integer] $vrrp_garp_lower_prio_delay   = undef,
   Optional[Float] $vrrp_startup_delay             = undef,
+  Optional[Integer] $bfd_rlimit_rttime            = undef,
+  Optional[Integer] $checker_rlimit_rttime        = undef,
+  Optional[Integer] $vrrp_rlimit_rttime           = undef,
+  Optional[Integer[-20, 19]] $bfd_priority        = undef,
+  Optional[Integer[-20, 19]] $checker_priority    = undef,
+  Optional[Integer[-20, 19]] $vrrp_priority       = undef,
+  Optional[Integer[1, 99]] $bfd_rt_priority       = undef,
+  Optional[Integer[1, 99]] $checker_rt_priority   = undef,
+  Optional[Integer[1, 99]] $vrrp_rt_priority      = undef,
+  Boolean $bfd_no_swap                            = false,
+  Boolean $checker_no_swap                        = false,
+  Boolean $vrrp_no_swap                           = false,
   $snmp_socket                                    = 'unix:/var/agentx/master',
 ) {
   concat::fragment { 'keepalived.conf_globaldefs':
