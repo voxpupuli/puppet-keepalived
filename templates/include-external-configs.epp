@@ -1,0 +1,5 @@
+<%- | Array[Stdlib::Absolutepath] $include_external_conf_files
+    | -%>
+<% $include_external_conf_files.each |$conf_file| { -%>
+include <%= $conf_file %>
+<% } -%>
