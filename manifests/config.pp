@@ -42,6 +42,14 @@ class keepalived::config {
     order   => '001',
   }
 
+  concat::fragment { 'keepalived.conf_include_external_configs':
+    target  => "${keepalived::config_dir}/keepalived.conf",
+    content => epp('keepalived/include-external-configs.epp', {
+      'include_external_conf_files' => $keepalived::include_external_conf_files
+    }),
+    order   => '998',
+  }
+
   concat::fragment { 'keepalived.conf_footer':
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => "\n",

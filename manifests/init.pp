@@ -59,6 +59,8 @@ class keepalived (
   Stdlib::Filemode     $config_dir_mode  = '0755',
   Stdlib::Filemode     $config_file_mode = '0644',
 
+  Array[Stdlib::Absolutepath] $include_external_conf_files = [],
+
   String[1] $config_group = 'root',
   String[1] $config_owner = 'root',
   String[1] $daemon_group = 'root',

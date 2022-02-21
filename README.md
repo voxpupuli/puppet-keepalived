@@ -332,6 +332,19 @@ class { '::keepalived':
 }
 ```
 
+### Opt out include unmanaged keepalived config files
+
+If you need to include a Keepalived config fragment managed by another tool,
+include_external_conf_files takes an array of config path.
+
+**Caution: config file must be readable by Keepalived daemon**
+
+```puppet
+class { 'keepalived':
+  include_external_conf_files => ['/etc/keepalived/unmanaged-config.cfg']
+}
+```
+
 ### Unicast instead of Multicast
 
 **Caution: unicast support has only been added to Keepalived since version 1.2.8**
