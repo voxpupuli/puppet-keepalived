@@ -37,7 +37,13 @@
 #
 # @param vrrp_garp_lower_prio_repeat Set vrrp_garp_lower_prio_repeat option.
 #
+# @param vrrp_garp_master_delay Set vrrp_garp_master_delay option
+#
 # @param vrrp_garp_master_refresh Set vrrp_garp_master_refresh option.
+#
+# @param vrrp_garp_master_repeat Set vrrp_garp_master_repeat option
+#
+# @param vrrp_garp_master_refresh_repeat Set vrrp_garp_master_refresh_repeat option
 #
 # @param vrrp_garp_lower_prio_delay Set vrrp_garp_lower_prio_delay option.
 #
@@ -68,39 +74,42 @@
 # @param vrrp_no_swap Set vrrp_no_swap option.
 #
 class keepalived::global_defs (
-  $notification_email                             = undef,
-  $notification_email_from                        = undef,
-  $smtp_server                                    = undef,
-  $smtp_connect_timeout                           = undef,
-  $router_id                                      = undef,
-  $script_user                                    = undef,
-  $enable_script_security                         = undef,
-  $enable_snmp_keepalived                         = undef,
-  $enable_snmp_vrrp                               = undef,
-  $enable_snmp_checker                            = undef,
-  $enable_snmp_rfc                                = undef,
-  $enable_snmp_rfcv2                              = undef,
-  $enable_snmp_rfcv3                              = undef,
-  $enable_traps                                   = undef,
-  Boolean $enable_dbus                            = false,
-  Optional[Boolean] $vrrp_higher_prio_send_advert = undef,
-  Optional[Integer] $vrrp_garp_lower_prio_repeat  = undef,
-  Optional[Integer] $vrrp_garp_master_refresh     = undef,
-  Optional[Integer] $vrrp_garp_lower_prio_delay   = undef,
-  Optional[Float] $vrrp_startup_delay             = undef,
-  Optional[Integer] $bfd_rlimit_rttime            = undef,
-  Optional[Integer] $checker_rlimit_rttime        = undef,
-  Optional[Integer] $vrrp_rlimit_rttime           = undef,
-  Optional[Integer[-20, 19]] $bfd_priority        = undef,
-  Optional[Integer[-20, 19]] $checker_priority    = undef,
-  Optional[Integer[-20, 19]] $vrrp_priority       = undef,
-  Optional[Integer[1, 99]] $bfd_rt_priority       = undef,
-  Optional[Integer[1, 99]] $checker_rt_priority   = undef,
-  Optional[Integer[1, 99]] $vrrp_rt_priority      = undef,
-  Boolean $bfd_no_swap                            = false,
-  Boolean $checker_no_swap                        = false,
-  Boolean $vrrp_no_swap                           = false,
-  $snmp_socket                                    = 'unix:/var/agentx/master',
+  $notification_email                                = undef,
+  $notification_email_from                           = undef,
+  $smtp_server                                       = undef,
+  $smtp_connect_timeout                              = undef,
+  $router_id                                         = undef,
+  $script_user                                       = undef,
+  $enable_script_security                            = undef,
+  $enable_snmp_keepalived                            = undef,
+  $enable_snmp_vrrp                                  = undef,
+  $enable_snmp_checker                               = undef,
+  $enable_snmp_rfc                                   = undef,
+  $enable_snmp_rfcv2                                 = undef,
+  $enable_snmp_rfcv3                                 = undef,
+  $enable_traps                                      = undef,
+  Boolean $enable_dbus                               = false,
+  Optional[Boolean] $vrrp_higher_prio_send_advert    = undef,
+  Optional[Integer] $vrrp_garp_lower_prio_repeat     = undef,
+  Optional[Integer] $vrrp_garp_master_delay          = undef,
+  Optional[Integer] $vrrp_garp_master_refresh        = undef,
+  Optional[Integer] $vrrp_garp_master_repeat         = undef,
+  Optional[Integer] $vrrp_garp_master_refresh_repeat = undef,
+  Optional[Integer] $vrrp_garp_lower_prio_delay      = undef,
+  Optional[Float] $vrrp_startup_delay                = undef,
+  Optional[Integer] $bfd_rlimit_rttime               = undef,
+  Optional[Integer] $checker_rlimit_rttime           = undef,
+  Optional[Integer] $vrrp_rlimit_rttime              = undef,
+  Optional[Integer[-20, 19]] $bfd_priority           = undef,
+  Optional[Integer[-20, 19]] $checker_priority       = undef,
+  Optional[Integer[-20, 19]] $vrrp_priority          = undef,
+  Optional[Integer[1, 99]] $bfd_rt_priority          = undef,
+  Optional[Integer[1, 99]] $checker_rt_priority      = undef,
+  Optional[Integer[1, 99]] $vrrp_rt_priority         = undef,
+  Boolean $bfd_no_swap                               = false,
+  Boolean $checker_no_swap                           = false,
+  Boolean $vrrp_no_swap                              = false,
+  $snmp_socket                                       = 'unix:/var/agentx/master',
 ) {
   concat::fragment { 'keepalived.conf_globaldefs':
     target  => "${keepalived::config_dir}/keepalived.conf",
