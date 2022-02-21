@@ -282,6 +282,21 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
+      describe 'with parameter vrrp_garp_master_delay' do
+        let(:params) do
+          {
+            vrrp_garp_master_delay: 30
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_garp_master_delay 30$}
+            )
+        }
+      end
+
       describe 'with parameter vrrp_garp_master_refresh' do
         let(:params) do
           {
@@ -293,6 +308,36 @@ describe 'keepalived::global_defs', type: :class do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
               'content' => %r{vrrp_garp_master_refresh 0$}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_garp_master_repeat' do
+        let(:params) do
+          {
+            vrrp_garp_master_repeat: 15
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_garp_master_repeat 15$}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_garp_master_refresh_repeat' do
+        let(:params) do
+          {
+            vrrp_garp_master_refresh_repeat: 10
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_garp_master_refresh_repeat 10$}
             )
         }
       end
