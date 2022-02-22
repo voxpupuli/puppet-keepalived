@@ -25,6 +25,10 @@
 #
 # @param omega
 #
+# @param mh_port Enable mh-port for mh scheduler
+#
+# @param mh_fallback Enable mh-fallback for mh scheduler
+#
 # @param sh_port
 #
 # @param sh_fallback
@@ -79,6 +83,8 @@ define keepalived::lvs::virtual_server (
   Optional[Integer[0]] $hysteresis = undef,
   Enum['NAT','DR','TUN'] $lb_kind = 'NAT',
   Boolean $omega = false,
+  Boolean $mh_port = false,
+  Boolean $mh_fallback = false,
   Boolean $sh_port = false,
   Boolean $sh_fallback = false,
   Optional[Integer[1]] $persistence_timeout = undef,

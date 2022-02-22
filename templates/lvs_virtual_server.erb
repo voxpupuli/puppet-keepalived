@@ -32,6 +32,12 @@ virtual_server <%= @ip_address %> <%= @port %> {
   <%- if @sh_fallback -%>
   sh-fallback
   <%- end -%>
+  <%- if @mh_port -%>
+  mh-port
+  <%- end -%>
+  <%- if @mh_fallback -%>
+  mh-fallback
+  <%- end -%>
   <%- if @quorum -%>
   quorum <%= @quorum %>
   <%- end -%>
