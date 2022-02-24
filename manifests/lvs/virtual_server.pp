@@ -11,7 +11,7 @@
 #
 # @param fwmark Virtual Server firewall mark. (overrides ip_address and port)
 #
-# @param lb_algo Must be one of rr, wrr, lc, wlc, lblc, sh, dh
+# @param lb_algo Must be one of rr, wrr, lc, wlc, lblc, sh, mh, dh
 #
 # @param delay_loop
 #
@@ -68,7 +68,7 @@
 #   }
 #
 define keepalived::lvs::virtual_server (
-  Enum['rr','wrr','lc','wlc','lblc','sh','dh'] $lb_algo,
+  Enum['rr','wrr','lc','wlc','lblc','sh','dh', 'mh'] $lb_algo,
   Optional[Stdlib::IP::Address] $ip_address = undef,
   Optional[Stdlib::Port] $port = undef,
   Optional[Integer[1]] $fwmark = undef,
