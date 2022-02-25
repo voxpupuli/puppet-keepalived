@@ -8,7 +8,6 @@ group :test do
   gem 'coveralls',                  :require => false
   gem 'simplecov-console',          :require => false
   gem 'puppet_metadata', '~> 1.0',  :require => false
-  gem 'puppet-lint-param-docs',     :require => false
 end
 
 group :development do
@@ -29,7 +28,7 @@ end
 gem 'rake', :require => false
 gem 'facter', ENV['FACTER_GEM_VERSION'], :require => false, :groups => [:test]
 
-puppetversion = ENV['PUPPET_VERSION'] || '>= 6.0'
+puppetversion = ENV['PUPPET_GEM_VERSION'] || '>= 6.0'
 gem 'puppet', puppetversion, :require => false, :groups => [:test]
 
 # vim: syntax=ruby
