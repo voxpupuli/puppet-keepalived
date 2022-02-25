@@ -20,7 +20,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
       end
 
-      describe 'with parameter group' do
+      describe 'with parameter group as string' do
         let(:params) do
           {
             group: '_VALUE_'
@@ -37,7 +37,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
-      describe 'with parameter group' do
+      describe 'with parameter group as array' do
         let(:params) do
           {
             group: %w[_VALUE1_ _VALUE2_]

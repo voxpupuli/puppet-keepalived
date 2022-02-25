@@ -158,13 +158,9 @@ describe 'keepalived', type: :class do
       end
 
       describe 'with parameter: service_manage' do
-        let(:params) { { service_hasstatus: true } }
+        let(:params) { { service_manage: true } }
 
-        it {
-          is_expected.to contain_service('keepalived').with(
-            'hasstatus' => true
-          )
-        }
+        it { is_expected.to contain_service('keepalived') }
       end
 
       describe 'with parameter: service_name' do
