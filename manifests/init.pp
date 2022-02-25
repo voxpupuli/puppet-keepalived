@@ -49,6 +49,10 @@
 #
 # @param lvs_virtual_server
 #
+# @param include_external_conf_files
+#
+# @param manage_package
+#
 class keepalived (
   String[1] $sysconf_dir,
   String    $sysconf_options,
