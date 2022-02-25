@@ -29,9 +29,9 @@
 #
 # @param mh_fallback Enable mh-fallback for mh scheduler
 #
-# @param sh_port
+# @param sh_port Enable sh-port for sh scheduler
 #
-# @param sh_fallback
+# @param sh_fallback Enable sh-fallback for sh scheduler
 #
 # @param quorum
 #
