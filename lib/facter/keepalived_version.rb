@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Fact: keepalived_version
 #
 # Purpose: get keepalived version

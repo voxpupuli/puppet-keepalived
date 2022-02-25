@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'keepalived::lvs::virtual_server', type: 'define' do
