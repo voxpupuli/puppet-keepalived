@@ -35,6 +35,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -53,6 +54,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             end
 
             it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
             it {
               is_expected.to \
                 contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -83,6 +85,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -99,6 +102,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -116,6 +120,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -132,6 +137,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -148,6 +154,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -164,6 +171,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -180,6 +188,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -196,6 +205,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -212,6 +222,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -228,6 +239,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -244,6 +256,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -260,6 +273,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -278,6 +292,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             end
 
             it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
             it {
               is_expected.to \
                 contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -308,6 +323,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -325,6 +341,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -342,6 +359,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -358,6 +376,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -374,6 +393,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -390,6 +410,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -406,6 +427,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -422,6 +444,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -439,6 +462,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -456,6 +480,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -474,6 +499,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -496,6 +522,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -523,6 +550,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -530,6 +558,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             )
         }
       end
+
       describe 'with virtual_ipaddress as hash containing device and array of ips' do
         let(:params) do
           mandatory_params.merge(
@@ -540,6 +569,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -562,6 +592,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -580,6 +611,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -598,6 +630,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -615,6 +648,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -632,6 +666,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -649,6 +684,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -671,6 +707,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -694,6 +731,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -701,6 +739,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             )
         }
       end
+
       describe 'with virtual_ipaddress_excluded as hash containing device and array of ips' do
         let(:params) do
           mandatory_params.merge(
@@ -711,6 +750,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -733,6 +773,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -751,6 +792,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -769,6 +811,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -786,6 +829,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -803,6 +847,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -824,6 +869,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -847,6 +893,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -865,6 +912,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -878,12 +926,13 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_routes: [{ 'to' => '10.0.1.0/24',
-                               'via'   => '192.168.0.1',
+                               'via' => '192.168.0.1',
                                'scope' => '_SCOPE_' }]
           )
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -897,12 +946,13 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_routes: [{ 'to' => '10.0.1.0/24',
-                               'via'   => '192.168.0.1',
+                               'via' => '192.168.0.1',
                                'table' => '_TABLE_' }]
           )
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -919,6 +969,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -935,6 +986,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -947,6 +999,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) { mandatory_params }
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.not_to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header')
@@ -963,6 +1016,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
@@ -1001,6 +1055,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
@@ -1032,6 +1087,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
@@ -1076,6 +1132,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
@@ -1101,6 +1158,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1118,6 +1176,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1139,6 +1198,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1162,6 +1222,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1192,6 +1253,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1221,6 +1283,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1261,6 +1324,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1278,6 +1342,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1285,6 +1350,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             )
         }
       end
+
       describe 'with native_ipv6' do
         let(:params) do
           mandatory_params.merge(
@@ -1293,6 +1359,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1300,6 +1367,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             )
         }
       end
+
       describe 'with garp_lower_prio_repeat' do
         let(:params) do
           mandatory_params.merge(
@@ -1308,6 +1376,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
@@ -1315,6 +1384,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             )
         }
       end
+
       describe 'with higher_prio_send_advert' do
         let(:params) do
           mandatory_params.merge(
@@ -1323,6 +1393,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(

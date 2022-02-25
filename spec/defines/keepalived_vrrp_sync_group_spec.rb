@@ -26,6 +26,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -42,6 +43,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -59,6 +61,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -76,6 +79,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -93,6 +97,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -110,6 +115,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -127,6 +133,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -144,6 +151,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -161,6 +169,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
@@ -178,6 +187,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(

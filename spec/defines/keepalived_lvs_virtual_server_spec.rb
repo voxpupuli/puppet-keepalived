@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 
 describe 'keepalived::lvs::virtual_server', type: 'define' do
@@ -86,11 +85,13 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
             %r{\s+delay_loop 60\s+lb_algo lc\s+lb_kind NAT\s+persistence_timeout 5\s+ha_suspend\s+virtualhost example.com}
           )
         }
+
         it {
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with_content(
-            %r{\s+alpha\s+omega\s+quorum 5\s+quorum_up "\/bin\/true"\s+quorum_down "\/bin\/true"}
+            %r{\s+alpha\s+omega\s+quorum 5\s+quorum_up "/bin/true"\s+quorum_down "/bin/true"}
           )
         }
+
         it {
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with_content(
             %r{\s+hysteresis 9\s+protocol UDP\s+sorry_server 10.1.1.3 999\s+}
@@ -198,7 +199,7 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
             port: 8080,
             lb_algo: 'lc',
             real_servers: [{ 'ip_address' => '10.1.1.2',
-                             'port'       => 8081 }]
+                             'port' => 8081 }]
           }
         end
 
@@ -217,7 +218,7 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
             lb_algo: 'lc',
             tcp_check: { 'connect_timeout' => 5 },
             real_servers: [{ 'ip_address' => '10.1.1.2',
-                             'port'       => 8081 }]
+                             'port' => 8081 }]
           }
         end
 
@@ -236,7 +237,7 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
             lb_algo: 'lc',
             tcp_check: { 'connect_timeout' => 5 },
             real_servers: [{ 'ip_address' => '10.1.1.2',
-                             'port'       => 8081 }],
+                             'port' => 8081 }],
             real_server_options: {
               'MISC_CHECK' => {
                 'misc_path' => 'somepath'
@@ -260,10 +261,10 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
             lb_algo: 'lc',
             tcp_check: { 'connect_timeout' => 5 },
             real_servers: [{ 'ip_address' => '10.1.1.2',
-                             'port'       => 8081 }],
+                             'port' => 8081 }],
             real_server_options: {
               'TCP_CHECK' => {
-                'connect_port'    => 42,
+                'connect_port' => 42,
                 'connect_timeout' => 10
               }
             }
@@ -302,9 +303,9 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
             port: 8080,
             lb_algo: 'lc',
             real_servers: [{ 'ip_address' => '10.1.1.2',
-                             'port'       => 8081 },
+                             'port' => 8081 },
                            { 'ip_address' => '10.1.1.3',
-                             'port'       => 8082 }]
+                             'port' => 8082 }]
           }
         end
 

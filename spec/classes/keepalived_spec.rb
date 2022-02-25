@@ -21,28 +21,29 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_concat('/etc/keepalived/keepalived.conf').with(
-            'group'  => 'root',
-            'mode'   => '0644',
-            'owner'  => 'root'
+            'group' => 'root',
+            'mode' => '0644',
+            'owner' => 'root'
           )
         }
+
         case facts[:osfamily]
         when 'Debian'
           it {
             is_expected.to contain_service('keepalived').with(
-              'ensure'     => 'running',
-              'enable'     => 'true',
+              'ensure' => 'running',
+              'enable' => 'true',
               'hasrestart' => 'false',
-              'hasstatus'  => 'false'
+              'hasstatus' => 'false'
             )
           }
         else
           it {
             is_expected.to contain_service('keepalived').with(
-              'ensure'     => 'running',
-              'enable'     => 'true',
+              'ensure' => 'running',
+              'enable' => 'true',
               'hasrestart' => 'true',
-              'hasstatus'  => 'true'
+              'hasstatus' => 'true'
             )
           }
         end
