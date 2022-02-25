@@ -555,6 +555,8 @@ The following parameters are available in the `keepalived::lvs::virtual_server` 
 * [`ha_suspend`](#ha_suspend)
 * [`alpha`](#alpha)
 * [`omega`](#omega)
+* [`mh_port`](#mh_port)
+* [`mh_fallback`](#mh_fallback)
 * [`sh_port`](#sh_port)
 * [`sh_fallback`](#sh_fallback)
 * [`quorum`](#quorum)
@@ -641,6 +643,22 @@ Data type: `Boolean`
 Default value: ``false``
 
 ##### <a name="omega"></a>`omega`
+
+Data type: `Boolean`
+
+
+
+Default value: ``false``
+
+##### <a name="mh_port"></a>`mh_port`
+
+Data type: `Boolean`
+
+
+
+Default value: ``false``
+
+##### <a name="mh_fallback"></a>`mh_fallback`
 
 Data type: `Boolean`
 

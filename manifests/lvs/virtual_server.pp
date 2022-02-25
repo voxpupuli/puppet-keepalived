@@ -11,7 +11,7 @@
 #
 # @param fwmark Virtual Server firewall mark. (overrides ip_address and port)
 #
-# @param lb_algo Must be one of rr, wrr, lc, wlc, lblc, sh, dh
+# @param lb_algo Must be one of rr, wrr, lc, wlc, lblc, sh, mh, dh
 #
 # @param delay_loop
 #
@@ -25,9 +25,13 @@
 #
 # @param omega
 #
-# @param sh_port
+# @param mh_port Enable mh-port for mh scheduler
 #
-# @param sh_fallback
+# @param mh_fallback Enable mh-fallback for mh scheduler
+#
+# @param sh_port Enable sh-port for sh scheduler
+#
+# @param sh_fallback Enable sh-fallback for sh scheduler
 #
 # @param quorum
 #
@@ -68,7 +72,7 @@
 #   }
 #
 define keepalived::lvs::virtual_server (
-  Enum['rr','wrr','lc','wlc','lblc','sh','dh'] $lb_algo,
+  Enum['rr','wrr','lc','wlc','lblc','sh','dh', 'mh'] $lb_algo,
   Optional[Stdlib::IP::Address] $ip_address = undef,
   Optional[Stdlib::Port] $port = undef,
   Optional[Integer[1]] $fwmark = undef,
@@ -79,6 +83,8 @@ define keepalived::lvs::virtual_server (
   Optional[Integer[0]] $hysteresis = undef,
   Enum['NAT','DR','TUN'] $lb_kind = 'NAT',
   Boolean $omega = false,
+  Boolean $mh_port = false,
+  Boolean $mh_fallback = false,
   Boolean $sh_port = false,
   Boolean $sh_fallback = false,
   Optional[Integer[1]] $persistence_timeout = undef,
