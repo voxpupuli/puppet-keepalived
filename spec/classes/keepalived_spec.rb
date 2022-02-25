@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'keepalived', type: :class do
@@ -21,28 +23,29 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_concat('/etc/keepalived/keepalived.conf').with(
-            'group'  => 'root',
-            'mode'   => '0644',
-            'owner'  => 'root'
+            'group' => 'root',
+            'mode' => '0644',
+            'owner' => 'root'
           )
         }
+
         case facts[:osfamily]
         when 'Debian'
           it {
             is_expected.to contain_service('keepalived').with(
-              'ensure'     => 'running',
-              'enable'     => 'true',
+              'ensure' => 'running',
+              'enable' => 'true',
               'hasrestart' => 'false',
-              'hasstatus'  => 'false'
+              'hasstatus' => 'false'
             )
           }
         else
           it {
             is_expected.to contain_service('keepalived').with(
-              'ensure'     => 'running',
-              'enable'     => 'true',
+              'ensure' => 'running',
+              'enable' => 'true',
               'hasrestart' => 'true',
-              'hasstatus'  => 'true'
+              'hasstatus' => 'true'
             )
           }
         end
@@ -155,13 +158,9 @@ describe 'keepalived', type: :class do
       end
 
       describe 'with parameter: service_manage' do
-        let(:params) { { service_hasstatus: true } }
+        let(:params) { { service_manage: true } }
 
-        it {
-          is_expected.to contain_service('keepalived').with(
-            'hasstatus' => true
-          )
-        }
+        it { is_expected.to contain_service('keepalived') }
       end
 
       describe 'with parameter: service_name' do

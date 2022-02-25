@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'keepalived::vrrp::track_process', type: :define do
@@ -26,6 +28,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
@@ -43,6 +46,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
@@ -54,12 +58,13 @@ describe 'keepalived::vrrp::track_process', type: :define do
       describe 'with parameter quorum' do
         let(:params) do
           {
-            quorum:    203,
+            quorum: 203,
             proc_name: '_PROC_NAME_'
           }
         end
 
         it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
@@ -71,12 +76,13 @@ describe 'keepalived::vrrp::track_process', type: :define do
       describe 'with parameter delay' do
         let(:params) do
           {
-            delay:     1200,
+            delay: 1200,
             proc_name: '_PROC_NAME_'
           }
         end
 
         it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
@@ -94,6 +100,7 @@ describe 'keepalived::vrrp::track_process', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
@@ -106,11 +113,12 @@ describe 'keepalived::vrrp::track_process', type: :define do
         let(:params) do
           {
             full_command: true,
-            proc_name:   '_PROC_NAME_'
+            proc_name: '_PROC_NAME_'
           }
         end
 
         it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(

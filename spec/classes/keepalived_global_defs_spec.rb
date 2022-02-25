@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'keepalived::global_defs', type: :class do
@@ -12,7 +14,7 @@ describe 'keepalived::global_defs', type: :class do
         it { is_expected.to create_class('keepalived::global_defs') }
       end
 
-      describe 'with parameter notification_email' do
+      describe 'with parameter notification_email as string' do
         let(:params) do
           {
             notification_email: '_VALUE_'
@@ -27,7 +29,7 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      describe 'with parameter notification_email' do
+      describe 'with parameter notification_email as array' do
         let(:params) do
           {
             notification_email: %w[_VALUE1_ _VALUE2_]

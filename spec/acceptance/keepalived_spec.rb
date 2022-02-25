@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'keepalived class' do
@@ -15,6 +17,7 @@ describe 'keepalived class' do
     it 'works with no error' do
       apply_manifest(pp, catch_failures: true)
     end
+
     it 'works idempotently' do
       pp2 = <<-EOS
       class { 'keepalived':
@@ -23,6 +26,7 @@ describe 'keepalived class' do
       EOS
       apply_manifest(pp2, catch_changes: true)
     end
+
     it 'creates fact keepalived_version' do
       service_fact = apply_manifest(pp, catch_failures: true)
       expect(service_fact.output).to match %r{.*Keepalived version was: (\d.\d.\d).*}
@@ -58,6 +62,7 @@ describe 'keepalived class' do
     it 'works with no error' do
       apply_manifest(pp, catch_failures: true)
     end
+
     it 'works idempotently' do
       apply_manifest(pp, catch_changes: true)
     end
@@ -92,6 +97,7 @@ describe 'keepalived class' do
     it 'works with no error' do
       apply_manifest(pp, catch_failures: true)
     end
+
     it 'works idempotently' do
       apply_manifest(pp, catch_changes: true)
     end
@@ -121,6 +127,7 @@ describe 'keepalived class' do
     it 'works with no error' do
       apply_manifest(pp, catch_failures: true)
     end
+
     it 'works idempotently' do
       apply_manifest(pp, catch_changes: true)
     end
