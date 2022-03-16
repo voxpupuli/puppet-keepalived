@@ -67,8 +67,8 @@ keepalived::vrrp_instance:
   VI_50:
     interface: 'eth1'
     state: 'MASTER'
-    virtual_router_id: '50'
-    priority: '101'
+    virtual_router_id: 50
+    priority: 101
     auth_type: 'PASS'
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
@@ -106,8 +106,8 @@ keepalived::vrrp_instance:
   VI_50:
     interface: 'eth1'
     state: 'MASTER'
-    virtual_router_id: '50'
-    priority: '101'
+    virtual_router_id: 50
+    priority: 101
     auth_type: 'PASS'
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
@@ -180,8 +180,8 @@ keepalived::vrrp_instance:
   VI_50:
     interface: 'eth1'
     state: 'MASTER'
-    virtual_router_id: '50'
-    priority: '101'
+    virtual_router_id: 50
+    priority: 101
     auth_type: 'PASS'
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
@@ -292,6 +292,18 @@ class { 'keepalived::global_defs':
   smtp_server             => 'localhost',
   smtp_connect_timeout    => '60',
   router_id               => 'your_router_instance_id',
+  bfd_rlimit_rttime       => 10000,
+  checker_rlimit_rttime   => 10000,
+  vrrp_rlimit_rttime      => 10000,
+  bfd_priority            => -20,
+  checker_priority        => -20,
+  vrrp_priority           => -20,
+  bfd_rt_priority         => 50,
+  checker_rt_priority     => 50,
+  vrrp_rt_priority        => 50,
+  bfd_no_swap             => true,
+  checker_no_swap         => true,
+  vrrp_no_swap            => true
 }
 ```
 
@@ -309,6 +321,27 @@ class { '::keepalived':
 ```puppet
 class { '::keepalived':
   service_manage => false,
+}
+```
+
+### Opt out of having the package managed by the module
+
+```puppet
+class { '::keepalived':
+  manage_package => false,
+}
+```
+
+### Opt out include unmanaged keepalived config files
+
+If you need to include a Keepalived config fragment managed by another tool,
+include_external_conf_files takes an array of config path.
+
+**Caution: config file must be readable by Keepalived daemon**
+
+```puppet
+class { 'keepalived':
+  include_external_conf_files => ['/etc/keepalived/unmanaged-config.cfg']
 }
 ```
 

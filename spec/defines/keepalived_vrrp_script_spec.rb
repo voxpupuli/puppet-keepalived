@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'keepalived::vrrp::script', type: :define do
@@ -27,6 +29,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -43,6 +46,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -60,6 +64,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -77,6 +82,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.not_to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -94,6 +100,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -111,6 +118,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -128,6 +136,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -145,6 +154,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
@@ -163,6 +173,7 @@ describe 'keepalived::vrrp::script', type: :define do
         end
 
         it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(

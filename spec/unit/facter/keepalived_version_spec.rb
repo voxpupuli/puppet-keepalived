@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Facter::Util::Fact do
@@ -8,8 +10,8 @@ describe Facter::Util::Fact do
   describe 'keepalived_version' do
     context 'returns keepalived version when keepalived present' do
       it do
-        keepalived_version_output = <<-EOS
-Keepalived v1.2.2 (10/03,2013)
+        keepalived_version_output = <<~EOS
+          Keepalived v1.2.2 (10/03,2013)
         EOS
         allow(Facter::Util::Resolution).to receive(:which).with('keepalived').
           and_return(true)
@@ -21,8 +23,8 @@ Keepalived v1.2.2 (10/03,2013)
 
     context 'returns keepalived version when keepalived present and last number more than one digit' do
       it do
-        keepalived_version_output = <<-EOS
-Keepalived v1.2.13 (08/07,2014)
+        keepalived_version_output = <<~EOS
+          Keepalived v1.2.13 (08/07,2014)
         EOS
         allow(Facter::Util::Resolution).to receive(:which).with('keepalived').
           and_return(true)

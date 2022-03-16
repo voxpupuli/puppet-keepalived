@@ -1,88 +1,115 @@
-# == Class keepalived::global_defs
 #
-# === Parameters:
+# @summary Manage keepalived notifictions
 #
-# $notification_email::            Array of notification email Recipients.
-#                                  Default: undef.
+# @param notification_email Array of notification email Recipients.
 #
-# $notification_email_from::       Define the notification email Sender.
-#                                  Default: undef.
+# @param notification_email_from Define the notification email Sender.
 #
-# $smtp_server::                   Define the smtp server addres.
-#                                  Default: undef.
+# @param smtp_server Define the smtp server addres.
 #
-# $smtp_connect_timeout::          Define the smtp connect timeout.
-#                                  Default: undef.
+# @param smtp_connect_timeout Define the smtp connect timeout.
 #
-# $router_id::                     Define the router ID.
-#                                  Default: undef.
+# @param router_id Define the router ID.
 #
-# $script_user                     Set the global script_user option.
-#                                  Default: undef.
+# @param script_user Set the global script_user option.
 #
-# $enable_script_security::        Set the enable_script_security option.
-#                                  Default: undef.
+# @param enable_script_security Set the enable_script_security option.
 #
-# $snmp_socket::                   Define snmp master agent socker
-#                                  Default: unix:/var/agentx/master
+# @param snmp_socket Define snmp master agent socker
 #
-# $enable_snmp_keepalived::        Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param enable_snmp_keepalived Set enable_snmp_keepalived option.
 #
-# $enable_snmp_vrrp::              Set enable_snmp_vrrp option.
-#                                  Default: undef.
+# @param enable_snmp_vrrp Set enable_snmp_vrrp option.
 #
-# $enable_snmp_checker::           Set enable_snmp_checker option.
-#                                  Default: undef.
+# @param enable_snmp_checker Set enable_snmp_checker option
 #
-# $enable_snmp_rfc::               Set enable_snmp_rfc option.
-#                                  Default: undef.
+# @param enable_snmp_rfc Set enable_snmp_rfc option.
 #
-# $enable_snmp_rfcv2::             Set enable_snmp_rfcv2 option.
-#                                  Default: undef.
+# @param enable_snmp_rfcv2 Set enable_snmp_rfcv2 option.
 #
-# $enable_snmp_rfcv3::             Set enable_snmp_rfcv3 option.
-#                                  Default: undef.
+# @param enable_snmp_rfcv3 Set enable_snmp_rfcv3 option.
 #
-# $enable_traps::                  Set enable_traps option.
-#                                  Default: undef.
+# @param enable_traps Set enable_traps option.
 #
-# $enable_dbus::                   Set enable_dbus option
-#                                  Default: false.
+# @param enable_dbus Set enable_dbus option
 #
-# $vrrp_higher_prio_send_advert::  Set vrrp_higher_prio_send_advert option.
-#                                  Default: undef.
+# @param vrrp_higher_prio_send_advert Set vrrp_higher_prio_send_advert option.
 #
-# $vrrp_garp_lower_prio_repeat::  Set vrrp_garp_lower_prio_repeat option.
-#                                  Default: undef.
+# @param vrrp_garp_lower_prio_repeat Set vrrp_garp_lower_prio_repeat option.
 #
-# $vrrp_garp_master_refresh::     Set vrrp_garp_master_refresh option.
-#                                  Default: undef.
+# @param vrrp_garp_master_delay Set vrrp_garp_master_delay option
 #
-# $vrrp_garp_lower_prio_delay::   Set vrrp_garp_lower_prio_delay option.
-#                                  Default: undef.
+# @param vrrp_garp_master_refresh Set vrrp_garp_master_refresh option.
+#
+# @param vrrp_garp_master_repeat Set vrrp_garp_master_repeat option
+#
+# @param vrrp_garp_master_refresh_repeat Set vrrp_garp_master_refresh_repeat option
+#
+# @param vrrp_garp_lower_prio_delay Set vrrp_garp_lower_prio_delay option.
+#
+# @param vrrp_startup_delay Set vrrp_startup_delay option.
+#
+# @param bfd_rlimit_rttime Set bfd_rlimit_rttime option.
+#
+# @param checker_rlimit_rttime Set checker_rlimit_rttime option.
+#
+# @param vrrp_rlimit_rttime Set vrrp_rlimit_rttime option.
+#
+# @param bfd_priority Set bfd_priority option.
+#
+# @param checker_priority Set checker_priority option.
+#
+# @param vrrp_priority Set vrrp_priority option.
+#
+# @param bfd_rt_priority Set bfd_rt_priority option.
+#
+# @param checker_rt_priority Set checker_rt_priority option.
+#
+# @param vrrp_rt_priority Set vrrp_rt_priority option.
+#
+# @param bfd_no_swap Set bfd_no_swap option.
+#
+# @param checker_no_swap Set checker_no_swap option.
+#
+# @param vrrp_no_swap Set vrrp_no_swap option.
 #
 class keepalived::global_defs (
-  $notification_email                             = undef,
-  $notification_email_from                        = undef,
-  $smtp_server                                    = undef,
-  $smtp_connect_timeout                           = undef,
-  $router_id                                      = undef,
-  $script_user                                    = undef,
-  $enable_script_security                         = undef,
-  $enable_snmp_keepalived                         = undef,
-  $enable_snmp_vrrp                               = undef,
-  $enable_snmp_checker                            = undef,
-  $enable_snmp_rfc                                = undef,
-  $enable_snmp_rfcv2                              = undef,
-  $enable_snmp_rfcv3                              = undef,
-  $enable_traps                                   = undef,
-  Boolean $enable_dbus                            = false,
-  Optional[Boolean] $vrrp_higher_prio_send_advert = undef,
-  Optional[Integer] $vrrp_garp_lower_prio_repeat  = undef,
-  Optional[Integer] $vrrp_garp_master_refresh     = undef,
-  Optional[Integer] $vrrp_garp_lower_prio_delay   = undef,
-  $snmp_socket                                    = 'unix:/var/agentx/master',
+  $notification_email                                = undef,
+  $notification_email_from                           = undef,
+  $smtp_server                                       = undef,
+  $smtp_connect_timeout                              = undef,
+  $router_id                                         = undef,
+  $script_user                                       = undef,
+  $enable_script_security                            = undef,
+  $enable_snmp_keepalived                            = undef,
+  $enable_snmp_vrrp                                  = undef,
+  $enable_snmp_checker                               = undef,
+  $enable_snmp_rfc                                   = undef,
+  $enable_snmp_rfcv2                                 = undef,
+  $enable_snmp_rfcv3                                 = undef,
+  $enable_traps                                      = undef,
+  Boolean $enable_dbus                               = false,
+  Optional[Boolean] $vrrp_higher_prio_send_advert    = undef,
+  Optional[Integer] $vrrp_garp_lower_prio_repeat     = undef,
+  Optional[Integer] $vrrp_garp_master_delay          = undef,
+  Optional[Integer] $vrrp_garp_master_refresh        = undef,
+  Optional[Integer] $vrrp_garp_master_repeat         = undef,
+  Optional[Integer] $vrrp_garp_master_refresh_repeat = undef,
+  Optional[Integer] $vrrp_garp_lower_prio_delay      = undef,
+  Optional[Float] $vrrp_startup_delay                = undef,
+  Optional[Integer] $bfd_rlimit_rttime               = undef,
+  Optional[Integer] $checker_rlimit_rttime           = undef,
+  Optional[Integer] $vrrp_rlimit_rttime              = undef,
+  Optional[Integer[-20, 19]] $bfd_priority           = undef,
+  Optional[Integer[-20, 19]] $checker_priority       = undef,
+  Optional[Integer[-20, 19]] $vrrp_priority          = undef,
+  Optional[Integer[1, 99]] $bfd_rt_priority          = undef,
+  Optional[Integer[1, 99]] $checker_rt_priority      = undef,
+  Optional[Integer[1, 99]] $vrrp_rt_priority         = undef,
+  Boolean $bfd_no_swap                               = false,
+  Boolean $checker_no_swap                           = false,
+  Boolean $vrrp_no_swap                              = false,
+  $snmp_socket                                       = 'unix:/var/agentx/master',
 ) {
   concat::fragment { 'keepalived.conf_globaldefs':
     target  => "${keepalived::config_dir}/keepalived.conf",

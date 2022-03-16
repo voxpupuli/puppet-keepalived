@@ -1,124 +1,78 @@
-# == Define: keepalived::lvs::virtual_server
+# @summary
+#   Configure a Linux Virtual Server with keepalived
 #
-# Configure a Linux Virtual Server with keepalived
+#   Work in progress, supports:
+#     - single IP/port virtual servers
+#     - TCP_CHECK healthchecks
 #
-# Work in progress, supports:
-#   - single IP/port virtual servers
-#   - TCP_CHECK healthchecks
+# @param ip_address Virtual server IP address.
 #
-# === Parameters
+# @param port Virtual sever IP port.
 #
-# Refer to keepalived's documentation to understand the behaviour
-# of these parameters
+# @param fwmark Virtual Server firewall mark. (overrides ip_address and port)
 #
-# [*ip_address*]
-#   Virtual server IP address.
+# @param lb_algo Must be one of rr, wrr, lc, wlc, lblc, sh, mh, dh
 #
-# [*port*]
-#   Virtual sever IP port.
+# @param delay_loop
 #
-# [*fwmark*]
-#   Virtual Server firewall mark. (overrides ip_address and port)
-#   Default: not set
+# @param protocol
 #
-# [*lb_algo*]
-#   Must be one of rr, wrr, lc, wlc, lblc, sh, dh
-#   Default: not set.
+# @param lb_kind Must be one of NAT, TUN, DR.
 #
-# [*delay_loop*]
-#   Default: not set.
+# @param ha_suspend
 #
-# [*protocol*]
-#   Default: TCP
+# @param alpha
 #
-# [*lb_kind*]
-#   Must be one of NAT, TUN, DR.
-#   Default: NAT
+# @param omega
 #
-# [*ha_suspend*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param mh_port Enable mh-port for mh scheduler
 #
-# [*alpha*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param mh_fallback Enable mh-fallback for mh scheduler
 #
-# [*omega*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param sh_port Enable sh-port for sh scheduler
 #
-# [*sh-port*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param sh_fallback Enable sh-fallback for sh scheduler
 #
-# [*sh-fallback*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param quorum
 #
-# [*quorum*]
-#   Integer.
-#   Defaults to unset => does not appear in config.
+# @param quorum_up
 #
-# [*quorum_up*]
-#   Script string.
-#   Defaults to unset => does not appear in config.
+# @param quorum_down
 #
-# [*quorum_down*]
-#   Script string.
-#   Defaults to unset => does not appear in config.
+# @param hysteresis
 #
-# [*hysteresis*]
-#   Integer.
-#   Defaults to unset => does not appear in config.
+# @param tcp_check The TCP_CHECK to configure for real_servers.
 #
-# [*tcp_check*]
-#   The TCP_CHECK to configure for real_servers.
-#   Should be a hash containing these keys:
-#     [*connect_timeout*]
-#   Default: unset => no TCP_CHECK configured.
+# @param real_server_options One or more options to apply to all real_server blocks inside this virtual_server.
 #
-# [*real_server_options*]
-#   One or more options to apply to all real_server blocks inside this
-#   virtual_server.
+# @param sorry_server The sorry_server to define
 #
-#   Example:
-#     real_server_options => {
-#       inhibit_on_failure => true,
-#       SMTP_CHECK => {
-#         connect_timeout => 10
-#         host => {
-#           connect_ip => '127.0.0.1'
-#         }
-#       }
-#     }
+# @param sorry_server_inhibit
 #
-#   Default: unset => no default options
+# @param persistence_timeout
 #
-# [*sorry_server*]
-#   The sorry_server to define
-#   A hash with these keys:
-#     [*ip_address*]
-#     [*port*]
+# @param virtualhost
 #
-# [*sorry_server_inhibit*]
-#   Boolean.
-#   Default: false => not set in config.
+# @param real_servers The real servers to balance to.
 #
-# [*real_servers*]
-#   The real servers to balance to.
-#   An array of hashes.
-#   Hash keys:
-#     [*ip_address*]
-#     [*port*]       (if ommitted the port defaults to the VIP port)
-#
-# [*collect_exported*]
+# @param collect_exported
 #   Boolean. Automatically collect exported @@keepalived::lvs::real_servers
 #   with a virtual_server equal to the name/title of this resource. This allows
 #   you to easily export a real_server resource on each node in the pool.
-#   Defaults to true => collect exported real_servers
+#
+# @example
+#   real_server_options => {
+#     inhibit_on_failure => true,
+#     SMTP_CHECK => {
+#       connect_timeout => 10
+#       host => {
+#         connect_ip => '127.0.0.1'
+#       }
+#     }
+#   }
 #
 define keepalived::lvs::virtual_server (
-  Enum['rr','wrr','lc','wlc','lblc','sh','dh'] $lb_algo,
+  Enum['rr','wrr','lc','wlc','lblc','sh','dh', 'mh'] $lb_algo,
   Optional[Stdlib::IP::Address] $ip_address = undef,
   Optional[Stdlib::Port] $port = undef,
   Optional[Integer[1]] $fwmark = undef,
@@ -129,6 +83,8 @@ define keepalived::lvs::virtual_server (
   Optional[Integer[0]] $hysteresis = undef,
   Enum['NAT','DR','TUN'] $lb_kind = 'NAT',
   Boolean $omega = false,
+  Boolean $mh_port = false,
+  Boolean $mh_fallback = false,
   Boolean $sh_port = false,
   Boolean $sh_fallback = false,
   Optional[Integer[1]] $persistence_timeout = undef,

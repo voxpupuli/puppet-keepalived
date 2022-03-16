@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'keepalived::global_defs', type: :class do
@@ -12,7 +14,7 @@ describe 'keepalived::global_defs', type: :class do
         it { is_expected.to create_class('keepalived::global_defs') }
       end
 
-      describe 'with parameter notification_email' do
+      describe 'with parameter notification_email as string' do
         let(:params) do
           {
             notification_email: '_VALUE_'
@@ -27,7 +29,7 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
-      describe 'with parameter notification_email' do
+      describe 'with parameter notification_email as array' do
         let(:params) do
           {
             notification_email: %w[_VALUE1_ _VALUE2_]
@@ -282,6 +284,21 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
+      describe 'with parameter vrrp_garp_master_delay' do
+        let(:params) do
+          {
+            vrrp_garp_master_delay: 30
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_garp_master_delay 30$}
+            )
+        }
+      end
+
       describe 'with parameter vrrp_garp_master_refresh' do
         let(:params) do
           {
@@ -293,6 +310,36 @@ describe 'keepalived::global_defs', type: :class do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
               'content' => %r{vrrp_garp_master_refresh 0$}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_garp_master_repeat' do
+        let(:params) do
+          {
+            vrrp_garp_master_repeat: 15
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_garp_master_repeat 15$}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_garp_master_refresh_repeat' do
+        let(:params) do
+          {
+            vrrp_garp_master_refresh_repeat: 10
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_garp_master_refresh_repeat 10$}
             )
         }
       end
@@ -312,6 +359,21 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
+      describe 'with parameter vrrp_startup_delay: 5.5' do
+        let(:params) do
+          {
+            vrrp_startup_delay: 5.5
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_startup_delay 5.5}
+            )
+        }
+      end
+
       describe 'with parameter snmp_socket' do
         let(:params) do
           {
@@ -323,6 +385,186 @@ describe 'keepalived::global_defs', type: :class do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
               'content' => %r{snmp_socket /path$}
+            )
+        }
+      end
+
+      describe 'with parameter bfd_rlimit_rttime: 15000' do
+        let(:params) do
+          {
+            bfd_rlimit_rttime: 15_000
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{bfd_rlimit_rttime 15000}
+            )
+        }
+      end
+
+      describe 'with parameter checker_rlimit_rttime: 15000' do
+        let(:params) do
+          {
+            checker_rlimit_rttime: 15_000
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{checker_rlimit_rttime 15000}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_rlimit_rttime: 15000' do
+        let(:params) do
+          {
+            vrrp_rlimit_rttime: 15_000
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_rlimit_rttime 15000}
+            )
+        }
+      end
+
+      describe 'with parameter bfd_priority: -15' do
+        let(:params) do
+          {
+            bfd_priority: -15
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{bfd_priority -15}
+            )
+        }
+      end
+
+      describe 'with parameter checker_priority: -15' do
+        let(:params) do
+          {
+            checker_priority: -15
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{checker_priority -15}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_priority: -15' do
+        let(:params) do
+          {
+            vrrp_priority: -15
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_priority -15}
+            )
+        }
+      end
+
+      describe 'with parameter bfd_rt_priority: 99' do
+        let(:params) do
+          {
+            bfd_rt_priority: 99
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{bfd_rt_priority 99}
+            )
+        }
+      end
+
+      describe 'with parameter checker_rt_priority: 99' do
+        let(:params) do
+          {
+            checker_rt_priority: 99
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{checker_rt_priority 99}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_rt_priority: 99' do
+        let(:params) do
+          {
+            vrrp_rt_priority: 99
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_rt_priority 99}
+            )
+        }
+      end
+
+      describe 'with parameter bfd_no_swap: true' do
+        let(:params) do
+          {
+            bfd_no_swap: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{bfd_no_swap}
+            )
+        }
+      end
+
+      describe 'with parameter checker_no_swap: true' do
+        let(:params) do
+          {
+            checker_no_swap: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{checker_no_swap}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_no_swap: true' do
+        let(:params) do
+          {
+            vrrp_no_swap: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_no_swap}
             )
         }
       end

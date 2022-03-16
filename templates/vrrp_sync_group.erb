@@ -27,7 +27,14 @@ vrrp_sync_group <%= @_name %> {
   # receives an advert with priority lower than the master's advert.
   notify_master_rx_lower_pri "<%= @notify_script_master_rx_lower_pri %>"
   <%- end -%>
+  <%- if not @track_script.empty? -%>
 
+  track_script {
+  <%- Array(@track_script).each do |track| -%>
+    <%= track %>
+  <%- end -%>
+  }
+  <%- end -%>
   <%- if @notify_script -%>
   # for ANY state transition.
   # "notify" script is called AFTER the
