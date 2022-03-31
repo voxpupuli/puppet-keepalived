@@ -303,7 +303,8 @@ class { 'keepalived::global_defs':
   vrrp_rt_priority        => 50,
   bfd_no_swap             => true,
   checker_no_swap         => true,
-  vrrp_no_swap            => true
+  vrrp_no_swap            => true,
+  vrrp_version            => 3
 }
 ```
 

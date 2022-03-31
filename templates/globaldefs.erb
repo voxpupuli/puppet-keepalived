@@ -108,6 +108,9 @@ global_defs {
   <%- if @vrrp_no_swap -%>
   vrrp_no_swap
   <%- end -%>
+  <%- if @vrrp_version -%>
+  vrrp_version <%= @vrrp_version -%>
+  <%- end -%>
   <%- if @snmp_socket -%>
   snmp_socket <%= @snmp_socket -%>
   <%- end -%>
