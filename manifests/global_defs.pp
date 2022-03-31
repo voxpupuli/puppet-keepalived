@@ -75,6 +75,8 @@
 #
 # @param vrrp_version Set vrrp_version option.
 #
+# @param max_auto_priority Set max_auto_priority option.
+#
 class keepalived::global_defs (
   $notification_email                                = undef,
   $notification_email_from                           = undef,
@@ -112,6 +114,7 @@ class keepalived::global_defs (
   Boolean $checker_no_swap                           = false,
   Boolean $vrrp_no_swap                              = false,
   Optional[Integer[2, 3]] $vrrp_version              = undef,
+  Optional[Integer[-1, 99]] $max_auto_priority       = undef,
   $snmp_socket                                       = 'unix:/var/agentx/master',
 ) {
   concat::fragment { 'keepalived.conf_globaldefs':

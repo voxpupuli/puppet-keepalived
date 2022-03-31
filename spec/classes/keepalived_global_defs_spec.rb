@@ -583,6 +583,21 @@ describe 'keepalived::global_defs', type: :class do
             )
         }
       end
+
+      describe 'with parameter max_auto_priority: 99' do
+        let(:params) do
+          {
+            max_auto_priority: 99
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{max_auto_priority 99}
+            )
+        }
+      end
     end
   end
 end
