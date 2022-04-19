@@ -70,6 +70,8 @@ The following parameters are available in the `keepalived` class:
 * [`vrrp_sync_group`](#vrrp_sync_group)
 * [`lvs_real_server`](#lvs_real_server)
 * [`lvs_virtual_server`](#lvs_virtual_server)
+* [`include_external_conf_files`](#include_external_conf_files)
+* [`manage_package`](#manage_package)
 
 ##### <a name="sysconf_dir"></a>`sysconf_dir`
 
@@ -255,6 +257,22 @@ Data type: `Hash`
 
 Default value: `{}`
 
+##### <a name="include_external_conf_files"></a>`include_external_conf_files`
+
+Data type: `Array[Stdlib::Absolutepath]`
+
+
+
+Default value: `[]`
+
+##### <a name="manage_package"></a>`manage_package`
+
+Data type: `Boolean`
+
+
+
+Default value: ``true``
+
 ### <a name="keepalivedconfig"></a>`keepalived::config`
 
 Configure keepalived module
@@ -285,9 +303,26 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`enable_dbus`](#enable_dbus)
 * [`vrrp_higher_prio_send_advert`](#vrrp_higher_prio_send_advert)
 * [`vrrp_garp_lower_prio_repeat`](#vrrp_garp_lower_prio_repeat)
+* [`vrrp_garp_master_delay`](#vrrp_garp_master_delay)
 * [`vrrp_garp_master_refresh`](#vrrp_garp_master_refresh)
+* [`vrrp_garp_master_repeat`](#vrrp_garp_master_repeat)
+* [`vrrp_garp_master_refresh_repeat`](#vrrp_garp_master_refresh_repeat)
 * [`vrrp_garp_lower_prio_delay`](#vrrp_garp_lower_prio_delay)
 * [`vrrp_startup_delay`](#vrrp_startup_delay)
+* [`bfd_rlimit_rttime`](#bfd_rlimit_rttime)
+* [`checker_rlimit_rttime`](#checker_rlimit_rttime)
+* [`vrrp_rlimit_rttime`](#vrrp_rlimit_rttime)
+* [`bfd_priority`](#bfd_priority)
+* [`checker_priority`](#checker_priority)
+* [`vrrp_priority`](#vrrp_priority)
+* [`bfd_rt_priority`](#bfd_rt_priority)
+* [`checker_rt_priority`](#checker_rt_priority)
+* [`vrrp_rt_priority`](#vrrp_rt_priority)
+* [`bfd_no_swap`](#bfd_no_swap)
+* [`checker_no_swap`](#checker_no_swap)
+* [`vrrp_no_swap`](#vrrp_no_swap)
+* [`vrrp_version`](#vrrp_version)
+* [`max_auto_priority`](#max_auto_priority)
 
 ##### <a name="notification_email"></a>`notification_email`
 
@@ -433,11 +468,35 @@ Set vrrp_garp_lower_prio_repeat option.
 
 Default value: ``undef``
 
+##### <a name="vrrp_garp_master_delay"></a>`vrrp_garp_master_delay`
+
+Data type: `Optional[Integer]`
+
+Set vrrp_garp_master_delay option
+
+Default value: ``undef``
+
 ##### <a name="vrrp_garp_master_refresh"></a>`vrrp_garp_master_refresh`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_garp_master_refresh option.
+
+Default value: ``undef``
+
+##### <a name="vrrp_garp_master_repeat"></a>`vrrp_garp_master_repeat`
+
+Data type: `Optional[Integer]`
+
+Set vrrp_garp_master_repeat option
+
+Default value: ``undef``
+
+##### <a name="vrrp_garp_master_refresh_repeat"></a>`vrrp_garp_master_refresh_repeat`
+
+Data type: `Optional[Integer]`
+
+Set vrrp_garp_master_refresh_repeat option
 
 Default value: ``undef``
 
@@ -454,6 +513,118 @@ Default value: ``undef``
 Data type: `Optional[Float]`
 
 Set vrrp_startup_delay option.
+
+Default value: ``undef``
+
+##### <a name="bfd_rlimit_rttime"></a>`bfd_rlimit_rttime`
+
+Data type: `Optional[Integer]`
+
+Set bfd_rlimit_rttime option.
+
+Default value: ``undef``
+
+##### <a name="checker_rlimit_rttime"></a>`checker_rlimit_rttime`
+
+Data type: `Optional[Integer]`
+
+Set checker_rlimit_rttime option.
+
+Default value: ``undef``
+
+##### <a name="vrrp_rlimit_rttime"></a>`vrrp_rlimit_rttime`
+
+Data type: `Optional[Integer]`
+
+Set vrrp_rlimit_rttime option.
+
+Default value: ``undef``
+
+##### <a name="bfd_priority"></a>`bfd_priority`
+
+Data type: `Optional[Integer[-20, 19]]`
+
+Set bfd_priority option.
+
+Default value: ``undef``
+
+##### <a name="checker_priority"></a>`checker_priority`
+
+Data type: `Optional[Integer[-20, 19]]`
+
+Set checker_priority option.
+
+Default value: ``undef``
+
+##### <a name="vrrp_priority"></a>`vrrp_priority`
+
+Data type: `Optional[Integer[-20, 19]]`
+
+Set vrrp_priority option.
+
+Default value: ``undef``
+
+##### <a name="bfd_rt_priority"></a>`bfd_rt_priority`
+
+Data type: `Optional[Integer[1, 99]]`
+
+Set bfd_rt_priority option.
+
+Default value: ``undef``
+
+##### <a name="checker_rt_priority"></a>`checker_rt_priority`
+
+Data type: `Optional[Integer[1, 99]]`
+
+Set checker_rt_priority option.
+
+Default value: ``undef``
+
+##### <a name="vrrp_rt_priority"></a>`vrrp_rt_priority`
+
+Data type: `Optional[Integer[1, 99]]`
+
+Set vrrp_rt_priority option.
+
+Default value: ``undef``
+
+##### <a name="bfd_no_swap"></a>`bfd_no_swap`
+
+Data type: `Boolean`
+
+Set bfd_no_swap option.
+
+Default value: ``false``
+
+##### <a name="checker_no_swap"></a>`checker_no_swap`
+
+Data type: `Boolean`
+
+Set checker_no_swap option.
+
+Default value: ``false``
+
+##### <a name="vrrp_no_swap"></a>`vrrp_no_swap`
+
+Data type: `Boolean`
+
+Set vrrp_no_swap option.
+
+Default value: ``false``
+
+##### <a name="vrrp_version"></a>`vrrp_version`
+
+Data type: `Optional[Integer[2, 3]]`
+
+Set vrrp_version option.
+
+Default value: ``undef``
+
+##### <a name="max_auto_priority"></a>`max_auto_priority`
+
+Data type: `Optional[Integer[-1, 99]]`
+
+Set max_auto_priority option.
 
 Default value: ``undef``
 
@@ -598,9 +769,9 @@ Default value: ``undef``
 
 ##### <a name="lb_algo"></a>`lb_algo`
 
-Data type: `Enum['rr','wrr','lc','wlc','lblc','sh','dh']`
+Data type: `Enum['rr','wrr','lc','wlc','lblc','sh','dh', 'mh']`
 
-Must be one of rr, wrr, lc, wlc, lblc, sh, dh
+Must be one of rr, wrr, lc, wlc, lblc, sh, mh, dh
 
 ##### <a name="delay_loop"></a>`delay_loop`
 
@@ -654,7 +825,7 @@ Default value: ``false``
 
 Data type: `Boolean`
 
-
+Enable mh-port for mh scheduler
 
 Default value: ``false``
 
@@ -662,7 +833,7 @@ Default value: ``false``
 
 Data type: `Boolean`
 
-
+Enable mh-fallback for mh scheduler
 
 Default value: ``false``
 
@@ -670,7 +841,7 @@ Default value: ``false``
 
 Data type: `Boolean`
 
-
+Enable sh-port for sh scheduler
 
 Default value: ``false``
 
@@ -678,7 +849,7 @@ Default value: ``false``
 
 Data type: `Boolean`
 
-
+Enable sh-fallback for sh scheduler
 
 Default value: ``false``
 
@@ -1299,6 +1470,7 @@ The following parameters are available in the `keepalived::vrrp::sync_group` def
 
 * [`group`](#group)
 * [`notify_script_master`](#notify_script_master)
+* [`track_script`](#track_script)
 * [`notify_script_backup`](#notify_script_backup)
 * [`notify_script_fault`](#notify_script_fault)
 * [`notify_script`](#notify_script)
@@ -1320,6 +1492,14 @@ Data type: `Any`
 Define the notify master script.
 
 Default value: ``undef``
+
+##### <a name="track_script"></a>`track_script`
+
+Data type: `Array[String]`
+
+Define which script to run to track service states.
+
+Default value: `[]`
 
 ##### <a name="notify_script_backup"></a>`notify_script_backup`
 

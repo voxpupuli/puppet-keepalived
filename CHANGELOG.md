@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.3.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.3.0) (2022-04-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.2.0...v3.3.0)
+
+**Implemented enhancements:**
+
+- vrrp\_version and max\_auto\_priority global parameters [\#261](https://github.com/voxpupuli/puppet-keepalived/pull/261) ([ymartin-ovh](https://github.com/ymartin-ovh))
+- Add support for mh lb\_algo [\#260](https://github.com/voxpupuli/puppet-keepalived/pull/260) ([MrFreezeex](https://github.com/MrFreezeex))
+- Add vrrp\_garp\_master\_{delay, refresh, refresh\_repeat} tunables in globaldefs [\#259](https://github.com/voxpupuli/puppet-keepalived/pull/259) ([ymartin-ovh](https://github.com/ymartin-ovh))
+- Allow to include external keepalived config fragment [\#258](https://github.com/voxpupuli/puppet-keepalived/pull/258) ([ymartin-ovh](https://github.com/ymartin-ovh))
+- Keepalived processes behaviour are tunable via globaldefs: prio, rt\_prio, no\_swap [\#256](https://github.com/voxpupuli/puppet-keepalived/pull/256) ([ymartin-ovh](https://github.com/ymartin-ovh))
+- Add Debian 10/11 and Ubuntu 20.04 support [\#255](https://github.com/voxpupuli/puppet-keepalived/pull/255) ([towo](https://github.com/towo))
+- Add track vrrp scripts to vrrp\_sync\_groups [\#254](https://github.com/voxpupuli/puppet-keepalived/pull/254) ([KeithWard](https://github.com/KeithWard))
+- Add the possibility to manage the package outside the module [\#249](https://github.com/voxpupuli/puppet-keepalived/pull/249) ([kibidouil](https://github.com/kibidouil))
+
+**Merged pull requests:**
+
+- vrrp\_instance template: Remove forced newlines [\#252](https://github.com/voxpupuli/puppet-keepalived/pull/252) ([Henrik-Hansson](https://github.com/Henrik-Hansson))
+- fix README: priority and virtual\_router\_id should be Integer. [\#251](https://github.com/voxpupuli/puppet-keepalived/pull/251) ([trefzer](https://github.com/trefzer))
+
 ## [v3.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.2.0) (2021-10-02)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.1.0...v3.2.0)
