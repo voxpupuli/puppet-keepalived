@@ -321,6 +321,7 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`bfd_no_swap`](#bfd_no_swap)
 * [`checker_no_swap`](#checker_no_swap)
 * [`vrrp_no_swap`](#vrrp_no_swap)
+* [`vrrp_check_unicast_src`](#vrrp_check_unicast_src)
 * [`vrrp_version`](#vrrp_version)
 * [`max_auto_priority`](#max_auto_priority)
 
@@ -609,6 +610,14 @@ Default value: ``false``
 Data type: `Boolean`
 
 Set vrrp_no_swap option.
+
+Default value: ``false``
+
+##### <a name="vrrp_check_unicast_src"></a>`vrrp_check_unicast_src`
+
+Data type: `Boolean`
+
+Set vrrp_check_unicast_src option.
 
 Default value: ``false``
 
