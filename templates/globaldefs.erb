@@ -114,6 +114,9 @@ global_defs {
   <%- if @max_auto_priority -%>
   max_auto_priority <%= @max_auto_priority -%>
   <%- end -%>
+  <%- if @dynamic_interfaces -%>
+  dynamic_interfaces
+  <%- end -%>
   <%- if @snmp_socket -%>
   snmp_socket <%= @snmp_socket -%>
   <%- end -%>
