@@ -48,6 +48,14 @@ vrrp_sync_group <%= @_name %> {
   #     ("MASTER"|"BACKUP"|"FAULT")
   notify <%= @notify_script %>
   <%- end -%>
+  <%- if @track_interface -%>
+
+  track_interface {
+  <%- Array(@track_interface).each do |interface| -%>
+    <%= interface %>
+  <%- end -%>
+  }
+  <%- end -%>
 
   # Send email notifcation during state transition,
   # using addresses in global_defs above.
