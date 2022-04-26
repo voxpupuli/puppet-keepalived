@@ -613,6 +613,21 @@ describe 'keepalived::global_defs', type: :class do
             )
         }
       end
+
+      describe 'with parameter dynamic_interfaces: true' do
+        let(:params) do
+          {
+            dynamic_interfaces: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{dynamic_interfaces}
+            )
+        }
+      end
     end
   end
 end

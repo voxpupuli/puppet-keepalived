@@ -79,6 +79,8 @@
 #
 # @param max_auto_priority Set max_auto_priority option.
 #
+# @param dynamic_interfaces Set the dynamic_interfaces option.
+#
 class keepalived::global_defs (
   $notification_email                                = undef,
   $notification_email_from                           = undef,
@@ -118,6 +120,7 @@ class keepalived::global_defs (
   Boolean $vrrp_check_unicast_src                    = false,
   Optional[Integer[2, 3]] $vrrp_version              = undef,
   Optional[Integer[-1, 99]] $max_auto_priority       = undef,
+  Boolean $dynamic_interfaces                        = false,
   $snmp_socket                                       = 'unix:/var/agentx/master',
 ) {
   concat::fragment { 'keepalived.conf_globaldefs':
