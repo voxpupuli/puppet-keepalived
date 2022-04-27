@@ -211,7 +211,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{_VALUE_}
+              'content' => %r{\s*track_interface\s*{\n\s*_VALUE_\n\s*}}
             )
         }
       end
