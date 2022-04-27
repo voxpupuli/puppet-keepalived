@@ -845,11 +845,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
-      describe 'with virtual_rules as array of hashes' do
+      describe 'with virtual_rules as an array of hashes with from rules' do
         let(:params) do
           mandatory_params.merge(
-            virtual_rules: [{ 'from' => '10.0.1.24', 'lookup' => 'customroute1' },
-                            { 'from' => '10.0.2.24', 'lookup' => 'customroute2' }]
+            virtual_rules: [{ 'from' => '10.0.1.24', 'table' => 'customroute1' },
+                            { 'from' => '10.0.2.24', 'table' => 'customroute2' }]
           )
         end
 
@@ -858,11 +858,43 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+from 10\.0\.1\.24 lookup customroute1}
+              'content' => %r{^\s*virtual_rules {\n\s*from 10\.0\.1\.24 table customroute1\n\s*from 10\.0\.2\.24 table customroute2\n\s*}$}
             )
+        }
+      end
+
+      describe 'with virtual_rules as an array of hashes with to rules' do
+        let(:params) do
+          mandatory_params.merge(
+            virtual_rules: [{ 'to' => '10.1.2.0/24', 'table' => 'customroute3' },
+                            { 'to' => '10.1.3.0/24', 'table' => 'customroute4', 'priority' => '100' }]
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
+        it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+from 10\.0\.2\.24 lookup customroute2}
+              'content' => %r{^\s*virtual_rules {\n\s*table customroute3 to 10\.1\.2\.0/24\n\s*priority 100 table customroute4 to 10\.1\.3\.0/24\n\s*}$}
+            )
+        }
+      end
+
+      describe 'with virtual_rules as an array of hashes with iif/oif rules' do
+        let(:params) do
+          mandatory_params.merge(
+            virtual_rules: [{ 'iif' => 'eth0', 'table' => 'customroute5', 'priority' => '200' },
+                            { 'oif' => 'eth1', 'table' => 'customroute6', 'priority' => '300' }]
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{^\s*virtual_rules {\n\s*iif eth0 priority 200 table customroute5\n\s*oif eth1 priority 300 table customroute6\n\s*}$}
             )
         }
       end
