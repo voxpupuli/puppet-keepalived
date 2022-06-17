@@ -628,6 +628,36 @@ describe 'keepalived::global_defs', type: :class do
             )
         }
       end
+
+      describe 'with parameter vrrp_notify_fifo: /run/keepalived.fifo' do
+        let(:params) do
+          {
+            vrrp_notify_fifo: '/run/keepalived.fifo'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_notify_fifo /run/keepalived.fifo}
+            )
+        }
+      end
+
+      describe 'with parameter vrrp_notify_fifo_script: /root/fifo.sh' do
+        let(:params) do
+          {
+            vrrp_notify_fifo_script: '/root/fifo.sh'
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_notify_fifo_script /root/fifo.sh}
+            )
+        }
+      end
     end
   end
 end
