@@ -369,7 +369,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_startup_delay 5.5}
+              'content' => %r{vrrp_startup_delay 5.5$}
             )
         }
       end
@@ -399,7 +399,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{bfd_rlimit_rttime 15000}
+              'content' => %r{bfd_rlimit_rttime 15000$}
             )
         }
       end
@@ -414,7 +414,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{checker_rlimit_rttime 15000}
+              'content' => %r{checker_rlimit_rttime 15000$}
             )
         }
       end
@@ -429,7 +429,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_rlimit_rttime 15000}
+              'content' => %r{vrrp_rlimit_rttime 15000$}
             )
         }
       end
@@ -444,7 +444,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{bfd_priority -15}
+              'content' => %r{bfd_priority -15$}
             )
         }
       end
@@ -459,7 +459,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{checker_priority -15}
+              'content' => %r{checker_priority -15$}
             )
         }
       end
@@ -474,7 +474,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_priority -15}
+              'content' => %r{vrrp_priority -15$}
             )
         }
       end
@@ -489,7 +489,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{bfd_rt_priority 99}
+              'content' => %r{bfd_rt_priority 99$}
             )
         }
       end
@@ -504,7 +504,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{checker_rt_priority 99}
+              'content' => %r{checker_rt_priority 99$}
             )
         }
       end
@@ -519,7 +519,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_rt_priority 99}
+              'content' => %r{vrrp_rt_priority 99$}
             )
         }
       end
@@ -534,7 +534,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{bfd_no_swap}
+              'content' => %r{bfd_no_swap$}
             )
         }
       end
@@ -549,7 +549,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{checker_no_swap}
+              'content' => %r{checker_no_swap$}
             )
         }
       end
@@ -564,7 +564,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_no_swap}
+              'content' => %r{vrrp_no_swap$}
             )
         }
       end
@@ -579,7 +579,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_check_unicast_src}
+              'content' => %r{vrrp_check_unicast_src$}
             )
         }
       end
@@ -594,7 +594,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_version 3}
+              'content' => %r{vrrp_version 3$}
             )
         }
       end
@@ -609,7 +609,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{max_auto_priority 99}
+              'content' => %r{max_auto_priority 99$}
             )
         }
       end
@@ -639,7 +639,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_notify_fifo /run/keepalived.fifo}
+              'content' => %r{vrrp_notify_fifo /run/keepalived.fifo$}
             )
         }
       end
@@ -654,7 +654,7 @@ describe 'keepalived::global_defs', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{vrrp_notify_fifo_script /root/fifo.sh}
+              'content' => %r{vrrp_notify_fifo_script /root/fifo.sh$}
             )
         }
       end

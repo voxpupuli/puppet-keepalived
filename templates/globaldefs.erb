@@ -112,22 +112,22 @@ global_defs {
   vrrp_check_unicast_src
   <%- end -%>
   <%- if @vrrp_version -%>
-  vrrp_version <%= @vrrp_version -%>
+  vrrp_version <%= @vrrp_version %>
   <%- end -%>
   <%- if @max_auto_priority -%>
-  max_auto_priority <%= @max_auto_priority -%>
+  max_auto_priority <%= @max_auto_priority %>
   <%- end -%>
   <%- if @dynamic_interfaces -%>
   dynamic_interfaces
   <%- end -%>
   <%- if @snmp_socket -%>
-  snmp_socket <%= @snmp_socket -%>
+  snmp_socket <%= @snmp_socket %>
   <%- end -%>
   <%- if @vrrp_notify_fifo -%>
-  vrrp_notify_fifo <%= @vrrp_notify_fifo -%>
+  vrrp_notify_fifo <%= @vrrp_notify_fifo %>
   <%- end -%>
   <%- if @vrrp_notify_fifo_script -%>
-  vrrp_notify_fifo_script <%= @vrrp_notify_fifo_script -%>
+  vrrp_notify_fifo_script <%= @vrrp_notify_fifo_script %>
   <%- end -%>
 
 }
