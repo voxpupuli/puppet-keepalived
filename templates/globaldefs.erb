@@ -123,6 +123,12 @@ global_defs {
   <%- if @snmp_socket -%>
   snmp_socket <%= @snmp_socket -%>
   <%- end -%>
+  <%- if @vrrp_notify_fifo -%>
+  vrrp_notify_fifo <%= @vrrp_notify_fifo -%>
+  <%- end -%>
+  <%- if @vrrp_notify_fifo_script -%>
+  vrrp_notify_fifo_script <%= @vrrp_notify_fifo_script -%>
+  <%- end -%>
 
 }
 

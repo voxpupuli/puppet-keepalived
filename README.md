@@ -306,6 +306,8 @@ class { 'keepalived::global_defs':
   vrrp_no_swap            => true,
   vrrp_version            => 3,
   max_auto_priority       => 99,
+  vrrp_notify_fifo        => '/run/keepalived.fifo',
+  vrrp_notify_fifo_script => 'your_fifo_script_path',
 }
 ```
 
