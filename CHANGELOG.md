@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.4.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.4.0) (2022-06-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.3.0...v3.4.0)
+
+**Implemented enhancements:**
+
+- Add support of vrrp\_notify\_fifo\* [\#267](https://github.com/voxpupuli/puppet-keepalived/pull/267) ([ymartin-ovh](https://github.com/ymartin-ovh))
+- support for vrrp\_check\_unicast\_src option [\#265](https://github.com/voxpupuli/puppet-keepalived/pull/265) ([robmbrooks](https://github.com/robmbrooks))
+- Add support for dynamic\_interfaces in global\_defs section [\#263](https://github.com/voxpupuli/puppet-keepalived/pull/263) ([imp-](https://github.com/imp-))
+
 ## [v3.3.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.3.0) (2022-04-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.2.0...v3.3.0)
