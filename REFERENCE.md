@@ -324,6 +324,9 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`vrrp_check_unicast_src`](#vrrp_check_unicast_src)
 * [`vrrp_version`](#vrrp_version)
 * [`max_auto_priority`](#max_auto_priority)
+* [`dynamic_interfaces`](#dynamic_interfaces)
+* [`vrrp_notify_fifo`](#vrrp_notify_fifo)
+* [`vrrp_notify_fifo_script`](#vrrp_notify_fifo_script)
 
 ##### <a name="notification_email"></a>`notification_email`
 
@@ -634,6 +637,30 @@ Default value: ``undef``
 Data type: `Optional[Integer[-1, 99]]`
 
 Set max_auto_priority option.
+
+Default value: ``undef``
+
+##### <a name="dynamic_interfaces"></a>`dynamic_interfaces`
+
+Data type: `Boolean`
+
+Set the dynamic_interfaces option.
+
+Default value: ``false``
+
+##### <a name="vrrp_notify_fifo"></a>`vrrp_notify_fifo`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+Set the vrrp_notify_fifo option.
+
+Default value: ``undef``
+
+##### <a name="vrrp_notify_fifo_script"></a>`vrrp_notify_fifo_script`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+Set the vrrp_notify_fifo_script option.
 
 Default value: ``undef``
 
