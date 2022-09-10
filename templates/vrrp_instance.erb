@@ -172,6 +172,10 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
+  <%- if @promote_secondaries -%>
+
+  promote_secondaries
+  <%- end -%>
   <%- if @virtual_routes -%>
 
   virtual_routes {

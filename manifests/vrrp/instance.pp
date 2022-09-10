@@ -25,6 +25,13 @@
 #      e.g. `{ 'ip' => '10.0.0.1', 'label' => 'webvip' }`
 #      Supported properties: dev, brd, label, scope.
 #
+# @param promote_secondaries
+#   Set the promote_secondaries flag on the interface to stop other
+#   addresses in the same CIDR being removed when 1 of them is removed
+#   For example if 10.1.1.2/24 and 10.1.1.3/24 are both configured on an
+#   interface, and one is removed, unless promote_secondaries is set on
+#   the interface the other address will also be removed.
+#
 # @param virtual_routes
 #   Set floating routes.
 #
@@ -180,7 +187,7 @@
 # @param higher_prio_send_advert
 #
 # @param collect_unicast_peers
-# 
+#
 define keepalived::vrrp::instance (
   $interface,
   Integer[1,254] $priority,
@@ -195,6 +202,7 @@ define keepalived::vrrp::instance (
   $lvs_interface                                                          = undef,
   $virtual_ipaddress_int                                                  = undef,
   $virtual_ipaddress_excluded                                             = undef,
+  Boolean $promote_secondaries                                            = false,
   $virtual_routes                                                         = undef,
   Optional[Array[Keepalived::Vrrp::Instance::VRule]] $virtual_rules       = undef,
   $smtp_alert                                                             = false,

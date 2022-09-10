@@ -805,6 +805,23 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
+      describe 'with promote_secondaries' do
+        let(:params) do
+          mandatory_params.merge(
+            promote_secondaries: true
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{promote_secondaries}
+            )
+        }
+      end
+
       describe 'with virtual_routes as hash' do
         let(:params) do
           mandatory_params.merge(
