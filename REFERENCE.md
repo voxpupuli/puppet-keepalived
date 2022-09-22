@@ -327,6 +327,7 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`dynamic_interfaces`](#dynamic_interfaces)
 * [`vrrp_notify_fifo`](#vrrp_notify_fifo)
 * [`vrrp_notify_fifo_script`](#vrrp_notify_fifo_script)
+* [`vrrp_min_garp`](#vrrp_min_garp)
 
 ##### <a name="notification_email"></a>`notification_email`
 
@@ -661,6 +662,14 @@ Default value: ``undef``
 Data type: `Optional[Stdlib::Absolutepath]`
 
 Set the vrrp_notify_fifo_script option.
+
+Default value: ``undef``
+
+##### <a name="vrrp_min_garp"></a>`vrrp_min_garp`
+
+Data type: `Optional[Boolean]`
+
+Set the vrrp_min_garp option.
 
 Default value: ``undef``
 

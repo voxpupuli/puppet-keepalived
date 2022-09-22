@@ -51,6 +51,9 @@ global_defs {
   <%- if @vrrp_higher_prio_send_advert -%>
   vrrp_higher_prio_send_advert <%= @vrrp_higher_prio_send_advert %>
   <%- end -%>
+  <%- if @vrrp_min_garp -%>
+  vrrp_min_garp <%= @vrrp_min_garp %>
+  <%- end -%>
   <%- if @vrrp_garp_lower_prio_repeat -%>
   vrrp_garp_lower_prio_repeat <%= @vrrp_garp_lower_prio_repeat %>
   <%- end -%>
