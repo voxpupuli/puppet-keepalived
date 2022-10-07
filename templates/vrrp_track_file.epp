@@ -1,0 +1,15 @@
+<%- | String $name,
+      String $file_name,
+      Optional[Integer] $weight,
+      Optional[String]  $init_file,
+      Optional[Boolean] $overwrite
+    | -%>
+track_file <%= $name %> {
+  file     "<%= $file_name %>"
+  <%- if $weight { -%>
+  weight      <%= $weight %>
+  <%- } -%>
+  <%- if $init_file { -%>
+  init_file <%= $init_file %><% if $overwrite { %> overwrite<% } %>
+  <%- } -%>
+}
