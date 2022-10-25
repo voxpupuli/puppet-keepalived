@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.5.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.5.0) (2022-10-25)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.4.0...v3.5.0)
+
+**Implemented enhancements:**
+
+- add option to set a vrrp track file [\#275](https://github.com/voxpupuli/puppet-keepalived/pull/275) ([tuxmea](https://github.com/tuxmea))
+- add global option vrrp\_min\_garp [\#273](https://github.com/voxpupuli/puppet-keepalived/pull/273) ([moritz-makandra](https://github.com/moritz-makandra))
+- Add support for promote\_secondaries option [\#271](https://github.com/voxpupuli/puppet-keepalived/pull/271) ([koleo](https://github.com/koleo))
+
+**Fixed bugs:**
+
+- Keepalived::Vrrp::Instance::VRule: Add missing vrule fields [\#272](https://github.com/voxpupuli/puppet-keepalived/pull/272) ([towo](https://github.com/towo))
+- fix template rendering with vrrp\_priority and vrrp\_fifo\_\* options [\#270](https://github.com/voxpupuli/puppet-keepalived/pull/270) ([ymartin-ovh](https://github.com/ymartin-ovh))
+
 ## [v3.4.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.4.0) (2022-06-20)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.3.0...v3.4.0)
