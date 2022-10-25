@@ -1059,6 +1059,7 @@ The following parameters are available in the `keepalived::vrrp::instance` defin
 * [`state`](#state)
 * [`virtual_ipaddress_int`](#virtual_ipaddress_int)
 * [`virtual_ipaddress`](#virtual_ipaddress)
+* [`promote_secondaries`](#promote_secondaries)
 * [`virtual_routes`](#virtual_routes)
 * [`virtual_rules`](#virtual_rules)
 * [`virtual_ipaddress_excluded`](#virtual_ipaddress_excluded)
@@ -1125,6 +1126,14 @@ Data type: `Any`
 Set floating IP address.
 
 Default value: ``undef``
+
+##### <a name="promote_secondaries"></a>`promote_secondaries`
+
+Data type: `Boolean`
+
+Stop other addresses in the same CIDR being removed when one of them is removed
+
+Default value: ``false``
 
 ##### <a name="virtual_routes"></a>`virtual_routes`
 
