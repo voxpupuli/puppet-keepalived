@@ -25,6 +25,7 @@ Work in progress, supports:
 * [`keepalived::vrrp::instance`](#keepalivedvrrpinstance): Configure VRRP instance
 * [`keepalived::vrrp::script`](#keepalivedvrrpscript): Configure VRRP script
 * [`keepalived::vrrp::sync_group`](#keepalivedvrrpsync_group): Configure the group for instance
+* [`keepalived::vrrp::track_file`](#keepalivedvrrptrack_file): Configure the tracker file
 * [`keepalived::vrrp::track_process`](#keepalivedvrrptrack_process): Configure the process tracker
 
 #### Private Defined types
@@ -302,6 +303,7 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`enable_traps`](#enable_traps)
 * [`enable_dbus`](#enable_dbus)
 * [`vrrp_higher_prio_send_advert`](#vrrp_higher_prio_send_advert)
+* [`vrrp_min_garp`](#vrrp_min_garp)
 * [`vrrp_garp_lower_prio_repeat`](#vrrp_garp_lower_prio_repeat)
 * [`vrrp_garp_master_delay`](#vrrp_garp_master_delay)
 * [`vrrp_garp_master_refresh`](#vrrp_garp_master_refresh)
@@ -327,7 +329,6 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`dynamic_interfaces`](#dynamic_interfaces)
 * [`vrrp_notify_fifo`](#vrrp_notify_fifo)
 * [`vrrp_notify_fifo_script`](#vrrp_notify_fifo_script)
-* [`vrrp_min_garp`](#vrrp_min_garp)
 
 ##### <a name="notification_email"></a>`notification_email`
 
@@ -462,6 +463,14 @@ Default value: ``false``
 Data type: `Optional[Boolean]`
 
 Set vrrp_higher_prio_send_advert option.
+
+Default value: ``undef``
+
+##### <a name="vrrp_min_garp"></a>`vrrp_min_garp`
+
+Data type: `Optional[Boolean]`
+
+Set vrrp_min_garp option.
 
 Default value: ``undef``
 
@@ -662,14 +671,6 @@ Default value: ``undef``
 Data type: `Optional[Stdlib::Absolutepath]`
 
 Set the vrrp_notify_fifo_script option.
-
-Default value: ``undef``
-
-##### <a name="vrrp_min_garp"></a>`vrrp_min_garp`
-
-Data type: `Optional[Boolean]`
-
-Set the vrrp_min_garp option.
 
 Default value: ``undef``
 
@@ -1068,6 +1069,7 @@ The following parameters are available in the `keepalived::vrrp::instance` defin
 * [`auth_pass`](#auth_pass)
 * [`track_script`](#track_script)
 * [`track_process`](#track_process)
+* [`track_file`](#track_file)
 * [`track_interface`](#track_interface)
 * [`lvs_interface`](#lvs_interface)
 * [`smtp_alert`](#smtp_alert)
@@ -1131,7 +1133,11 @@ Default value: ``undef``
 
 Data type: `Boolean`
 
-Stop other addresses in the same CIDR being removed when one of them is removed
+Set the promote_secondaries flag on the interface to stop other
+addresses in the same CIDR being removed when 1 of them is removed
+For example if 10.1.1.2/24 and 10.1.1.3/24 are both configured on an
+interface, and one is removed, unless promote_secondaries is set on
+the interface the other address will also be removed.
 
 Default value: ``false``
 
@@ -1197,6 +1203,14 @@ Default value: ``undef``
 Data type: `Optional[Array[String[1]]]`
 
 Define which process trackers to run.
+
+Default value: ``undef``
+
+##### <a name="track_file"></a>`track_file`
+
+Data type: `Optional[Array[String[1]]]`
+
+Define which file trackers to run.
 
 Default value: ``undef``
 
@@ -1613,6 +1627,52 @@ Data type: `Boolean`
 
 Default value: ``false``
 
+### <a name="keepalivedvrrptrack_file"></a>`keepalived::vrrp::track_file`
+
+the specified file at startup if the file doesn't
+exist, unless overwrite is specified in which case
+any existing file contents will be overwritten with
+the specified value.
+
+#### Parameters
+
+The following parameters are available in the `keepalived::vrrp::track_file` defined type:
+
+* [`file_name`](#file_name)
+* [`weight`](#weight)
+* [`init_file`](#init_file)
+* [`overwrite`](#overwrite)
+
+##### <a name="file_name"></a>`file_name`
+
+Data type: `String[1]`
+
+name of track file
+
+##### <a name="weight"></a>`weight`
+
+Data type: `Integer`
+
+The weight that should add to the instance.
+
+Default value: `1`
+
+##### <a name="init_file"></a>`init_file`
+
+Data type: `Optional[String[1]]`
+
+create the file and/or initialise the value
+
+Default value: ``undef``
+
+##### <a name="overwrite"></a>`overwrite`
+
+Data type: `Boolean`
+
+This causes VALUE (default 0) to be written to
+
+Default value: ``false``
+
 ### <a name="keepalivedvrrptrack_process"></a>`keepalived::vrrp::track_process`
 
 Configure the process tracker
@@ -1694,10 +1754,27 @@ Alias of
 
 ```puppet
 Struct[{
-    Optional[from]   => String,
-    Optional[to]     => String,
-    Optional[dev]    => String,
-    Optional[lookup] => String
+    Optional[from]                  => String,
+    Optional[to]                    => String,
+    Optional[iif]                   => String,
+    Optional[oof]                   => String,
+    Optional[lookup]                => String,
+    Optional[table]                 => String,
+    Optional[tos]                   => String,
+    Optional[dsfield]               => String,
+    Optional[fwmark]                => String,
+    Optional[uidrange]              => String,
+    Optional[ipproto]               => String,
+    Optional[sport]                 => String,
+    Optional[dport]                 => String,
+    Optional[priority]              => String,
+    Optional[preference]            => String,
+    Optional[order]                 => String,
+    Optional[protocol]              => String,
+    Optional[suppress_prefixlength] => String,
+    Optional[suppress_ifgroup]      => String,
+    Optional[realms]                => String,
+    Optional[nat]                   => String,
 }]
 ```
 
