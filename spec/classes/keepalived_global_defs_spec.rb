@@ -658,6 +658,21 @@ describe 'keepalived::global_defs', type: :class do
             )
         }
       end
+
+      describe 'with parameter vrrp_min_garp: true' do
+        let(:params) do
+          {
+            vrrp_min_garp: true
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{vrrp_min_garp true}
+            )
+        }
+      end
     end
   end
 end

@@ -35,6 +35,8 @@
 #
 # @param vrrp_higher_prio_send_advert Set vrrp_higher_prio_send_advert option.
 #
+# @param vrrp_min_garp Set vrrp_min_garp option.
+#
 # @param vrrp_garp_lower_prio_repeat Set vrrp_garp_lower_prio_repeat option.
 #
 # @param vrrp_garp_master_delay Set vrrp_garp_master_delay option
@@ -102,6 +104,7 @@ class keepalived::global_defs (
   $enable_traps                                      = undef,
   Boolean $enable_dbus                               = false,
   Optional[Boolean] $vrrp_higher_prio_send_advert    = undef,
+  Optional[Boolean] $vrrp_min_garp                   = undef,
   Optional[Integer] $vrrp_garp_lower_prio_repeat     = undef,
   Optional[Integer] $vrrp_garp_master_delay          = undef,
   Optional[Integer] $vrrp_garp_master_refresh        = undef,
