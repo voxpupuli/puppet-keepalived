@@ -1090,6 +1090,7 @@ The following parameters are available in the `keepalived::vrrp::instance` defin
 * [`dont_track_primary`](#dont_track_primary)
 * [`use_vmac`](#use_vmac)
 * [`vmac_xmit_base`](#vmac_xmit_base)
+* [`use_vmac_addr`](#use_vmac_addr)
 * [`native_ipv6`](#native_ipv6)
 * [`garp_lower_prio_repeat`](#garp_lower_prio_repeat)
 * [`higher_prio_send_advert`](#higher_prio_send_advert)
@@ -1394,7 +1395,7 @@ Default value: ``false``
 
 Data type: `Any`
 
-Use virtual MAC address for virtual IP addresses.
+Use virtual MAC address for VRRP packages.
 
 Default value: ``false``
 
@@ -1407,6 +1408,14 @@ VRRP messaged on the underlying interface whilst ARP
 will happen from the the VMAC interface.
 
 Default value: ``true``
+
+##### <a name="use_vmac_addr"></a>`use_vmac_addr`
+
+Data type: `Boolean`
+
+Use virtual MAC address for virtual IP addresses.
+
+Default value: ``false``
 
 ##### <a name="native_ipv6"></a>`native_ipv6`
 
