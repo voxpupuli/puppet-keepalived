@@ -11,7 +11,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do
-        facts
+        facts.merge({ 'keepalived_version' => '2.2.0' })
       end
 
       describe 'without parameters', type: :define do
