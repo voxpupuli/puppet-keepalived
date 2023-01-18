@@ -1,5 +1,5 @@
-<%- | String $name,
-      String $file_name,
+<%- | String[1] $name,
+      Stdlib::Absolutepath $file_name,
       Optional[Integer] $weight,
       Optional[String]  $init_file,
       Optional[Boolean] $overwrite
