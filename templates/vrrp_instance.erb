@@ -40,6 +40,9 @@ vrrp_instance <%= @_name %> {
   vmac_xmit_base
   <%- end -%>
   <%- end -%>
+  <%- if @use_vmac_addr -%>
+  use_vmac_addr
+  <%- end -%>
   <%- if @native_ipv6 -%>
 
   native_ipv6

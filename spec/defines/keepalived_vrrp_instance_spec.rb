@@ -1353,6 +1353,23 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
+      describe 'with use_vmac_addr' do
+        let(:params) do
+          mandatory_params.merge(
+            use_vmac_addr: true
+          )
+        end
+
+        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
+              'content' => %r{use_vmac_addr}
+            )
+        }
+      end
+
       describe 'with native_ipv6' do
         let(:params) do
           mandatory_params.merge(
