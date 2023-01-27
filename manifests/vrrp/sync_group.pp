@@ -24,6 +24,14 @@
 #
 # @param global_tracking
 #
+# @param track_interface
+#   Define which interface(s) to monitor.
+#   Go to FAULT state if one of
+#   these interfaces goes down.
+#   May be specified as either:
+#     a) interface name
+#     b) array of interfaces names
+#
 define keepalived::vrrp::sync_group (
   $group,
   Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri = undef,
@@ -35,6 +43,7 @@ define keepalived::vrrp::sync_group (
   $smtp_alert                                                       = undef,
   $nopreempt                                                        = undef,
   Boolean $global_tracking                                          = false,
+  Optional[Variant[String, Array[String]]] $track_interface         = undef,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
