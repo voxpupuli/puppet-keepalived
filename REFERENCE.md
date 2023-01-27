@@ -7,26 +7,26 @@
 ### Classes
 
 * [`keepalived`](#keepalived): Install and configure keepalived
-* [`keepalived::config`](#keepalivedconfig): Configure keepalived module
-* [`keepalived::global_defs`](#keepalivedglobal_defs): Manage keepalived notifictions
-* [`keepalived::install`](#keepalivedinstall): Install keepalived package
-* [`keepalived::service`](#keepalivedservice): Manage keepalived service
+* [`keepalived::config`](#keepalived--config): Configure keepalived module
+* [`keepalived::global_defs`](#keepalived--global_defs): Manage keepalived notifictions
+* [`keepalived::install`](#keepalived--install): Install keepalived package
+* [`keepalived::service`](#keepalived--service): Manage keepalived service
 
 ### Defined types
 
 #### Public Defined types
 
-* [`keepalived::lvs::real_server`](#keepalivedlvsreal_server): Add a real server to a Linux Virtual Server with keepalived
-* [`keepalived::lvs::virtual_server`](#keepalivedlvsvirtual_server): Configure a Linux Virtual Server with keepalived
+* [`keepalived::lvs::real_server`](#keepalived--lvs--real_server): Add a real server to a Linux Virtual Server with keepalived
+* [`keepalived::lvs::virtual_server`](#keepalived--lvs--virtual_server): Configure a Linux Virtual Server with keepalived
 
 Work in progress, supports:
   - single IP/port virtual servers
   - TCP_CHECK healthchecks
-* [`keepalived::vrrp::instance`](#keepalivedvrrpinstance): Configure VRRP instance
-* [`keepalived::vrrp::script`](#keepalivedvrrpscript): Configure VRRP script
-* [`keepalived::vrrp::sync_group`](#keepalivedvrrpsync_group): Configure the group for instance
-* [`keepalived::vrrp::track_file`](#keepalivedvrrptrack_file): Configure the tracker file
-* [`keepalived::vrrp::track_process`](#keepalivedvrrptrack_process): Configure the process tracker
+* [`keepalived::vrrp::instance`](#keepalived--vrrp--instance): Configure VRRP instance
+* [`keepalived::vrrp::script`](#keepalived--vrrp--script): Configure VRRP script
+* [`keepalived::vrrp::sync_group`](#keepalived--vrrp--sync_group): Configure the group for instance
+* [`keepalived::vrrp::track_file`](#keepalived--vrrp--track_file): Configure the tracker file
+* [`keepalived::vrrp::track_process`](#keepalived--vrrp--track_process): Configure the process tracker
 
 #### Private Defined types
 
@@ -34,8 +34,8 @@ Work in progress, supports:
 
 ### Data types
 
-* [`Keepalived::Options`](#keepalivedoptions): keepalived::options
-* [`Keepalived::Vrrp::Instance::VRule`](#keepalivedvrrpinstancevrule): keepalived::vrrp::instance::vrule
+* [`Keepalived::Options`](#Keepalived--Options): keepalived::options
+* [`Keepalived::Vrrp::Instance::VRule`](#Keepalived--Vrrp--Instance--VRule): keepalived::vrrp::instance::vrule
 
 ## Classes
 
@@ -47,46 +47,46 @@ Install and configure keepalived
 
 The following parameters are available in the `keepalived` class:
 
-* [`sysconf_dir`](#sysconf_dir)
-* [`sysconf_options`](#sysconf_options)
-* [`config_dir`](#config_dir)
-* [`config_dir_mode`](#config_dir_mode)
-* [`config_file_mode`](#config_file_mode)
-* [`config_group`](#config_group)
-* [`config_owner`](#config_owner)
-* [`daemon_group`](#daemon_group)
-* [`daemon_user`](#daemon_user)
-* [`pkg_ensure`](#pkg_ensure)
-* [`pkg_list`](#pkg_list)
-* [`service_enable`](#service_enable)
-* [`service_ensure`](#service_ensure)
-* [`service_hasrestart`](#service_hasrestart)
-* [`service_hasstatus`](#service_hasstatus)
-* [`service_manage`](#service_manage)
-* [`service_name`](#service_name)
-* [`service_restart`](#service_restart)
-* [`vrrp_instance`](#vrrp_instance)
-* [`vrrp_script`](#vrrp_script)
-* [`vrrp_track_process`](#vrrp_track_process)
-* [`vrrp_sync_group`](#vrrp_sync_group)
-* [`lvs_real_server`](#lvs_real_server)
-* [`lvs_virtual_server`](#lvs_virtual_server)
-* [`include_external_conf_files`](#include_external_conf_files)
-* [`manage_package`](#manage_package)
+* [`sysconf_dir`](#-keepalived--sysconf_dir)
+* [`sysconf_options`](#-keepalived--sysconf_options)
+* [`config_dir`](#-keepalived--config_dir)
+* [`config_dir_mode`](#-keepalived--config_dir_mode)
+* [`config_file_mode`](#-keepalived--config_file_mode)
+* [`config_group`](#-keepalived--config_group)
+* [`config_owner`](#-keepalived--config_owner)
+* [`daemon_group`](#-keepalived--daemon_group)
+* [`daemon_user`](#-keepalived--daemon_user)
+* [`pkg_ensure`](#-keepalived--pkg_ensure)
+* [`pkg_list`](#-keepalived--pkg_list)
+* [`service_enable`](#-keepalived--service_enable)
+* [`service_ensure`](#-keepalived--service_ensure)
+* [`service_hasrestart`](#-keepalived--service_hasrestart)
+* [`service_hasstatus`](#-keepalived--service_hasstatus)
+* [`service_manage`](#-keepalived--service_manage)
+* [`service_name`](#-keepalived--service_name)
+* [`service_restart`](#-keepalived--service_restart)
+* [`vrrp_instance`](#-keepalived--vrrp_instance)
+* [`vrrp_script`](#-keepalived--vrrp_script)
+* [`vrrp_track_process`](#-keepalived--vrrp_track_process)
+* [`vrrp_sync_group`](#-keepalived--vrrp_sync_group)
+* [`lvs_real_server`](#-keepalived--lvs_real_server)
+* [`lvs_virtual_server`](#-keepalived--lvs_virtual_server)
+* [`include_external_conf_files`](#-keepalived--include_external_conf_files)
+* [`manage_package`](#-keepalived--manage_package)
 
-##### <a name="sysconf_dir"></a>`sysconf_dir`
+##### <a name="-keepalived--sysconf_dir"></a>`sysconf_dir`
 
 Data type: `String[1]`
 
 
 
-##### <a name="sysconf_options"></a>`sysconf_options`
+##### <a name="-keepalived--sysconf_options"></a>`sysconf_options`
 
 Data type: `String`
 
 
 
-##### <a name="config_dir"></a>`config_dir`
+##### <a name="-keepalived--config_dir"></a>`config_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -94,7 +94,7 @@ Data type: `Stdlib::Absolutepath`
 
 Default value: `'/etc/keepalived'`
 
-##### <a name="config_dir_mode"></a>`config_dir_mode`
+##### <a name="-keepalived--config_dir_mode"></a>`config_dir_mode`
 
 Data type: `Stdlib::Filemode`
 
@@ -102,7 +102,7 @@ Data type: `Stdlib::Filemode`
 
 Default value: `'0755'`
 
-##### <a name="config_file_mode"></a>`config_file_mode`
+##### <a name="-keepalived--config_file_mode"></a>`config_file_mode`
 
 Data type: `Stdlib::Filemode`
 
@@ -110,7 +110,7 @@ Data type: `Stdlib::Filemode`
 
 Default value: `'0644'`
 
-##### <a name="config_group"></a>`config_group`
+##### <a name="-keepalived--config_group"></a>`config_group`
 
 Data type: `String[1]`
 
@@ -118,7 +118,7 @@ Data type: `String[1]`
 
 Default value: `'root'`
 
-##### <a name="config_owner"></a>`config_owner`
+##### <a name="-keepalived--config_owner"></a>`config_owner`
 
 Data type: `String[1]`
 
@@ -126,7 +126,7 @@ Data type: `String[1]`
 
 Default value: `'root'`
 
-##### <a name="daemon_group"></a>`daemon_group`
+##### <a name="-keepalived--daemon_group"></a>`daemon_group`
 
 Data type: `String[1]`
 
@@ -134,7 +134,7 @@ Data type: `String[1]`
 
 Default value: `'root'`
 
-##### <a name="daemon_user"></a>`daemon_user`
+##### <a name="-keepalived--daemon_user"></a>`daemon_user`
 
 Data type: `String[1]`
 
@@ -142,7 +142,7 @@ Data type: `String[1]`
 
 Default value: `'root'`
 
-##### <a name="pkg_ensure"></a>`pkg_ensure`
+##### <a name="-keepalived--pkg_ensure"></a>`pkg_ensure`
 
 Data type: `String[1]`
 
@@ -150,7 +150,7 @@ Data type: `String[1]`
 
 Default value: `'present'`
 
-##### <a name="pkg_list"></a>`pkg_list`
+##### <a name="-keepalived--pkg_list"></a>`pkg_list`
 
 Data type: `Array[String[1]]`
 
@@ -158,15 +158,15 @@ Data type: `Array[String[1]]`
 
 Default value: `['keepalived']`
 
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-keepalived--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-keepalived--service_ensure"></a>`service_ensure`
 
 Data type: `Stdlib::Ensure::Service`
 
@@ -174,27 +174,27 @@ Data type: `Stdlib::Ensure::Service`
 
 Default value: `'running'`
 
-##### <a name="service_hasrestart"></a>`service_hasrestart`
+##### <a name="-keepalived--service_hasrestart"></a>`service_hasrestart`
 
 Data type: `Boolean`
 
 
 
-##### <a name="service_hasstatus"></a>`service_hasstatus`
+##### <a name="-keepalived--service_hasstatus"></a>`service_hasstatus`
 
 Data type: `Boolean`
 
 
 
-##### <a name="service_manage"></a>`service_manage`
+##### <a name="-keepalived--service_manage"></a>`service_manage`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_name"></a>`service_name`
+##### <a name="-keepalived--service_name"></a>`service_name`
 
 Data type: `String[1]`
 
@@ -202,23 +202,15 @@ Data type: `String[1]`
 
 Default value: `'keepalived'`
 
-##### <a name="service_restart"></a>`service_restart`
+##### <a name="-keepalived--service_restart"></a>`service_restart`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_instance"></a>`vrrp_instance`
-
-Data type: `Hash`
-
-
-
-Default value: `{}`
-
-##### <a name="vrrp_script"></a>`vrrp_script`
+##### <a name="-keepalived--vrrp_instance"></a>`vrrp_instance`
 
 Data type: `Hash`
 
@@ -226,7 +218,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="vrrp_track_process"></a>`vrrp_track_process`
+##### <a name="-keepalived--vrrp_script"></a>`vrrp_script`
 
 Data type: `Hash`
 
@@ -234,7 +226,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="vrrp_sync_group"></a>`vrrp_sync_group`
+##### <a name="-keepalived--vrrp_track_process"></a>`vrrp_track_process`
 
 Data type: `Hash`
 
@@ -242,7 +234,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="lvs_real_server"></a>`lvs_real_server`
+##### <a name="-keepalived--vrrp_sync_group"></a>`vrrp_sync_group`
 
 Data type: `Hash`
 
@@ -250,7 +242,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="lvs_virtual_server"></a>`lvs_virtual_server`
+##### <a name="-keepalived--lvs_real_server"></a>`lvs_real_server`
 
 Data type: `Hash`
 
@@ -258,7 +250,15 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="include_external_conf_files"></a>`include_external_conf_files`
+##### <a name="-keepalived--lvs_virtual_server"></a>`lvs_virtual_server`
+
+Data type: `Hash`
+
+
+
+Default value: `{}`
+
+##### <a name="-keepalived--include_external_conf_files"></a>`include_external_conf_files`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -266,19 +266,19 @@ Data type: `Array[Stdlib::Absolutepath]`
 
 Default value: `[]`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-keepalived--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="keepalivedconfig"></a>`keepalived::config`
+### <a name="keepalived--config"></a>`keepalived::config`
 
 Configure keepalived module
 
-### <a name="keepalivedglobal_defs"></a>`keepalived::global_defs`
+### <a name="keepalived--global_defs"></a>`keepalived::global_defs`
 
 Manage keepalived notifictions
 
@@ -286,107 +286,107 @@ Manage keepalived notifictions
 
 The following parameters are available in the `keepalived::global_defs` class:
 
-* [`notification_email`](#notification_email)
-* [`notification_email_from`](#notification_email_from)
-* [`smtp_server`](#smtp_server)
-* [`smtp_connect_timeout`](#smtp_connect_timeout)
-* [`router_id`](#router_id)
-* [`script_user`](#script_user)
-* [`enable_script_security`](#enable_script_security)
-* [`snmp_socket`](#snmp_socket)
-* [`enable_snmp_keepalived`](#enable_snmp_keepalived)
-* [`enable_snmp_vrrp`](#enable_snmp_vrrp)
-* [`enable_snmp_checker`](#enable_snmp_checker)
-* [`enable_snmp_rfc`](#enable_snmp_rfc)
-* [`enable_snmp_rfcv2`](#enable_snmp_rfcv2)
-* [`enable_snmp_rfcv3`](#enable_snmp_rfcv3)
-* [`enable_traps`](#enable_traps)
-* [`enable_dbus`](#enable_dbus)
-* [`vrrp_higher_prio_send_advert`](#vrrp_higher_prio_send_advert)
-* [`vrrp_min_garp`](#vrrp_min_garp)
-* [`vrrp_garp_lower_prio_repeat`](#vrrp_garp_lower_prio_repeat)
-* [`vrrp_garp_master_delay`](#vrrp_garp_master_delay)
-* [`vrrp_garp_master_refresh`](#vrrp_garp_master_refresh)
-* [`vrrp_garp_master_repeat`](#vrrp_garp_master_repeat)
-* [`vrrp_garp_master_refresh_repeat`](#vrrp_garp_master_refresh_repeat)
-* [`vrrp_garp_lower_prio_delay`](#vrrp_garp_lower_prio_delay)
-* [`vrrp_startup_delay`](#vrrp_startup_delay)
-* [`bfd_rlimit_rttime`](#bfd_rlimit_rttime)
-* [`checker_rlimit_rttime`](#checker_rlimit_rttime)
-* [`vrrp_rlimit_rttime`](#vrrp_rlimit_rttime)
-* [`bfd_priority`](#bfd_priority)
-* [`checker_priority`](#checker_priority)
-* [`vrrp_priority`](#vrrp_priority)
-* [`bfd_rt_priority`](#bfd_rt_priority)
-* [`checker_rt_priority`](#checker_rt_priority)
-* [`vrrp_rt_priority`](#vrrp_rt_priority)
-* [`bfd_no_swap`](#bfd_no_swap)
-* [`checker_no_swap`](#checker_no_swap)
-* [`vrrp_no_swap`](#vrrp_no_swap)
-* [`vrrp_check_unicast_src`](#vrrp_check_unicast_src)
-* [`vrrp_version`](#vrrp_version)
-* [`max_auto_priority`](#max_auto_priority)
-* [`dynamic_interfaces`](#dynamic_interfaces)
-* [`vrrp_notify_fifo`](#vrrp_notify_fifo)
-* [`vrrp_notify_fifo_script`](#vrrp_notify_fifo_script)
+* [`notification_email`](#-keepalived--global_defs--notification_email)
+* [`notification_email_from`](#-keepalived--global_defs--notification_email_from)
+* [`smtp_server`](#-keepalived--global_defs--smtp_server)
+* [`smtp_connect_timeout`](#-keepalived--global_defs--smtp_connect_timeout)
+* [`router_id`](#-keepalived--global_defs--router_id)
+* [`script_user`](#-keepalived--global_defs--script_user)
+* [`enable_script_security`](#-keepalived--global_defs--enable_script_security)
+* [`snmp_socket`](#-keepalived--global_defs--snmp_socket)
+* [`enable_snmp_keepalived`](#-keepalived--global_defs--enable_snmp_keepalived)
+* [`enable_snmp_vrrp`](#-keepalived--global_defs--enable_snmp_vrrp)
+* [`enable_snmp_checker`](#-keepalived--global_defs--enable_snmp_checker)
+* [`enable_snmp_rfc`](#-keepalived--global_defs--enable_snmp_rfc)
+* [`enable_snmp_rfcv2`](#-keepalived--global_defs--enable_snmp_rfcv2)
+* [`enable_snmp_rfcv3`](#-keepalived--global_defs--enable_snmp_rfcv3)
+* [`enable_traps`](#-keepalived--global_defs--enable_traps)
+* [`enable_dbus`](#-keepalived--global_defs--enable_dbus)
+* [`vrrp_higher_prio_send_advert`](#-keepalived--global_defs--vrrp_higher_prio_send_advert)
+* [`vrrp_min_garp`](#-keepalived--global_defs--vrrp_min_garp)
+* [`vrrp_garp_lower_prio_repeat`](#-keepalived--global_defs--vrrp_garp_lower_prio_repeat)
+* [`vrrp_garp_master_delay`](#-keepalived--global_defs--vrrp_garp_master_delay)
+* [`vrrp_garp_master_refresh`](#-keepalived--global_defs--vrrp_garp_master_refresh)
+* [`vrrp_garp_master_repeat`](#-keepalived--global_defs--vrrp_garp_master_repeat)
+* [`vrrp_garp_master_refresh_repeat`](#-keepalived--global_defs--vrrp_garp_master_refresh_repeat)
+* [`vrrp_garp_lower_prio_delay`](#-keepalived--global_defs--vrrp_garp_lower_prio_delay)
+* [`vrrp_startup_delay`](#-keepalived--global_defs--vrrp_startup_delay)
+* [`bfd_rlimit_rttime`](#-keepalived--global_defs--bfd_rlimit_rttime)
+* [`checker_rlimit_rttime`](#-keepalived--global_defs--checker_rlimit_rttime)
+* [`vrrp_rlimit_rttime`](#-keepalived--global_defs--vrrp_rlimit_rttime)
+* [`bfd_priority`](#-keepalived--global_defs--bfd_priority)
+* [`checker_priority`](#-keepalived--global_defs--checker_priority)
+* [`vrrp_priority`](#-keepalived--global_defs--vrrp_priority)
+* [`bfd_rt_priority`](#-keepalived--global_defs--bfd_rt_priority)
+* [`checker_rt_priority`](#-keepalived--global_defs--checker_rt_priority)
+* [`vrrp_rt_priority`](#-keepalived--global_defs--vrrp_rt_priority)
+* [`bfd_no_swap`](#-keepalived--global_defs--bfd_no_swap)
+* [`checker_no_swap`](#-keepalived--global_defs--checker_no_swap)
+* [`vrrp_no_swap`](#-keepalived--global_defs--vrrp_no_swap)
+* [`vrrp_check_unicast_src`](#-keepalived--global_defs--vrrp_check_unicast_src)
+* [`vrrp_version`](#-keepalived--global_defs--vrrp_version)
+* [`max_auto_priority`](#-keepalived--global_defs--max_auto_priority)
+* [`dynamic_interfaces`](#-keepalived--global_defs--dynamic_interfaces)
+* [`vrrp_notify_fifo`](#-keepalived--global_defs--vrrp_notify_fifo)
+* [`vrrp_notify_fifo_script`](#-keepalived--global_defs--vrrp_notify_fifo_script)
 
-##### <a name="notification_email"></a>`notification_email`
+##### <a name="-keepalived--global_defs--notification_email"></a>`notification_email`
 
 Data type: `Any`
 
 Array of notification email Recipients.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notification_email_from"></a>`notification_email_from`
+##### <a name="-keepalived--global_defs--notification_email_from"></a>`notification_email_from`
 
 Data type: `Any`
 
 Define the notification email Sender.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="smtp_server"></a>`smtp_server`
+##### <a name="-keepalived--global_defs--smtp_server"></a>`smtp_server`
 
 Data type: `Any`
 
 Define the smtp server addres.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="smtp_connect_timeout"></a>`smtp_connect_timeout`
+##### <a name="-keepalived--global_defs--smtp_connect_timeout"></a>`smtp_connect_timeout`
 
 Data type: `Any`
 
 Define the smtp connect timeout.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="router_id"></a>`router_id`
+##### <a name="-keepalived--global_defs--router_id"></a>`router_id`
 
 Data type: `Any`
 
 Define the router ID.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="script_user"></a>`script_user`
+##### <a name="-keepalived--global_defs--script_user"></a>`script_user`
 
 Data type: `Any`
 
 Set the global script_user option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_script_security"></a>`enable_script_security`
+##### <a name="-keepalived--global_defs--enable_script_security"></a>`enable_script_security`
 
 Data type: `Any`
 
 Set the enable_script_security option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="snmp_socket"></a>`snmp_socket`
+##### <a name="-keepalived--global_defs--snmp_socket"></a>`snmp_socket`
 
 Data type: `Any`
 
@@ -394,297 +394,297 @@ Define snmp master agent socker
 
 Default value: `'unix:/var/agentx/master'`
 
-##### <a name="enable_snmp_keepalived"></a>`enable_snmp_keepalived`
+##### <a name="-keepalived--global_defs--enable_snmp_keepalived"></a>`enable_snmp_keepalived`
 
 Data type: `Any`
 
 Set enable_snmp_keepalived option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_snmp_vrrp"></a>`enable_snmp_vrrp`
+##### <a name="-keepalived--global_defs--enable_snmp_vrrp"></a>`enable_snmp_vrrp`
 
 Data type: `Any`
 
 Set enable_snmp_vrrp option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_snmp_checker"></a>`enable_snmp_checker`
+##### <a name="-keepalived--global_defs--enable_snmp_checker"></a>`enable_snmp_checker`
 
 Data type: `Any`
 
 Set enable_snmp_checker option
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_snmp_rfc"></a>`enable_snmp_rfc`
+##### <a name="-keepalived--global_defs--enable_snmp_rfc"></a>`enable_snmp_rfc`
 
 Data type: `Any`
 
 Set enable_snmp_rfc option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_snmp_rfcv2"></a>`enable_snmp_rfcv2`
+##### <a name="-keepalived--global_defs--enable_snmp_rfcv2"></a>`enable_snmp_rfcv2`
 
 Data type: `Any`
 
 Set enable_snmp_rfcv2 option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_snmp_rfcv3"></a>`enable_snmp_rfcv3`
+##### <a name="-keepalived--global_defs--enable_snmp_rfcv3"></a>`enable_snmp_rfcv3`
 
 Data type: `Any`
 
 Set enable_snmp_rfcv3 option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_traps"></a>`enable_traps`
+##### <a name="-keepalived--global_defs--enable_traps"></a>`enable_traps`
 
 Data type: `Any`
 
 Set enable_traps option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="enable_dbus"></a>`enable_dbus`
+##### <a name="-keepalived--global_defs--enable_dbus"></a>`enable_dbus`
 
 Data type: `Boolean`
 
 Set enable_dbus option
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="vrrp_higher_prio_send_advert"></a>`vrrp_higher_prio_send_advert`
+##### <a name="-keepalived--global_defs--vrrp_higher_prio_send_advert"></a>`vrrp_higher_prio_send_advert`
 
 Data type: `Optional[Boolean]`
 
 Set vrrp_higher_prio_send_advert option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_min_garp"></a>`vrrp_min_garp`
+##### <a name="-keepalived--global_defs--vrrp_min_garp"></a>`vrrp_min_garp`
 
 Data type: `Optional[Boolean]`
 
 Set vrrp_min_garp option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_garp_lower_prio_repeat"></a>`vrrp_garp_lower_prio_repeat`
+##### <a name="-keepalived--global_defs--vrrp_garp_lower_prio_repeat"></a>`vrrp_garp_lower_prio_repeat`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_garp_lower_prio_repeat option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_garp_master_delay"></a>`vrrp_garp_master_delay`
+##### <a name="-keepalived--global_defs--vrrp_garp_master_delay"></a>`vrrp_garp_master_delay`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_garp_master_delay option
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_garp_master_refresh"></a>`vrrp_garp_master_refresh`
+##### <a name="-keepalived--global_defs--vrrp_garp_master_refresh"></a>`vrrp_garp_master_refresh`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_garp_master_refresh option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_garp_master_repeat"></a>`vrrp_garp_master_repeat`
+##### <a name="-keepalived--global_defs--vrrp_garp_master_repeat"></a>`vrrp_garp_master_repeat`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_garp_master_repeat option
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_garp_master_refresh_repeat"></a>`vrrp_garp_master_refresh_repeat`
+##### <a name="-keepalived--global_defs--vrrp_garp_master_refresh_repeat"></a>`vrrp_garp_master_refresh_repeat`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_garp_master_refresh_repeat option
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_garp_lower_prio_delay"></a>`vrrp_garp_lower_prio_delay`
+##### <a name="-keepalived--global_defs--vrrp_garp_lower_prio_delay"></a>`vrrp_garp_lower_prio_delay`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_garp_lower_prio_delay option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_startup_delay"></a>`vrrp_startup_delay`
+##### <a name="-keepalived--global_defs--vrrp_startup_delay"></a>`vrrp_startup_delay`
 
 Data type: `Optional[Float]`
 
 Set vrrp_startup_delay option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="bfd_rlimit_rttime"></a>`bfd_rlimit_rttime`
+##### <a name="-keepalived--global_defs--bfd_rlimit_rttime"></a>`bfd_rlimit_rttime`
 
 Data type: `Optional[Integer]`
 
 Set bfd_rlimit_rttime option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="checker_rlimit_rttime"></a>`checker_rlimit_rttime`
+##### <a name="-keepalived--global_defs--checker_rlimit_rttime"></a>`checker_rlimit_rttime`
 
 Data type: `Optional[Integer]`
 
 Set checker_rlimit_rttime option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_rlimit_rttime"></a>`vrrp_rlimit_rttime`
+##### <a name="-keepalived--global_defs--vrrp_rlimit_rttime"></a>`vrrp_rlimit_rttime`
 
 Data type: `Optional[Integer]`
 
 Set vrrp_rlimit_rttime option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="bfd_priority"></a>`bfd_priority`
+##### <a name="-keepalived--global_defs--bfd_priority"></a>`bfd_priority`
 
 Data type: `Optional[Integer[-20, 19]]`
 
 Set bfd_priority option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="checker_priority"></a>`checker_priority`
+##### <a name="-keepalived--global_defs--checker_priority"></a>`checker_priority`
 
 Data type: `Optional[Integer[-20, 19]]`
 
 Set checker_priority option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_priority"></a>`vrrp_priority`
+##### <a name="-keepalived--global_defs--vrrp_priority"></a>`vrrp_priority`
 
 Data type: `Optional[Integer[-20, 19]]`
 
 Set vrrp_priority option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="bfd_rt_priority"></a>`bfd_rt_priority`
+##### <a name="-keepalived--global_defs--bfd_rt_priority"></a>`bfd_rt_priority`
 
 Data type: `Optional[Integer[1, 99]]`
 
 Set bfd_rt_priority option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="checker_rt_priority"></a>`checker_rt_priority`
+##### <a name="-keepalived--global_defs--checker_rt_priority"></a>`checker_rt_priority`
 
 Data type: `Optional[Integer[1, 99]]`
 
 Set checker_rt_priority option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_rt_priority"></a>`vrrp_rt_priority`
+##### <a name="-keepalived--global_defs--vrrp_rt_priority"></a>`vrrp_rt_priority`
 
 Data type: `Optional[Integer[1, 99]]`
 
 Set vrrp_rt_priority option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="bfd_no_swap"></a>`bfd_no_swap`
+##### <a name="-keepalived--global_defs--bfd_no_swap"></a>`bfd_no_swap`
 
 Data type: `Boolean`
 
 Set bfd_no_swap option.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="checker_no_swap"></a>`checker_no_swap`
+##### <a name="-keepalived--global_defs--checker_no_swap"></a>`checker_no_swap`
 
 Data type: `Boolean`
 
 Set checker_no_swap option.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="vrrp_no_swap"></a>`vrrp_no_swap`
+##### <a name="-keepalived--global_defs--vrrp_no_swap"></a>`vrrp_no_swap`
 
 Data type: `Boolean`
 
 Set vrrp_no_swap option.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="vrrp_check_unicast_src"></a>`vrrp_check_unicast_src`
+##### <a name="-keepalived--global_defs--vrrp_check_unicast_src"></a>`vrrp_check_unicast_src`
 
 Data type: `Boolean`
 
 Set vrrp_check_unicast_src option.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="vrrp_version"></a>`vrrp_version`
+##### <a name="-keepalived--global_defs--vrrp_version"></a>`vrrp_version`
 
 Data type: `Optional[Integer[2, 3]]`
 
 Set vrrp_version option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="max_auto_priority"></a>`max_auto_priority`
+##### <a name="-keepalived--global_defs--max_auto_priority"></a>`max_auto_priority`
 
 Data type: `Optional[Integer[-1, 99]]`
 
 Set max_auto_priority option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dynamic_interfaces"></a>`dynamic_interfaces`
+##### <a name="-keepalived--global_defs--dynamic_interfaces"></a>`dynamic_interfaces`
 
 Data type: `Boolean`
 
 Set the dynamic_interfaces option.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="vrrp_notify_fifo"></a>`vrrp_notify_fifo`
+##### <a name="-keepalived--global_defs--vrrp_notify_fifo"></a>`vrrp_notify_fifo`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 Set the vrrp_notify_fifo option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="vrrp_notify_fifo_script"></a>`vrrp_notify_fifo_script`
+##### <a name="-keepalived--global_defs--vrrp_notify_fifo_script"></a>`vrrp_notify_fifo_script`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 Set the vrrp_notify_fifo_script option.
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="keepalivedinstall"></a>`keepalived::install`
+### <a name="keepalived--install"></a>`keepalived::install`
 
 Install keepalived package
 
-### <a name="keepalivedservice"></a>`keepalived::service`
+### <a name="keepalived--service"></a>`keepalived::service`
 
 Manage keepalived service
 
 ## Defined types
 
-### <a name="keepalivedlvsreal_server"></a>`keepalived::lvs::real_server`
+### <a name="keepalived--lvs--real_server"></a>`keepalived::lvs::real_server`
 
 Add a real server to a Linux Virtual Server with keepalived
 
@@ -692,30 +692,30 @@ Add a real server to a Linux Virtual Server with keepalived
 
 The following parameters are available in the `keepalived::lvs::real_server` defined type:
 
-* [`virtual_server`](#virtual_server)
-* [`ip_address`](#ip_address)
-* [`port`](#port)
-* [`options`](#options)
+* [`virtual_server`](#-keepalived--lvs--real_server--virtual_server)
+* [`ip_address`](#-keepalived--lvs--real_server--ip_address)
+* [`port`](#-keepalived--lvs--real_server--port)
+* [`options`](#-keepalived--lvs--real_server--options)
 
-##### <a name="virtual_server"></a>`virtual_server`
+##### <a name="-keepalived--lvs--real_server--virtual_server"></a>`virtual_server`
 
 Data type: `String[1]`
 
 The name of the virtual server this real server will be added to
 
-##### <a name="ip_address"></a>`ip_address`
+##### <a name="-keepalived--lvs--real_server--ip_address"></a>`ip_address`
 
 Data type: `Stdlib::IP::Address`
 
 The ip address of the real server
 
-##### <a name="port"></a>`port`
+##### <a name="-keepalived--lvs--real_server--port"></a>`port`
 
 Data type: `Stdlib::Port`
 
 Real sever IP port.  (if ommitted the port defaults to the VIP port)
 
-##### <a name="options"></a>`options`
+##### <a name="-keepalived--lvs--real_server--options"></a>`options`
 
 Data type: `Keepalived::Options`
 
@@ -734,7 +734,7 @@ One or more options to include in the real_server block
 
 Default value: `{}`
 
-### <a name="keepalivedlvsvirtual_server"></a>`keepalived::lvs::virtual_server`
+### <a name="keepalived--lvs--virtual_server"></a>`keepalived::lvs::virtual_server`
 
 Configure a Linux Virtual Server with keepalived
 
@@ -762,72 +762,72 @@ real_server_options => {
 
 The following parameters are available in the `keepalived::lvs::virtual_server` defined type:
 
-* [`ip_address`](#ip_address)
-* [`port`](#port)
-* [`fwmark`](#fwmark)
-* [`lb_algo`](#lb_algo)
-* [`delay_loop`](#delay_loop)
-* [`protocol`](#protocol)
-* [`lb_kind`](#lb_kind)
-* [`ha_suspend`](#ha_suspend)
-* [`alpha`](#alpha)
-* [`omega`](#omega)
-* [`mh_port`](#mh_port)
-* [`mh_fallback`](#mh_fallback)
-* [`sh_port`](#sh_port)
-* [`sh_fallback`](#sh_fallback)
-* [`quorum`](#quorum)
-* [`quorum_up`](#quorum_up)
-* [`quorum_down`](#quorum_down)
-* [`hysteresis`](#hysteresis)
-* [`tcp_check`](#tcp_check)
-* [`real_server_options`](#real_server_options)
-* [`sorry_server`](#sorry_server)
-* [`sorry_server_inhibit`](#sorry_server_inhibit)
-* [`persistence_timeout`](#persistence_timeout)
-* [`virtualhost`](#virtualhost)
-* [`real_servers`](#real_servers)
-* [`collect_exported`](#collect_exported)
+* [`ip_address`](#-keepalived--lvs--virtual_server--ip_address)
+* [`port`](#-keepalived--lvs--virtual_server--port)
+* [`fwmark`](#-keepalived--lvs--virtual_server--fwmark)
+* [`lb_algo`](#-keepalived--lvs--virtual_server--lb_algo)
+* [`delay_loop`](#-keepalived--lvs--virtual_server--delay_loop)
+* [`protocol`](#-keepalived--lvs--virtual_server--protocol)
+* [`lb_kind`](#-keepalived--lvs--virtual_server--lb_kind)
+* [`ha_suspend`](#-keepalived--lvs--virtual_server--ha_suspend)
+* [`alpha`](#-keepalived--lvs--virtual_server--alpha)
+* [`omega`](#-keepalived--lvs--virtual_server--omega)
+* [`mh_port`](#-keepalived--lvs--virtual_server--mh_port)
+* [`mh_fallback`](#-keepalived--lvs--virtual_server--mh_fallback)
+* [`sh_port`](#-keepalived--lvs--virtual_server--sh_port)
+* [`sh_fallback`](#-keepalived--lvs--virtual_server--sh_fallback)
+* [`quorum`](#-keepalived--lvs--virtual_server--quorum)
+* [`quorum_up`](#-keepalived--lvs--virtual_server--quorum_up)
+* [`quorum_down`](#-keepalived--lvs--virtual_server--quorum_down)
+* [`hysteresis`](#-keepalived--lvs--virtual_server--hysteresis)
+* [`tcp_check`](#-keepalived--lvs--virtual_server--tcp_check)
+* [`real_server_options`](#-keepalived--lvs--virtual_server--real_server_options)
+* [`sorry_server`](#-keepalived--lvs--virtual_server--sorry_server)
+* [`sorry_server_inhibit`](#-keepalived--lvs--virtual_server--sorry_server_inhibit)
+* [`persistence_timeout`](#-keepalived--lvs--virtual_server--persistence_timeout)
+* [`virtualhost`](#-keepalived--lvs--virtual_server--virtualhost)
+* [`real_servers`](#-keepalived--lvs--virtual_server--real_servers)
+* [`collect_exported`](#-keepalived--lvs--virtual_server--collect_exported)
 
-##### <a name="ip_address"></a>`ip_address`
+##### <a name="-keepalived--lvs--virtual_server--ip_address"></a>`ip_address`
 
 Data type: `Optional[Stdlib::IP::Address]`
 
 Virtual server IP address.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="port"></a>`port`
+##### <a name="-keepalived--lvs--virtual_server--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 Virtual sever IP port.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="fwmark"></a>`fwmark`
+##### <a name="-keepalived--lvs--virtual_server--fwmark"></a>`fwmark`
 
 Data type: `Optional[Integer[1]]`
 
 Virtual Server firewall mark. (overrides ip_address and port)
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="lb_algo"></a>`lb_algo`
+##### <a name="-keepalived--lvs--virtual_server--lb_algo"></a>`lb_algo`
 
 Data type: `Enum['rr','wrr','lc','wlc','lblc','sh','dh', 'mh']`
 
 Must be one of rr, wrr, lc, wlc, lblc, sh, mh, dh
 
-##### <a name="delay_loop"></a>`delay_loop`
+##### <a name="-keepalived--lvs--virtual_server--delay_loop"></a>`delay_loop`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="protocol"></a>`protocol`
+##### <a name="-keepalived--lvs--virtual_server--protocol"></a>`protocol`
 
 Data type: `Enum['TCP','UDP']`
 
@@ -835,7 +835,7 @@ Data type: `Enum['TCP','UDP']`
 
 Default value: `'TCP'`
 
-##### <a name="lb_kind"></a>`lb_kind`
+##### <a name="-keepalived--lvs--virtual_server--lb_kind"></a>`lb_kind`
 
 Data type: `Enum['NAT','DR','TUN']`
 
@@ -843,103 +843,103 @@ Must be one of NAT, TUN, DR.
 
 Default value: `'NAT'`
 
-##### <a name="ha_suspend"></a>`ha_suspend`
+##### <a name="-keepalived--lvs--virtual_server--ha_suspend"></a>`ha_suspend`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="alpha"></a>`alpha`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="omega"></a>`omega`
+##### <a name="-keepalived--lvs--virtual_server--alpha"></a>`alpha`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="mh_port"></a>`mh_port`
+##### <a name="-keepalived--lvs--virtual_server--omega"></a>`omega`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-keepalived--lvs--virtual_server--mh_port"></a>`mh_port`
 
 Data type: `Boolean`
 
 Enable mh-port for mh scheduler
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="mh_fallback"></a>`mh_fallback`
+##### <a name="-keepalived--lvs--virtual_server--mh_fallback"></a>`mh_fallback`
 
 Data type: `Boolean`
 
 Enable mh-fallback for mh scheduler
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="sh_port"></a>`sh_port`
+##### <a name="-keepalived--lvs--virtual_server--sh_port"></a>`sh_port`
 
 Data type: `Boolean`
 
 Enable sh-port for sh scheduler
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="sh_fallback"></a>`sh_fallback`
+##### <a name="-keepalived--lvs--virtual_server--sh_fallback"></a>`sh_fallback`
 
 Data type: `Boolean`
 
 Enable sh-fallback for sh scheduler
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="quorum"></a>`quorum`
+##### <a name="-keepalived--lvs--virtual_server--quorum"></a>`quorum`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="quorum_up"></a>`quorum_up`
-
-Data type: `Optional[String[1]]`
-
-
-
-Default value: ``undef``
-
-##### <a name="quorum_down"></a>`quorum_down`
+##### <a name="-keepalived--lvs--virtual_server--quorum_up"></a>`quorum_up`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hysteresis"></a>`hysteresis`
+##### <a name="-keepalived--lvs--virtual_server--quorum_down"></a>`quorum_down`
+
+Data type: `Optional[String[1]]`
+
+
+
+Default value: `undef`
+
+##### <a name="-keepalived--lvs--virtual_server--hysteresis"></a>`hysteresis`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="tcp_check"></a>`tcp_check`
+##### <a name="-keepalived--lvs--virtual_server--tcp_check"></a>`tcp_check`
 
 Data type: `Optional[Hash]`
 
 The TCP_CHECK to configure for real_servers.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="real_server_options"></a>`real_server_options`
+##### <a name="-keepalived--lvs--virtual_server--real_server_options"></a>`real_server_options`
 
 Data type: `Hash`
 
@@ -947,39 +947,39 @@ One or more options to apply to all real_server blocks inside this virtual_serve
 
 Default value: `{}`
 
-##### <a name="sorry_server"></a>`sorry_server`
+##### <a name="-keepalived--lvs--virtual_server--sorry_server"></a>`sorry_server`
 
 Data type: `Optional[Struct[{ ip_address => Stdlib::IP::Address, port => Stdlib::Port }]]`
 
 The sorry_server to define
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sorry_server_inhibit"></a>`sorry_server_inhibit`
+##### <a name="-keepalived--lvs--virtual_server--sorry_server_inhibit"></a>`sorry_server_inhibit`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="persistence_timeout"></a>`persistence_timeout`
+##### <a name="-keepalived--lvs--virtual_server--persistence_timeout"></a>`persistence_timeout`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="virtualhost"></a>`virtualhost`
+##### <a name="-keepalived--lvs--virtual_server--virtualhost"></a>`virtualhost`
 
 Data type: `Optional[Stdlib::Fqdn]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="real_servers"></a>`real_servers`
+##### <a name="-keepalived--lvs--virtual_server--real_servers"></a>`real_servers`
 
 Data type: `Array[Hash]`
 
@@ -987,7 +987,7 @@ The real servers to balance to.
 
 Default value: `[]`
 
-##### <a name="collect_exported"></a>`collect_exported`
+##### <a name="-keepalived--lvs--virtual_server--collect_exported"></a>`collect_exported`
 
 Data type: `Boolean`
 
@@ -995,9 +995,9 @@ Boolean. Automatically collect exported @@keepalived::lvs::real_servers
 with a virtual_server equal to the name/title of this resource. This allows
 you to easily export a real_server resource on each node in the pool.
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="keepalivedvrrpinstance"></a>`keepalived::vrrp::instance`
+### <a name="keepalived--vrrp--instance"></a>`keepalived::vrrp::instance`
 
 Configure VRRP instance
 
@@ -1055,82 +1055,82 @@ Supported properties: dev, brd, label, scope.
 
 The following parameters are available in the `keepalived::vrrp::instance` defined type:
 
-* [`interface`](#interface)
-* [`priority`](#priority)
-* [`state`](#state)
-* [`virtual_ipaddress_int`](#virtual_ipaddress_int)
-* [`virtual_ipaddress`](#virtual_ipaddress)
-* [`promote_secondaries`](#promote_secondaries)
-* [`virtual_routes`](#virtual_routes)
-* [`virtual_rules`](#virtual_rules)
-* [`virtual_ipaddress_excluded`](#virtual_ipaddress_excluded)
-* [`virtual_router_id`](#virtual_router_id)
-* [`auth_type`](#auth_type)
-* [`auth_pass`](#auth_pass)
-* [`track_script`](#track_script)
-* [`track_process`](#track_process)
-* [`track_file`](#track_file)
-* [`track_interface`](#track_interface)
-* [`lvs_interface`](#lvs_interface)
-* [`smtp_alert`](#smtp_alert)
-* [`nopreempt`](#nopreempt)
-* [`preempt_delay`](#preempt_delay)
-* [`advert_int`](#advert_int)
-* [`garp_master_delay`](#garp_master_delay)
-* [`garp_master_refresh`](#garp_master_refresh)
-* [`notify_script_master`](#notify_script_master)
-* [`notify_script_backup`](#notify_script_backup)
-* [`notify_script_fault`](#notify_script_fault)
-* [`notify_script_stop`](#notify_script_stop)
-* [`notify_script`](#notify_script)
-* [`multicast_source_ip`](#multicast_source_ip)
-* [`notify_script_master_rx_lower_pri`](#notify_script_master_rx_lower_pri)
-* [`unicast_source_ip`](#unicast_source_ip)
-* [`unicast_peers`](#unicast_peers)
-* [`dont_track_primary`](#dont_track_primary)
-* [`use_vmac`](#use_vmac)
-* [`vmac_xmit_base`](#vmac_xmit_base)
-* [`use_vmac_addr`](#use_vmac_addr)
-* [`native_ipv6`](#native_ipv6)
-* [`garp_lower_prio_repeat`](#garp_lower_prio_repeat)
-* [`higher_prio_send_advert`](#higher_prio_send_advert)
-* [`collect_unicast_peers`](#collect_unicast_peers)
+* [`interface`](#-keepalived--vrrp--instance--interface)
+* [`priority`](#-keepalived--vrrp--instance--priority)
+* [`state`](#-keepalived--vrrp--instance--state)
+* [`virtual_ipaddress_int`](#-keepalived--vrrp--instance--virtual_ipaddress_int)
+* [`virtual_ipaddress`](#-keepalived--vrrp--instance--virtual_ipaddress)
+* [`promote_secondaries`](#-keepalived--vrrp--instance--promote_secondaries)
+* [`virtual_routes`](#-keepalived--vrrp--instance--virtual_routes)
+* [`virtual_rules`](#-keepalived--vrrp--instance--virtual_rules)
+* [`virtual_ipaddress_excluded`](#-keepalived--vrrp--instance--virtual_ipaddress_excluded)
+* [`virtual_router_id`](#-keepalived--vrrp--instance--virtual_router_id)
+* [`auth_type`](#-keepalived--vrrp--instance--auth_type)
+* [`auth_pass`](#-keepalived--vrrp--instance--auth_pass)
+* [`track_script`](#-keepalived--vrrp--instance--track_script)
+* [`track_process`](#-keepalived--vrrp--instance--track_process)
+* [`track_file`](#-keepalived--vrrp--instance--track_file)
+* [`track_interface`](#-keepalived--vrrp--instance--track_interface)
+* [`lvs_interface`](#-keepalived--vrrp--instance--lvs_interface)
+* [`smtp_alert`](#-keepalived--vrrp--instance--smtp_alert)
+* [`nopreempt`](#-keepalived--vrrp--instance--nopreempt)
+* [`preempt_delay`](#-keepalived--vrrp--instance--preempt_delay)
+* [`advert_int`](#-keepalived--vrrp--instance--advert_int)
+* [`garp_master_delay`](#-keepalived--vrrp--instance--garp_master_delay)
+* [`garp_master_refresh`](#-keepalived--vrrp--instance--garp_master_refresh)
+* [`notify_script_master`](#-keepalived--vrrp--instance--notify_script_master)
+* [`notify_script_backup`](#-keepalived--vrrp--instance--notify_script_backup)
+* [`notify_script_fault`](#-keepalived--vrrp--instance--notify_script_fault)
+* [`notify_script_stop`](#-keepalived--vrrp--instance--notify_script_stop)
+* [`notify_script`](#-keepalived--vrrp--instance--notify_script)
+* [`multicast_source_ip`](#-keepalived--vrrp--instance--multicast_source_ip)
+* [`notify_script_master_rx_lower_pri`](#-keepalived--vrrp--instance--notify_script_master_rx_lower_pri)
+* [`unicast_source_ip`](#-keepalived--vrrp--instance--unicast_source_ip)
+* [`unicast_peers`](#-keepalived--vrrp--instance--unicast_peers)
+* [`dont_track_primary`](#-keepalived--vrrp--instance--dont_track_primary)
+* [`use_vmac`](#-keepalived--vrrp--instance--use_vmac)
+* [`vmac_xmit_base`](#-keepalived--vrrp--instance--vmac_xmit_base)
+* [`use_vmac_addr`](#-keepalived--vrrp--instance--use_vmac_addr)
+* [`native_ipv6`](#-keepalived--vrrp--instance--native_ipv6)
+* [`garp_lower_prio_repeat`](#-keepalived--vrrp--instance--garp_lower_prio_repeat)
+* [`higher_prio_send_advert`](#-keepalived--vrrp--instance--higher_prio_send_advert)
+* [`collect_unicast_peers`](#-keepalived--vrrp--instance--collect_unicast_peers)
 
-##### <a name="interface"></a>`interface`
+##### <a name="-keepalived--vrrp--instance--interface"></a>`interface`
 
 Data type: `Any`
 
 Define which interface to listen on.
 
-##### <a name="priority"></a>`priority`
+##### <a name="-keepalived--vrrp--instance--priority"></a>`priority`
 
 Data type: `Integer[1,254]`
 
 Set instance priority.
 
-##### <a name="state"></a>`state`
+##### <a name="-keepalived--vrrp--instance--state"></a>`state`
 
 Data type: `Any`
 
 Set instance state.
 
-##### <a name="virtual_ipaddress_int"></a>`virtual_ipaddress_int`
+##### <a name="-keepalived--vrrp--instance--virtual_ipaddress_int"></a>`virtual_ipaddress_int`
 
 Data type: `Any`
 
 Set interface for VIP to be assigned to,
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="virtual_ipaddress"></a>`virtual_ipaddress`
+##### <a name="-keepalived--vrrp--instance--virtual_ipaddress"></a>`virtual_ipaddress`
 
 Data type: `Any`
 
 Set floating IP address.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="promote_secondaries"></a>`promote_secondaries`
+##### <a name="-keepalived--vrrp--instance--promote_secondaries"></a>`promote_secondaries`
 
 Data type: `Boolean`
 
@@ -1140,25 +1140,25 @@ For example if 10.1.1.2/24 and 10.1.1.3/24 are both configured on an
 interface, and one is removed, unless promote_secondaries is set on
 the interface the other address will also be removed.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="virtual_routes"></a>`virtual_routes`
+##### <a name="-keepalived--vrrp--instance--virtual_routes"></a>`virtual_routes`
 
 Data type: `Any`
 
 Set floating routes.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="virtual_rules"></a>`virtual_rules`
+##### <a name="-keepalived--vrrp--instance--virtual_rules"></a>`virtual_rules`
 
 Data type: `Optional[Array[Keepalived::Vrrp::Instance::VRule]]`
 
 Set floating rules.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="virtual_ipaddress_excluded"></a>`virtual_ipaddress_excluded`
+##### <a name="-keepalived--vrrp--instance--virtual_ipaddress_excluded"></a>`virtual_ipaddress_excluded`
 
 Data type: `Any`
 
@@ -1167,55 +1167,55 @@ on the same interface. To decrease the number
 of packets sent in adverts, you can exclude
 most IPs from adverts.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="virtual_router_id"></a>`virtual_router_id`
+##### <a name="-keepalived--vrrp--instance--virtual_router_id"></a>`virtual_router_id`
 
 Data type: `Integer[1,255]`
 
 Set virtual router id.
 
-##### <a name="auth_type"></a>`auth_type`
+##### <a name="-keepalived--vrrp--instance--auth_type"></a>`auth_type`
 
 Data type: `Any`
 
 Set authentication method.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="auth_pass"></a>`auth_pass`
+##### <a name="-keepalived--vrrp--instance--auth_pass"></a>`auth_pass`
 
 Data type: `Optional[Variant[String, Sensitive[String]]]`
 
 Authentication password.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="track_script"></a>`track_script`
+##### <a name="-keepalived--vrrp--instance--track_script"></a>`track_script`
 
 Data type: `Any`
 
 Define which script to run to track service states.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="track_process"></a>`track_process`
+##### <a name="-keepalived--vrrp--instance--track_process"></a>`track_process`
 
 Data type: `Optional[Array[String[1]]]`
 
 Define which process trackers to run.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="track_file"></a>`track_file`
+##### <a name="-keepalived--vrrp--instance--track_file"></a>`track_file`
 
 Data type: `Optional[Array[String[1]]]`
 
 Define which file trackers to run.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="track_interface"></a>`track_interface`
+##### <a name="-keepalived--vrrp--instance--track_interface"></a>`track_interface`
 
 Data type: `Any`
 
@@ -1226,26 +1226,26 @@ May be specified as either:
   a) interface name
   b) array of interfaces names
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="lvs_interface"></a>`lvs_interface`
+##### <a name="-keepalived--vrrp--instance--lvs_interface"></a>`lvs_interface`
 
 Data type: `Any`
 
 Define lvs_sync_daemon_interface.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="smtp_alert"></a>`smtp_alert`
+##### <a name="-keepalived--vrrp--instance--smtp_alert"></a>`smtp_alert`
 
 Data type: `Any`
 
 Send status alerts via SMTP. Requires user provided
 in SMTP settings in keepalived::global_defs class.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="nopreempt"></a>`nopreempt`
+##### <a name="-keepalived--vrrp--instance--nopreempt"></a>`nopreempt`
 
 Data type: `Any`
 
@@ -1255,9 +1255,9 @@ comes back online.
 NOTE: For this to work, the initial state of this
 entry must be BACKUP
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="preempt_delay"></a>`preempt_delay`
+##### <a name="-keepalived--vrrp--instance--preempt_delay"></a>`preempt_delay`
 
 Data type: `Any`
 
@@ -1266,9 +1266,9 @@ Range: 0 to 1,000
 NOTE: For this to work, the initial state of this
 entry must be BACKUP
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="advert_int"></a>`advert_int`
+##### <a name="-keepalived--vrrp--instance--advert_int"></a>`advert_int`
 
 Data type: `Any`
 
@@ -1276,7 +1276,7 @@ The interval between VRRP packets
 
 Default value: `1`
 
-##### <a name="garp_master_delay"></a>`garp_master_delay`
+##### <a name="-keepalived--vrrp--instance--garp_master_delay"></a>`garp_master_delay`
 
 Data type: `Any`
 
@@ -1285,56 +1285,56 @@ to MASTER
 
 Default value: `5`
 
-##### <a name="garp_master_refresh"></a>`garp_master_refresh`
+##### <a name="-keepalived--vrrp--instance--garp_master_refresh"></a>`garp_master_refresh`
 
 Data type: `Any`
 
 Repeat gratuitous ARP after transition to MASTER
 this often.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script_master"></a>`notify_script_master`
+##### <a name="-keepalived--vrrp--instance--notify_script_master"></a>`notify_script_master`
 
 Data type: `Any`
 
 Define the notify master script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script_backup"></a>`notify_script_backup`
+##### <a name="-keepalived--vrrp--instance--notify_script_backup"></a>`notify_script_backup`
 
 Data type: `Any`
 
 Define the notify backup script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script_fault"></a>`notify_script_fault`
+##### <a name="-keepalived--vrrp--instance--notify_script_fault"></a>`notify_script_fault`
 
 Data type: `Any`
 
 Define the notify fault script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script_stop"></a>`notify_script_stop`
+##### <a name="-keepalived--vrrp--instance--notify_script_stop"></a>`notify_script_stop`
 
 Data type: `Any`
 
 Define the notify stop script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script"></a>`notify_script`
+##### <a name="-keepalived--vrrp--instance--notify_script"></a>`notify_script`
 
 Data type: `Any`
 
 Define the notify script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="multicast_source_ip"></a>`multicast_source_ip`
+##### <a name="-keepalived--vrrp--instance--multicast_source_ip"></a>`multicast_source_ip`
 
 Data type: `Any`
 
@@ -1342,9 +1342,9 @@ default IP for binding vrrpd is the primary IP
 on interface. If you want to hide the location of vrrpd,
 use this IP as src_addr for multicast vrrp packets.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script_master_rx_lower_pri"></a>`notify_script_master_rx_lower_pri`
+##### <a name="-keepalived--vrrp--instance--notify_script_master_rx_lower_pri"></a>`notify_script_master_rx_lower_pri`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
@@ -1352,9 +1352,9 @@ Define the notify_master_rx_lower_pri script.
 This is executed if a master receives an advert with
 priority lower than the master's advert.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="unicast_source_ip"></a>`unicast_source_ip`
+##### <a name="-keepalived--vrrp--instance--unicast_source_ip"></a>`unicast_source_ip`
 
 Data type: `Optional[Stdlib::IP::Address]`
 
@@ -1362,9 +1362,9 @@ default IP for binding vrrpd is the primary IP
 on interface. If you want to hide the location of vrrpd,
 use this IP as src_addr for unicast vrrp packets.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="unicast_peers"></a>`unicast_peers`
+##### <a name="-keepalived--vrrp--instance--unicast_peers"></a>`unicast_peers`
 
 Data type: `Variant[Array[Stdlib::IP::Address], Stdlib::IP::Address]`
 
@@ -1376,7 +1376,7 @@ May be specified as an array with ip addresses
 
 Default value: `[]`
 
-##### <a name="dont_track_primary"></a>`dont_track_primary`
+##### <a name="-keepalived--vrrp--instance--dont_track_primary"></a>`dont_track_primary`
 
 Data type: `Any`
 
@@ -1389,17 +1389,17 @@ the other router to lose (or not gain) MASTER state,
 since it was also tracking link status.
 Default: false.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="use_vmac"></a>`use_vmac`
+##### <a name="-keepalived--vrrp--instance--use_vmac"></a>`use_vmac`
 
 Data type: `Any`
 
 Use virtual MAC address for VRRP packages.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="vmac_xmit_base"></a>`vmac_xmit_base`
+##### <a name="-keepalived--vrrp--instance--vmac_xmit_base"></a>`vmac_xmit_base`
 
 Data type: `Any`
 
@@ -1407,49 +1407,49 @@ When using virtual MAC addresses transmit and receive
 VRRP messaged on the underlying interface whilst ARP
 will happen from the the VMAC interface.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="use_vmac_addr"></a>`use_vmac_addr`
+##### <a name="-keepalived--vrrp--instance--use_vmac_addr"></a>`use_vmac_addr`
 
 Data type: `Boolean`
 
 Use virtual MAC address for virtual IP addresses.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="native_ipv6"></a>`native_ipv6`
+##### <a name="-keepalived--vrrp--instance--native_ipv6"></a>`native_ipv6`
 
 Data type: `Boolean`
 
 Force instance to use IPv6 (when mixed IPv4 and IPv6 config)
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="garp_lower_prio_repeat"></a>`garp_lower_prio_repeat`
+##### <a name="-keepalived--vrrp--instance--garp_lower_prio_repeat"></a>`garp_lower_prio_repeat`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="higher_prio_send_advert"></a>`higher_prio_send_advert`
+##### <a name="-keepalived--vrrp--instance--higher_prio_send_advert"></a>`higher_prio_send_advert`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collect_unicast_peers"></a>`collect_unicast_peers`
+##### <a name="-keepalived--vrrp--instance--collect_unicast_peers"></a>`collect_unicast_peers`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="keepalivedvrrpscript"></a>`keepalived::vrrp::script`
+### <a name="keepalived--vrrp--script"></a>`keepalived::vrrp::script`
 
 Configure VRRP script
 
@@ -1457,17 +1457,17 @@ Configure VRRP script
 
 The following parameters are available in the `keepalived::vrrp::script` defined type:
 
-* [`interval`](#interval)
-* [`script`](#script)
-* [`weight`](#weight)
-* [`fall`](#fall)
-* [`rise`](#rise)
-* [`timeout`](#timeout)
-* [`user`](#user)
-* [`group`](#group)
-* [`no_weight`](#no_weight)
+* [`interval`](#-keepalived--vrrp--script--interval)
+* [`script`](#-keepalived--vrrp--script--script)
+* [`weight`](#-keepalived--vrrp--script--weight)
+* [`fall`](#-keepalived--vrrp--script--fall)
+* [`rise`](#-keepalived--vrrp--script--rise)
+* [`timeout`](#-keepalived--vrrp--script--timeout)
+* [`user`](#-keepalived--vrrp--script--user)
+* [`group`](#-keepalived--vrrp--script--group)
+* [`no_weight`](#-keepalived--vrrp--script--no_weight)
 
-##### <a name="interval"></a>`interval`
+##### <a name="-keepalived--vrrp--script--interval"></a>`interval`
 
 Data type: `Any`
 
@@ -1475,69 +1475,69 @@ Set the interval to run the vrrp script.
 
 Default value: `'2'`
 
-##### <a name="script"></a>`script`
+##### <a name="-keepalived--vrrp--script--script"></a>`script`
 
 Data type: `String[1]`
 
 Which command or script to execute.
 
-##### <a name="weight"></a>`weight`
+##### <a name="-keepalived--vrrp--script--weight"></a>`weight`
 
 Data type: `Any`
 
 The weight the script should add to the instance.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="fall"></a>`fall`
+##### <a name="-keepalived--vrrp--script--fall"></a>`fall`
 
 Data type: `Any`
 
 required number of failures for KO switch.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="rise"></a>`rise`
+##### <a name="-keepalived--vrrp--script--rise"></a>`rise`
 
 Data type: `Any`
 
 required number of successes for OK switch.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="timeout"></a>`timeout`
+##### <a name="-keepalived--vrrp--script--timeout"></a>`timeout`
 
 Data type: `Any`
 
 max time to wait for the vrrp script to return.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="user"></a>`user`
+##### <a name="-keepalived--vrrp--script--user"></a>`user`
 
 Data type: `Any`
 
 user to run the vrrp script under.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="group"></a>`group`
+##### <a name="-keepalived--vrrp--script--group"></a>`group`
 
 Data type: `Any`
 
 group to run the vrrp script under - only used if $user is also set.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="no_weight"></a>`no_weight`
+##### <a name="-keepalived--vrrp--script--no_weight"></a>`no_weight`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="keepalivedvrrpsync_group"></a>`keepalived::vrrp::sync_group`
+### <a name="keepalived--vrrp--sync_group"></a>`keepalived::vrrp::sync_group`
 
 Configure the group for instance
 
@@ -1545,32 +1545,33 @@ Configure the group for instance
 
 The following parameters are available in the `keepalived::vrrp::sync_group` defined type:
 
-* [`group`](#group)
-* [`notify_script_master`](#notify_script_master)
-* [`track_script`](#track_script)
-* [`notify_script_backup`](#notify_script_backup)
-* [`notify_script_fault`](#notify_script_fault)
-* [`notify_script`](#notify_script)
-* [`notify_script_master_rx_lower_pri`](#notify_script_master_rx_lower_pri)
-* [`smtp_alert`](#smtp_alert)
-* [`nopreempt`](#nopreempt)
-* [`global_tracking`](#global_tracking)
+* [`group`](#-keepalived--vrrp--sync_group--group)
+* [`notify_script_master`](#-keepalived--vrrp--sync_group--notify_script_master)
+* [`track_script`](#-keepalived--vrrp--sync_group--track_script)
+* [`notify_script_backup`](#-keepalived--vrrp--sync_group--notify_script_backup)
+* [`notify_script_fault`](#-keepalived--vrrp--sync_group--notify_script_fault)
+* [`notify_script`](#-keepalived--vrrp--sync_group--notify_script)
+* [`notify_script_master_rx_lower_pri`](#-keepalived--vrrp--sync_group--notify_script_master_rx_lower_pri)
+* [`smtp_alert`](#-keepalived--vrrp--sync_group--smtp_alert)
+* [`nopreempt`](#-keepalived--vrrp--sync_group--nopreempt)
+* [`global_tracking`](#-keepalived--vrrp--sync_group--global_tracking)
+* [`track_interface`](#-keepalived--vrrp--sync_group--track_interface)
 
-##### <a name="group"></a>`group`
+##### <a name="-keepalived--vrrp--sync_group--group"></a>`group`
 
 Data type: `Any`
 
 Define vrrp instances to group (Array)
 
-##### <a name="notify_script_master"></a>`notify_script_master`
+##### <a name="-keepalived--vrrp--sync_group--notify_script_master"></a>`notify_script_master`
 
 Data type: `Any`
 
 Define the notify master script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="track_script"></a>`track_script`
+##### <a name="-keepalived--vrrp--sync_group--track_script"></a>`track_script`
 
 Data type: `Array[String]`
 
@@ -1578,31 +1579,31 @@ Define which script to run to track service states.
 
 Default value: `[]`
 
-##### <a name="notify_script_backup"></a>`notify_script_backup`
+##### <a name="-keepalived--vrrp--sync_group--notify_script_backup"></a>`notify_script_backup`
 
 Data type: `Any`
 
 Define the notify backup script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script_fault"></a>`notify_script_fault`
+##### <a name="-keepalived--vrrp--sync_group--notify_script_fault"></a>`notify_script_fault`
 
 Data type: `Any`
 
 Define the notify fault script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script"></a>`notify_script`
+##### <a name="-keepalived--vrrp--sync_group--notify_script"></a>`notify_script`
 
 Data type: `Any`
 
 Define the notify script.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_script_master_rx_lower_pri"></a>`notify_script_master_rx_lower_pri`
+##### <a name="-keepalived--vrrp--sync_group--notify_script_master_rx_lower_pri"></a>`notify_script_master_rx_lower_pri`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
@@ -1610,33 +1611,46 @@ Define the notify_master_rx_lower_pri script.
 This is executed if a master receives an advert with
 priority lower than the master's advert.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="smtp_alert"></a>`smtp_alert`
+##### <a name="-keepalived--vrrp--sync_group--smtp_alert"></a>`smtp_alert`
 
 Data type: `Any`
 
 Send email on status change
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="nopreempt"></a>`nopreempt`
+##### <a name="-keepalived--vrrp--sync_group--nopreempt"></a>`nopreempt`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="global_tracking"></a>`global_tracking`
+##### <a name="-keepalived--vrrp--sync_group--global_tracking"></a>`global_tracking`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="keepalivedvrrptrack_file"></a>`keepalived::vrrp::track_file`
+##### <a name="-keepalived--vrrp--sync_group--track_interface"></a>`track_interface`
+
+Data type: `Optional[Variant[String, Array[String]]]`
+
+Define which interface(s) to monitor.
+Go to FAULT state if one of
+these interfaces goes down.
+May be specified as either:
+  a) interface name
+  b) array of interfaces names
+
+Default value: `undef`
+
+### <a name="keepalived--vrrp--track_file"></a>`keepalived::vrrp::track_file`
 
 the specified file at startup if the file doesn't
 exist, unless overwrite is specified in which case
@@ -1647,18 +1661,18 @@ the specified value.
 
 The following parameters are available in the `keepalived::vrrp::track_file` defined type:
 
-* [`file_name`](#file_name)
-* [`weight`](#weight)
-* [`init_file`](#init_file)
-* [`overwrite`](#overwrite)
+* [`file_name`](#-keepalived--vrrp--track_file--file_name)
+* [`weight`](#-keepalived--vrrp--track_file--weight)
+* [`init_file`](#-keepalived--vrrp--track_file--init_file)
+* [`overwrite`](#-keepalived--vrrp--track_file--overwrite)
 
-##### <a name="file_name"></a>`file_name`
+##### <a name="-keepalived--vrrp--track_file--file_name"></a>`file_name`
 
 Data type: `String[1]`
 
 name of track file
 
-##### <a name="weight"></a>`weight`
+##### <a name="-keepalived--vrrp--track_file--weight"></a>`weight`
 
 Data type: `Integer`
 
@@ -1666,23 +1680,23 @@ The weight that should add to the instance.
 
 Default value: `1`
 
-##### <a name="init_file"></a>`init_file`
+##### <a name="-keepalived--vrrp--track_file--init_file"></a>`init_file`
 
 Data type: `Optional[String[1]]`
 
 create the file and/or initialise the value
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="overwrite"></a>`overwrite`
+##### <a name="-keepalived--vrrp--track_file--overwrite"></a>`overwrite`
 
 Data type: `Boolean`
 
 This causes VALUE (default 0) to be written to
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="keepalivedvrrptrack_process"></a>`keepalived::vrrp::track_process`
+### <a name="keepalived--vrrp--track_process"></a>`keepalived::vrrp::track_process`
 
 Configure the process tracker
 
@@ -1690,28 +1704,28 @@ Configure the process tracker
 
 The following parameters are available in the `keepalived::vrrp::track_process` defined type:
 
-* [`proc_name`](#proc_name)
-* [`weight`](#weight)
-* [`quorum`](#quorum)
-* [`delay`](#delay)
-* [`full_command`](#full_command)
-* [`param_match`](#param_match)
+* [`proc_name`](#-keepalived--vrrp--track_process--proc_name)
+* [`weight`](#-keepalived--vrrp--track_process--weight)
+* [`quorum`](#-keepalived--vrrp--track_process--quorum)
+* [`delay`](#-keepalived--vrrp--track_process--delay)
+* [`full_command`](#-keepalived--vrrp--track_process--full_command)
+* [`param_match`](#-keepalived--vrrp--track_process--param_match)
 
-##### <a name="proc_name"></a>`proc_name`
+##### <a name="-keepalived--vrrp--track_process--proc_name"></a>`proc_name`
 
 Data type: `String[1]`
 
 process name to track
 
-##### <a name="weight"></a>`weight`
+##### <a name="-keepalived--vrrp--track_process--weight"></a>`weight`
 
 Data type: `Optional[Integer[0]]`
 
 The weight that should add to the instance.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="quorum"></a>`quorum`
+##### <a name="-keepalived--vrrp--track_process--quorum"></a>`quorum`
 
 Data type: `Integer[0]`
 
@@ -1719,43 +1733,39 @@ Number of processes to expect running
 
 Default value: `1`
 
-##### <a name="delay"></a>`delay`
+##### <a name="-keepalived--vrrp--track_process--delay"></a>`delay`
 
 Data type: `Optional[Integer[0]]`
 
 Time to delay after process quorum lost before considering process failed (in fractions of second)
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="full_command"></a>`full_command`
+##### <a name="-keepalived--vrrp--track_process--full_command"></a>`full_command`
 
 Data type: `Boolean`
 
 Match entire process cmdline
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="param_match"></a>`param_match`
+##### <a name="-keepalived--vrrp--track_process--param_match"></a>`param_match`
 
 Data type: `Optional[Enum['initial','partial']]`
 
 Set inital if command has no parameters or use partial if first n parameters match
 
-Default value: ``undef``
+Default value: `undef`
 
 ## Data types
 
-### <a name="keepalivedoptions"></a>`Keepalived::Options`
+### <a name="Keepalived--Options"></a>`Keepalived::Options`
 
 keepalived::options
 
-Alias of
+Alias of `Hash[String[1], Any]`
 
-```puppet
-Hash[String[1], Any]
-```
-
-### <a name="keepalivedvrrpinstancevrule"></a>`Keepalived::Vrrp::Instance::VRule`
+### <a name="Keepalived--Vrrp--Instance--VRule"></a>`Keepalived::Vrrp::Instance::VRule`
 
 keepalived::vrrp::instance::vrule
 

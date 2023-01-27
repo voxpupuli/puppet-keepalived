@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.6.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.6.0) (2023-01-27)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.5.0...v3.6.0)
+
+**Implemented enhancements:**
+
+- add parameter use\_vmac\_addr to VRRP instance [\#277](https://github.com/voxpupuli/puppet-keepalived/pull/277) ([moritz-makandra](https://github.com/moritz-makandra))
+- Add support for track\_interface option to vrrp\_sync\_group [\#264](https://github.com/voxpupuli/puppet-keepalived/pull/264) ([imp-](https://github.com/imp-))
+
 ## [v3.5.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.5.0) (2022-10-25)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.4.0...v3.5.0)
