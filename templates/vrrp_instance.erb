@@ -117,7 +117,15 @@ vrrp_instance <%= @_name %> {
 
   track_file {
   <%- Array(@track_file).each do |track| -%>
-    <%= track %> weight 1
+    <%= track %>
+  <%- end -%>
+  }
+  <%- end -%>
+  <%- if @vrrp_track_file -%>
+
+  vrrp_track_file {
+  <%- Array(@vrrp_track_file).each do |track| -%>
+    <%= track %>
   <%- end -%>
   }
   <%- end -%>

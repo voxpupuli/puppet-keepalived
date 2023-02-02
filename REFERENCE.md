@@ -26,6 +26,7 @@ Work in progress, supports:
 * [`keepalived::vrrp::script`](#keepalived--vrrp--script): Configure VRRP script
 * [`keepalived::vrrp::sync_group`](#keepalived--vrrp--sync_group): Configure the group for instance
 * [`keepalived::vrrp::track_file`](#keepalived--vrrp--track_file): Configure the tracker file
+* [`keepalived::vrrp::vrrp_track_file`](#keepalived--vrrp--vrrp--track_file): Configure the tracker file (for keepalived < 2.1)
 * [`keepalived::vrrp::track_process`](#keepalived--vrrp--track_process): Configure the process tracker
 
 #### Private Defined types
