@@ -16,5 +16,8 @@ vrrp_script <%= @_name %> {
   <%- if @user -%>
   user      <%= @user %><% if @group %> <%= @group %><% end %>
   <%- end -%>
+  <%- if @init_fail -%>
+  init_fail
+  <%- end -%>
 }
 

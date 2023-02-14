@@ -181,6 +181,24 @@ describe 'keepalived::vrrp::script', type: :define do
             )
         }
       end
+
+      describe 'with parameter init_fail' do
+        let(:params) do
+          {
+            init_fail: true,
+            script: '_SCRIPT_'
+          }
+        end
+
+        it { is_expected.to create_keepalived__vrrp__script('_TITLE_') }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_script__TITLE_').with(
+              'content' => %r{init_fail}
+            )
+        }
+      end
     end
   end
 end
