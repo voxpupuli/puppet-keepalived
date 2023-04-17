@@ -26,8 +26,8 @@ Work in progress, supports:
 * [`keepalived::vrrp::script`](#keepalived--vrrp--script): Configure VRRP script
 * [`keepalived::vrrp::sync_group`](#keepalived--vrrp--sync_group): Configure the group for instance
 * [`keepalived::vrrp::track_file`](#keepalived--vrrp--track_file): Configure the tracker file
-* [`keepalived::vrrp::vrrp_track_file`](#keepalived--vrrp--vrrp--track_file): Configure the tracker file (for keepalived < 2.1)
 * [`keepalived::vrrp::track_process`](#keepalived--vrrp--track_process): Configure the process tracker
+* [`keepalived::vrrp::vrrp_track_file`](#keepalived--vrrp--vrrp_track_file): Configure the tracker file
 
 #### Private Defined types
 
@@ -1071,6 +1071,7 @@ The following parameters are available in the `keepalived::vrrp::instance` defin
 * [`track_script`](#-keepalived--vrrp--instance--track_script)
 * [`track_process`](#-keepalived--vrrp--instance--track_process)
 * [`track_file`](#-keepalived--vrrp--instance--track_file)
+* [`vrrp_track_file`](#-keepalived--vrrp--instance--vrrp_track_file)
 * [`track_interface`](#-keepalived--vrrp--instance--track_interface)
 * [`lvs_interface`](#-keepalived--vrrp--instance--lvs_interface)
 * [`smtp_alert`](#-keepalived--vrrp--instance--smtp_alert)
@@ -1210,9 +1211,18 @@ Default value: `undef`
 
 ##### <a name="-keepalived--vrrp--instance--track_file"></a>`track_file`
 
-Data type: `Optional[Array[String[1]]]`
+Data type: `Optional[Array[Stdlib::Absolutepath]]`
 
-Define which file trackers to run.
+Define which file trackers to run (array).
+
+Default value: `undef`
+
+##### <a name="-keepalived--vrrp--instance--vrrp_track_file"></a>`vrrp_track_file`
+
+Data type: `Optional[Array[Stdlib::Absolutepath]]`
+
+Define which file trackers to run (array).
+Deprecated, for keepalived < 2.1.0
 
 Default value: `undef`
 
@@ -1757,6 +1767,52 @@ Data type: `Optional[Enum['initial','partial']]`
 Set inital if command has no parameters or use partial if first n parameters match
 
 Default value: `undef`
+
+### <a name="keepalived--vrrp--vrrp_track_file"></a>`keepalived::vrrp::vrrp_track_file`
+
+the specified file at startup if the file doesn't
+exist, unless overwrite is specified in which case
+any existing file contents will be overwritten with
+the specified value.
+
+#### Parameters
+
+The following parameters are available in the `keepalived::vrrp::vrrp_track_file` defined type:
+
+* [`file_name`](#-keepalived--vrrp--vrrp_track_file--file_name)
+* [`weight`](#-keepalived--vrrp--vrrp_track_file--weight)
+* [`init_file`](#-keepalived--vrrp--vrrp_track_file--init_file)
+* [`overwrite`](#-keepalived--vrrp--vrrp_track_file--overwrite)
+
+##### <a name="-keepalived--vrrp--vrrp_track_file--file_name"></a>`file_name`
+
+Data type: `String[1]`
+
+name of track file
+
+##### <a name="-keepalived--vrrp--vrrp_track_file--weight"></a>`weight`
+
+Data type: `Integer`
+
+The weight that should add to the instance.
+
+Default value: `1`
+
+##### <a name="-keepalived--vrrp--vrrp_track_file--init_file"></a>`init_file`
+
+Data type: `Optional[String[1]]`
+
+create the file and/or initialise the value
+
+Default value: `undef`
+
+##### <a name="-keepalived--vrrp--vrrp_track_file--overwrite"></a>`overwrite`
+
+Data type: `Boolean`
+
+This causes VALUE (default 0) to be written to
+
+Default value: `false`
 
 ## Data types
 
