@@ -1129,6 +1129,7 @@ The following parameters are available in the `keepalived::vrrp::instance` defin
 * [`garp_lower_prio_repeat`](#-keepalived--vrrp--instance--garp_lower_prio_repeat)
 * [`higher_prio_send_advert`](#-keepalived--vrrp--instance--higher_prio_send_advert)
 * [`collect_unicast_peers`](#-keepalived--vrrp--instance--collect_unicast_peers)
+* [`apply_sysctl_params`](#-keepalived--vrrp--instance--apply_sysctl_params)
 
 ##### <a name="-keepalived--vrrp--instance--interface"></a>`interface`
 
@@ -1489,6 +1490,15 @@ Default value: `undef`
 Data type: `Boolean`
 
 
+
+Default value: `false`
+
+##### <a name="-keepalived--vrrp--instance--apply_sysctl_params"></a>`apply_sysctl_params`
+
+Data type: `Boolean`
+
+Apply interface configuration recommended by keepalived project
+https://github.com/acassen/keepalived/blob/master/keepalived/vrrp/vrrp_if_config.c#L23
 
 Default value: `false`
 
