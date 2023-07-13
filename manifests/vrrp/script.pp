@@ -32,7 +32,7 @@ define keepalived::vrrp::script (
   $no_weight = false,
   $init_fail = false,
 ) {
-  $_name = regsubst($name, '[:\/\n]', '')
+  $_name = regsubst($name, '[:\/\n]', '', 'G')
 
   if ! $weight {
     $weight_real = 2

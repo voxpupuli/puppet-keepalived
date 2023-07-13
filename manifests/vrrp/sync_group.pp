@@ -45,7 +45,7 @@ define keepalived::vrrp::sync_group (
   Boolean $global_tracking                                          = false,
   Optional[Variant[String, Array[String]]] $track_interface         = undef,
 ) {
-  $_name = regsubst($name, '[:\/\n]', '')
+  $_name = regsubst($name, '[:\/\n]', '', 'G')
 
   concat::fragment { "keepalived.conf_vrrp_sync_group_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",

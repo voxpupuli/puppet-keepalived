@@ -30,7 +30,7 @@ define keepalived::lvs::real_server (
   Stdlib::Port $port,
   Keepalived::Options $options = {},
 ) {
-  $_name = regsubst($name, '[:\/\n]', '')
+  $_name = regsubst($name, '[:\/\n]', '', 'G')
 
   concat::fragment { "keepalived.conf_lvs_real_server_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
