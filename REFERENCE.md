@@ -36,7 +36,7 @@ Work in progress, supports:
 ### Data types
 
 * [`Keepalived::Options`](#Keepalived--Options): keepalived::options
-* [`Keepalived::Vrrp::Instance::VRule`](#Keepalived--Vrrp--Instance--VRule): keepalived::vrrp::instance::vrule
+* [`Keepalived::Vrrp::Instance::VRule`](#Keepalived--Vrrp--Instance--VRule): Translates directly to rules to be added as per `ip-rule(8)`
 
 ## Classes
 
@@ -1719,6 +1719,8 @@ The following parameters are available in the `keepalived::vrrp::track_process` 
 * [`weight`](#-keepalived--vrrp--track_process--weight)
 * [`quorum`](#-keepalived--vrrp--track_process--quorum)
 * [`delay`](#-keepalived--vrrp--track_process--delay)
+* [`fork_delay`](#-keepalived--vrrp--track_process--fork_delay)
+* [`terminate_delay`](#-keepalived--vrrp--track_process--terminate_delay)
 * [`full_command`](#-keepalived--vrrp--track_process--full_command)
 * [`param_match`](#-keepalived--vrrp--track_process--param_match)
 
@@ -1748,7 +1750,23 @@ Default value: `1`
 
 Data type: `Optional[Integer[0]]`
 
-Time to delay after process quorum lost before considering process failed (in fractions of second)
+this sets fork_delay and terminate_delay (for keepalived => 2.0.16), before terminate_delay
+
+Default value: `undef`
+
+##### <a name="-keepalived--vrrp--track_process--fork_delay"></a>`fork_delay`
+
+Data type: `Optional[Integer[0]]`
+
+time to delay after process quorum gained after fork before consider process up
+
+Default value: `undef`
+
+##### <a name="-keepalived--vrrp--track_process--terminate_delay"></a>`terminate_delay`
+
+Data type: `Optional[Integer[0]]`
+
+time to delay after process quorum lost before consider process down
 
 Default value: `undef`
 
@@ -1824,7 +1842,7 @@ Alias of `Hash[String[1], Any]`
 
 ### <a name="Keepalived--Vrrp--Instance--VRule"></a>`Keepalived::Vrrp::Instance::VRule`
 
-keepalived::vrrp::instance::vrule
+Translates directly to rules to be added as per `ip-rule(8)`
 
 Alias of
 

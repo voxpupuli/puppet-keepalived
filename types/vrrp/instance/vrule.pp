@@ -1,5 +1,4 @@
-# @summary keepalived::vrrp::instance::vrule
-# @description Translates directly to rules to be added as per `ip-rule(8)`
+# @summary Translates directly to rules to be added as per `ip-rule(8)`
 type Keepalived::Vrrp::Instance::VRule = Struct[{
     Optional[from]                  => String,
     Optional[to]                    => String,

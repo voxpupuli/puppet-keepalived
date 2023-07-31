@@ -3,6 +3,8 @@
       Optional[Integer] $weight,
       Optional[Integer] $quorum,
       Optional[Integer] $delay,
+      Optional[Integer] $fork_delay,
+      Optional[Integer] $terminate_delay,
       Optional[String]  $param_match,
       Optional[Boolean] $full_command
     | -%>
@@ -13,6 +15,12 @@ vrrp_track_process <%= $name %> {
   <%- } -%>
   <%- if $quorum { -%>
   quorum      <%= $quorum %>
+  <%- } -%>
+  <%- if $fork_delay { -%>
+  fork_delay       <%= $fork_delay %>
+  <%- } -%>
+  <%- if $terminate_delay { -%>
+  terminate_delay       <%= $terminate_delay %>
   <%- } -%>
   <%- if $delay { -%>
   delay       <%= $delay %>

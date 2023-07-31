@@ -91,6 +91,42 @@ describe 'keepalived::vrrp::track_process', type: :define do
         }
       end
 
+      describe 'with parameter fork_delay' do
+        let(:params) do
+          {
+            fork_delay: 42,
+            proc_name: '_PROC_NAME_'
+          }
+        end
+
+        it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
+              'content' => %r{fork_delay.*42}
+            )
+        }
+      end
+
+      describe 'with parameter terminate_delay' do
+        let(:params) do
+          {
+            terminate_delay: 84,
+            proc_name: '_PROC_NAME_'
+          }
+        end
+
+        it { is_expected.to create_keepalived__vrrp__track_process('_PROC_NAME_') }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_track_process__PROC_NAME_').with(
+              'content' => %r{terminate_delay.*84}
+            )
+        }
+      end
+
       describe 'with parameter param_match' do
         let(:params) do
           {
