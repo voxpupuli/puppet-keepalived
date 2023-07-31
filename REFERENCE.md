@@ -36,7 +36,7 @@ Work in progress, supports:
 ### Data types
 
 * [`Keepalived::Options`](#Keepalived--Options): keepalived::options
-* [`Keepalived::Vrrp::Instance::VRule`](#Keepalived--Vrrp--Instance--VRule): keepalived::vrrp::instance::vrule
+* [`Keepalived::Vrrp::Instance::VRule`](#Keepalived--Vrrp--Instance--VRule): Translates directly to rules to be added as per `ip-rule(8)`
 
 ## Classes
 
@@ -1842,7 +1842,7 @@ Alias of `Hash[String[1], Any]`
 
 ### <a name="Keepalived--Vrrp--Instance--VRule"></a>`Keepalived::Vrrp::Instance::VRule`
 
-keepalived::vrrp::instance::vrule
+Translates directly to rules to be added as per `ip-rule(8)`
 
 Alias of
 
