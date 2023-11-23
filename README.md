@@ -130,7 +130,7 @@ This configuration will fail-over when:
 
 ```puppet
 node /node01/ {
-  include ::keepalived
+  include keepalived
 
   keepalived::vrrp::script { 'check_nginx':
     script => '/usr/bin/killall -0 nginx',
@@ -149,7 +149,7 @@ node /node01/ {
 }
 
 node /node02/ {
-  include ::keepalived
+  include keepalived
 
   keepalived::vrrp::script { 'check_nginx':
     script => '/usr/bin/killall -0 nginx',
@@ -192,7 +192,7 @@ or using process tracking (keepalived 2.0.11+):
 
 ```puppet
 node /node01/ {
-  include ::keepalived
+  include keepalived
 
   keepalived::vrrp::track_process { 'check_nginx':
     proc_name => 'nginx',
@@ -314,7 +314,7 @@ class { 'keepalived::global_defs':
 ### Soft-restart the Keepalived daemon
 
 ```puppet
-class { '::keepalived':
+class { 'keepalived':
   service_restart => 'service keepalived reload',     # When using SysV Init
   # service_restart => 'systemctl reload keepalived', # When using SystemD
 }
@@ -323,7 +323,7 @@ class { '::keepalived':
 ### Opt out of having the service managed by the module
 
 ```puppet
-class { '::keepalived':
+class { 'keepalived':
   service_manage => false,
 }
 ```
@@ -331,7 +331,7 @@ class { '::keepalived':
 ### Opt out of having the package managed by the module
 
 ```puppet
-class { '::keepalived':
+class { 'keepalived':
   manage_package => false,
 }
 ```
