@@ -24,11 +24,12 @@ define keepalived::vrrp::unicast_peer (
 ) {
   assert_private()
 
-  $_inst = regsubst($instance, '[:\/\n]', '')
+  $_inst = regsubst($instance, '[:\/\n]', '', 'G')
+  $_ordersafe = regsubst($_inst, '-', '', 'G')
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_inst}_upeers_peer_${ip_address}":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => "    ${ip_address}\n",
-    order   => "100-${_inst}-020",
+    order   => "100-${_ordersafe}-020",
   }
 }
