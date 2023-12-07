@@ -274,7 +274,7 @@ define keepalived::vrrp::instance (
         instance   => $name,
         ip_address => $unicast_src,
       }
-      Keepalived::Vrrp::Unicast_peer <<| instance == $name and title != $unicast_src |>>
+      Keepalived::Vrrp::Unicast_peer <<| instance == $name and ip_address != $unicast_src |>>
     }
 
     if size($unicast_peer_array) > 0 {
