@@ -250,12 +250,6 @@ define keepalived::vrrp::instance (
     $auth_pass
   }
 
-  concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
-    target  => "${keepalived::config_dir}/keepalived.conf",
-    content => template('keepalived/vrrp_instance.erb'),
-    order   => "100-${_ordersafe}-000",
-  }
-
   if size($unicast_peer_array) > 0 or $collect_unicast_peers {
     concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_header":
       target  => "${keepalived::config_dir}/keepalived.conf",
@@ -291,6 +285,12 @@ define keepalived::vrrp::instance (
       content => "  }\n\n",
       order   => "100-${_ordersafe}-030",
     }
+  }
+
+  concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
+    target  => "${keepalived::config_dir}/keepalived.conf",
+    content => template('keepalived/vrrp_instance.erb'),
+    order   => "100-${_ordersafe}-000",
   }
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}_footer":
