@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v4.0.0) (2024-01-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.6.0...v4.0.0)
+
+**Breaking changes:**
+
+- Drop EoL Ubuntu 16.04 & 18.04 support [\#294](https://github.com/voxpupuli/puppet-keepalived/pull/294) ([bastelfreak](https://github.com/bastelfreak))
+- Drop EoL Debian 9 support [\#292](https://github.com/voxpupuli/puppet-keepalived/pull/292) ([bastelfreak](https://github.com/bastelfreak))
+- Drop Puppet 6 support [\#286](https://github.com/voxpupuli/puppet-keepalived/pull/286) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add EL8 support [\#298](https://github.com/voxpupuli/puppet-keepalived/pull/298) ([bastelfreak](https://github.com/bastelfreak))
+- Add `terminate_delay` and `fork_delay` parameters to `keepalived::vrrp::track_process` [\#295](https://github.com/voxpupuli/puppet-keepalived/pull/295) ([trefzer](https://github.com/trefzer))
+- puppetlabs/concat: Allow 8.x & 9.x [\#293](https://github.com/voxpupuli/puppet-keepalived/pull/293) ([bastelfreak](https://github.com/bastelfreak))
+- Add Puppet 8 support [\#289](https://github.com/voxpupuli/puppet-keepalived/pull/289) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#288](https://github.com/voxpupuli/puppet-keepalived/pull/288) ([bastelfreak](https://github.com/bastelfreak))
+- Improve track\_file handling and enable vrrp\_track\_file for keepalived \< 2.1.0 [\#282](https://github.com/voxpupuli/puppet-keepalived/pull/282) ([bluthg](https://github.com/bluthg))
+
+**Fixed bugs:**
+
+- Dashes in VRRP instance names can cause fragment ordering troubles [\#302](https://github.com/voxpupuli/puppet-keepalived/issues/302)
+- Improve collect\_unicast\_peers [\#305](https://github.com/voxpupuli/puppet-keepalived/pull/305) ([frank-f](https://github.com/frank-f))
+- Avoid messing up fragment ordering if instance name contains dashes [\#303](https://github.com/voxpupuli/puppet-keepalived/pull/303) ([frank-f](https://github.com/frank-f))
+
+**Merged pull requests:**
+
+- Remove legacy top-scope syntax [\#300](https://github.com/voxpupuli/puppet-keepalived/pull/300) ([smortex](https://github.com/smortex))
+
 ## [v3.6.0](https://github.com/voxpupuli/puppet-keepalived/tree/v3.6.0) (2023-01-27)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.5.0...v3.6.0)
