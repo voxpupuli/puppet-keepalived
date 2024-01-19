@@ -224,4 +224,7 @@ vrrp_instance <%= @_name %> {
   <%- if @unicast_source_ip -%>
 
   unicast_src_ip <%= @unicast_source_ip %>
+  <%- elsif @unicast_src -%>
+
+  unicast_src_ip <%= @unicast_src %>
   <%- end -%>
