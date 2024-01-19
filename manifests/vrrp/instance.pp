@@ -241,7 +241,8 @@ define keepalived::vrrp::instance (
   Boolean $use_vmac_addr                                                  = false,
   Boolean $native_ipv6                                                    = false,
 ) {
-  $_name = regsubst($name, '[:\/\n]', '')
+  $_name = regsubst($name, '[:\/\n]', '', 'G')
+  $_ordersafe = regsubst($_name, '-', '', 'G')
   $unicast_peer_array = [$unicast_peers].flatten
   $auth_pass_unsensitive = if $auth_pass =~ Sensitive {
     $auth_pass.unwrap
@@ -252,14 +253,14 @@ define keepalived::vrrp::instance (
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => template('keepalived/vrrp_instance.erb'),
-    order   => "100-${_name}-000",
+    order   => "100-${_ordersafe}-000",
   }
 
   if size($unicast_peer_array) > 0 or $collect_unicast_peers {
     concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_header":
       target  => "${keepalived::config_dir}/keepalived.conf",
       content => "  unicast_peer {\n",
-      order   => "100-${_name}-010",
+      order   => "100-${_ordersafe}-010",
     }
 
     if $collect_unicast_peers {
@@ -288,13 +289,13 @@ define keepalived::vrrp::instance (
     concat::fragment { "keepalived.conf_vrrp_instance_${_name}_upeers_footer":
       target  => "${keepalived::config_dir}/keepalived.conf",
       content => "  }\n\n",
-      order   => "100-${_name}-030",
+      order   => "100-${_ordersafe}-030",
     }
   }
 
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}_footer":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => "}\n\n",
-    order   => "100-${_name}-zzz",
+    order   => "100-${_ordersafe}-zzz",
   }
 }
