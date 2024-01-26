@@ -99,7 +99,7 @@ define keepalived::lvs::virtual_server (
   Hash $real_server_options = {},
   Optional[Stdlib::Fqdn] $virtualhost = undef,
 ) {
-  $_name = regsubst($name, '[:\/\n]', '')
+  $_name = regsubst($name, '[:\/\n]', '', 'G')
 
   unless $fwmark {
     assert_type(Stdlib::Port, $port)

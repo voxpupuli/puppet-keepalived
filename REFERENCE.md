@@ -1477,6 +1477,7 @@ The following parameters are available in the `keepalived::vrrp::script` defined
 * [`user`](#-keepalived--vrrp--script--user)
 * [`group`](#-keepalived--vrrp--script--group)
 * [`no_weight`](#-keepalived--vrrp--script--no_weight)
+* [`init_fail`](#-keepalived--vrrp--script--init_fail)
 
 ##### <a name="-keepalived--vrrp--script--interval"></a>`interval`
 
@@ -1545,6 +1546,14 @@ Default value: `undef`
 Data type: `Any`
 
 
+
+Default value: `false`
+
+##### <a name="-keepalived--vrrp--script--init_fail"></a>`init_fail`
+
+Data type: `Any`
+
+assume script initially is in failed state if true.
 
 Default value: `false`
 
