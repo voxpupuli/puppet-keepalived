@@ -18,6 +18,8 @@
 #
 # @param no_weight
 #
+# @param init_fail assume script initially is in failed state if true.
+#
 define keepalived::vrrp::script (
   String[1] $script,
   $interval  = '2',
@@ -28,6 +30,7 @@ define keepalived::vrrp::script (
   $user      = undef,
   $group     = undef,
   $no_weight = false,
+  $init_fail = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '')
 
