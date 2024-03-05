@@ -5,7 +5,9 @@
 #
 # @param notify_script_master Define the notify master script.
 #
-# @param track_script  Define which script to run to track service states.
+# @param track_script Define which script to run to track service states.
+#
+# @param track_process Define which process check to run to track processes.
 #
 # @param notify_script_backup Define the notify backup script.
 #
@@ -36,6 +38,7 @@ define keepalived::vrrp::sync_group (
   $group,
   Optional[Stdlib::Absolutepath] $notify_script_master_rx_lower_pri = undef,
   Array[String] $track_script                                       = [],
+  Array[String] $track_process                                      = [],
   $notify_script_master                                             = undef,
   $notify_script_backup                                             = undef,
   $notify_script_fault                                              = undef,

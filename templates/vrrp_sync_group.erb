@@ -35,6 +35,14 @@ vrrp_sync_group <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
+  <%- if not @track_process.empty? -%>
+
+  track_process {
+  <%- Array(@track_process).each do |tproc| -%>
+    <%= tproc %>
+  <%- end -%>
+  }
+  <%- end -%>
   <%- if @notify_script -%>
   # for ANY state transition.
   # "notify" script is called AFTER the
