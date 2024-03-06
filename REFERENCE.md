@@ -1568,6 +1568,7 @@ The following parameters are available in the `keepalived::vrrp::sync_group` def
 * [`group`](#-keepalived--vrrp--sync_group--group)
 * [`notify_script_master`](#-keepalived--vrrp--sync_group--notify_script_master)
 * [`track_script`](#-keepalived--vrrp--sync_group--track_script)
+* [`track_process`](#-keepalived--vrrp--sync_group--track_process)
 * [`notify_script_backup`](#-keepalived--vrrp--sync_group--notify_script_backup)
 * [`notify_script_fault`](#-keepalived--vrrp--sync_group--notify_script_fault)
 * [`notify_script`](#-keepalived--vrrp--sync_group--notify_script)
@@ -1596,6 +1597,14 @@ Default value: `undef`
 Data type: `Array[String]`
 
 Define which script to run to track service states.
+
+Default value: `[]`
+
+##### <a name="-keepalived--vrrp--sync_group--track_process"></a>`track_process`
+
+Data type: `Array[String]`
+
+Define which process check to run to track processes.
 
 Default value: `[]`
 

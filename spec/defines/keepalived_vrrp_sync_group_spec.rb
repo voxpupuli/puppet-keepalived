@@ -72,6 +72,24 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         }
       end
 
+      describe 'with parameter track_process' do
+        let(:params) do
+          {
+            group: '_GROUP_',
+            track_process: ['_VALUE_']
+          }
+        end
+
+        it { is_expected.to create_keepalived__vrrp__sync_group('_NAME_') }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
+              'content' => %r!^  track_process {\n    _VALUE_!
+            )
+        }
+      end
+
       describe 'with parameter notify_script_master' do
         let(:params) do
           {
