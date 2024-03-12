@@ -105,10 +105,10 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-  <%- if @track_process -%>
+  <%- unless @track_process.empty? -%>
 
   track_process {
-  <%- Array(@track_process).each do |track| -%>
+  <%- @track_process.each do |track| -%>
     <%= track %>
   <%- end -%>
   }

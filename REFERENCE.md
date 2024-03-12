@@ -1203,11 +1203,11 @@ Default value: `undef`
 
 ##### <a name="-keepalived--vrrp--instance--track_process"></a>`track_process`
 
-Data type: `Optional[Array[String[1]]]`
+Data type: `Array[String[1]]`
 
 Define which process trackers to run.
 
-Default value: `undef`
+Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--track_file"></a>`track_file`
 

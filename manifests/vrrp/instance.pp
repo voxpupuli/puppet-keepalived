@@ -206,7 +206,7 @@ define keepalived::vrrp::instance (
   $auth_type                                                              = undef,
   Optional[Variant[String, Sensitive[String]]] $auth_pass                 = undef,
   $track_script                                                           = undef,
-  Optional[Array[String[1]]] $track_process                               = undef,
+  Array[String[1]] $track_process                                         = [],
   Array[String[1]] $track_file                                            = [],
   Array[String[1]] $vrrp_track_file                                       = [],
   $track_interface                                                        = undef,
