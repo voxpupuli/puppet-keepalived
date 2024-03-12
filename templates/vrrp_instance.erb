@@ -97,10 +97,10 @@ vrrp_instance <%= @_name %> {
     auth_pass <%= @auth_pass_unsensitive %>
   }
   <%- end -%>
-  <%- if @track_script -%>
+  <%- unless @track_script.empty? -%>
 
   track_script {
-  <%- Array(@track_script).each do |track| -%>
+  <%- @track_script.each do |track| -%>
     <%= track %>
   <%- end -%>
   }

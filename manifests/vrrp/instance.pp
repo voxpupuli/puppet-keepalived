@@ -205,7 +205,7 @@ define keepalived::vrrp::instance (
   $virtual_ipaddress                                                      = undef,
   $auth_type                                                              = undef,
   Optional[Variant[String, Sensitive[String]]] $auth_pass                 = undef,
-  $track_script                                                           = undef,
+  Variant[Array[String[1]],String[1]] $track_script                       = [],
   Array[String[1]] $track_process                                         = [],
   Array[String[1]] $track_file                                            = [],
   Array[String[1]] $vrrp_track_file                                       = [],
