@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v4.1.0) (2024-03-12)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v4.0.0...v4.1.0)
+
+**Implemented enhancements:**
+
+- vrrp::instance: track\_script: Add datatype [\#317](https://github.com/voxpupuli/puppet-keepalived/pull/317) ([bastelfreak](https://github.com/bastelfreak))
+- vrrp::instance: track\_process: Switch default undef-\>\[\] [\#316](https://github.com/voxpupuli/puppet-keepalived/pull/316) ([bastelfreak](https://github.com/bastelfreak))
+- vrrp::instance: {vrrp\_,}track\_file: Switch default undef-\>\[\] [\#315](https://github.com/voxpupuli/puppet-keepalived/pull/315) ([bastelfreak](https://github.com/bastelfreak))
+- Add support for track\_process to vrrp\_sync\_group [\#313](https://github.com/voxpupuli/puppet-keepalived/pull/313) ([imp-](https://github.com/imp-))
+- Add support for the init\_fail parameter to keepalived::vrrp::script [\#284](https://github.com/voxpupuli/puppet-keepalived/pull/284) ([ggoas-interop](https://github.com/ggoas-interop))
+
+**Fixed bugs:**
+
+- \(\#310\) {vrrp\_,}track\_file: Enforce only String datatype  [\#312](https://github.com/voxpupuli/puppet-keepalived/pull/312) ([tuxmea](https://github.com/tuxmea))
+- Replace all occurrences of illegal chars in the name var [\#291](https://github.com/voxpupuli/puppet-keepalived/pull/291) ([gerases](https://github.com/gerases))
+
 ## [v4.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v4.0.0) (2024-01-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v3.6.0...v4.0.0)
