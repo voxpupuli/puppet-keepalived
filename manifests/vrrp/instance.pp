@@ -215,7 +215,7 @@ define keepalived::vrrp::instance (
   $virtual_ipaddress_excluded                                             = undef,
   Boolean $promote_secondaries                                            = false,
   $virtual_routes                                                         = undef,
-  Optional[Array[Keepalived::Vrrp::Instance::VRule]] $virtual_rules       = undef,
+  Array[Keepalived::Vrrp::Instance::VRule] $virtual_rules                 = [],
   $smtp_alert                                                             = false,
   $nopreempt                                                              = false,
   $preempt_delay                                                          = undef,

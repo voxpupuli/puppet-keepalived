@@ -209,7 +209,7 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-  <%- if @virtual_rules -%>
+  <%- unless @virtual_rules.empty? -%>
 
   virtual_rules {
   <%-  @virtual_rules.each do |rule| -%>
