@@ -17,10 +17,10 @@ describe 'keepalived::vrrp::instance', type: :define do
     'include keepalived'
   end
 
-  on_supported_os.each do |os, facts|
+  on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) do
-        facts
+        os_facts
       end
 
       describe 'without parameters' do
@@ -1419,6 +1419,17 @@ describe 'keepalived::vrrp::instance', type: :define do
               'content' => %r{higher_prio_send_advert true$}
             )
         }
+      end
+
+      # explicit checks for strings, to prevent future people from enforcing Stdlib::Absolutepath
+      # See https://github.com/voxpupuli/puppet-keepalived/pull/312 for context
+      describe 'with track_file and vrrp_track_file' do
+        let :params do
+          mandatory_params.merge(track_file: %w[acme foo], vrrp_track_file: %w[bar baz])
+        end
+
+        it { is_expected.to contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with_content(%r{track_file \{\n.*acme.*\n.*foo}) }
+        it { is_expected.to contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with_content(%r{vrrp_track_file \{\n.*bar.*\n.*baz}) }
       end
     end
   end

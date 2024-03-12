@@ -87,11 +87,10 @@
 #   Define which process trackers to run.
 #
 # @param track_file
-#   Define which file trackers to run (array).
+#   Define which file trackers to run. References a track_file block that can be created with keepalived::vrrp::track_file.
 #
 # @param vrrp_track_file
-#   Define which file trackers to run (array).
-#   Deprecated, for keepalived < 2.1.0
+#   Define which file trackers to run. Deprecated, for keepalived < 2.1.0. References a vrrp_track_file block that can be created with keepalived::vrrp::vrrp_track_file.
 #
 # @param track_interface
 #   Define which interface(s) to monitor.
@@ -208,8 +207,8 @@ define keepalived::vrrp::instance (
   Optional[Variant[String, Sensitive[String]]] $auth_pass                 = undef,
   $track_script                                                           = undef,
   Optional[Array[String[1]]] $track_process                               = undef,
-  Optional[Array[Stdlib::Absolutepath]] $track_file                       = undef,
-  Optional[Array[Stdlib::Absolutepath]] $vrrp_track_file                  = undef,
+  Optional[Array[String[1]]] $track_file                                  = undef,
+  Optional[Array[String[1]]] $vrrp_track_file                             = undef,
   $track_interface                                                        = undef,
   $lvs_interface                                                          = undef,
   $virtual_ipaddress_int                                                  = undef,
