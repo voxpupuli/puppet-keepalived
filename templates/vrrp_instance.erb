@@ -113,18 +113,18 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-  <%- if @track_file -%>
+  <%- unless @track_file.empty? -%>
 
   track_file {
-  <%- Array(@track_file).each do |track| -%>
+  <%- @track_file.each do |track| -%>
     <%= track %>
   <%- end -%>
   }
   <%- end -%>
-  <%- if @vrrp_track_file -%>
+  <%- unless @vrrp_track_file.empty? -%>
 
   vrrp_track_file {
-  <%- Array(@vrrp_track_file).each do |track| -%>
+  <%- @vrrp_track_file.each do |track| -%>
     <%= track %>
   <%- end -%>
   }
