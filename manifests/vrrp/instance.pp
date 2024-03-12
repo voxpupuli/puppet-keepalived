@@ -209,7 +209,7 @@ define keepalived::vrrp::instance (
   Array[String[1]] $track_process                                         = [],
   Array[String[1]] $track_file                                            = [],
   Array[String[1]] $vrrp_track_file                                       = [],
-  $track_interface                                                        = undef,
+  Array[String[1]] $track_interface                                       = [],
   $lvs_interface                                                          = undef,
   $virtual_ipaddress_int                                                  = undef,
   $virtual_ipaddress_excluded                                             = undef,

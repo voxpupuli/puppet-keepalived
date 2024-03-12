@@ -1227,7 +1227,7 @@ Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--track_interface"></a>`track_interface`
 
-Data type: `Any`
+Data type: `Array[String[1]]`
 
 Define which interface(s) to monitor.
 Go to FAULT state if one of
@@ -1236,7 +1236,7 @@ May be specified as either:
   a) interface name
   b) array of interfaces names
 
-Default value: `undef`
+Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--lvs_interface"></a>`lvs_interface`
 
