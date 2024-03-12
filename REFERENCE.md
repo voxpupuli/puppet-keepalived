@@ -1195,35 +1195,35 @@ Default value: `undef`
 
 ##### <a name="-keepalived--vrrp--instance--track_script"></a>`track_script`
 
-Data type: `Any`
+Data type: `Variant[Array[String[1]],String[1]]`
 
 Define which script to run to track service states.
 
-Default value: `undef`
+Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--track_process"></a>`track_process`
 
-Data type: `Optional[Array[String[1]]]`
+Data type: `Array[String[1]]`
 
 Define which process trackers to run.
 
-Default value: `undef`
+Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--track_file"></a>`track_file`
 
-Data type: `Optional[Array[String[1]]]`
+Data type: `Array[String[1]]`
 
 Define which file trackers to run. References a track_file block that can be created with keepalived::vrrp::track_file.
 
-Default value: `undef`
+Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--vrrp_track_file"></a>`vrrp_track_file`
 
-Data type: `Optional[Array[String[1]]]`
+Data type: `Array[String[1]]`
 
 Define which file trackers to run. Deprecated, for keepalived < 2.1.0. References a vrrp_track_file block that can be created with keepalived::vrrp::vrrp_track_file.
 
-Default value: `undef`
+Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--track_interface"></a>`track_interface`
 

@@ -97,34 +97,34 @@ vrrp_instance <%= @_name %> {
     auth_pass <%= @auth_pass_unsensitive %>
   }
   <%- end -%>
-  <%- if @track_script -%>
+  <%- unless @track_script.empty? -%>
 
   track_script {
-  <%- Array(@track_script).each do |track| -%>
+  <%- @track_script.each do |track| -%>
     <%= track %>
   <%- end -%>
   }
   <%- end -%>
-  <%- if @track_process -%>
+  <%- unless @track_process.empty? -%>
 
   track_process {
-  <%- Array(@track_process).each do |track| -%>
+  <%- @track_process.each do |track| -%>
     <%= track %>
   <%- end -%>
   }
   <%- end -%>
-  <%- if @track_file -%>
+  <%- unless @track_file.empty? -%>
 
   track_file {
-  <%- Array(@track_file).each do |track| -%>
+  <%- @track_file.each do |track| -%>
     <%= track %>
   <%- end -%>
   }
   <%- end -%>
-  <%- if @vrrp_track_file -%>
+  <%- unless @vrrp_track_file.empty? -%>
 
   vrrp_track_file {
-  <%- Array(@vrrp_track_file).each do |track| -%>
+  <%- @vrrp_track_file.each do |track| -%>
     <%= track %>
   <%- end -%>
   }
