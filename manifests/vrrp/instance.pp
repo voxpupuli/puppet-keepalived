@@ -81,7 +81,9 @@
 #   Authentication password.
 #
 # @param track_script
-#   Define which script to run to track service states.
+#   Define which scripts to run to track service states.
+#   May be specified either as a String with a single Scriptname,
+#   or as an Array of Strings with multiple Scriptnames.
 #
 # @param track_process
 #   Define which process trackers to run.

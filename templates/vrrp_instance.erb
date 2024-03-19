@@ -100,7 +100,7 @@ vrrp_instance <%= @_name %> {
   <%- unless @track_script.empty? -%>
 
   track_script {
-  <%- @track_script.each do |track| -%>
+  <%- Array(@track_script).flatten.each do |track| -%>
     <%= track %>
   <%- end -%>
   }
