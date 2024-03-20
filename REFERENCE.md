@@ -1154,11 +1154,11 @@ Default value: `undef`
 
 ##### <a name="-keepalived--vrrp--instance--virtual_rules"></a>`virtual_rules`
 
-Data type: `Optional[Array[Keepalived::Vrrp::Instance::VRule]]`
+Data type: `Array[Keepalived::Vrrp::Instance::VRule]`
 
 Set floating rules.
 
-Default value: `undef`
+Default value: `[]`
 
 ##### <a name="-keepalived--vrrp--instance--virtual_ipaddress_excluded"></a>`virtual_ipaddress_excluded`
 
