@@ -1195,7 +1195,7 @@ Default value: `undef`
 
 ##### <a name="-keepalived--vrrp--instance--track_script"></a>`track_script`
 
-Data type: `Variant[Array[String[1]],String[1]]`
+Data type: `Array[String[1]]`
 
 Define which scripts to run to track service states.
 May be specified either as a String with a single Scriptname,
