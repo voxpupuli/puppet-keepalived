@@ -1198,8 +1198,7 @@ Default value: `undef`
 Data type: `Array[String[1]]`
 
 Define which scripts to run to track service states.
-May be specified either as a String with a single Scriptname,
-or as an Array of Strings with multiple Scriptnames.
+Must be specified as an Array of Strings with multiple Scriptnames.
 
 Default value: `[]`
 
