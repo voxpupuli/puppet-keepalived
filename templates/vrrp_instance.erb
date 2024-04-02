@@ -129,10 +129,10 @@ vrrp_instance <%= @_name %> {
   <%- end -%>
   }
   <%- end -%>
-  <%- if @track_interface -%>
+  <%- unless @track_interface.empty? -%>
 
   track_interface {
-  <%- Array(@track_interface).each do |interface| -%>
+  <%- @track_interface.each do |interface| -%>
     <%= interface %>
   <%- end -%>
   }
