@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v5.0.0) (2024-04-02)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v4.1.0...v5.0.0)
+
+**Breaking changes:**
+
+- Drop Debian 10 support [\#327](https://github.com/voxpupuli/puppet-keepalived/pull/327) ([Valantin](https://github.com/Valantin))
+- vrrp::instance: virtual\_rules: Enforce Array datatype [\#321](https://github.com/voxpupuli/puppet-keepalived/pull/321) ([bastelfreak](https://github.com/bastelfreak))
+- vrrp::instance: track\_interface: Enforce Array datatype [\#320](https://github.com/voxpupuli/puppet-keepalived/pull/320) ([bastelfreak](https://github.com/bastelfreak))
+- vrrp::instance: track\_script: Enforce Array datatype [\#319](https://github.com/voxpupuli/puppet-keepalived/pull/319) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Ubuntu 22.04 support [\#326](https://github.com/voxpupuli/puppet-keepalived/pull/326) ([Valantin](https://github.com/Valantin))
+- Add EL9 support [\#299](https://github.com/voxpupuli/puppet-keepalived/pull/299) ([bastelfreak](https://github.com/bastelfreak))
+- Add Debian 12 support [\#296](https://github.com/voxpupuli/puppet-keepalived/pull/296) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- vrrp\_instance::track\_script: Fix Datatype-Mismatch [\#322](https://github.com/voxpupuli/puppet-keepalived/pull/322) ([cocker-cc](https://github.com/cocker-cc))
+
 ## [v4.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v4.1.0) (2024-03-12)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v4.0.0...v4.1.0)
