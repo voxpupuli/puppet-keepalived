@@ -370,23 +370,6 @@ describe 'keepalived::vrrp::instance', type: :define do
         }
       end
 
-      describe 'with parameter track_script as a single String' do
-        let(:params) do
-          mandatory_params.merge(
-            track_script: '_VALUE_'
-          )
-        end
-
-        it { is_expected.to create_keepalived__vrrp__instance('_NAME_') }
-
-        it {
-          is_expected.to \
-            contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r!^  track_script {\n    _VALUE_!
-            )
-        }
-      end
-
       describe 'with parameter lvs_interface' do
         let(:params) do
           mandatory_params.merge(
