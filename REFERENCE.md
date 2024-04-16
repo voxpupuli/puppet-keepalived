@@ -177,17 +177,19 @@ Default value: `'running'`
 
 ##### <a name="-keepalived--service_hasrestart"></a>`service_hasrestart`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 
+
+Default value: `undef`
 
 ##### <a name="-keepalived--service_hasstatus"></a>`service_hasstatus`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 
 
-Default value: `true`
+Default value: `undef`
 
 ##### <a name="-keepalived--service_manage"></a>`service_manage`
 
