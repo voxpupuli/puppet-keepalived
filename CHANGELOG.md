@@ -4,12 +4,28 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v5.1.0) (2024-04-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v5.0.0...v5.1.0)
+
+**Implemented enhancements:**
+
+- Add OracleLinux Support [\#334](https://github.com/voxpupuli/puppet-keepalived/pull/334) ([bastelfreak](https://github.com/bastelfreak))
+- Add Rocky Support [\#333](https://github.com/voxpupuli/puppet-keepalived/pull/333) ([bastelfreak](https://github.com/bastelfreak))
+- Add AlmaLinux support [\#332](https://github.com/voxpupuli/puppet-keepalived/pull/332) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- service: hasrestart/hasstatus: use Puppet defaults [\#335](https://github.com/voxpupuli/puppet-keepalived/pull/335) ([bastelfreak](https://github.com/bastelfreak))
+- Gentoo/Debian: Enable hasstatus for service [\#331](https://github.com/voxpupuli/puppet-keepalived/pull/331) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v5.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v5.0.0) (2024-04-02)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v4.1.0...v5.0.0)
 
 **Breaking changes:**
 
+- vrrp::instance::track\_script: Enforce Array datatype 2 [\#329](https://github.com/voxpupuli/puppet-keepalived/pull/329) ([bastelfreak](https://github.com/bastelfreak))
 - Drop Debian 10 support [\#327](https://github.com/voxpupuli/puppet-keepalived/pull/327) ([Valantin](https://github.com/Valantin))
 - vrrp::instance: virtual\_rules: Enforce Array datatype [\#321](https://github.com/voxpupuli/puppet-keepalived/pull/321) ([bastelfreak](https://github.com/bastelfreak))
 - vrrp::instance: track\_interface: Enforce Array datatype [\#320](https://github.com/voxpupuli/puppet-keepalived/pull/320) ([bastelfreak](https://github.com/bastelfreak))
