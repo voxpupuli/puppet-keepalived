@@ -36,7 +36,7 @@ describe 'keepalived', type: :class do
               'ensure' => 'running',
               'enable' => 'true',
               'hasrestart' => 'false',
-              'hasstatus' => 'false'
+              'hasstatus' => 'true'
             )
           }
         else

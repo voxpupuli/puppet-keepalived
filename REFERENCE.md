@@ -187,6 +187,8 @@ Data type: `Boolean`
 
 
 
+Default value: `true`
+
 ##### <a name="-keepalived--service_manage"></a>`service_manage`
 
 Data type: `Boolean`
