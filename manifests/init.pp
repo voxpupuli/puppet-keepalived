@@ -57,7 +57,7 @@ class keepalived (
   String[1] $sysconf_dir,
   String    $sysconf_options,
   Boolean   $service_hasrestart,
-  Boolean   $service_hasstatus,
+  Boolean   $service_hasstatus = true,
 
   Stdlib::Absolutepath $config_dir       = '/etc/keepalived',
   Stdlib::Filemode     $config_dir_mode  = '0755',
