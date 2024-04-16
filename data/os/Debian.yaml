@@ -1,4 +1,3 @@
 ---
 keepalived::sysconf_dir: 'default'
 keepalived::sysconf_options: ''
-keepalived::service_hasrestart: false

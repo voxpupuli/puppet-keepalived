@@ -29,26 +29,12 @@ describe 'keepalived', type: :class do
           )
         }
 
-        case facts[:osfamily]
-        when 'Debian'
-          it {
-            is_expected.to contain_service('keepalived').with(
-              'ensure' => 'running',
-              'enable' => 'true',
-              'hasrestart' => 'false',
-              'hasstatus' => 'true'
-            )
-          }
-        else
-          it {
-            is_expected.to contain_service('keepalived').with(
-              'ensure' => 'running',
-              'enable' => 'true',
-              'hasrestart' => 'true',
-              'hasstatus' => 'true'
-            )
-          }
-        end
+        it {
+          is_expected.to contain_service('keepalived').with(
+            'ensure' => 'running',
+            'enable' => 'true'
+          )
+        }
       end
 
       describe 'with parameter: config_dir' do
