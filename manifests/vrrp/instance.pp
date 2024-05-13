@@ -287,9 +287,14 @@ define keepalived::vrrp::instance (
     }
   }
 
+  $_content = if $auth_pass =~ Sensitive {
+    Sensitive(template('keepalived/vrrp_instance.erb'))
+  } else {
+    template('keepalived/vrrp_instance.erb')
+  }
   concat::fragment { "keepalived.conf_vrrp_instance_${_name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
-    content => template('keepalived/vrrp_instance.erb'),
+    content => $_content,
     order   => "100-${_ordersafe}-000",
   }
 
