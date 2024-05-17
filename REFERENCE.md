@@ -66,6 +66,7 @@ The following parameters are available in the `keepalived` class:
 * [`service_manage`](#-keepalived--service_manage)
 * [`service_name`](#-keepalived--service_name)
 * [`service_restart`](#-keepalived--service_restart)
+* [`global_defs`](#-keepalived--global_defs)
 * [`vrrp_instance`](#-keepalived--vrrp_instance)
 * [`vrrp_script`](#-keepalived--vrrp_script)
 * [`vrrp_track_process`](#-keepalived--vrrp_track_process)
@@ -210,6 +211,14 @@ Default value: `'keepalived'`
 ##### <a name="-keepalived--service_restart"></a>`service_restart`
 
 Data type: `Optional[String[1]]`
+
+
+
+Default value: `undef`
+
+##### <a name="-keepalived--global_defs"></a>`global_defs`
+
+Data type: `Optional[Hash]`
 
 
 
