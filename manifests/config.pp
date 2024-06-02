@@ -42,6 +42,12 @@ class keepalived::config {
     order   => '001',
   }
 
+  if $keepalived::global_defs {
+    class { 'keepalived::global_defs':
+      * => $keepalived::global_defs,
+    }
+  }
+
   concat::fragment { 'keepalived.conf_include_external_configs':
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => epp('keepalived/include-external-configs.epp',

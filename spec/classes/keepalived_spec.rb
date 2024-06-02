@@ -168,6 +168,17 @@ describe 'keepalived', type: :class do
           )
         }
       end
+
+      describe 'with parameter: global_defs' do
+        let(:params) { { global_defs: { enable_script_security: 'true' } } }
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{enable_script_security$}
+            )
+        }
+      end
     end
   end
 end

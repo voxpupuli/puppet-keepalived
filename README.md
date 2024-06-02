@@ -310,7 +310,33 @@ class { 'keepalived::global_defs':
   vrrp_notify_fifo_script => 'your_fifo_script_path',
 }
 ```
+or hiera:
 
+```yaml
+---
+keepalived::global_defs:
+  notification_email: 'no@spam.tld'
+  notification_email_from: 'no@spam.tld'
+  smtp_server: 'localhost'
+  smtp_connect_timeout: '60'
+  router_id: 'your_router_instance_id'
+  bfd_rlimit_rttime: 10000
+  checker_rlimit_rttime: 10000
+  vrrp_rlimit_rttime: 10000
+  bfd_priority: -20
+  checker_priority: -20
+  vrrp_priority: -20
+  bfd_rt_priority: 50
+  checker_rt_priority: 50
+  vrrp_rt_priority: 50
+  bfd_no_swap: true
+  checker_no_swap: true
+  vrrp_no_swap: true
+  vrrp_version: 3
+  max_auto_priority: 99
+  vrrp_notify_fifo: '/run/keepalived.fifo'
+  vrrp_notify_fifo_script: 'your_fifo_script_path'
+```
 ### Soft-restart the Keepalived daemon
 
 ```puppet
