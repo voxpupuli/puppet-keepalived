@@ -348,7 +348,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{auth_pass.*_VALUE_}
+              'content' => sensitive(%r{auth_pass.*_VALUE_})
             )
         }
       end
