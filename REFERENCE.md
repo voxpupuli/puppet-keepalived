@@ -35,6 +35,7 @@ Work in progress, supports:
 
 ### Data types
 
+* [`Keepalived::Global_defs::Lvs_sync_daemon`](#Keepalived--Global_defs--Lvs_sync_daemon): Defines parameters for lvs_sync_daemon as documented in `man 5 keepalived.conf`
 * [`Keepalived::Options`](#Keepalived--Options): keepalived::options
 * [`Keepalived::Vrrp::Instance::VRule`](#Keepalived--Vrrp--Instance--VRule): Translates directly to rules to be added as per `ip-rule(8)`
 
@@ -343,6 +344,7 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`dynamic_interfaces`](#-keepalived--global_defs--dynamic_interfaces)
 * [`vrrp_notify_fifo`](#-keepalived--global_defs--vrrp_notify_fifo)
 * [`vrrp_notify_fifo_script`](#-keepalived--global_defs--vrrp_notify_fifo_script)
+* [`lvs_sync_daemon`](#-keepalived--global_defs--lvs_sync_daemon)
 
 ##### <a name="-keepalived--global_defs--notification_email"></a>`notification_email`
 
@@ -685,6 +687,14 @@ Default value: `undef`
 Data type: `Optional[Stdlib::Absolutepath]`
 
 Set the vrrp_notify_fifo_script option.
+
+Default value: `undef`
+
+##### <a name="-keepalived--global_defs--lvs_sync_daemon"></a>`lvs_sync_daemon`
+
+Data type: `Optional[Keepalived::Global_defs::Lvs_sync_daemon]`
+
+Set the lvs_sync_daemon option.
 
 Default value: `undef`
 
@@ -1864,6 +1874,24 @@ This causes VALUE (default 0) to be written to
 Default value: `false`
 
 ## Data types
+
+### <a name="Keepalived--Global_defs--Lvs_sync_daemon"></a>`Keepalived::Global_defs::Lvs_sync_daemon`
+
+Defines parameters for lvs_sync_daemon as documented in `man 5 keepalived.conf`
+
+Alias of
+
+```puppet
+Struct[{
+    interface        => String[1],
+    vrrp_instance    => String[1],
+    Optional[id]     => Integer[0, 255],
+    Optional[maxlen] => Integer[1, 65507],
+    Optional[port]   => Stdlib::Port,
+    Optional[ttl]    => Integer[1, 255],
+    Optional[group]  => Stdlib::IP::Address,
+}]
+```
 
 ### <a name="Keepalived--Options"></a>`Keepalived::Options`
 
