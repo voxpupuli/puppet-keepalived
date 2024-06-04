@@ -673,6 +673,47 @@ describe 'keepalived::global_defs', type: :class do
             )
         }
       end
+
+      describe 'with parameter lvs_sync_daemon (minimal)' do
+        let(:params) do
+          {
+            lvs_sync_daemon: {
+              'interface'     => 'eth0',
+              'vrrp_instance' => 'VRRP',
+            }
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{lvs_sync_daemon eth0 VRRP$}
+            )
+        }
+      end
+
+      describe 'with parameter lvs_sync_daemon (full)' do
+        let(:params) do
+          {
+            lvs_sync_daemon: {
+              'interface'     => 'eth0',
+              'vrrp_instance' => 'VRRP',
+              'id'            => 42,
+              'maxlen'        => 4711,
+              'port'          => 8848,
+              'ttl'           => 128,
+              'group'         => '192.0.2.1',
+            }
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{lvs_sync_daemon eth0 VRRP id 42 maxlen 4711 port 8848 ttl 128 group 192\.0\.2\.1$}
+            )
+        }
+      end
     end
   end
 end

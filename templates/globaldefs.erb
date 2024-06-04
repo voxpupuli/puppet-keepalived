@@ -132,6 +132,12 @@ global_defs {
   <%- if @vrrp_notify_fifo_script -%>
   vrrp_notify_fifo_script <%= @vrrp_notify_fifo_script %>
   <%- end -%>
+  <%- if @lvs_sync_daemon -%>
+  lvs_sync_daemon <%= @lvs_sync_daemon['interface'] %> <%= @lvs_sync_daemon['vrrp_instance'] -%>
+  <%-   %w(id maxlen port ttl group).each do |key| -%>
+  <%-     if @lvs_sync_daemon.has_key?(key) %> <%= key %> <%= @lvs_sync_daemon[key] -%><% end -%>
+  <%-   end %>
+  <%- end -%>
 
 }
 
