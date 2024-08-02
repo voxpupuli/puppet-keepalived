@@ -87,6 +87,7 @@ describe 'keepalived class' do
           group   => 'root',
           mode    => '0644',
           content => "vrrp_instance VI_50 { interface ${facts['networking']['primary']}
+          virtual_ipaddress { 10.0.0.1/16 }
           virtual_router_id 50 }",
           notify  => Class['keepalived::service']
         }
@@ -128,6 +129,33 @@ describe 'keepalived class' do
     it 'creates fact keepalived_version' do
       service_fact = apply_manifest(pp, catch_failures: true)
       expect(service_fact.output).to match %r{.*Keepalived version was: (\d.\d.\d).*}
+    end
+  end
+
+  context 'with broken config' do
+    pp = <<-EOS
+    class { 'keepalived':
+      sysconf_options => '-D --vrrp',
+    }
+
+    keepalived::vrrp::instance { 'VI_50':
+      interface         => $facts['networking']['primary'],
+      state             => 'MASTER',
+      virtual_router_id => 50,
+      priority          => 101,
+      auth_type         => 'PASS',
+      auth_pass         => 'secret',
+      virtual_ipaddress => [ '10.0.0.1/16' ],
+    }
+
+    class { 'keepalived::global_defs':
+      smtp_server             => '',
+      notification_email_from => '', # this will generate an invalid config
+    }
+    EOS
+    it 'fails validate command' do
+      apply_result = apply_manifest(pp, expect_failures: true)
+      expect(apply_result.output).to match %r{.*emailfrom missing.*}
     end
   end
 end
