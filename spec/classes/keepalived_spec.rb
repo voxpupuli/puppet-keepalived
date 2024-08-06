@@ -23,9 +23,10 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_concat('/etc/keepalived/keepalived.conf').with(
-            'group' => 'root',
-            'mode' => '0644',
-            'owner' => 'root'
+            'group'        => 'root',
+            'mode'         => '0644',
+            'owner'        => 'root',
+            'validate_cmd' => '/usr/sbin/keepalived -l -t -f %'
           )
         }
 

@@ -11,6 +11,8 @@
 #
 # @param config_file_mode
 #
+# @param config_validate_cmd Input for the `validate_cmd` param of the keepalived.conf concat fragment.
+#
 # @param config_group
 #
 # @param config_owner
@@ -61,9 +63,10 @@ class keepalived (
   Optional[Boolean] $service_hasrestart = undef,
   Optional[Boolean] $service_hasstatus = undef,
 
-  Stdlib::Absolutepath $config_dir       = '/etc/keepalived',
-  Stdlib::Filemode     $config_dir_mode  = '0755',
-  Stdlib::Filemode     $config_file_mode = '0644',
+  Stdlib::Absolutepath   $config_dir          = '/etc/keepalived',
+  Stdlib::Filemode       $config_dir_mode     = '0755',
+  Stdlib::Filemode       $config_file_mode    = '0644',
+  Variant[String, Undef] $config_validate_cmd = '/usr/sbin/keepalived -l -t -f %',
 
   Array[Stdlib::Absolutepath] $include_external_conf_files = [],
 

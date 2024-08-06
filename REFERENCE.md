@@ -54,6 +54,7 @@ The following parameters are available in the `keepalived` class:
 * [`config_dir`](#-keepalived--config_dir)
 * [`config_dir_mode`](#-keepalived--config_dir_mode)
 * [`config_file_mode`](#-keepalived--config_file_mode)
+* [`config_validate_cmd`](#-keepalived--config_validate_cmd)
 * [`config_group`](#-keepalived--config_group)
 * [`config_owner`](#-keepalived--config_owner)
 * [`daemon_group`](#-keepalived--daemon_group)
@@ -112,6 +113,14 @@ Data type: `Stdlib::Filemode`
 
 
 Default value: `'0644'`
+
+##### <a name="-keepalived--config_validate_cmd"></a>`config_validate_cmd`
+
+Data type: `Variant[String, Undef]`
+
+Input for the `validate_cmd` param of the keepalived.conf concat fragment.
+
+Default value: `'/usr/sbin/keepalived -l -t -f %'`
 
 ##### <a name="-keepalived--config_group"></a>`config_group`
 
