@@ -1,7 +1,10 @@
 #
 # @summary Configure the process tracker
 #
-# @param proc_name process name to track
+# @param proc_name 
+#   process name to track
+#   use an Array configuration to specify process parameters (first element needs to
+#   be the process name).
 #
 # @param weight The weight that should add to the instance.
 #
@@ -18,7 +21,7 @@
 # @param param_match  Set inital if command has no parameters or use partial if first n parameters match
 #
 define keepalived::vrrp::track_process (
-  String[1] $proc_name,
+  Variant[String[1], Array[String[1],1]] $proc_name,
   Optional[Integer[0]] $weight   = undef,
   Integer[0] $quorum             = 1,
   Optional[Integer[0]] $delay    = undef,
