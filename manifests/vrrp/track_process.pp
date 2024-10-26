@@ -30,7 +30,7 @@ define keepalived::vrrp::track_process (
   Boolean $full_command          = false,
   Optional[Enum['initial','partial']] $param_match = undef
 ) {
-  concat::fragment { "keepalived.conf_vrrp_track_process_${proc_name}":
+  concat::fragment { "keepalived.conf_vrrp_track_process_${name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => epp('keepalived/vrrp_track_process.epp', {
         'name'            => $name,
