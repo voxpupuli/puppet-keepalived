@@ -1776,9 +1776,11 @@ The following parameters are available in the `keepalived::vrrp::track_process` 
 
 ##### <a name="-keepalived--vrrp--track_process--proc_name"></a>`proc_name`
 
-Data type: `String[1]`
+Data type: `Variant[String[1], Array[String[1],1]]`
 
 process name to track
+use an Array configuration to specify process parameters (first element needs to
+be the process name).
 
 ##### <a name="-keepalived--vrrp--track_process--weight"></a>`weight`
 
