@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v5.2.0) (2025-05-01)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v5.1.0...v5.2.0)
+
+**Implemented enhancements:**
+
+- metadata.json: Add OpenVox [\#352](https://github.com/voxpupuli/puppet-keepalived/pull/352) ([jstraw](https://github.com/jstraw))
+- Add `validate_cmd` for `keepalived.conf` [\#346](https://github.com/voxpupuli/puppet-keepalived/pull/346) ([phihos](https://github.com/phihos))
+- Add support for `lvs_sync_daemon` [\#342](https://github.com/voxpupuli/puppet-keepalived/pull/342) ([dlucredativ](https://github.com/dlucredativ))
+- allow hiera to define `keepalived::global_defs` [\#340](https://github.com/voxpupuli/puppet-keepalived/pull/340) ([ppickfor](https://github.com/ppickfor))
+- Allow Sensitive `$auth_pass` [\#339](https://github.com/voxpupuli/puppet-keepalived/pull/339) ([cocker-cc](https://github.com/cocker-cc))
+
 ## [v5.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v5.1.0) (2024-04-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v5.0.0...v5.1.0)
@@ -204,7 +216,6 @@ These should not affect the functionality of the module.
 
 - Enable automatic unicast configuration with exported resources - pass tests [\#227](https://github.com/voxpupuli/puppet-keepalived/pull/227) ([daaang](https://github.com/daaang))
 - Drop EL6 support [\#226](https://github.com/voxpupuli/puppet-keepalived/pull/226) ([ekohl](https://github.com/ekohl))
-- Add enable\_snmp\_vrrp option [\#221](https://github.com/voxpupuli/puppet-keepalived/pull/221) ([ghost](https://github.com/ghost))
 - Resolve puppet-lint notices [\#220](https://github.com/voxpupuli/puppet-keepalived/pull/220) ([jcpunk](https://github.com/jcpunk))
 - modulesync 3.0.0 & puppet-lint updates [\#218](https://github.com/voxpupuli/puppet-keepalived/pull/218) ([bastelfreak](https://github.com/bastelfreak))
 - use hiera data in module instead of params.pp [\#210](https://github.com/voxpupuli/puppet-keepalived/pull/210) ([Dan33l](https://github.com/Dan33l))
