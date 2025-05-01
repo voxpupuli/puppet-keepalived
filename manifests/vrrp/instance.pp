@@ -198,6 +198,9 @@
 #
 # @param collect_unicast_peers
 #
+# @param apply_sysctl_params
+#   Apply interface configuration recommended by keepalived project
+#   https://github.com/acassen/keepalived/blob/master/keepalived/vrrp/vrrp_if_config.c#L23
 define keepalived::vrrp::instance (
   $interface,
   Integer[1,254] $priority,
@@ -240,6 +243,7 @@ define keepalived::vrrp::instance (
   $vmac_xmit_base                                                         = true,
   Boolean $use_vmac_addr                                                  = false,
   Boolean $native_ipv6                                                    = false,
+  Boolean $apply_sysctl_params                                            = false,
 ) {
   $_name = regsubst($name, '[:\/\n]', '', 'G')
   $_ordersafe = regsubst($_name, '-', '', 'G')
@@ -302,5 +306,50 @@ define keepalived::vrrp::instance (
     target  => "${keepalived::config_dir}/keepalived.conf",
     content => "}\n\n",
     order   => "100-${_ordersafe}-zzz",
+  }
+
+  if $apply_sysctl_params {
+    ensure_resource('sysctl::value', "net.ipv4.conf.${virtual_ipaddress_int}.arp_ignore",
+      {
+        value => '1',
+      },
+    )
+    ensure_resource('sysctl::value', "net.ipv4.conf.${virtual_ipaddress_int}.arp_filter",
+      {
+        value => '1',
+      },
+    )
+
+    ensure_resource('sysctl::value', "net.ipv4.conf.vrrp/${virtual_router_id}.accept_local",
+      {
+        value => '1',
+      },
+    )
+    ensure_resource('sysctl::value', "net.ipv4.conf.vrrp/${virtual_router_id}.arp_ignore",
+      {
+        value => '1',
+      },
+    )
+    ensure_resource('sysctl::value', "net.ipv4.conf.vrrp/${virtual_router_id}.rp_filter",
+      {
+        value => '0',
+      },
+    )
+
+    ensure_resource('sysctl::value', "net.ipv4.conf.vrrp6/${virtual_router_id}.accept_local",
+      {
+        value => '1',
+      },
+    )
+    ensure_resource('sysctl::value', "net.ipv4.conf.vrrp6/${virtual_router_id}.arp_ignore",
+      {
+        value => '1',
+      },
+    )
+    ensure_resource('sysctl::value', "net.ipv4.conf.vrrp6/${virtual_router_id}.rp_filter",
+      {
+        value => '0',
+      },
+    )
   }
 }
