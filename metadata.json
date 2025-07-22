@@ -1,6 +1,6 @@
 {
   "name": "puppet-keepalived",
-  "version": "5.2.1",
+  "version": "5.2.2-rc0",
   "author": "Vox Pupuli",
   "summary": "Keepalived module",
   "license": "Apache-2.0",
