@@ -12,6 +12,7 @@ describe 'keepalived::global_defs', type: :class do
 
       describe 'without parameters' do
         it { is_expected.to create_class('keepalived::global_defs') }
+        it { is_expected.to contain_concat__fragment('keepalived.conf_globaldefs').without('content' => %(snmp_socket)) }
       end
 
       describe 'with parameter notification_email as string' do
@@ -377,7 +378,8 @@ describe 'keepalived::global_defs', type: :class do
       describe 'with parameter snmp_socket' do
         let(:params) do
           {
-            snmp_socket: '/path'
+            snmp_socket: '/path',
+            enable_snmp_vrrp: true
           }
         end
 
