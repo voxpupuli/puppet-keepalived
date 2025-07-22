@@ -123,7 +123,7 @@ global_defs {
   <%- if @dynamic_interfaces -%>
   dynamic_interfaces
   <%- end -%>
-  <%- if @snmp_socket -%>
+  <%- if @snmp_socket && (@enable_snmp_keepalived || @enable_snmp_vrrp || @enable_snmp_checker || @enable_snmp_rfc || @enable_snmp_rfcv2 || @enable_snmp_rfcv3) -%>
   snmp_socket <%= @snmp_socket %>
   <%- end -%>
   <%- if @vrrp_notify_fifo -%>
