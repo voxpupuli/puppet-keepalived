@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.2.1](https://github.com/voxpupuli/puppet-keepalived/tree/v5.2.1) (2025-07-22)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v5.2.0...v5.2.1)
+
+**Fixed bugs:**
+
+- snmp: Only configure snmp\_socket when it is required [\#357](https://github.com/voxpupuli/puppet-keepalived/pull/357) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v5.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v5.2.0) (2025-05-01)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v5.1.0...v5.2.0)
@@ -11,6 +19,7 @@ These should not affect the functionality of the module.
 **Implemented enhancements:**
 
 - metadata.json: Add OpenVox [\#352](https://github.com/voxpupuli/puppet-keepalived/pull/352) ([jstraw](https://github.com/jstraw))
+- allow setting process parameters for `track_process` [\#349](https://github.com/voxpupuli/puppet-keepalived/pull/349) ([trefzer](https://github.com/trefzer))
 - Add `validate_cmd` for `keepalived.conf` [\#346](https://github.com/voxpupuli/puppet-keepalived/pull/346) ([phihos](https://github.com/phihos))
 - Add support for `lvs_sync_daemon` [\#342](https://github.com/voxpupuli/puppet-keepalived/pull/342) ([dlucredativ](https://github.com/dlucredativ))
 - allow hiera to define `keepalived::global_defs` [\#340](https://github.com/voxpupuli/puppet-keepalived/pull/340) ([ppickfor](https://github.com/ppickfor))
