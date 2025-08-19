@@ -55,6 +55,7 @@ The following parameters are available in the `keepalived` class:
 * [`config_dir_mode`](#-keepalived--config_dir_mode)
 * [`config_file_mode`](#-keepalived--config_file_mode)
 * [`config_validate_cmd`](#-keepalived--config_validate_cmd)
+* [`validate_config`](#-keepalived--validate_config)
 * [`config_group`](#-keepalived--config_group)
 * [`config_owner`](#-keepalived--config_owner)
 * [`daemon_group`](#-keepalived--daemon_group)
@@ -121,6 +122,14 @@ Data type: `Stdlib::Absolutepath`
 Input for the `validate_cmd` param of the keepalived.conf concat fragment.
 
 Default value: `'/usr/sbin/keepalived -l -t -f %'`
+
+##### <a name="-keepalived--validate_config"></a>`validate_config`
+
+Data type: `Boolean`
+
+Boolean to enable/disable the config validation
+
+Default value: `true`
 
 ##### <a name="-keepalived--config_group"></a>`config_group`
 

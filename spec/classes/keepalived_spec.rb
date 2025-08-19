@@ -180,6 +180,14 @@ describe 'keepalived', type: :class do
             )
         }
       end
+
+      describe 'without config validation' do
+        let :params do
+          { validate_config: false }
+        end
+
+        it { is_expected.to contain_concat('/etc/keepalived/keepalived.conf').without_validate_cmd }
+      end
     end
   end
 end
