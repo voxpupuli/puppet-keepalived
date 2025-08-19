@@ -66,7 +66,7 @@ class keepalived (
   Stdlib::Absolutepath   $config_dir          = '/etc/keepalived',
   Stdlib::Filemode       $config_dir_mode     = '0755',
   Stdlib::Filemode       $config_file_mode    = '0644',
-  Variant[String, Undef] $config_validate_cmd = '/usr/sbin/keepalived -l -t -f %',
+  Stdlib::Absolutepath   $config_validate_cmd = '/usr/sbin/keepalived -l -t -f %',
 
   Array[Stdlib::Absolutepath] $include_external_conf_files = [],
 
