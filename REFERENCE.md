@@ -116,7 +116,7 @@ Default value: `'0644'`
 
 ##### <a name="-keepalived--config_validate_cmd"></a>`config_validate_cmd`
 
-Data type: `Variant[String, Undef]`
+Data type: `Stdlib::Absolutepath`
 
 Input for the `validate_cmd` param of the keepalived.conf concat fragment.
 
