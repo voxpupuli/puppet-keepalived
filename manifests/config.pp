@@ -30,11 +30,16 @@ class keepalived::config {
     owner  => $keepalived::config_owner,
   }
 
+  $validate_cmd = if $keepalived::validate_config {
+    $keepalived::config_validate_cmd
+  } else {
+    undef
+  }
   concat { "${keepalived::config_dir}/keepalived.conf":
     owner        => $keepalived::config_owner,
     group        => $keepalived::config_group,
     mode         => $keepalived::config_file_mode,
-    validate_cmd => $keepalived::config_validate_cmd,
+    validate_cmd => $validate_cmd,
   }
 
   concat::fragment { 'keepalived.conf_header':
