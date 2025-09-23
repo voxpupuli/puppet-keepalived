@@ -906,7 +906,7 @@ Default value: `false`
 
 Data type: `Boolean`
 
-
+Enable One-Packet-Scheduling for UDP (-o in ipvsadm)
 
 Default value: `false`
 
