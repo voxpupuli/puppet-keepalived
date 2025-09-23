@@ -280,6 +280,23 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
         }
       end
 
+      context 'with ops set to true' do
+        let(:params) do
+          {
+            ip_address: '10.1.1.1',
+            port: 8080,
+            lb_algo: 'lc',
+            ops: true
+          }
+        end
+
+        it {
+          is_expected.to contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with(
+            'content' => %r{\s+ops\s+}
+          )
+        }
+      end
+
       context 'with a real_server without a port should default to VIP port' do
         let(:params) do
           {
