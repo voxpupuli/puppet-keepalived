@@ -23,7 +23,7 @@
 #
 # @param alpha
 #
-# @param ops
+# @param ops Enable One-Packet-Scheduling for UDP (-o in ipvsadm)
 #
 # @param omega
 #
