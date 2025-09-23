@@ -813,6 +813,7 @@ The following parameters are available in the `keepalived::lvs::virtual_server` 
 * [`lb_kind`](#-keepalived--lvs--virtual_server--lb_kind)
 * [`ha_suspend`](#-keepalived--lvs--virtual_server--ha_suspend)
 * [`alpha`](#-keepalived--lvs--virtual_server--alpha)
+* [`ops`](#-keepalived--lvs--virtual_server--ops)
 * [`omega`](#-keepalived--lvs--virtual_server--omega)
 * [`mh_port`](#-keepalived--lvs--virtual_server--mh_port)
 * [`mh_fallback`](#-keepalived--lvs--virtual_server--mh_fallback)
@@ -898,6 +899,14 @@ Default value: `false`
 Data type: `Boolean`
 
 
+
+Default value: `false`
+
+##### <a name="-keepalived--lvs--virtual_server--ops"></a>`ops`
+
+Data type: `Boolean`
+
+Enable One-Packet-Scheduling for UDP (-o in ipvsadm)
 
 Default value: `false`
 
