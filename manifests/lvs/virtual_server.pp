@@ -23,6 +23,8 @@
 #
 # @param alpha
 #
+# @param ops
+#
 # @param omega
 #
 # @param mh_port Enable mh-port for mh scheduler
@@ -77,6 +79,7 @@ define keepalived::lvs::virtual_server (
   Optional[Stdlib::Port] $port = undef,
   Optional[Integer[1]] $fwmark = undef,
   Boolean $alpha = false,
+  Boolean $ops = false,
   Boolean $collect_exported = true,
   Optional[Integer[1]] $delay_loop = undef,
   Boolean $ha_suspend = false,

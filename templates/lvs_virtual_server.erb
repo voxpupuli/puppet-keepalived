@@ -23,6 +23,9 @@ virtual_server <%= @ip_address %> <%= @port %> {
   <%- if @alpha -%>
   alpha
   <%- end -%>
+  <%- if @ops -%>
+  ops
+  <%- end -%>
   <%- if @omega -%>
   omega
   <%- end -%>
