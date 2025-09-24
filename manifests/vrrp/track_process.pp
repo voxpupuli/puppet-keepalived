@@ -1,7 +1,7 @@
 #
 # @summary Configure the process tracker
 #
-# @param proc_name 
+# @param proc_name
 #   process name to track
 #   use an Array configuration to specify process parameters (first element needs to
 #   be the process name).
