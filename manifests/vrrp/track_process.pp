@@ -1,7 +1,7 @@
 #
 # @summary Configure the process tracker
 #
-# @param proc_name 
+# @param proc_name
 #   process name to track
 #   use an Array configuration to specify process parameters (first element needs to
 #   be the process name).
@@ -32,7 +32,8 @@ define keepalived::vrrp::track_process (
 ) {
   concat::fragment { "keepalived.conf_vrrp_track_process_${name}":
     target  => "${keepalived::config_dir}/keepalived.conf",
-    content => epp('keepalived/vrrp_track_process.epp', {
+    content => epp('keepalived/vrrp_track_process.epp',
+      {
         'name'            => $name,
         'proc_name'       => $proc_name,
         'weight'          => $weight,
@@ -42,7 +43,8 @@ define keepalived::vrrp::track_process (
         'terminate_delay' => $terminate_delay,
         'full_command'    => $full_command,
         'param_match'     => $param_match
-    }),
+      },
+    ),
     order   => '020',
   }
 }

@@ -1919,7 +1919,7 @@ Struct[{
     Optional[port]   => Stdlib::Port,
     Optional[ttl]    => Integer[1, 255],
     Optional[group]  => Stdlib::IP::Address,
-}]
+  }]
 ```
 
 ### <a name="Keepalived--Options"></a>`Keepalived::Options`
@@ -1957,6 +1957,6 @@ Struct[{
     Optional[suppress_ifgroup]      => String,
     Optional[realms]                => String,
     Optional[nat]                   => String,
-}]
+  }]
 ```
 
