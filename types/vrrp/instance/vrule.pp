@@ -1,5 +1,6 @@
 # @summary Translates directly to rules to be added as per `ip-rule(8)`
-type Keepalived::Vrrp::Instance::VRule = Struct[{
+type Keepalived::Vrrp::Instance::VRule = Struct[
+  {
     Optional[from]                  => String,
     Optional[to]                    => String,
     Optional[iif]                   => String,
@@ -21,4 +22,5 @@ type Keepalived::Vrrp::Instance::VRule = Struct[{
     Optional[suppress_ifgroup]      => String,
     Optional[realms]                => String,
     Optional[nat]                   => String,
-}]
+  }
+]
