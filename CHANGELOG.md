@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v6.1.0) (2026-02-25)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v6.0.0...v6.1.0)
+
+**Implemented enhancements:**
+
+- Add 'ops' option to virtual\_server. [\#367](https://github.com/voxpupuli/puppet-keepalived/pull/367) ([parekcze](https://github.com/parekcze))
+
+**Fixed bugs:**
+
+- replace legacy fact ipaddress\_$interface [\#373](https://github.com/voxpupuli/puppet-keepalived/pull/373) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v6.0.0](https://github.com/voxpupuli/puppet-keepalived/tree/v6.0.0) (2025-08-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v5.2.1...v6.0.0)
