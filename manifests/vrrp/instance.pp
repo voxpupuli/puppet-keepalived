@@ -261,7 +261,7 @@ define keepalived::vrrp::instance (
       $unicast_src = if $unicast_source_ip {
         $unicast_source_ip
       } else {
-        $facts['networking']['interfaces'][$interface]['ip']
+        dig($facts['networking']['interfaces'], $interface, 'ip')
       }
 
       @@keepalived::vrrp::unicast_peer { "${name}_${unicast_src}":
