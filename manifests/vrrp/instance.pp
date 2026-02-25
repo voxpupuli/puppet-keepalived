@@ -261,7 +261,7 @@ define keepalived::vrrp::instance (
       if $unicast_source_ip != undef {
         $unicast_src = $unicast_source_ip
       } else {
-        $unicast_src = inline_template("<%= scope.lookupvar('::ipaddress_${interface}') -%>")
+        $unicast_src = $facts['networking']['interfaces'][$interface]['ip']
       }
 
       @@keepalived::vrrp::unicast_peer { "${name}_${unicast_src}":
