@@ -10,7 +10,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       priority: 10,
       state: '',
       virtual_ipaddress: [],
-      virtual_router_id: 10
+      virtual_router_id: 10,
     }
   end
   let(:pre_condition) do
@@ -32,7 +32,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter interface' do
         let(:params) do
           mandatory_params.merge(
-            interface: '_VALUE_'
+            interface: '_VALUE_',
           )
         end
 
@@ -41,7 +41,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{interface.*_VALUE_}
+              'content' => %r{interface.*_VALUE_},
             )
         }
       end
@@ -51,7 +51,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           context "with valid #{valid_priority}" do
             let(:params) do
               mandatory_params.merge(
-                priority: valid_priority
+                priority: valid_priority,
               )
             end
 
@@ -60,7 +60,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             it {
               is_expected.to \
                 contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-                  'content' => %r{\spriority\s+#{valid_priority}$}
+                  'content' => %r{\spriority\s+#{valid_priority}$},
                 )
             }
           end
@@ -70,7 +70,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           context "with invalid #{invalid_priority}" do
             let(:params) do
               mandatory_params.merge(
-                priority: invalid_priority
+                priority: invalid_priority,
               )
             end
 
@@ -82,7 +82,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter state' do
         let(:params) do
           mandatory_params.merge(
-            state: '_VALUE_'
+            state: '_VALUE_',
           )
         end
 
@@ -91,7 +91,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{state.*_VALUE_}
+              'content' => %r{state.*_VALUE_},
             )
         }
       end
@@ -99,7 +99,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter virtual_ipaddress' do
         let(:params) do
           mandatory_params.merge(
-            virtual_ipaddress: ['_VALUE_']
+            virtual_ipaddress: ['_VALUE_'],
           )
         end
 
@@ -108,7 +108,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{_VALUE_}
+              'content' => %r{_VALUE_},
             )
         }
       end
@@ -117,7 +117,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             track_interface: ['_VALUE_'],
-            virtual_ipaddress: ['_VALUE_']
+            virtual_ipaddress: ['_VALUE_'],
           )
         end
 
@@ -126,7 +126,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{_VALUE_}
+              'content' => %r{_VALUE_},
             )
         }
       end
@@ -134,7 +134,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter notify_script' do
         let(:params) do
           mandatory_params.merge(
-            notify_script: '_VALUE_'
+            notify_script: '_VALUE_',
           )
         end
 
@@ -143,7 +143,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{notify.*_VALUE_}
+              'content' => %r{notify.*_VALUE_},
             )
         }
       end
@@ -151,7 +151,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter smtp_alert' do
         let(:params) do
           mandatory_params.merge(
-            smtp_alert: true
+            smtp_alert: true,
           )
         end
 
@@ -160,7 +160,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{smtp_alert}
+              'content' => %r{smtp_alert},
             )
         }
       end
@@ -168,7 +168,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter nopreempt' do
         let(:params) do
           mandatory_params.merge(
-            nopreempt: true
+            nopreempt: true,
           )
         end
 
@@ -177,7 +177,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{nopreempt}
+              'content' => %r{nopreempt},
             )
         }
       end
@@ -185,7 +185,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter notify_script_master' do
         let(:params) do
           mandatory_params.merge(
-            notify_script_master: '_VALUE_'
+            notify_script_master: '_VALUE_',
           )
         end
 
@@ -194,7 +194,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{notify_master.*_VALUE_}
+              'content' => %r{notify_master.*_VALUE_},
             )
         }
       end
@@ -202,7 +202,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter notify_script_backup' do
         let(:params) do
           mandatory_params.merge(
-            notify_script_backup: '_VALUE_'
+            notify_script_backup: '_VALUE_',
           )
         end
 
@@ -211,7 +211,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{notify_backup.*_VALUE_}
+              'content' => %r{notify_backup.*_VALUE_},
             )
         }
       end
@@ -219,7 +219,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter notify_script_fault' do
         let(:params) do
           mandatory_params.merge(
-            notify_script_fault: '_VALUE_'
+            notify_script_fault: '_VALUE_',
           )
         end
 
@@ -228,7 +228,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{notify_fault.*_VALUE_}
+              'content' => %r{notify_fault.*_VALUE_},
             )
         }
       end
@@ -236,7 +236,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter notify_script_stop' do
         let(:params) do
           mandatory_params.merge(
-            notify_script_stop: '_VALUE_'
+            notify_script_stop: '_VALUE_',
           )
         end
 
@@ -245,7 +245,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{notify_stop.*_VALUE_}
+              'content' => %r{notify_stop.*_VALUE_},
             )
         }
       end
@@ -253,7 +253,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter notify_script_master_rx_lower_pri' do
         let(:params) do
           mandatory_params.merge(
-            notify_script_master_rx_lower_pri: '/path/to/script'
+            notify_script_master_rx_lower_pri: '/path/to/script',
           )
         end
 
@@ -262,7 +262,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{notify_master_rx_lower_pri.*/path/to/script}
+              'content' => %r{notify_master_rx_lower_pri.*/path/to/script},
             )
         }
       end
@@ -272,7 +272,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           context "with valid #{valid_router_id}" do
             let(:params) do
               mandatory_params.merge(
-                virtual_router_id: valid_router_id
+                virtual_router_id: valid_router_id,
               )
             end
 
@@ -281,7 +281,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             it {
               is_expected.to \
                 contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-                  'content' => %r{\svirtual_router_id\s+#{valid_router_id}$}
+                  'content' => %r{\svirtual_router_id\s+#{valid_router_id}$},
                 )
             }
           end
@@ -291,7 +291,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           context "with invalid #{invalid_router_id}" do
             let(:params) do
               mandatory_params.merge(
-                virtual_router_id: invalid_router_id
+                virtual_router_id: invalid_router_id,
               )
             end
 
@@ -303,7 +303,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter auth_type' do
         let(:params) do
           mandatory_params.merge(
-            auth_type: '_VALUE_'
+            auth_type: '_VALUE_',
           )
         end
 
@@ -312,7 +312,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{auth_type.*_VALUE_}
+              'content' => %r{auth_type.*_VALUE_},
             )
         }
       end
@@ -321,7 +321,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             auth_type: '_AUTH_TYPE_',
-            auth_pass: '_VALUE_'
+            auth_pass: '_VALUE_',
           )
         end
 
@@ -330,7 +330,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{auth_pass.*_VALUE_}
+              'content' => %r{auth_pass.*_VALUE_},
             )
         }
       end
@@ -339,7 +339,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             auth_type: '_AUTH_TYPE_',
-            auth_pass: sensitive('_VALUE_')
+            auth_pass: sensitive('_VALUE_'),
           )
         end
 
@@ -348,7 +348,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => sensitive(%r{auth_pass.*_VALUE_})
+              'content' => sensitive(%r{auth_pass.*_VALUE_}),
             )
         }
       end
@@ -356,7 +356,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter track_script as an Array of Strings' do
         let(:params) do
           mandatory_params.merge(
-            track_script: ['_VALUE_']
+            track_script: ['_VALUE_'],
           )
         end
 
@@ -365,7 +365,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r!^  track_script {\n    _VALUE_!
+              'content' => %r!^  track_script {\n    _VALUE_!,
             )
         }
       end
@@ -373,7 +373,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter lvs_interface' do
         let(:params) do
           mandatory_params.merge(
-            lvs_interface: '_VALUE_'
+            lvs_interface: '_VALUE_',
           )
         end
 
@@ -382,7 +382,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{lvs_sync_daemon_interface _VALUE_}
+              'content' => %r{lvs_sync_daemon_interface _VALUE_},
             )
         }
       end
@@ -390,7 +390,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter advert_int' do
         let(:params) do
           mandatory_params.merge(
-            advert_int: '_VALUE_'
+            advert_int: '_VALUE_',
           )
         end
 
@@ -399,7 +399,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^  advert_int\s+_VALUE_$}
+              'content' => %r{^  advert_int\s+_VALUE_$},
             )
         }
       end
@@ -407,7 +407,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter garp_master_delay' do
         let(:params) do
           mandatory_params.merge(
-            garp_master_delay: '_VALUE_'
+            garp_master_delay: '_VALUE_',
           )
         end
 
@@ -416,7 +416,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^  garp_master_delay\s+_VALUE_$}
+              'content' => %r{^  garp_master_delay\s+_VALUE_$},
             )
         }
       end
@@ -424,7 +424,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter garp_master_refresh' do
         let(:params) do
           mandatory_params.merge(
-            garp_master_refresh: '_VALUE_'
+            garp_master_refresh: '_VALUE_',
           )
         end
 
@@ -433,7 +433,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^  garp_master_refresh\s+_VALUE_$}
+              'content' => %r{^  garp_master_refresh\s+_VALUE_$},
             )
         }
       end
@@ -442,7 +442,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
-            virtual_ipaddress: ['192.168.1.1']
+            virtual_ipaddress: ['192.168.1.1'],
           )
         end
 
@@ -451,7 +451,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_}
+              'content' => %r{192.168.1.1 dev _VALUE_},
             )
         }
       end
@@ -460,7 +460,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
-            virtual_ipaddress: { 'ip' => '192.168.1.1' }
+            virtual_ipaddress: { 'ip' => '192.168.1.1' },
           )
         end
 
@@ -469,7 +469,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1 dev _VALUE_}
+              'content' => %r{^\s+192.168.1.1 dev _VALUE_},
             )
         }
       end
@@ -479,7 +479,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1' },
-                                { 'ip' => '192.168.1.2' }]
+                                { 'ip' => '192.168.1.2' },],
           )
         end
 
@@ -488,11 +488,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_}
+              'content' => %r{192.168.1.1 dev _VALUE_},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.2 dev _VALUE_}
+              'content' => %r{192.168.1.2 dev _VALUE_},
             )
         }
       end
@@ -502,7 +502,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1' },
-                                { 'ip' => ['192.168.1.2', '192.168.1.3'] }]
+                                { 'ip' => ['192.168.1.2', '192.168.1.3'] },],
           )
         end
 
@@ -511,15 +511,15 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_}
+              'content' => %r{192.168.1.1 dev _VALUE_},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.2 dev _VALUE_}
+              'content' => %r{192.168.1.2 dev _VALUE_},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.3 dev _VALUE_}
+              'content' => %r{192.168.1.3 dev _VALUE_},
             )
         }
       end
@@ -530,7 +530,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1',
-                                  'dev' => '_DEV_' }]
+                                  'dev' => '_DEV_', }],
           )
         end
 
@@ -539,7 +539,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _DEV_}
+              'content' => %r{192.168.1.1 dev _DEV_},
             )
         }
       end
@@ -549,7 +549,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => ['192.168.1.1', '192.168.1.2'],
-                                  'dev' => '_DEV_' }]
+                                  'dev' => '_DEV_', }],
           )
         end
 
@@ -558,11 +558,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _DEV_}
+              'content' => %r{192.168.1.1 dev _DEV_},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.2 dev _DEV_}
+              'content' => %r{192.168.1.2 dev _DEV_},
             )
         }
       end
@@ -572,7 +572,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1',
-                                  'label' => '_LABEL_' }]
+                                  'label' => '_LABEL_', }],
           )
         end
 
@@ -581,7 +581,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_ label _LABEL_}
+              'content' => %r{192.168.1.1 dev _VALUE_ label _LABEL_},
             )
         }
       end
@@ -591,7 +591,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1',
-                                  'brd' => '_BRD_' }]
+                                  'brd' => '_BRD_', }],
           )
         end
 
@@ -600,7 +600,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_ brd _BRD_}
+              'content' => %r{192.168.1.1 dev _VALUE_ brd _BRD_},
             )
         }
       end
@@ -610,7 +610,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1',
-                                  'scope' => '_SCOPE_' }]
+                                  'scope' => '_SCOPE_', }],
           )
         end
 
@@ -619,7 +619,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_ scope _SCOPE_}
+              'content' => %r{192.168.1.1 dev _VALUE_ scope _SCOPE_},
             )
         }
       end
@@ -628,7 +628,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
-            virtual_ipaddress_excluded: ['192.168.1.1']
+            virtual_ipaddress_excluded: ['192.168.1.1'],
           )
         end
 
@@ -637,7 +637,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_}
+              'content' => %r{192.168.1.1 dev _VALUE_},
             )
         }
       end
@@ -646,7 +646,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
-            virtual_ipaddress_excluded: { 'ip' => '192.168.1.1' }
+            virtual_ipaddress_excluded: { 'ip' => '192.168.1.1' },
           )
         end
 
@@ -655,7 +655,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1 dev _VALUE_}
+              'content' => %r{^\s+192.168.1.1 dev _VALUE_},
             )
         }
       end
@@ -664,7 +664,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
-            virtual_ipaddress_excluded: { 'ip' => ['192.168.1.1', '192.168.1.2'] }
+            virtual_ipaddress_excluded: { 'ip' => ['192.168.1.1', '192.168.1.2'] },
           )
         end
 
@@ -673,11 +673,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1 dev _VALUE_}
+              'content' => %r{^\s+192.168.1.1 dev _VALUE_},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.2 dev _VALUE_}
+              'content' => %r{^\s+192.168.1.2 dev _VALUE_},
             )
         }
       end
@@ -687,7 +687,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress_excluded: [{ 'ip' => '192.168.1.1' },
-                                         { 'ip' => '192.168.1.2' }]
+                                         { 'ip' => '192.168.1.2' },],
           )
         end
 
@@ -696,11 +696,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_}
+              'content' => %r{192.168.1.1 dev _VALUE_},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.2 dev _VALUE_}
+              'content' => %r{192.168.1.2 dev _VALUE_},
             )
         }
       end
@@ -711,7 +711,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress_excluded: [{ 'ip' => '192.168.1.1',
-                                           'dev' => '_DEV_' }]
+                                           'dev' => '_DEV_', }],
           )
         end
 
@@ -720,7 +720,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _DEV_}
+              'content' => %r{192.168.1.1 dev _DEV_},
             )
         }
       end
@@ -730,7 +730,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress_excluded: [{ 'ip' => ['192.168.1.1', '192.168.1.2'],
-                                           'dev' => '_DEV_' }]
+                                           'dev' => '_DEV_', }],
           )
         end
 
@@ -739,11 +739,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _DEV_}
+              'content' => %r{192.168.1.1 dev _DEV_},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.2 dev _DEV_}
+              'content' => %r{192.168.1.2 dev _DEV_},
             )
         }
       end
@@ -753,7 +753,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress_excluded: [{ 'ip' => '192.168.1.1',
-                                           'label' => '_LABEL_' }]
+                                           'label' => '_LABEL_', }],
           )
         end
 
@@ -762,7 +762,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_ label _LABEL_}
+              'content' => %r{192.168.1.1 dev _VALUE_ label _LABEL_},
             )
         }
       end
@@ -772,7 +772,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress_excluded: [{ 'ip' => '192.168.1.1',
-                                           'brd' => '_BRD_' }]
+                                           'brd' => '_BRD_', }],
           )
         end
 
@@ -781,7 +781,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_ brd _BRD_}
+              'content' => %r{192.168.1.1 dev _VALUE_ brd _BRD_},
             )
         }
       end
@@ -791,7 +791,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress_excluded: [{ 'ip' => '192.168.1.1',
-                                           'scope' => '_SCOPE_' }]
+                                           'scope' => '_SCOPE_', }],
           )
         end
 
@@ -800,7 +800,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{192.168.1.1 dev _VALUE_ scope _SCOPE_}
+              'content' => %r{192.168.1.1 dev _VALUE_ scope _SCOPE_},
             )
         }
       end
@@ -808,7 +808,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with promote_secondaries' do
         let(:params) do
           mandatory_params.merge(
-            promote_secondaries: true
+            promote_secondaries: true,
           )
         end
 
@@ -817,7 +817,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{promote_secondaries}
+              'content' => %r{promote_secondaries},
             )
         }
       end
@@ -826,7 +826,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_ipaddress_int: '_VALUE_',
-            virtual_routes: { 'to' => '10.0.1.0/24', 'via' => '192.168.0.1' }
+            virtual_routes: { 'to' => '10.0.1.0/24', 'via' => '192.168.0.1' },
           )
         end
 
@@ -835,7 +835,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+to 10\.0\.1\.0/24 via 192\.168\.0\.1}
+              'content' => %r{^\s+to 10\.0\.1\.0/24 via 192\.168\.0\.1},
             )
         }
       end
@@ -844,7 +844,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_routes: [{ 'to' => '10.0.1.0/24', 'via' => '192.168.0.1' },
-                             { 'to' => '10.0.2.0/24', 'via' => '192.168.0.2' }]
+                             { 'to' => '10.0.2.0/24', 'via' => '192.168.0.2' },],
           )
         end
 
@@ -853,11 +853,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+to 10\.0\.1\.0/24 via 192\.168\.0\.1}
+              'content' => %r{^\s+to 10\.0\.1\.0/24 via 192\.168\.0\.1},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+to 10\.0\.2\.0/24 via 192\.168\.0\.2}
+              'content' => %r{^\s+to 10\.0\.2\.0/24 via 192\.168\.0\.2},
             )
         }
       end
@@ -866,7 +866,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             virtual_rules: [{ 'from' => '10.0.1.24', 'lookup' => 'customroute1' },
-                            { 'from' => '10.0.2.24', 'lookup' => 'customroute2' }]
+                            { 'from' => '10.0.2.24', 'lookup' => 'customroute2' },],
           )
         end
 
@@ -875,11 +875,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+from 10\.0\.1\.24 lookup customroute1}
+              'content' => %r{^\s+from 10\.0\.1\.24 lookup customroute1},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+from 10\.0\.2\.24 lookup customroute2}
+              'content' => %r{^\s+from 10\.0\.2\.24 lookup customroute2},
             )
         }
       end
@@ -890,7 +890,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_routes: [{ 'to' => '10.0.1.0/24',
                                'via' => '192.168.0.1',
-                               'dev' => '_DEV_' }]
+                               'dev' => '_DEV_', }],
           )
         end
 
@@ -899,7 +899,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{dev _DEV_ to 10\.0\.1\.0/24 via 192\.168\.0\.1}
+              'content' => %r{dev _DEV_ to 10\.0\.1\.0/24 via 192\.168\.0\.1},
             )
         }
       end
@@ -909,7 +909,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             virtual_routes: [{ 'to' => '10.0.1.0/24',
                                'via' => '192.168.0.1',
-                               'src' => '_SOURCE_' }]
+                               'src' => '_SOURCE_', }],
           )
         end
 
@@ -918,7 +918,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{src _SOURCE_ to 10\.0\.1\.0/24 via 192\.168\.0\.1}
+              'content' => %r{src _SOURCE_ to 10\.0\.1\.0/24 via 192\.168\.0\.1},
             )
         }
       end
@@ -929,7 +929,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             virtual_ipaddress_int: '_VALUE_',
             virtual_routes: [{ 'to' => '10.0.1.0/24',
                                'via' => '192.168.0.1',
-                               'scope' => '_SCOPE_' }]
+                               'scope' => '_SCOPE_', }],
           )
         end
 
@@ -938,7 +938,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{scope _SCOPE_ to 10\.0\.1\.0/24 via 192\.168\.0\.1}
+              'content' => %r{scope _SCOPE_ to 10\.0\.1\.0/24 via 192\.168\.0\.1},
             )
         }
       end
@@ -949,7 +949,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             virtual_ipaddress_int: '_VALUE_',
             virtual_routes: [{ 'to' => '10.0.1.0/24',
                                'via' => '192.168.0.1',
-                               'table' => '_TABLE_' }]
+                               'table' => '_TABLE_', }],
           )
         end
 
@@ -958,7 +958,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{table _TABLE_ to 10\.0\.1\.0/24 via 192\.168\.0\.1}
+              'content' => %r{table _TABLE_ to 10\.0\.1\.0/24 via 192\.168\.0\.1},
             )
         }
       end
@@ -966,7 +966,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter unicast_source_ip' do
         let(:params) do
           mandatory_params.merge(
-            unicast_source_ip: '10.1.2.3'
+            unicast_source_ip: '10.1.2.3',
           )
         end
 
@@ -975,7 +975,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{unicast_src_ip.*10\.1\.2\.3}
+              'content' => %r{unicast_src_ip.*10\.1\.2\.3},
             )
         }
       end
@@ -983,7 +983,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with parameter multicast_source_ip' do
         let(:params) do
           mandatory_params.merge(
-            multicast_source_ip: '_VALUE_'
+            multicast_source_ip: '_VALUE_',
           )
         end
 
@@ -992,7 +992,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{mcast_src_ip.*_VALUE_}
+              'content' => %r{mcast_src_ip.*_VALUE_},
             )
         }
       end
@@ -1013,7 +1013,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with unicast_peers as array containing unicast peer ip addresses' do
         let(:params) do
           mandatory_params.merge(
-            unicast_peers: ['10.0.1.0', '10.0.2.0']
+            unicast_peers: ['10.0.1.0', '10.0.2.0'],
           )
         end
 
@@ -1022,29 +1022,29 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
-              'content' => "  unicast_peer {\n"
+              'content' => "  unicast_peer {\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_peer_10.0.1.0').with(
-              'content' => "    10.0.1.0\n"
+              'content' => "    10.0.1.0\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_peer_10.0.2.0').with(
-              'content' => "    10.0.2.0\n"
+              'content' => "    10.0.2.0\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_footer').with(
-              'content' => "  }\n\n"
+              'content' => "  }\n\n",
             )
           is_expected.to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.0.1.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.0.1.0'
+              'ip_address' => '10.0.1.0',
             )
           is_expected.to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.0.2.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.0.2.0'
+              'ip_address' => '10.0.2.0',
             )
         }
       end
@@ -1052,7 +1052,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with unicast_peers set to a single ip address' do
         let(:params) do
           mandatory_params.merge(
-            unicast_peers: '10.0.3.0'
+            unicast_peers: '10.0.3.0',
           )
         end
 
@@ -1061,20 +1061,20 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
-              'content' => "  unicast_peer {\n"
+              'content' => "  unicast_peer {\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_peer_10.0.3.0').with(
-              'content' => "    10.0.3.0\n"
+              'content' => "    10.0.3.0\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_footer').with(
-              'content' => "  }\n\n"
+              'content' => "  }\n\n",
             )
           is_expected.to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.0.3.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.0.3.0'
+              'ip_address' => '10.0.3.0',
             )
         }
       end
@@ -1084,7 +1084,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             collect_unicast_peers: true,
             unicast_source_ip: '10.1.1.0',
-            unicast_peers: ['10.2.1.0', '10.2.2.0']
+            unicast_peers: ['10.2.1.0', '10.2.2.0'],
           )
         end
 
@@ -1093,34 +1093,34 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
-              'content' => "  unicast_peer {\n"
+              'content' => "  unicast_peer {\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_peer_10.2.1.0').with(
-              'content' => "    10.2.1.0\n"
+              'content' => "    10.2.1.0\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_peer_10.2.2.0').with(
-              'content' => "    10.2.2.0\n"
+              'content' => "    10.2.2.0\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_footer').with(
-              'content' => "  }\n\n"
+              'content' => "  }\n\n",
             )
           is_expected.to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.2.1.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.2.1.0'
+              'ip_address' => '10.2.1.0',
             )
           is_expected.to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.2.2.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.2.2.0'
+              'ip_address' => '10.2.2.0',
             )
           expect(exported_resources).to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.1.1.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.1.1.0'
+              'ip_address' => '10.1.1.0',
             )
         }
       end
@@ -1129,7 +1129,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             collect_unicast_peers: true,
-            unicast_source_ip: '10.0.4.0'
+            unicast_source_ip: '10.0.4.0',
           )
         end
 
@@ -1138,16 +1138,16 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_header').with(
-              'content' => "  unicast_peer {\n"
+              'content' => "  unicast_peer {\n",
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME__upeers_footer').with(
-              'content' => "  }\n\n"
+              'content' => "  }\n\n",
             )
           expect(exported_resources).to \
             contain_keepalived__vrrp__unicast_peer('_NAME__10.0.4.0').with(
               'instance' => '_NAME_',
-              'ip_address' => '10.0.4.0'
+              'ip_address' => '10.0.4.0',
             )
         }
       end
@@ -1155,7 +1155,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with dont_track_primary' do
         let(:params) do
           mandatory_params.merge(
-            dont_track_primary: true
+            dont_track_primary: true,
           )
         end
 
@@ -1164,7 +1164,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{dont_track_primary}
+              'content' => %r{dont_track_primary},
             )
         }
       end
@@ -1173,7 +1173,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             use_vmac: true,
-            virtual_ipaddress: '192.168.1.1'
+            virtual_ipaddress: '192.168.1.1',
           )
         end
 
@@ -1182,11 +1182,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{use_vmac}
+              'content' => %r{use_vmac},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1$}
+              'content' => %r{^\s+192.168.1.1$},
             )
         }
       end
@@ -1195,7 +1195,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             use_vmac: true,
-            virtual_ipaddress: { 'ip' => '192.168.1.1' }
+            virtual_ipaddress: { 'ip' => '192.168.1.1' },
           )
         end
 
@@ -1204,11 +1204,11 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{use_vmac}
+              'content' => %r{use_vmac},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1$}
+              'content' => %r{^\s+192.168.1.1$},
             )
         }
       end
@@ -1219,7 +1219,7 @@ describe 'keepalived::vrrp::instance', type: :define do
             use_vmac: true,
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1' },
-                                { 'ip' => ['192.168.1.2', '192.168.1.3'] }]
+                                { 'ip' => ['192.168.1.2', '192.168.1.3'] },],
           )
         end
 
@@ -1228,19 +1228,19 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{use_vmac}
+              'content' => %r{use_vmac},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1$}
+              'content' => %r{^\s+192.168.1.1$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.2$}
+              'content' => %r{^\s+192.168.1.2$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.3$}
+              'content' => %r{^\s+192.168.1.3$},
             )
         }
       end
@@ -1251,9 +1251,9 @@ describe 'keepalived::vrrp::instance', type: :define do
             use_vmac: true,
             virtual_ipaddress_int: '_VALUE_',
             virtual_ipaddress: [{ 'ip' => '192.168.1.1' },
-                                { 'ip' => ['192.168.1.2', '192.168.1.3'] }],
+                                { 'ip' => ['192.168.1.2', '192.168.1.3'] },],
             virtual_ipaddress_excluded: [{ 'ip' => '192.168.2.1' },
-                                         { 'ip' => ['192.168.2.2', '192.168.2.3'] }]
+                                         { 'ip' => ['192.168.2.2', '192.168.2.3'] },],
           )
         end
 
@@ -1262,31 +1262,31 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{use_vmac}
+              'content' => %r{use_vmac},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1$}
+              'content' => %r{^\s+192.168.1.1$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.2$}
+              'content' => %r{^\s+192.168.1.2$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.3$}
+              'content' => %r{^\s+192.168.1.3$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.2.1$}
+              'content' => %r{^\s+192.168.2.1$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.2.2$}
+              'content' => %r{^\s+192.168.2.2$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.2.3$}
+              'content' => %r{^\s+192.168.2.3$},
             )
         }
       end
@@ -1296,7 +1296,7 @@ describe 'keepalived::vrrp::instance', type: :define do
           mandatory_params.merge(
             use_vmac: true,
             virtual_ipaddress: { 'ip' => '192.168.1.1' },
-            virtual_ipaddress_excluded: { 'ip' => '192.168.2.1' }
+            virtual_ipaddress_excluded: { 'ip' => '192.168.2.1' },
           )
         end
 
@@ -1305,15 +1305,15 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{use_vmac}
+              'content' => %r{use_vmac},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.1.1$}
+              'content' => %r{^\s+192.168.1.1$},
             )
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{^\s+192.168.2.1$}
+              'content' => %r{^\s+192.168.2.1$},
             )
         }
       end
@@ -1321,7 +1321,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with use_vmac => "vrrp250"' do
         let(:params) do
           mandatory_params.merge(
-            use_vmac: 'vrrp250'
+            use_vmac: 'vrrp250',
           )
         end
 
@@ -1330,7 +1330,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{\suse_vmac\s+vrrp250$}
+              'content' => %r{\suse_vmac\s+vrrp250$},
             )
         }
       end
@@ -1339,7 +1339,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         let(:params) do
           mandatory_params.merge(
             use_vmac: true,
-            vmac_xmit_base: true
+            vmac_xmit_base: true,
           )
         end
 
@@ -1348,7 +1348,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{vmac_xmit_base}
+              'content' => %r{vmac_xmit_base},
             )
         }
       end
@@ -1356,7 +1356,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with use_vmac_addr' do
         let(:params) do
           mandatory_params.merge(
-            use_vmac_addr: true
+            use_vmac_addr: true,
           )
         end
 
@@ -1365,7 +1365,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{use_vmac_addr}
+              'content' => %r{use_vmac_addr},
             )
         }
       end
@@ -1373,7 +1373,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with native_ipv6' do
         let(:params) do
           mandatory_params.merge(
-            native_ipv6: true
+            native_ipv6: true,
           )
         end
 
@@ -1382,7 +1382,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{native_ipv6}
+              'content' => %r{native_ipv6},
             )
         }
       end
@@ -1390,7 +1390,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with garp_lower_prio_repeat' do
         let(:params) do
           mandatory_params.merge(
-            garp_lower_prio_repeat: 3
+            garp_lower_prio_repeat: 3,
           )
         end
 
@@ -1399,7 +1399,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{garp_lower_prio_repeat 3$}
+              'content' => %r{garp_lower_prio_repeat 3$},
             )
         }
       end
@@ -1407,7 +1407,7 @@ describe 'keepalived::vrrp::instance', type: :define do
       describe 'with higher_prio_send_advert' do
         let(:params) do
           mandatory_params.merge(
-            higher_prio_send_advert: true
+            higher_prio_send_advert: true,
           )
         end
 
@@ -1416,7 +1416,7 @@ describe 'keepalived::vrrp::instance', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_instance__NAME_').with(
-              'content' => %r{higher_prio_send_advert true$}
+              'content' => %r{higher_prio_send_advert true$},
             )
         }
       end

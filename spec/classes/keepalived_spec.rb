@@ -17,7 +17,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_package('keepalived').with(
-            'ensure' => 'present'
+            'ensure' => 'present',
           )
         }
 
@@ -26,14 +26,14 @@ describe 'keepalived', type: :class do
             'group'        => 'root',
             'mode'         => '0644',
             'owner'        => 'root',
-            'validate_cmd' => '/usr/sbin/keepalived -l -t -f %'
+            'validate_cmd' => '/usr/sbin/keepalived -l -t -f %',
           )
         }
 
         it {
           is_expected.to contain_service('keepalived').with(
             'ensure' => 'running',
-            'enable' => 'true'
+            'enable' => 'true',
           )
         }
       end
@@ -43,7 +43,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_file('/foo/bar').with(
-            'ensure' => 'directory'
+            'ensure' => 'directory',
           )
         }
       end
@@ -53,7 +53,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_file('/etc/keepalived').with(
-            'mode' => '0755'
+            'mode' => '0755',
           )
         }
       end
@@ -63,7 +63,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_concat('/etc/keepalived/keepalived.conf').with(
-            'mode' => '0644'
+            'mode' => '0644',
           )
         }
       end
@@ -73,7 +73,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_file('/etc/keepalived').with(
-            'group' => '_VALUE_'
+            'group' => '_VALUE_',
           )
         }
       end
@@ -83,7 +83,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_file('/etc/keepalived').with(
-            'owner' => '_VALUE_'
+            'owner' => '_VALUE_',
           )
         }
       end
@@ -93,7 +93,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_package('keepalived').with(
-            'ensure' => '_VALUE_'
+            'ensure' => '_VALUE_',
           )
         }
       end
@@ -109,7 +109,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_service('keepalived').with(
-            'enable' => true
+            'enable' => true,
           )
         }
       end
@@ -119,7 +119,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_service('keepalived').with(
-            'ensure' => 'running'
+            'ensure' => 'running',
           )
         }
       end
@@ -129,7 +129,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_service('keepalived').with(
-            'hasrestart' => true
+            'hasrestart' => true,
           )
         }
       end
@@ -139,7 +139,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_service('keepalived').with(
-            'hasstatus' => true
+            'hasstatus' => true,
           )
         }
       end
@@ -155,7 +155,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_service('_VALUE_').with(
-            'name' => '_VALUE_'
+            'name' => '_VALUE_',
           )
         }
       end
@@ -165,7 +165,7 @@ describe 'keepalived', type: :class do
 
         it {
           is_expected.to contain_service('keepalived').with(
-            'restart' => '_VALUE_'
+            'restart' => '_VALUE_',
           )
         }
       end
@@ -176,7 +176,7 @@ describe 'keepalived', type: :class do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_globaldefs').with(
-              'content' => %r{enable_script_security$}
+              'content' => %r{enable_script_security$},
             )
         }
       end

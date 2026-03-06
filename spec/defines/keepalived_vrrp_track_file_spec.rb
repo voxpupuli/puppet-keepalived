@@ -23,7 +23,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
       describe 'with parameter proc_name' do
         let(:params) do
           {
-            file_name: '_FILE_NAME_'
+            file_name: '_FILE_NAME_',
           }
         end
 
@@ -32,7 +32,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_file__FILE_NAME_').with(
-              'order' => '015'
+              'order' => '015',
             )
         end
       end
@@ -41,7 +41,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
         let(:params) do
           {
             weight: 110,
-            file_name: '_FILE_NAME_'
+            file_name: '_FILE_NAME_',
           }
         end
 
@@ -50,7 +50,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_file__FILE_NAME_').with(
-              'content' => %r{weight.*110}
+              'content' => %r{weight.*110},
             )
         end
       end
@@ -59,7 +59,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
         let(:params) do
           {
             init_file: '/etc/foo/bar',
-            file_name: '_FILE_NAME_'
+            file_name: '_FILE_NAME_',
           }
         end
 
@@ -68,7 +68,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
         it do
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_file__FILE_NAME_').with(
-              'content' => %r{init_file.*/etc/foo/bar}
+              'content' => %r{init_file.*/etc/foo/bar},
             )
         end
       end
@@ -78,7 +78,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
           {
             overwrite: true,
             init_file: '/etc/foo/bar',
-            file_name: '_FILE_NAME_'
+            file_name: '_FILE_NAME_',
           }
         end
 
@@ -87,7 +87,7 @@ describe 'keepalived::vrrp::track_file', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_track_file__FILE_NAME_').with(
-              'content' => %r{overwrite}
+              'content' => %r{overwrite},
             )
         }
       end

@@ -23,7 +23,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
       describe 'with parameter group as string' do
         let(:params) do
           {
-            group: '_VALUE_'
+            group: '_VALUE_',
           }
         end
 
@@ -32,7 +32,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{group \{\n\s.*_VALUE_}
+              'content' => %r{group \{\n\s.*_VALUE_},
             )
         }
       end
@@ -40,7 +40,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
       describe 'with parameter group as array' do
         let(:params) do
           {
-            group: %w[_VALUE1_ _VALUE2_]
+            group: %w[_VALUE1_ _VALUE2_],
           }
         end
 
@@ -49,7 +49,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{group \{\n\s.*_VALUE1_\n\s.*_VALUE2_}
+              'content' => %r{group \{\n\s.*_VALUE1_\n\s.*_VALUE2_},
             )
         }
       end
@@ -58,7 +58,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            track_script: ['_VALUE_']
+            track_script: ['_VALUE_'],
           }
         end
 
@@ -67,7 +67,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r!^  track_script {\n    _VALUE_!
+              'content' => %r!^  track_script {\n    _VALUE_!,
             )
         }
       end
@@ -76,7 +76,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            track_process: ['_VALUE_']
+            track_process: ['_VALUE_'],
           }
         end
 
@@ -85,7 +85,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r!^  track_process {\n    _VALUE_!
+              'content' => %r!^  track_process {\n    _VALUE_!,
             )
         }
       end
@@ -94,7 +94,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_script_master: '_SCRIPT_'
+            notify_script_master: '_SCRIPT_',
           }
         end
 
@@ -103,7 +103,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{notify_master\s.*_SCRIPT_}
+              'content' => %r{notify_master\s.*_SCRIPT_},
             )
         }
       end
@@ -112,7 +112,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_script_backup: '_SCRIPT_'
+            notify_script_backup: '_SCRIPT_',
           }
         end
 
@@ -121,7 +121,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{notify_backup\s.*_SCRIPT_}
+              'content' => %r{notify_backup\s.*_SCRIPT_},
             )
         }
       end
@@ -130,7 +130,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_script_fault: '_SCRIPT_'
+            notify_script_fault: '_SCRIPT_',
           }
         end
 
@@ -139,7 +139,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{notify_fault\s.*_SCRIPT_}
+              'content' => %r{notify_fault\s.*_SCRIPT_},
             )
         }
       end
@@ -148,7 +148,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_script: '_SCRIPT_'
+            notify_script: '_SCRIPT_',
           }
         end
 
@@ -157,7 +157,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{notify\s.*_SCRIPT_}
+              'content' => %r{notify\s.*_SCRIPT_},
             )
         }
       end
@@ -166,7 +166,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            notify_script_master_rx_lower_pri: '/path/to/script'
+            notify_script_master_rx_lower_pri: '/path/to/script',
           }
         end
 
@@ -175,7 +175,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{notify_master_rx_lower_pri\s.*/path/to/script}
+              'content' => %r{notify_master_rx_lower_pri\s.*/path/to/script},
             )
         }
       end
@@ -184,7 +184,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            smtp_alert: true
+            smtp_alert: true,
           }
         end
 
@@ -193,7 +193,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{smtp_alert}
+              'content' => %r{smtp_alert},
             )
         }
       end
@@ -202,7 +202,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            global_tracking: true
+            global_tracking: true,
           }
         end
 
@@ -211,7 +211,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{global_tracking}
+              'content' => %r{global_tracking},
             )
         }
       end
@@ -220,7 +220,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         let(:params) do
           {
             group: '_GROUP_',
-            track_interface: ['_VALUE_']
+            track_interface: ['_VALUE_'],
           }
         end
 
@@ -229,7 +229,7 @@ describe 'keepalived::vrrp::sync_group', type: :define do
         it {
           is_expected.to \
             contain_concat__fragment('keepalived.conf_vrrp_sync_group__NAME_').with(
-              'content' => %r{\s*track_interface\s*{\n\s*_VALUE_\n\s*}}
+              'content' => %r{\s*track_interface\s*{\n\s*_VALUE_\n\s*}},
             )
         }
       end
