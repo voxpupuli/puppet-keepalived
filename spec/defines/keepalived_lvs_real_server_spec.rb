@@ -19,13 +19,13 @@ describe 'keepalived::lvs::real_server', type: 'define' do
           {
             virtual_server: 'virtual_server',
             ip_address: '127.3.4.5',
-            port: 8080
+            port: 8080,
           }
         end
 
         it {
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-            'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
+            'content' => <<-CONTENT.gsub(%r{ {10}}, '  '),
           real_server 127.3.4.5 8080 {
           }
             CONTENT
@@ -39,7 +39,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
           {
             virtual_server: 'virtual_server',
             ip_address: 'rubbish',
-            port: 8080
+            port: 8080,
           }
         end
 
@@ -52,7 +52,7 @@ describe 'keepalived::lvs::real_server', type: 'define' do
           {
             virtual_server: 'virtual_server',
             ip_address: '10.1.1.1',
-            port: 'something'
+            port: 'something',
           }
         end
 
@@ -72,16 +72,16 @@ describe 'keepalived::lvs::real_server', type: 'define' do
               'SMTP_CHECK' => {
                 'connect_timeout' => 10,
                 'host' => {
-                  'connect_ip' => '127.0.0.1'
-                }
-              }
-            }
+                  'connect_ip' => '127.0.0.1',
+                },
+              },
+            },
           }
         end
 
         it {
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-            'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
+            'content' => <<-CONTENT.gsub(%r{ {10}}, '  '),
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
@@ -109,16 +109,16 @@ describe 'keepalived::lvs::real_server', type: 'define' do
             options: {
               'SMTP_CHECK' => {
                 'host' => {
-                  'connect_ip' => '127.0.0.1'
-                }
-              }
-            }
+                  'connect_ip' => '127.0.0.1',
+                },
+              },
+            },
           }
         end
 
         it {
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-            'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
+            'content' => <<-CONTENT.gsub(%r{ {10}}, '  '),
           real_server 127.3.4.5 789 {
             SMTP_CHECK {
               host {
@@ -140,14 +140,14 @@ describe 'keepalived::lvs::real_server', type: 'define' do
             options: {
               'weight' => 1,
               'notify_up' => "'notify-send \"good to go!\"'",
-              'inhibit_on_failure' => true
-            }
+              'inhibit_on_failure' => true,
+            },
           }
         end
 
         it {
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_real_server_test').with(
-            'content' => <<-CONTENT.gsub(%r{ {10}}, '  ')
+            'content' => <<-CONTENT.gsub(%r{ {10}}, '  '),
           real_server 127.3.4.5 789 {
             inhibit_on_failure
             notify_up 'notify-send "good to go!"'
