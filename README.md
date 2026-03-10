@@ -144,7 +144,7 @@ node /node01/ {
     auth_type         => 'PASS',
     auth_pass         => 'secret',
     virtual_ipaddress => '10.0.0.1/29',
-    track_script      => 'check_nginx',
+    track_script      => ['check_nginx'],
   }
 }
 
@@ -163,7 +163,7 @@ node /node02/ {
     auth_type         => 'PASS',
     auth_pass         => 'secret',
     virtual_ipaddress => '10.0.0.1/29',
-    track_script      => 'check_nginx',
+    track_script      => ['check_nginx'],
   }
 }
 ```
@@ -185,7 +185,8 @@ keepalived::vrrp_instance:
     auth_type: 'PASS'
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
-    track_script: check_nginx
+    track_script:
+      - check_nginx
 ```
 
 or using process tracking (keepalived 2.0.11+):
@@ -209,7 +210,7 @@ node /node01/ {
     auth_type         => 'PASS',
     auth_pass         => 'secret',
     virtual_ipaddress => '10.0.0.1/29',
-    track_process     => 'check_nginx',
+    track_process     => ['check_nginx'],
   }
 }
 ```
