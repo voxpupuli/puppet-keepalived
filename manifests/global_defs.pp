@@ -89,6 +89,9 @@
 #
 # @param lvs_sync_daemon Set the lvs_sync_daemon option.
 #
+# @param umask Set the umask option for files created by keepalived,
+#   either as a numeric value (e.g. '0022') or symbolic bits (e.g. 'IWGRP | IWOTH').
+#
 class keepalived::global_defs (
   $notification_email                                                 = undef,
   $notification_email_from                                            = undef,
@@ -134,6 +137,7 @@ class keepalived::global_defs (
   Optional[Stdlib::Absolutepath] $vrrp_notify_fifo_script             = undef,
   $snmp_socket                                                        = 'unix:/var/agentx/master',
   Optional[Keepalived::Global_defs::Lvs_sync_daemon] $lvs_sync_daemon = undef,
+  Optional[String[1]] $umask                                          = undef,
 ) {
   concat::fragment { 'keepalived.conf_globaldefs':
     target  => "${keepalived::config_dir}/keepalived.conf",

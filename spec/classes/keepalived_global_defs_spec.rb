@@ -661,6 +661,36 @@ describe 'keepalived::global_defs', type: :class do
         }
       end
 
+      describe 'with parameter umask: 0022' do
+        let(:params) do
+          {
+            umask: '0022',
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{umask 0022$},
+            )
+        }
+      end
+
+      describe 'with parameter umask: IWGRP | IWOTH' do
+        let(:params) do
+          {
+            umask: 'IWGRP | IWOTH',
+          }
+        end
+
+        it {
+          is_expected.to \
+            contain_concat__fragment('keepalived.conf_globaldefs').with(
+              'content' => %r{umask IWGRP \| IWOTH$},
+            )
+        }
+      end
+
       describe 'with parameter vrrp_min_garp: true' do
         let(:params) do
           {

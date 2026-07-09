@@ -363,6 +363,7 @@ The following parameters are available in the `keepalived::global_defs` class:
 * [`vrrp_notify_fifo`](#-keepalived--global_defs--vrrp_notify_fifo)
 * [`vrrp_notify_fifo_script`](#-keepalived--global_defs--vrrp_notify_fifo_script)
 * [`lvs_sync_daemon`](#-keepalived--global_defs--lvs_sync_daemon)
+* [`umask`](#-keepalived--global_defs--umask)
 
 ##### <a name="-keepalived--global_defs--notification_email"></a>`notification_email`
 
@@ -713,6 +714,15 @@ Default value: `undef`
 Data type: `Optional[Keepalived::Global_defs::Lvs_sync_daemon]`
 
 Set the lvs_sync_daemon option.
+
+Default value: `undef`
+
+##### <a name="-keepalived--global_defs--umask"></a>`umask`
+
+Data type: `Optional[String[1]]`
+
+Set the umask option for files created by keepalived,
+either as a numeric value (e.g. '0022') or symbolic bits (e.g. 'IWGRP | IWOTH').
 
 Default value: `undef`
 
