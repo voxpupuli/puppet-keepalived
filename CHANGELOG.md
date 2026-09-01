@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v6.2.0) (2026-09-01)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v6.1.0...v6.2.0)
+
+**Implemented enhancements:**
+
+- puppetlabs/stdlib: Allow 10.x [\#383](https://github.com/voxpupuli/puppet-keepalived/pull/383) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/concat: Allow 10.x [\#382](https://github.com/voxpupuli/puppet-keepalived/pull/382) ([bastelfreak](https://github.com/bastelfreak))
+- Add umask option to global\_defs [\#381](https://github.com/voxpupuli/puppet-keepalived/pull/381) ([elfranne](https://github.com/elfranne))
+- Add advmss support to route options [\#380](https://github.com/voxpupuli/puppet-keepalived/pull/380) ([towo](https://github.com/towo))
+
+**Merged pull requests:**
+
+- Fix examples in README.md [\#376](https://github.com/voxpupuli/puppet-keepalived/pull/376) ([marcusdots](https://github.com/marcusdots))
+
 ## [v6.1.0](https://github.com/voxpupuli/puppet-keepalived/tree/v6.1.0) (2026-02-25)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v6.0.0...v6.1.0)
