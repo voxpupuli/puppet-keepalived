@@ -13,10 +13,10 @@
 #
 # Notes:
 #   None
-if defined?(Facter::Util::Resolution.which) && Facter::Util::Resolution.which('keepalived')
-  Facter.add(:keepalived_version) do
-    setcode do
-      Facter::Util::Resolution.exec('keepalived --version 2>&1').lines.first.match(%r{Keepalived v(\d+\.\d+\.\d+) .+})[1]
-    end
+Facter.add('keepalived_version') do
+  confine { Facter::Core::Execution.which('keepalived') }
+
+  setcode do
+    Facter::Core::Execution.execute('keepalived --version 2>&1').lines.first.match(%r{Keepalived v(\d+\.\d+\.\d+) .+})[1]
   end
 end
