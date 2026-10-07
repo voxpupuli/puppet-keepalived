@@ -1922,13 +1922,13 @@ Alias of
 
 ```puppet
 Struct[{
-    interface        => String[1],
-    vrrp_instance    => String[1],
-    Optional[id]     => Integer[0, 255],
-    Optional[maxlen] => Integer[1, 65507],
-    Optional[port]   => Stdlib::Port,
-    Optional[ttl]    => Integer[1, 255],
-    Optional[group]  => Stdlib::IP::Address,
+    interface               => String[1],
+    Optional[vrrp_instance] => String[1],
+    Optional[id]            => Integer[0, 255],
+    Optional[maxlen]        => Integer[1, 65507],
+    Optional[port]          => Stdlib::Port,
+    Optional[ttl]           => Integer[1, 255],
+    Optional[group]         => Stdlib::IP::Address,
   }]
 ```
 
