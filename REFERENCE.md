@@ -796,7 +796,7 @@ Work in progress, supports:
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 real_server_options => {
@@ -1064,7 +1064,7 @@ Configure VRRP instance
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 May be specified as either:
@@ -1076,7 +1076,7 @@ b) a hash (or array of hashes) containing
    Supported properties: dev, brd, label, scope.
 ```
 
-##### 
+#####
 
 ```puppet
 May be specified as a hash (or array of hashes)
@@ -1088,7 +1088,7 @@ May be specified as a hash (or array of hashes)
 Supported properties: src, to, via, dev, scope, table, metric
 ```
 
-##### 
+#####
 
 ```puppet
 May be specified as a hash (or array of hashes)
@@ -1100,7 +1100,7 @@ May be specified as a hash (or array of hashes)
    Supported properties: from, to, dev, lookup, metric
 ```
 
-##### 
+#####
 
 ```puppet
 May be specified as either:
@@ -1969,4 +1969,3 @@ Struct[{
     Optional[nat]                   => String,
   }]
 ```
-
