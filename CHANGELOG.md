@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.3.0](https://github.com/voxpupuli/puppet-keepalived/tree/v6.3.0) (2026-10-12)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v6.2.0...v6.3.0)
+
+**Implemented enhancements:**
+
+- Update requirements to allow OpenVox 9 [\#387](https://github.com/voxpupuli/puppet-keepalived/pull/387) ([sebastianrakel](https://github.com/sebastianrakel))
+- Replace deprecated calls with `Facter::Core::Execution` [\#385](https://github.com/voxpupuli/puppet-keepalived/pull/385) ([corporate-gadfly](https://github.com/corporate-gadfly))
+
+**Fixed bugs:**
+
+- `vrrp_instance` must be optional in Lvs\_sync\_daemon type [\#388](https://github.com/voxpupuli/puppet-keepalived/pull/388) ([saz](https://github.com/saz))
+
+**Merged pull requests:**
+
+- Fix empty headings in reference [\#389](https://github.com/voxpupuli/puppet-keepalived/pull/389) ([saz](https://github.com/saz))
+
 ## [v6.2.0](https://github.com/voxpupuli/puppet-keepalived/tree/v6.2.0) (2026-09-01)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-keepalived/compare/v6.1.0...v6.2.0)
