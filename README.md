@@ -129,10 +129,15 @@ This configuration will fail-over when:
 
 ```puppet
 node /node01/ {
-  include keepalived
+  class { 'keepalived':
+    global_defs => {
+      'enable_script_security' => true,
+    },
+  }
 
   keepalived::vrrp::script { 'check_nginx':
     script => '/usr/bin/killall -0 nginx',
+    user   => 'root',
   }
 
   keepalived::vrrp::instance { 'VI_50':
@@ -148,10 +153,15 @@ node /node01/ {
 }
 
 node /node02/ {
-  include keepalived
+  class { 'keepalived':
+    global_defs => {
+      'enable_script_security' => true,
+    },
+  }
 
   keepalived::vrrp::script { 'check_nginx':
     script => '/usr/bin/killall -0 nginx',
+    user   => 'root',
   }
 
   keepalived::vrrp::instance { 'VI_50':
@@ -174,6 +184,7 @@ or hiera:
 keepalived::vrrp_script:
   check_nginx:
     script: '/usr/bin/killall -0 nginx'
+    user: root
 
 keepalived::vrrp_instance:
   VI_50:
