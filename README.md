@@ -39,7 +39,7 @@ node /node01/ {
     auth_type         => 'PASS',
     auth_pass         => 'secret',
     virtual_ipaddress => [ '10.0.0.1/29' ],
-    track_interface   => ['eth1','tun0'], # optional, monitor these interfaces.
+    track_interface   => ['tun0'], # optional, monitor these interfaces.
   }
 }
 
@@ -54,7 +54,7 @@ node /node02/ {
     auth_type         => 'PASS',
     auth_pass         => 'secret',
     virtual_ipaddress => [ '10.0.0.1/29' ],
-    track_interface   => ['eth1','tun0'], # optional, monitor these interfaces.
+    track_interface   => ['tun0'], # optional, monitor these interfaces.
   }
 }
 ```
@@ -73,7 +73,6 @@ keepalived::vrrp_instance:
     auth_pass: 'secret'
     virtual_ipaddress: '10.0.0.1/29'
     track_interface:
-      - 'eth1'
       - 'tun0'
 ```
 
