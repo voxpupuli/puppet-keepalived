@@ -53,7 +53,9 @@ virtual_server <%= @ip_address %> <%= @port %> {
   <%- if @hysteresis -%>
   hysteresis <%= @hysteresis %>
   <%- end -%>
+  <%- if ! @fwmark -%>
   protocol <%= @protocol %>
+  <%- end -%>
   <%- if @sorry_server -%>
   sorry_server <%= @sorry_server['ip_address'] %> <%= @sorry_server['port'] %>
     <%- if @sorry_server_inhibit -%>

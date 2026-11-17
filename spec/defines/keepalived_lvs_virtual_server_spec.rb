@@ -51,7 +51,7 @@ describe 'keepalived::lvs::virtual_server', type: 'define' do
 
         it {
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_').with(
-            'content' => %r{^virtual_server fwmark 123 \{\s+lb_algo lc\s+lb_kind NAT\s+protocol TCP\s+},
+            'content' => %r{^virtual_server fwmark 123 \{\s+lb_algo lc\s+lb_kind NAT\s+},
           )
           is_expected.to contain_concat__fragment('keepalived.conf_lvs_virtual_server__TITLE_-footer').with(
             'content' => %r{^\}},
